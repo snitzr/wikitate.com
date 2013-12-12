@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <title>vid</title>
+  </head>
+
+  <br />
+  <div id="timeStamp"></div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+  <!-- Begin testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
+  <script src="swfobject.js"></script>    
+  <div id="ytapiplayer">
+    You need Flash player 8+ and JavaScript enabled to view this video.
+  </div>
+
+  <script>
+
+    var params = { allowScriptAccess: 'always' };
+    var atts = { id: 'myytplayer' };
+    swfobject.embedSWF('http://www.youtube.com/v/3BJ9YXy6zQk?enablejsapi=1&playerapiid=ytplayer&version=3',
+                       'ytapiplayer', '425', '356', '8', null, null, params, atts);
+
+  </script>
+  <!-- End testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
+
+
+
+
+  <script>
+    //load timer display
+    var ytvid = document.getElementById('myytplayer');
+    console.log(ytvid);
+    setInterval(updateCurrentTime, 100);
+    //the updateCurrentTime function could be made more generic maybe with video name as an argument
+    function updateCurrentTime() {
+      if (ytvid.getPlayerState() === 1) {
+        $('#timeStamp').html(ytvid.getCurrentTime().toFixed(1));
+      }
+      if (ytvid.getCurrentTime().toFixed(0) === '1') {
+        console.log('Greater than 1');
+      }
+    }
+
+    //start and stop
+    $('#starp').click(function() {
+      if (ytvid.getPlayerState() === 1) {
+        ytvid.pauseVideo(); 
+      }
+      else {
+        ytvid.playVideo();
+      }
+    });
+
+    //skip back control
+    $('#skipBack').click(function() {
+      ytvid.seekTo((ytvid.getCurrentTime() - 1), true);
+      console.log(ytvid.getCurrentTime());
+    });
+
+
+    //find username
+    //$('#username').html(document.getElementById('yt-masthead-user-displayname').innerHTML);
+
+    //find vidID
+    //var vidURL = document.URL.match(/v=.........../).toString().substring(2,13);
+    //$('#vidID').html(vidURL);
+
+    //return to YouTube button
+    $('a#returnYT').click(function() {
+      return document.URL = ('//www.youtube.com/'+ vidURL);
+      alert('123');
+    });
+
+    //get language and set language drop down
+    //best alternative to yt.setConfig search is search page for FEEDBACK_LOCALE_LANGUAGE
+    var userLanguage = $('script').text().match(/'FEEDBACK_LOCALE_LANGUAGE': ".*?"/).toString().match(/".*?"/).toString().replace(/\"/g, '');
+    $('#' + userLanguage).attr('selected', true);
+
+
+    //not getting latest form edit content
+    $('#text').keyup(function() {
+      var activeForm = (document.getElementById('text').innerHTML);
+      console.log(activeForm);
+    });
+
+
+    // begin remove for production
+    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+    // end remove for production
+    </script>
+  </html>
