@@ -1,9 +1,8 @@
 <html>
   <head>
-    <title>vid</title>
+    <title>vidtest</title>
   </head>
 
-  <br />
   <div id="timeStamp"></div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -19,7 +18,7 @@
     var params = { allowScriptAccess: 'always' };
     var atts = { id: 'myytplayer' };
     swfobject.embedSWF('http://www.youtube.com/v/3BJ9YXy6zQk?enablejsapi=1&playerapiid=ytplayer&version=3',
-                       'vidId', '425', '356', '8', null, null, params, atts);
+    'vidId', '425', '356', '8', null, null, params, atts);
 
   </script>
   <!-- End testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
@@ -33,19 +32,19 @@
       // is there a better way to declare this variable other than making it a global object?
       window.ytvid = document.getElementById('myytplayer');
       console.log(ytvid.getPlayerState());
+      setInterval(updateCurrentTime, 100);
     }
-    setInterval(updateCurrentTime, 100);
     // the updateCurrentTime function could be made more generic maybe with video name as an argument
     function updateCurrentTime() {
       if (ytvid.getPlayerState() === 1) {
         $('#timeStamp').html(ytvid.getCurrentTime().toFixed(1));
       }
       if (ytvid.getCurrentTime().toFixed(0) === '1') {
-        console.log('Greater than 1');
+        console.log('Play status greater than 1');
       }
     }
 
-    // start and stop
+    // start / stop video control
     $('#starp').click(function() {
       if (ytvid.getPlayerState() === 1) {
         ytvid.pauseVideo(); 
@@ -62,7 +61,7 @@
     });
 
 
-    // find username
+    // find YT username
     // $('#username').html(document.getElementById('yt-masthead-user-displayname').innerHTML);
 
     // find vidID
@@ -90,6 +89,6 @@
 
     // begin remove for production
     document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
-    // end remove for production
+      // end remove for production
     </script>
   </html>
