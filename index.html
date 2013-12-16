@@ -3,92 +3,104 @@
     <title>vidtest</title>
   </head>
 
-  <div id="timeStamp"></div>
+  <body>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
-  <!-- Begin testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
-  <script src="swfobject.js"></script>    
-  <div id="vidId">
-    You need Flash player 8+ and JavaScript enabled to view this video.
-  </div>
+    <!-- Begin testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
+    <script src="swfobject.js"></script>    
+    <div id="vidId">
+      You need Flash player 8+ and JavaScript enabled to view this video.
+    </div>
 
-  <script>
-    // embed video on page
-    var params = { allowScriptAccess: 'always' };
-    var atts = { id: 'myytplayer' };
-    swfobject.embedSWF('http://www.youtube.com/v/3BJ9YXy6zQk?enablejsapi=1&playerapiid=ytplayer&version=3',
-    'vidId', '425', '356', '8', null, null, params, atts);
+    <script>
+      // embed video on page
+      var params = { allowScriptAccess: 'always' };
+      var atts = { id: 'myytplayer' };
+      swfobject.embedSWF('http://www.youtube.com/v/3BJ9YXy6zQk?enablejsapi=1&playerapiid=ytplayer&version=3',
+      'vidId', '425', '356', '8', null, null, params, atts);
 
-  </script>
-  <!-- End testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
-
-
-
-
-  <script>
-    // load video timer display
-    function onYouTubePlayerReady(playerId) {
-      // is there a better way to declare this variable other than making it a global object?
-      window.ytvid = document.getElementById('myytplayer');
-      console.log(ytvid.getPlayerState());
-      setInterval(updateCurrentTime, 100);
-    }
-    // the updateCurrentTime function could be made more generic maybe with video name as an argument
-    function updateCurrentTime() {
-      if (ytvid.getPlayerState() === 1) {
-        $('#timeStamp').html(ytvid.getCurrentTime().toFixed(1));
-      }
-      if (ytvid.getCurrentTime().toFixed(0) === '1') {
-        console.log('Play status greater than 1');
-      }
-    }
-
-    // start / stop video control
-    $('#starp').click(function() {
-      if (ytvid.getPlayerState() === 1) {
-        ytvid.pauseVideo(); 
-      }
-      else {
-        ytvid.playVideo();
-      }
-    });
-
-    // skip back control
-    $('#skipBack').click(function() {
-      ytvid.seekTo((ytvid.getCurrentTime() - 1), true);
-      console.log(ytvid.getCurrentTime());
-    });
-
-
-    // find YT username
-    // $('#username').html(document.getElementById('yt-masthead-user-displayname').innerHTML);
-
-    // find vidID
-    // var vidURL = document.URL.match(/v=.........../).toString().substring(2,13);
-    // $('#vidID').html(vidURL);
-
-    // return to YouTube button
-    $('a#returnYT').click(function() {
-      return document.URL = ('//www.youtube.com/'+ vidURL);
-      alert('123');
-    });
-
-    // get language and set language drop down
-    // best alternative to yt.setConfig search is search page for FEEDBACK_LOCALE_LANGUAGE
-    //var userLanguage = $('script').text().match(/'FEEDBACK_LOCALE_LANGUAGE': ".*?"/).toString().match(/".*?"/).toString().replace(/\"/g, '');
-    //$('#' + userLanguage).attr('selected', true);
-
-
-    // not getting latest form edit content
-    $('#text').keyup(function() {
-      var activeForm = (document.getElementById('text').innerHTML);
-      console.log(activeForm);
-    });
-
-
-    // begin remove for production
-    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
-      // end remove for production
     </script>
+    <!-- End testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
+
+    <div id="timeStamp"></div>
+
+
+    <script>
+      // load video timer display
+      function onYouTubePlayerReady(playerId) {
+        // is there a better way to declare this variable other than making it a global object?
+        window.ytvid = document.getElementById('myytplayer');
+        console.log('Player state ' + (ytvid.getPlayerState().toString()));
+        setInterval(updateCurrentTime, 100);
+      }
+      // the updateCurrentTime function could be made more generic maybe with video name as an argument
+      function updateCurrentTime() {
+        if (ytvid.getPlayerState() === 1) {
+          $('#timeStamp').html(ytvid.getCurrentTime().toFixed(1));
+          // console.log('Active setInterval. 1.');
+          captionTime(ytvid.getCurrentTime());
+          // send time to caption step function (each time? with setInterval?) Likely, because player state is tested.
+        }
+      }
+
+      function captionTime(currentTime) {
+        // default currentTime to 0? How?
+        var transcript = {1.3: 'hello', 1.4: 'world', 1.5: '1.5', 1.6: '1.6', 1.7: '1.7', 1.8: '1.8', 1.9: '1.9', 2.0: '2.0', 2.1: '2.1', 2.2: '2.2', 2.3: '2.3', 2.4: '2.4', 2.5: '2.5', 2.6: '2.6', 2.7: '2.7', 2.8: '2.8', 2.9: '2.9', 3.0: '3.0', 3.1: '3.1', 3.2: '3.2', 3.3: '3.3', 3.4: '3.4', 3.5: '3.5', 3.6: '3.6', 3.7: '3.7', 3.8: '3.8', 3.9: '3.9', 4.0: '4.0', 4.1: '4.1', 4.2: '4.2', 4.3: '4.3'};
+        if ((transcript[currentTime.toFixed(1)]) === (undefined)) {
+          return
+        }
+        else {
+          console.log(transcript[currentTime.toFixed(1)]);
+        }
+      }
+
+      // start / stop video control
+      $('#starp').click(function() {
+        if (ytvid.getPlayerState() === 1) {
+          ytvid.pauseVideo(); 
+        }
+        else {
+          ytvid.playVideo();
+        }
+      });
+
+      // skip back control
+      $('#skipBack').click(function() {
+        ytvid.seekTo((ytvid.getCurrentTime() - 1), true);
+        console.log(ytvid.getCurrentTime());
+      });
+
+
+      // find YT username
+      // $('#username').html(document.getElementById('yt-masthead-user-displayname').innerHTML);
+
+      // find vidID
+      // var vidURL = document.URL.match(/v=.........../).toString().substring(2,13);
+      // $('#vidID').html(vidURL);
+
+      // return to YouTube button
+      $('a#returnYT').click(function() {
+        return document.URL = ('//www.youtube.com/'+ vidURL);
+        alert('123');
+      });
+
+      // get language and set language drop down
+      // best alternative to yt.setConfig search is search page for FEEDBACK_LOCALE_LANGUAGE
+      //var userLanguage = $('script').text().match(/'FEEDBACK_LOCALE_LANGUAGE': ".*?"/).toString().match(/".*?"/).toString().replace(/\"/g, '');
+      //$('#' + userLanguage).attr('selected', true);
+
+
+      // not getting latest form edit content
+      $('#text').keyup(function() {
+        var activeForm = (document.getElementById('text').innerHTML);
+        console.log(activeForm);
+      });
+
+
+      // begin remove for production
+      //document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+        // end remove for production
+      </script>
+    </body>
   </html>
