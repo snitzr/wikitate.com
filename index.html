@@ -30,26 +30,21 @@
     <script>
       // load video timer display
       function onYouTubePlayerReady(playerId) {
-        // is there a better way to declare this variable other than making it a global object?
         window.ytvid = document.getElementById('myytplayer');
         console.log('Player state ' + (ytvid.getPlayerState().toString()));
         setInterval(updateCurrentTime, 100);
-        // left off here trying to get 0 as default start and to get whole numbers to work with toFixed(1);
-        captionTime(0.0.toFixed(1));
+        captionTime(0.0);
       }
       // the updateCurrentTime function could be made more generic maybe with video name as an argument
       function updateCurrentTime() {
         if (ytvid.getPlayerState() === 1) {
           $('#timeStamp').html(ytvid.getCurrentTime().toFixed(1));
-          // console.log('Active setInterval. 1.');
-          captionTime(ytvid.getCurrentTime());
-          // send time to caption step function (each time? with setInterval?) Likely, because player state is tested.
+          captionTime(ytvid.getCurrentTime().toFixed(1));
         }
       }
 
       var transcript = {0.0: 'hellohellohellohellohellohello', 1.4: 'world', 1.5: 'world', 1.6: 'world', 1.7: 'world', 1.8: 'world', 1.9: '1.9', 2.0: '2.0', 2.1: '2.1', 2.2: '2.2', 2.3: '2.3', 2.4: '2.4', 2.5: '2.5', 2.6: '2.6', 2.7: '2.7', 2.8: '2.8', 2.9: '2.9', 3.0: '3.0', 3.1: '3.1', 3.2: '3.2', 3.3: '3.3', 3.4: '3.4', 3.5: '3.5', 3.6: '3.6', 3.7: '3.7', 3.8: '3.8', 3.9: '3.9', 4.0: '4.0', 4.1: '4.1', 4.2: '4.2', 4.3: '4.3'};
       function captionTime(currentTime) {
-        // default currentTime to 0? How? Pass default and or fix toFixed().
         /* 
         This a test of the CamStudio microphone.
         It's just dangling from my ear.
@@ -59,12 +54,13 @@
         Good.
         Is it not recording?
         */
-        if ((transcript[currentTime.toFixed(1)]) === (undefined)) {
+        if ((transcript[currentTime]) === (undefined)) {
+          console.log(currentTime + ' u ');
           return
         }
         else {
-          console.log(transcript[currentTime.toFixed(1)]);
-          $('#captions').html(transcript[currentTime.toFixed(1)]);
+          $('#captions').html(transcript[currentTime]);
+          console.log(currentTime + ' | ' + transcript[currentTime]);
           // fader feature might go here.
         }
       }
