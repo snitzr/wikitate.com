@@ -24,6 +24,7 @@
     <!-- End testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
 
     <div id="timeStamp"></div>
+    <div id="captions"></div>
 
 
     <script>
@@ -33,6 +34,8 @@
         window.ytvid = document.getElementById('myytplayer');
         console.log('Player state ' + (ytvid.getPlayerState().toString()));
         setInterval(updateCurrentTime, 100);
+        // left off here trying to get 0 as default start and to get whole numbers to work with toFixed(1);
+        captionTime(0.0.toFixed(1));
       }
       // the updateCurrentTime function could be made more generic maybe with video name as an argument
       function updateCurrentTime() {
@@ -44,14 +47,25 @@
         }
       }
 
+      var transcript = {0.0: 'hellohellohellohellohellohello', 1.4: 'world', 1.5: 'world', 1.6: 'world', 1.7: 'world', 1.8: 'world', 1.9: '1.9', 2.0: '2.0', 2.1: '2.1', 2.2: '2.2', 2.3: '2.3', 2.4: '2.4', 2.5: '2.5', 2.6: '2.6', 2.7: '2.7', 2.8: '2.8', 2.9: '2.9', 3.0: '3.0', 3.1: '3.1', 3.2: '3.2', 3.3: '3.3', 3.4: '3.4', 3.5: '3.5', 3.6: '3.6', 3.7: '3.7', 3.8: '3.8', 3.9: '3.9', 4.0: '4.0', 4.1: '4.1', 4.2: '4.2', 4.3: '4.3'};
       function captionTime(currentTime) {
-        // default currentTime to 0? How?
-        var transcript = {1.3: 'hello', 1.4: 'world', 1.5: '1.5', 1.6: '1.6', 1.7: '1.7', 1.8: '1.8', 1.9: '1.9', 2.0: '2.0', 2.1: '2.1', 2.2: '2.2', 2.3: '2.3', 2.4: '2.4', 2.5: '2.5', 2.6: '2.6', 2.7: '2.7', 2.8: '2.8', 2.9: '2.9', 3.0: '3.0', 3.1: '3.1', 3.2: '3.2', 3.3: '3.3', 3.4: '3.4', 3.5: '3.5', 3.6: '3.6', 3.7: '3.7', 3.8: '3.8', 3.9: '3.9', 4.0: '4.0', 4.1: '4.1', 4.2: '4.2', 4.3: '4.3'};
+        // default currentTime to 0? How? Pass default and or fix toFixed().
+        /* 
+        This a test of the CamStudio microphone.
+        It's just dangling from my ear.
+        Um, this is how we learn math.
+        Whoops!
+        Let's click click click delete 'h'.
+        Good.
+        Is it not recording?
+        */
         if ((transcript[currentTime.toFixed(1)]) === (undefined)) {
           return
         }
         else {
           console.log(transcript[currentTime.toFixed(1)]);
+          $('#captions').html(transcript[currentTime.toFixed(1)]);
+          // fader feature might go here.
         }
       }
 
