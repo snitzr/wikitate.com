@@ -39,28 +39,18 @@
       function updateCurrentTime() {
         if (ytvid.getPlayerState() === 1) {
           $('#timeStamp').html(ytvid.getCurrentTime().toFixed(1));
-          captionTime(ytvid.getCurrentTime().toFixed(1));
+          captionTime(ytvid.getCurrentTime());
         }
       }
-
-      var transcript = {0.0: 'hellohellohellohellohellohello', 1.4: 'world', 1.5: 'world', 1.6: 'world', 1.7: 'world', 1.8: 'world', 1.9: '1.9', 2.0: '2.0', 2.1: '2.1', 2.2: '2.2', 2.3: '2.3', 2.4: '2.4', 2.5: '2.5', 2.6: '2.6', 2.7: '2.7', 2.8: '2.8', 2.9: '2.9', 3.0: '3.0', 3.1: '3.1', 3.2: '3.2', 3.3: '3.3', 3.4: '3.4', 3.5: '3.5', 3.6: '3.6', 3.7: '3.7', 3.8: '3.8', 3.9: '3.9', 4.0: '4.0', 4.1: '4.1', 4.2: '4.2', 4.3: '4.3'};
+// issues: .toFixed(1) outputs a string. Good thing: if 3.0 sees 3, it takes that. Bad, toFixed(1) chokes on whole numbers. Also, I'm getting floating point errors on (Math.round(x * 10) / 10), or am I?
+      var transcript = {0: 'This a test of the CamStudio microphone.', 3: 'It\'s just dangling from my ear.', 5: 'Um, this is how we learn math.', 10: 'Whoops!', 13.0: 'Let\'s click click click delete "h".', 18.5: 'Good.', 24.0: 'Is it not recording?'};
       function captionTime(currentTime) {
-        /* 
-        This a test of the CamStudio microphone.
-        It's just dangling from my ear.
-        Um, this is how we learn math.
-        Whoops!
-        Let's click click click delete 'h'.
-        Good.
-        Is it not recording?
-        */
-        if ((transcript[currentTime]) === (undefined)) {
-          console.log(currentTime + ' u ');
-          return
+        if ((transcript[Math.round(currentTime * 10) / 10]) === undefined) {          
+          console.log((Math.round(currentTime * 10) / 10) + '\tu');
         }
         else {
-          $('#captions').html(transcript[currentTime]);
-          console.log(currentTime + ' | ' + transcript[currentTime]);
+          $('#captions').html(transcript[Math.round(currentTime * 10) / 10]);
+          console.log((Math.round(currentTime * 10) / 10) + '\tsub');
           // fader feature might go here.
         }
       }
@@ -111,6 +101,13 @@
       // begin remove for production
       //document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
         // end remove for production
+
+
+
+
+      /*
+      var transcriptTesting = {0.0: 'hellohellohellohellohellohello', 1.4: 'world', 1.5: 'world', 1.6: 'world', 1.7: 'world', 1.8: 'world', 1.9: '1.9', 2.0: '2.0', 2.1: '2.1', 2.2: '2.2', 2.3: '2.3', 2.4: '2.4', 2.5: '2.5', 2.6: '2.6', 2.7: '2.7', 2.8: '2.8', 2.9: '2.9', 3.0: '3.0', 3.1: '3.1', 3.2: '3.2', 3.3: '3.3', 3.4: '3.4', 3.5: '3.5', 3.6: '3.6', 3.7: '3.7', 3.8: '3.8', 3.9: '3.9', 4.0: '4.0', 4.1: '4.1', 4.2: '4.2', 4.3: '4.3'};
+      */
       </script>
     </body>
   </html>
