@@ -1,6 +1,27 @@
 <html>
   <head>
     <title>vidtest</title>
+    <style>
+      #myytplayer {
+        width: ; /* needs to be auto width of vid? */
+      }
+      #captions {
+        position: absolute;
+        top: 280px;
+        left: 30px;
+        background: transparent;
+        font-family: Helvetica, Arial, Ubuntu, sans-serif;
+        font-size: 20px;
+        color: white;
+        -webkit-text-stroke: 1px black;
+        -webkit-text-fill-color: white;                
+        text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+      }
+    </style>
   </head>
 
   <body>
@@ -23,8 +44,8 @@
     </script>
     <!-- End testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
 
-    <div id="timeStamp"></div>
     <div id="captions"></div>
+    <div id="timeStamp"></div>
 
 
     <script>
@@ -43,7 +64,7 @@
         }
       }
 // issues: .toFixed(1) outputs a string. Good thing: if 3.0 sees 3, it takes that. Bad, toFixed(1) chokes on whole numbers. Also, I'm getting floating point errors on (Math.round(x * 10) / 10), or am I?
-      var transcript = {0: 'This a test of the CamStudio microphone.', 3: 'It\'s just dangling from my ear.', 5: 'Um, this is how we learn math.', 10: 'Whoops!', 13.0: 'Let\'s click click click delete "h".', 18.5: 'Good.', 24.0: 'Is it not recording?'};
+      var transcript = {0: 'This a test of the CamStudio microphone.', 3: 'It\'s just dangling from my ear.', 5: 'Um, this is how we learn math.', 10: 'Whoops!', 13.0: 'Let\'s click click click delete "h."', 18.5: 'Good.', 24.0: 'Is it not recording?'};
       function captionTime(currentTime) {
         if ((transcript[Math.round(currentTime * 10) / 10]) === undefined) {          
           console.log((Math.round(currentTime * 10) / 10) + '\tu');
