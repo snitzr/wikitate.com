@@ -8,18 +8,17 @@
       #captions {
         background: transparent;
         color: white;
-        -webkit-text-stroke: 1px black;
-        -webkit-text-fill-color: white;                
-        position: absolute;
-        top: 280px;
-        left: 30px;
         font-family: Helvetica, Arial, Ubuntu, sans-serif;
+        font-size: 20px;
+        left: 30px;
+        position: absolute;
         text-shadow:
         -1px -1px 0 #000,
         1px -1px 0 #000,
         -1px 1px 0 #000,
         1px 1px 0 #000;
-        font-size: 20px;
+        top: 280px;
+        /* -webkit-text-stroke: 1px black; */
       }
     </style>
   </head>
@@ -35,10 +34,13 @@
     </div>
 
     <script>
+      //aaron added for var sub in vid link
+      var vidCode = '3BJ9YXy6zQk'
+
       // embed video on page
       var params = { allowScriptAccess: 'always' };
       var atts = { id: 'myytplayer' };
-      swfobject.embedSWF('http://www.youtube.com/v/3BJ9YXy6zQk?enablejsapi=1&playerapiid=ytplayer&version=3',
+      swfobject.embedSWF('http://www.youtube.com/v/' + vidCode + '?enablejsapi=1&playerapiid=ytplayer&version=3',
       'vidId', '425', '356', '8', null, null, params, atts);
 
     </script>
