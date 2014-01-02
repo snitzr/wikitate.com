@@ -2,9 +2,6 @@
   <head>
     <title>vidtest</title>
     <style>
-      #myytplayer {
-        width: ; /* needs to be auto width of vid? */
-      }
       #captions {
         background: transparent;
         color: white;
@@ -30,26 +27,9 @@
 
   <body>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-    <!-- Begin testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
-    <script src="swfobject.js"></script>    
     <div id="vidId">
       You need Flash player 8+ and JavaScript enabled to view this video.
     </div>
-
-    <script>
-      //aaron added for var sub in vid link
-      var vidCode = '3BJ9YXy6zQk'
-
-      // embed video on page
-      var params = { allowScriptAccess: 'always' };
-      var atts = { id: 'myytplayer' };
-      swfobject.embedSWF('http://www.youtube.com/v/' + vidCode + '?enablejsapi=1&playerapiid=ytplayer&version=3',
-      'vidId', '420', '315', '8', null, null, params, atts);
-
-    </script>
-    <!-- End testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
 
     <div id="captions"></div>
 
@@ -74,6 +54,23 @@
       <div id="transcriptLine6">Good.</div>
       <div id="transcriptLine7">Is it not recording?</div>
     </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!-- Begin testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
+    <script src="swfobject.js"></script>    
+    <script>
+      //aaron added for var sub in vid link
+      var vidCode = '3BJ9YXy6zQk'
+
+      // embed video on page
+      var params = { allowScriptAccess: 'always' };
+      var atts = { id: 'myytplayer' };
+      swfobject.embedSWF('http://www.youtube.com/v/' + vidCode + '?enablejsapi=1&playerapiid=ytplayer&version=3',
+      'vidId', '420', '315', '8', null, null, params, atts);
+
+    </script>
+    <!-- End testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
+
     <script>
       // load video timer display
       function onYouTubePlayerReady(playerId) {
