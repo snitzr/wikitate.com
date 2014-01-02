@@ -58,6 +58,7 @@
     <div id="starp">Start/Stop</div>
     <div id="skipBack">Skip back 1 second</div>
     <div id="timeStamp"></div>
+    <div id="timeClick">Click for time display [test]</div>
 
     <script>
       // load video timer display
@@ -77,11 +78,11 @@
       var transcript = {0: 'This a test of the CamStudio microphone.', 3: 'It\'s just dangling from my ear.', 5: 'Um, this is how we learn math.', 10: 'Whoops!', 13.0: 'Let\'s click click click delete "h."', 18.5: 'Good.', 20: '', 24.0: 'Is it not recording?', 25.8: ''};
       function captionTime(currentTime) {
         if ((transcript[Math.round(currentTime * 10) / 10]) === undefined) {          
-          console.log((Math.round(currentTime * 10) / 10) + '\tu');
+          // console.log((Math.round(currentTime * 10) / 10) + '\tu');
         }
         else {
           $('#captions').html(transcript[Math.round(currentTime * 10) / 10]);
-          console.log((Math.round(currentTime * 10) / 10) + '\tsub');
+          // console.log((Math.round(currentTime * 10) / 10) + '\tsub');
         }
       }
 
@@ -101,6 +102,13 @@
         console.log(ytvid.getCurrentTime());
       });
 
+      // mark time with mouse click
+      $('#timeClick').mousedown(function() {
+        console.log(ytvid.getCurrentTime());
+      });
+      $('#timeClick').mouseup(function() {
+        console.log(ytvid.getCurrentTime());
+      });
 
       // find YT username
       // $('#username').html(document.getElementById('yt-masthead-user-displayname').innerHTML);
