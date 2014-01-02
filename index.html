@@ -20,6 +20,11 @@
         top: 280px;
         /* -webkit-text-stroke: 1px black; */
       }
+      #transcriptEdit {
+        border: 1px solid black;
+        height: 100px;
+        overflow-y: scroll;
+      }
     </style>
   </head>
 
@@ -61,13 +66,13 @@
     <div id="timeClick">Click for time display [test]</div>
 
     <div id="transcriptEdit">
-      This a test of the CamStudio microphone.<br />
-      It's just dangling from my ear.<br />
-      Um, this is how we learn math.<br />
-      Whoops!<br />
-      Let's click click click delete "h."<br />
-      Good.<br />
-      Is it not recording?<br />
+      <div id="transcriptLine1">This a test of the CamStudio microphone.</div>
+      <div id="transcriptLine2">It's just dangling from my ear.</div>
+      <div id="transcriptLine3">Um, this is how we learn math.</div>
+      <div id="transcriptLine4">Whoops!</div>
+      <div id="transcriptLine5">Let's click click click delete "h."</div>
+      <div id="transcriptLine6">Good.</div>
+      <div id="transcriptLine7">Is it not recording?</div>
     </div>
     <script>
       // load video timer display
