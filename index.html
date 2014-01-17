@@ -46,6 +46,7 @@
     <div id="skipBack">Skip back 1 second</div>
     <div id="timeStamp"></div>
     <div id="timeClick">Click for time display [test]</div>
+    <div id="vidCode"></div>
 
     <div id="transcriptEdit">
       <div id="transcriptLine1">This a test of the CamStudio microphone.</div>
@@ -57,8 +58,13 @@
       <div id="transcriptLine7">Is it not recording?</div>
     </div>
     <form>
-      <select id="selectLanguage"> <option selected="selected">choose language</option> <option id="af">Afrikaans <option id="id">Bahasa Indonesia</option> <option id="ms">Bahasa Malaysia</option> <option id="ca">Català</option> <option id="cs">Čeština</option> <option id="da">Dansk</option> <option id="de">Deutsch</option> <option id="et">Eesti</option> <option id="en-GB">English (UK)</option> <option id="en">English (US)</option> <option id="es">Español (España)</option> <option id="es-419">Español (Latinoamérica)</option> <option id="eu">Euskara</option> <option id="fil">Filipino</option> <option id="fr">Français</option> <option id="fr-CA">Français (Canada)</option> <option id="gl">Galego</option> <option id="hr">Hrvatski</option> <option id="zu">IsiZulu</option> <option id="is">Íslenska</option> <option id="it">Italiano</option> <option id="sw">Kiswahili</option> <option id="lv">Latviešu valoda</option> <option id="lt">Lietuvių</option> <option id="hu">Magyar</option> <option id="nl">Nederlands</option> <option id="no">Norsk</option> <option id="pl">Polski</option> <option id="pt-PT">Português</option> <option id="pt">Português (Brasil)</option> <option id="ro">Română</option> <option id="sk">Slovenčina</option> <option id="sl">Slovenščina</option> <option id="fi">Suomi</option> <option id="sv">Svenska</option> <option id="vi">Tiếng Việt</option> <option id="tr">Türkçe</option> <option id="bg">Български</option> <option id="ru">Русский</option> <option id="sr">Српски</option> <option id="uk">Українська</option> <option id="el">Ελληνικά</option> <option id="iw">עברית</option> <option id="ur">اردو</option> <option id="ar">العربية</option> <option id="fa">فارسی</option> <option id="mr">मराठी</option> <option id="hi">हिन्दी</option> <option id="bn">বাংলা</option> <option id="gu">ગુજરાતી</option> <option id="ta">தமிழ்</option> <option id="te">తెలుగు</option> <option id="kn">ಕನ್ನಡ</option> <option id="ml">മലയാളം</option> <option id="th">ภาษาไทย</option> <option id="am">አማርኛ</option> <option id="zh-CN">中文 (简体)</option> <option id="zh-TW">中文 (繁體)</option> <option id="zh-HK">中文 (香港)</option> <option id="ja">日本語</option> <option id="ko">한국어</option> </select>
-      <input type="submit" value="submit" id="submit" />
+      <select id="selectLanguage"><option selected="selected">choose language</option><option id="af">Afrikaans<option id="id">Bahasa Indonesia</option> <option id="ms">Bahasa Malaysia</option> <option id="ca">Català</option> <option id="cs">Čeština</option><option id="da">Dansk</option> <option id="de">Deutsch</option><option id="et">Eesti</option><option id="en-GB">English (UK)</option><option id="en">English (US)</option><option id="es">Español (España)</option><option id="es-419">Español (Latinoamérica)</option><option id="eu">Euskara</option><option id="fil">Filipino</option>
+        <option id="fr">Français</option><option id="fr-CA">Français (Canada)</option><option id="gl">Galego</option><option id="hr">Hrvatski</option><option id="zu">IsiZulu</option><option id="is">Íslenska</option><option id="it">Italiano</option><option id="sw">Kiswahili</option><option id="lv">Latviešu valoda</option>
+        <option id="lt">Lietuvių</option><option id="hu">Magyar</option><option id="nl">Nederlands</option><option id="no">Norsk</option><option id="pl">Polski</option><option id="pt-PT">Português</option><option id="pt">Português (Brasil)</option><option id="ro">Română</option><option id="sk">Slovenčina</option><option id="sl">Slovenščina</option><option id="fi">Suomi</option><option id="sv">Svenska</option>
+        <option id="vi">Tiếng Việt</option><option id="tr">Türkçe</option> <option id="bg">Български</option><option id="ru">Русский</option><option id="sr">Српски</option><option id="uk">Українська</option><option id="el">Ελληνικά</option><option id="iw">עברית</option> <option id="ur">اردو</option> <option id="ar">العربية</option><option id="fa">فارسی</option><option id="mr">मराठी</option><option id="hi">हिन्दी</option><option id="bn">বাংলা</option>
+        <option id="gu">ગુજરાતી</option><option id="ta">தமிழ்</option><option id="te">తెలుగు</option><option id="kn">ಕನ್ನಡ</option><option id="ml">മലയാളം</option> <option id="th">ภาษาไทย</option><option id="am">አማርኛ</option><option id="zh-CN">中文 (简体)</option> <option id="zh-TW">中文 (繁體)</option> <option id="zh-HK">中文 (香港)</option><option id="ja">日本語</option><option id="ko">한국어</option></select>
+      <input type="submit" value="Save as Draft" id="submitDraft" />
+      <input type="submit" value="Publish as Final" id="submitFinal" />
     </form>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -133,7 +139,7 @@
 
       // find vidID
       // var vidURL = document.URL.match(/v=.........../).toString().substring(2,13);
-      // $('#vidID').html(vidURL);
+      $('#vidCode').html(vidCode);
 
       // return to YouTube button
       $('a#returnYT').click(function() {
@@ -141,7 +147,6 @@
         alert('123');
       });
 
-      // get language and set language drop down
       // best alternative to yt.setConfig search is search page for FEEDBACK_LOCALE_LANGUAGE
       //var userLanguage = $('script').text().match(/'FEEDBACK_LOCALE_LANGUAGE': ".*?"/).toString().match(/".*?"/).toString().replace(/\"/g, '');
       //$('#' + userLanguage).attr('selected', true);
