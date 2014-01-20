@@ -73,6 +73,9 @@
     <script src="swfobject.js"></script>    
     <script>
       //aaron added for var sub in vid link
+      // var vidURL = something Django here to avoid 404
+      // var vidCode = vidURL
+      // var vidURL = document.URL.match(/v=.........../).toString().substring(2,13);
       var vidCode = '3BJ9YXy6zQk'
 
       // embed video on page
@@ -138,7 +141,6 @@
       // $('#username').html(document.getElementById('yt-masthead-user-displayname').innerHTML);
 
       // find vidID
-      // var vidURL = document.URL.match(/v=.........../).toString().substring(2,13);
       $('#vidCode').html(vidCode);
 
       // return to YouTube button
