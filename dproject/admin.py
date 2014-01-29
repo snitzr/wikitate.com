@@ -1,5 +1,5 @@
 from django.contrib import admin
-from subtext.models import Vid
+from dproject.models import Vid
 
 admin.site.register(Vid)
 
