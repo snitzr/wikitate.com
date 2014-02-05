@@ -1,18 +1,23 @@
 from django.db import models
 
-# Create your models here.
 class Vid(models.Model):
-    vidSource = models.CharField(max_length=200)
-    vidId = models.CharField(max_length=200)
+    vidSource = models.CharField(max_length=400)
+    vidId = models.CharField(max_length=400)
 
-class Trans(models.Model):
+    def __unicode__(self):  # Python 3: def __str__(self):
+        return self.question
+
+class Transcript(models.Model):
     vid = models.ForeignKey(Vid)
-    transcript = models.CharField(max_length=200)
+    user = models.CharField(max_length=50)
+    transcript = models.CharField(max_length=50000000)
+    language = models.CharField(max_length=400)
 
-# class TransIndividual(models.Model):
-    # nessesary? not sure how to build a db model for each user submitted transcript.
-    # trans_set
+    def __unicode__(self):  # Python 3: def __str__(self):
+        return self.question
 
-# class Languages(models.Model):
-    # add all languges here and it can form a choice set that can become a
-    # dropdown
+# class User(models.Model):
+    # user = models.CharField(max_length=200)
+
+    # def __unicode__(self):  # Python 3: def __str__(self):
+        # return self.question
