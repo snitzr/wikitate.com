@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}vidtest{% endblock title %}</title>
+    <meta charset="UTF-8">   
+    <style>
+      #captions {
+        background: transparent;
+        color: white;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        left: 30px;
+        position: absolute;
+        text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+        top: 280px;
+        /* -webkit-text-stroke: 1px black; */
+      }
+      #transcriptEdit {
+        border: 1px solid black;
+        height: 100px;
+        overflow-y: scroll;
+      }
+    </style>
+  </head>
+  <body>
+    {% block content%}
+    {% endblock content %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!-- Begin testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
+    <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>    
+    <script>
+      //aaron added for var sub in vid link
+      // var vidURL = something Django here to avoid 404
+      // var vidCode = vidURL
+      // var vidURL = document.URL.match(/v=.........../).toString().substring(2,13);
+      var vidCode = '3BJ9YXy6zQk'
+      // holder for template future implementation
+      var vidCode = '{{ vidId|escapejs }}'
+
+      // embed video on page
+      var params = { allowScriptAccess: 'always' };
+      var atts = { id: 'myytplayer' };
+      swfobject.embedSWF('http://www.youtube.com/v/' + vidCode + '?enablejsapi=1&playerapiid=ytplayer&version=3',
+      'vidId', '420', '315', '8', null, null, params, atts);
+
+    </script>
+    <!-- End testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
+
+    <script>
+      // load video timer display
+      function onYouTubePlayerReady(playerId) {
+        window.ytvid = document.getElementById('myytplayer');
+        console.log('Player state ' + (ytvid.getPlayerState().toString()));
+        setInterval(updateCurrentTime, 100);
+        captionTime(0.0);
+      }
+      // the updateCurrentTime function could be made more generic maybe with video name as an argument
+      function updateCurrentTime() {
+        if (ytvid.getPlayerState() === 1) {
+          $('#timeStamp').html(ytvid.getCurrentTime().toFixed(1));
+          captionTime(ytvid.getCurrentTime());
+        }
+      }
+      var transcript = {0: 'This a test of the CamStudio microphone.', 3: 'It\'s just dangling from my ear.', 5: 'Um, this is how we learn math.', 10: 'Whoops!', 13.0: 'Let\'s click click click delete "h."', 18.5: 'Good.', 20: '', 24.0: 'Is it not recording?', 25.8: ''};
+      function captionTime(currentTime) {
+        if ((transcript[Math.round(currentTime * 10) / 10]) === undefined) {          
+          // console.log((Math.round(currentTime * 10) / 10) + '\tu');
+        }
+        else {
+          $('#captions').html(transcript[Math.round(currentTime * 10) / 10]);
+          // console.log((Math.round(currentTime * 10) / 10) + '\tsub');
+        }
+      }
+
+      // start / stop video control
+      $('#starp').click(function() {
+        if (ytvid.getPlayerState() === 1) {
+          ytvid.pauseVideo(); 
+        }
+        else {
+          ytvid.playVideo();
+        }
+      });
+
+      // skip back control
+      $('#skipBack').click(function() {
+        ytvid.seekTo((ytvid.getCurrentTime() - 1), true);
+        console.log(ytvid.getCurrentTime());
+      });
+
+      // mark time with mouse click
+      $('#timeClick').mousedown(function() {
+        console.log(ytvid.getCurrentTime());
+      });
+      $('#timeClick').mouseup(function() {
+        console.log(ytvid.getCurrentTime());
+      });
+
+      // find YT username
+      // $('#username').html(document.getElementById('yt-masthead-user-displayname').innerHTML);
+
+      // find vidID
+      $('#vidCode').html(vidCode);
+
+      // return to YouTube button
+      $('a#returnYT').click(function() {
+        return document.URL = ('//www.youtube.com/'+ vidURL);
+        alert('123');
+      });
+
+      // best alternative to yt.setConfig search is search page for FEEDBACK_LOCALE_LANGUAGE
+      //var userLanguage = $('script').text().match(/'FEEDBACK_LOCALE_LANGUAGE': ".*?"/).toString().match(/".*?"/).toString().replace(/\"/g, '');
+      //$('#' + userLanguage).attr('selected', true);
+
+
+      // not getting latest form edit content
+      $('#text').keyup(function() {
+        var activeForm = (document.getElementById('text').innerHTML);
+        console.log(activeForm);
+      });
+
+    </script>
+  </body>
+</html>
