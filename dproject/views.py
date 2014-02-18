@@ -6,4 +6,4 @@ def index(request):
     return render(request, 'dproject/index.html')
 
 def indexvids(request, vidId):
-    return render(request, 'dproject/index.html', {'vidId': vidId})
+    return render(request, 'dproject/sub.html', {'vidId': vidId})
