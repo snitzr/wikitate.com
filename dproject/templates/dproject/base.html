@@ -23,13 +23,13 @@
   </head>
   <body>
     <div class="container">
-      <h1>dProject</h1>
+      <h1><a href="/">dProject</a></h1>
       {% block login%}
       {% endblock login%}
       {% block content%}
       {% endblock content %}
       <div id="footer">
-        Footer
+        <a href="/about/">About</a>
       </div>
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -49,7 +49,7 @@
       var params = { allowScriptAccess: 'always' };
       var atts = { id: 'myytplayer' };
       swfobject.embedSWF('http://www.youtube.com/v/' + vidCode + '?enablejsapi=1&playerapiid=ytplayer&version=3',
-      'vidId', '100%', '500', '8', null, null, params, atts);
+      'vidId', '100%', '480', '8', null, null, params, atts);
 
     </script>
     <!-- End testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
