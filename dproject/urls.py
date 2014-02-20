@@ -4,5 +4,6 @@ from dproject import views
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^about/$', views.about, name='about'),
-    url(r'^(?P<vidId>.+)/$', views.indexvids, name='indexvids'),
+    url(r'youtube.com/(?P<vidId>.+)/$', views.indexvids, name='indexvids'),
+    url(r'^(?P<vidId>.{11})/$', views.indexvids, name='indexvids'),
 )
