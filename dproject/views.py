@@ -9,7 +9,10 @@ def about(request):
 
 def indexvids(request, vidId):
     URLquery = request.GET.get('v')
-    if URLquery:
+    if URLquery and len(URLquery) == 11:
         return render(request, 'dproject/indexvids.html', {'vidId': URLquery})
-    else:
+    elif len(vidId) == 11:
         return render(request, 'dproject/indexvids.html', {'vidId': vidId})
+    else:
+        #return HttpResponse('No Vid Found')
+        return render(request, 'dproject/index.html', {'message': 'No video found.'})

@@ -1,6 +1,7 @@
 {% extends "dproject/base.html" %}{% load staticfiles %}
 
 {% block content %}
+{{ message }}
 <form action="<!-- input_content -->" method="post">{% csrf_token %}
   <input type="submit" value="Transcript Search" />
 </form>
