@@ -16,3 +16,6 @@ def indexvids(request, vidId):
     else:
         #return HttpResponse('No Vid Found')
         return render(request, 'dproject/index.html', {'message': 'No video found.'})
+
+def notfound(request):
+    return render(request, 'dproject/index.html', {'message': 'No video found.'})

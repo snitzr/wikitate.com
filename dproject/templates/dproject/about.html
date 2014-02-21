@@ -1,20 +1,25 @@
 {% extends "dproject/base.html" %}{% load staticfiles %}
+
 {% block content %}
 
 <h2>What is this?</h2>
-<p>This website helps users find and create transcripts to YouTube videos</p>
+<p>This website helps users find and create transcripts to YouTube videos.</p>
 <h2>How to use</h2>
-Copy and search by YT link or install browser plugin.
+<p>Copy and search by YT link or install browser plugin.</p>
 
 <h2>Uses</h2>
 <ul>
-  <li>Deaf and hard of hearing.</li>
+  <li>Access for the deaf and hard of hearing. Greater than 10% of the total U.S. population is deaf or hard of hearing (<a href="//libguides.gallaudet.edu/content.php?pid=119476&sid=1029158">source</a>).</li>
   <li>Make video more searchable.</li>
-  <li>Add more value to the internet.</li>
-  <li>Open up a video to another language.</li>
-  <li>Browse at work with sound off.</li>
+  <li>Open up a video to more languages.</li>
+  <li>Browse without sound.</li>
 </ul>
 
 <h2>Author</h2>
 <p>Aaron made this.</p>
 {% endblock content %}
+{% block footer %}
+<div id="footer">
+  <p>&copy; Aaron Snitzer</p>
+</div>
+{% endblock footer %}

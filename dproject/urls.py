@@ -6,4 +6,5 @@ urlpatterns = patterns('',
     url(r'^about/$', views.about, name='about'),
     url(r'youtube.com/(?P<vidId>.+)/$', views.indexvids, name='indexvids'),
     url(r'^(?P<vidId>.{11})/$', views.indexvids, name='indexvids'),
+    url(r'^.+/$', views.notfound, name='redirect'),
 )

@@ -23,14 +23,18 @@
   </head>
   <body>
     <div class="container">
-      <h1><a href="/">dProject</a></h1>
-      {% block login%}
-      {% endblock login%}
-      {% block content%}
+      {% block header %}
+      <h1><a href="{% url 'index' %}">dProject</a></h1>
+      {% endblock header %}
+      {% block login %}
+      {% endblock login %}
+      {% block content %}
       {% endblock content %}
-      <div id="footer">
-        <a href="/about/">About</a>
-      </div>
+      {% block footer %}
+        <div id="footer">
+          <a href="{% url 'about' %}">About</a>
+        </div>
+      {% endblock footer %}
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
