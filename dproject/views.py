@@ -14,8 +14,8 @@ def indexvids(request, vidId):
     elif len(vidId) == 11:
         return render(request, 'dproject/indexvids.html', {'vidId': vidId})
     else:
-        #return HttpResponse('No Vid Found')
-        return render(request, 'dproject/index.html', {'message': 'No video found.'})
+        return notfound
 
 def notfound(request):
-    return render(request, 'dproject/index.html', {'message': 'No video found.'})
+    message = '404: video or URL not found. Check if video is from YouTube.'
+    return render(request, 'dproject/index.html', {'message': message})
