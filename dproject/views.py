@@ -1,8 +1,12 @@
 from django.shortcuts import render, Http404, get_object_or_404, redirect
 from django.http import HttpResponse
+from dproject.forms import ContactForm
 
 def index(request):
-    return render(request, 'dproject/index.html')
+    # form sandbox
+    form = ContactForm()
+    # form sandbox
+    return render(request, 'dproject/index.html', {'form':form})
 
 def about(request):
     return render(request, 'dproject/about.html')
