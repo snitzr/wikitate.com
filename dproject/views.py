@@ -1,12 +1,15 @@
 from django.shortcuts import render, Http404, get_object_or_404, redirect
 from django.http import HttpResponse
 from dproject.forms import ContactForm
+#users
+from django.contrib.auth import authenticate, login
+
 
 def index(request):
     # form sandbox
-    form = ContactForm()
+    video_search = ContactForm()
     # form sandbox
-    return render(request, 'dproject/index.html', {'form':form})
+    return render(request, 'dproject/index.html', {'video_search': video_search})
 
 def about(request):
     return render(request, 'dproject/about.html')

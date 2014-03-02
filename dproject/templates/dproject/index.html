@@ -3,7 +3,10 @@
 {% block content %}
 {{ message }}
 <form action="/" method="post">{% csrf_token %}
-  {{ form }}
+  {{ user }}
+  <input type="submit" value="Transcript Search" />
+<form action="/" method="post">{% csrf_token %}
+  {{ video_search }}
   <input type="submit" value="Transcript Search" />
 </form>
 {% endblock content %}
