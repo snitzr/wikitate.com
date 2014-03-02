@@ -1,10 +1,9 @@
 {% extends "dproject/base.html" %}{% load staticfiles %}
-
+{% block header %}
+<h1>dProject</h1>
+{% endblock header %}
 {% block content %}
 {{ message }}
-<form action="/" method="post">{% csrf_token %}
-  {{ user }}
-  <input type="submit" value="Transcript Search" />
 <form action="/" method="post">{% csrf_token %}
   {{ video_search }}
   <input type="submit" value="Transcript Search" />

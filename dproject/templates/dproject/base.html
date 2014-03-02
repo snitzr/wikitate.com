@@ -23,11 +23,20 @@
   </head>
   <body>
     <div class="container">
+      <div id="header">
+      {% block login %}
+      <div id="login">
+        Hello, {{ user }}.
+        <p><a>Settings [placeholder]</a></p>
+      </div>
+      {% endblock login %}
       {% block header %}
       <h1><a href="{% url 'index' %}">dProject</a></h1>
       {% endblock header %}
-      {% block login %}{% endblock login %}
-      {% block content %}{% endblock content %}
+      </div>
+
+      {% block content %}
+      {% endblock content %}
       {% block footer %}
         <div id="footer">
           <a href="{% url 'about' %}">About</a>

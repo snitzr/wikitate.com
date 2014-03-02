@@ -1,21 +1,32 @@
+#header {
+  border: 1px solid grey;
+}
 h1 {
   padding: 0 0 10px 0;
-  /*border-bottom: 1px solid gray;*/
 }
+
+#login {
+  float: right;
+}
+
 a {
   text-decoration: underline;
 }
+
 body {
   font-weight: 200; !important
 }
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 200;
 }
+
 #footer {
   border-top: 1px solid gray;
   margin-top: 10px;
   margin-bottom: 30px;
 }
+
 #captions {
   background: transparent;
   color: white;
@@ -31,11 +42,13 @@ h1, h2, h3, h4, h5, h6 {
   top: -110px;
   /* -webkit-text-stroke: 1px black; */
 }
+
 #transcriptEdit {
   border: 1px solid black;
   height: 100px;
   overflow-y: scroll;
 }
+
 #vidId {
   height: 1000px;
 }
