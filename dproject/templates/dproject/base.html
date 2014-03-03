@@ -26,11 +26,19 @@
       <div id="header">
       {% block login %}
       <div id="login">
-        Hello, {{ user }}.
+        {% if user.id == None %}
+        Sign up / in and contribute.
+        {% else %}
+        Welcome, {{ user.username }}.
+        {% endif %}
         <p><a>Settings [placeholder]</a></p>
       </div>
       {% endblock login %}
       {% block header %}
+      <form action="/" method="post">{% csrf_token %}
+        {{ video_search }}
+        <input type="submit" value="Transcript Search" />
+      </form>
       <h1><a href="{% url 'index' %}">dProject</a></h1>
       {% endblock header %}
       </div>
