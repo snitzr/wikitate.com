@@ -15,6 +15,7 @@ def about(request):
     return render(request, 'dproject/about.html')
 
 def indexvids(request, vidId):
+    # find vidId from URL
     URLquery = request.GET.get('v')
     if URLquery and len(URLquery) == 11:
         return render(request, 'dproject/indexvids.html', {'vidId': URLquery})
@@ -24,5 +25,5 @@ def indexvids(request, vidId):
         return notfound
 
 def notfound(request):
-    message = '404: video or URL not found. Check if video is from YouTube.'
+    message = 'Video or URL not found.'
     return render(request, 'dproject/index.html', {'message': message})
