@@ -2,14 +2,26 @@
 {% block video_search%}
 {% endblock video_search %}
 {% block header %}
+<style>
+  #main-search {
+    font-size: 200%;
+    margin: 100px 0 100px 0;
+  }
+  
+  #main-search li {
+    display: inline;
+  }
+</style>
 <h1>dProject</h1>
 {% endblock header %}
 {% block content %}
+<div id="message">
 {{ message }}
+</div>
+<div id="main-search">
 <form action="/" method="post">{% csrf_token %}
   {{ video_search }}
   <input type="submit" value="Search" />
 </form>
-<script>
-</script>
+</div>
 {% endblock content %}
