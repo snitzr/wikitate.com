@@ -12,7 +12,8 @@ def index(request):
     return render(request, 'dproject/index.html', {'video_search': video_search})
 
 def about(request):
-    return render(request, 'dproject/about.html')
+    video_search = ContactForm()
+    return render(request, 'dproject/about.html', {'video_search': video_search})
 
 def indexvids(request, vidId):
     # form sandbox
@@ -27,5 +28,7 @@ def indexvids(request, vidId):
         return notfound
 
 def notfound(request):
+    video_search = ContactForm()
     message = 'Video or URL not found.'
-    return render(request, 'dproject/index.html', {'message': message})
+    return render(request, 'dproject/index.html', {'message': message,
+                                                   'video_search': video_search})

@@ -34,11 +34,13 @@
         <p><a>Settings [placeholder]</a></p>
       </div>
       {% endblock login %}
-      {% block header %}
+      {% block video_search %}
       <form action="/" method="post">{% csrf_token %}
         {{ video_search }}
         <input type="submit" value="Transcript Search" />
       </form>
+      {% endblock video_search %}
+      {% block header %}
       <h1><a href="{% url 'index' %}">dProject</a></h1>
       {% endblock header %}
       </div>
