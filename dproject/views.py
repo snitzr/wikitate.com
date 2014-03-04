@@ -5,7 +5,7 @@ from dproject.forms import SearchForm
 from django.contrib.auth import authenticate, login
 
 # universal vid search bar
-video_search = SearchForm()
+video_search = SearchForm().as_ul()
 
 def index(request):
     # form sandbox
