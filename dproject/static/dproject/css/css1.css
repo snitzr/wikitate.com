@@ -15,6 +15,9 @@ ul, #header h1, #header p, #header li, #header form {
 a {
   text-decoration: underline;
 }
+a:hover{
+  border-bottom: 1px solid #2a6496;
+}
 
 body {
   font-weight: 200; !important
