@@ -14,16 +14,16 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 // YouTube player after the API code downloads.
 var player;
 function onYouTubePlayerAPIReady() {
-  ytvid = new YT.Player('ytplayer', {
-height: '480',
-width: '100%',
-videoId: '3BJ9YXy6zQk'
-});
+  player = new YT.Player('ytplayer', {
+    height: '480',
+    width: '100%',
+    videoId: '{{ vidId }}'
+    });
 }
 </script>
-  <div id="vidId">
-    <h1>You need <a href="//get.adobe.com/flashplayer/">Flash player 8+</a> and <a href="//enable-javascript.com/">JavaScript</a> enabled to view this video. Apple iPads and iPhones do not run Flash software.</h1>
-  </div>
+  <!--<div id="vidId">-->
+    <!--<h1>You need <a href="//get.adobe.com/flashplayer/">Flash player 8+</a> and <a href="//enable-javascript.com/">JavaScript</a> enabled to view this video. Apple iPads and iPhones do not run Flash software.</h1>-->
+  <!--</div>-->
     <div id="captions"></div>
 
   <div>{{ vidId }}</div>
@@ -35,11 +35,12 @@ videoId: '3BJ9YXy6zQk'
     Select language from dropdown / type in autocomplete<br />
     Select time | Text (with character limit) | Duration<br />
   </div>
-  <div id="starp">Start/Stop</div>
+  <div id="starp">Start / Stop</div>
   <div id="skipBack">Skip back 1 second</div>
   <div id="timeStamp"></div>
   <div id="timeClick">Click for time display [test]</div>
-  <div id="vidCode"></div>
+  <div id="vidCode">vidCode</div>
+  <div id="returnYT">returnYT</div>
 
   <div id="transcriptEdit">
     <div id="transcriptLine1">This a test of the CamStudio microphone.</div>
