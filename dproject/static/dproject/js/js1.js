@@ -5,7 +5,6 @@ function beginTimer() {
   setInterval(updateCurrentTime, 150);
   captionTime(0.0);
 };
-// player update
 // link timer to timestamp and display caption function
 function updateCurrentTime() {
   if (player.getPlayerState() === 1) {
@@ -18,8 +17,7 @@ var transcript = {0: 'This a test of the CamStudio microphone.', 3: 'It\'s just 
 
 // add captions to page
 function captionTime(currentTime) {
-  if ((transcript[Math.round(currentTime * 10) / 10]) === undefined) {            }
-  else {
+  if ((transcript[Math.round(currentTime * 10) / 10]) !== undefined) {
     $('#captions').html(transcript[Math.round(currentTime * 10) / 10]);
   }
 }
@@ -34,14 +32,12 @@ $('#starp').click(function() {
   }
 });
 
-// player update
 // skip back control
 $('#skipBack').click(function() {
   player.seekTo((player.getCurrentTime() - 1), true);
   console.log(player.getCurrentTime());
 });
 
-// player update
 // mark time with mouse click
 $('#timeClick').mousedown(function() {
   console.log(player.getCurrentTime());
