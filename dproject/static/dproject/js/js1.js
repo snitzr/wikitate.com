@@ -8,12 +8,14 @@ function beginTimer() {
 // link timer to timestamp and display caption function
 function updateCurrentTime() {
   $('#timeStamp').html('&nbsp;');
-  if (player.getPlayerState() === 1) {
-    var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
-    $('#timeStamp').html('rounded: ' + rounded + ' fixed: ' + player.getCurrentTime().toFixed(1));
-    console.log(player.getCurrentTime());
-    console.log(rounded + ' rounded');
-    captionTime(rounded);
+  if (typeof(player) !== 'undefined') {
+    if (player.getPlayerState() === 1) {
+      var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
+      $('#timeStamp').html('rounded: ' + rounded + ' fixed: ' + player.getCurrentTime().toFixed(1));
+      console.log(player.getCurrentTime());
+      console.log(rounded + ' rounded');
+      captionTime(rounded);
+    }
   }
 }
 var transcript = {0: 'This a test of the CamStudio microphone.', 3: 'It\'s just dangling from my ear.', 5: 'Um, this is how we learn math.', 10: 'Whoops!', 13.0: 'Let\'s click click click delete "h."', 17.5: 'Good.', 20: '', 24.0: 'Is it not recording?', 25.0: ''};
