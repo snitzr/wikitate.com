@@ -1,7 +1,7 @@
 from django.shortcuts import render, Http404, get_object_or_404, redirect
 from django.http import HttpResponse
 from dproject.forms import SearchForm
-#users
+# users
 from django.contrib.auth import authenticate, login
 
 # universal vid search bar
