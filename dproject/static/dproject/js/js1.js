@@ -1,14 +1,14 @@
 // load video interval
-$(window).load(beginTimer);
 function beginTimer() {
   setInterval(updateCurrentTime, 150);
   captionTime(0.0);
-};
+}
+$(window).load(beginTimer);
 
 // link timer to timestamp and display caption function
 function updateCurrentTime() {
   $('#timeStamp').html('&nbsp;');
-  if (typeof(player) !== 'undefined') {
+  if (typeof (player) !== 'undefined') {
     if (player.getPlayerState() === 1) {
       var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
       $('#timeStamp').html('rounded: ' + rounded + ' fixed: ' + player.getCurrentTime().toFixed(1));
@@ -18,7 +18,19 @@ function updateCurrentTime() {
     }
   }
 }
-var transcript = {0: 'This a test of the CamStudio microphone.', 3: 'It\'s just dangling from my ear.', 5: 'Um, this is how we learn math.', 10: 'Whoops!', 13.0: 'Let\'s click click click delete "h."', 17.5: 'Good.', 20: '', 24.0: 'Is it not recording?', 25.0: ''};
+
+
+var transcript = {
+  0: 'This a test of the CamStudio microphone.',
+  3: 'It\'s just dangling from my ear.',
+  5: 'Um, this is how we learn math.',
+  10: 'Whoops!',
+  13.0: 'Let\'s click click click delete "h."',
+  17.5: 'Good.',
+  20: '',
+  24.0: 'Is it not recording?',
+  25.0: ''
+};
 
 // add captions to page
 function captionTime(currentTime) {
@@ -28,26 +40,25 @@ function captionTime(currentTime) {
 }
 
 // start / stop video control
-$('#starp').click(function() {
+$('#starp').click(function () {
   if (player.getPlayerState() === 1) {
     player.pauseVideo(); 
-  }
-  else {
+  } else {
     player.playVideo();
   }
 });
 
 // skip back control
-$('#skipBack').click(function() {
+$('#skipBack').click(function () {
   player.seekTo((player.getCurrentTime() - 1), true);
   console.log(player.getCurrentTime());
 });
 
 // mark time with mouse click
-$('#timeClick').mousedown(function() {
+$('#timeClick').mousedown(function () {
   console.log(player.getCurrentTime());
 });
-$('#timeClick').mouseup(function() {
+$('#timeClick').mouseup(function () {
   console.log(player.getCurrentTime());
 });
 
@@ -62,10 +73,10 @@ $('#vidCode').html(vidCode);
 // $('#returnYT').html('//www.youtube.com/watch?v=' + {{ vidId|escapejs }});
 // $('#returnYT').html(player.getVideoUrl());
 
-$('#returnYT').click(function() {
+$('#returnYT').click(function () {
   console.log(player.getVideoUrl());
 });
-// $('#returnYT').click(function() {
+// $('#returnYT').click(function () {
   // return document.URL = ('//www.youtube.com/watch?v=' + {{ vidId|escapejs }});
 // });
 
@@ -75,7 +86,7 @@ $('#returnYT').click(function() {
 
 
 // not getting latest form edit content
-$('#text').keyup(function() {
+$('#text').keyup(function () {
   var activeForm = (document.getElementById('text').innerHTML);
   console.log(activeForm);
 });
@@ -83,10 +94,10 @@ $('#text').keyup(function() {
 // return to YouTube button
 // $('#returnYT').html('//www.youtube.com/watch?v=' + {{ vidId|escapejs }});
 // $('#returnYT').html(player.getVideoUrl());
-$('#returnYT').click(function() {
+$('#returnYT').click(function () {
   console.log(player.getVideoUrl());
 });
-// $('#returnYT').click(function() {
+// $('#returnYT').click(function () {
   // return document.URL = ('//www.youtube.com/watch?v=' + {{ vidId|escapejs }});
 // });
 
@@ -96,7 +107,7 @@ $('#returnYT').click(function() {
 
 
 // not getting latest form edit content
-$('#text').keyup(function() {
+$('#text').keyup(function () {
   var activeForm = (document.getElementById('text').innerHTML);
   console.log(activeForm);
 });
@@ -115,7 +126,7 @@ function intervalTimer(f, start, interval, end) {
     setTimeout(repeat, start);          // Repetitions begin in start ms
     function repeat() {                 // Invoked by the timeout above             
       var h = setInterval(f, interval); // Invoke f every interval ms. And stop invoking after end ms, if end is defined             
-      if (end) setTimeout(function() { clearInterval(h); }, end);
+      if (end) setTimeout(function () { clearInterval(h); }, end);
     }
   }
 }
