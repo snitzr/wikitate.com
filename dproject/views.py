@@ -4,7 +4,7 @@ from dproject.forms import SearchForm
 # users
 from django.contrib.auth import authenticate, login
 
-# universal vid search bar
+# universal video_search bar
 video_search = SearchForm().as_ul()
 
 def index(request):
@@ -23,6 +23,9 @@ def indexvids(request, vidId):
         return render(request, 'dproject/indexvids.html', {'vidId': vidId, 'video_search': video_search})
     else:
         return notfound
+
+def login(request):
+    return render(request, 'dproject/login.html', {'video_search': video_search})
 
 def notfound(request):
     message = 'Video or URL not found.'
