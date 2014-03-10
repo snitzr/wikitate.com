@@ -1,6 +1,5 @@
 #ytplayer {
-  height: 480px; /* prevent reformat after vid load */
-  margin: 0;
+  height: 500px; /* prevent reformat after vid load */
 }
 ul, #header h1, #header p, #header li, #header form {
   display: inline;
@@ -50,6 +49,7 @@ h1, h2, h3, h4, h5, h6 {
    -1px 1px 0 #333,
     1px 1px 0 #333;
   top: -110px;
+  height: 0px; /* prevent template shift from captions */
 }
 
 #transcriptEdit {
