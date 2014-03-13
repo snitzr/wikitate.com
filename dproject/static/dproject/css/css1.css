@@ -1,5 +1,7 @@
 #ytplayer {
   height: 500px; /* prevent reformat after vid load */
+  /*width: 50%;*/
+  /*float: left;*/
 }
 ul, #header h1, #header p, #header li, #header form {
   display: inline;

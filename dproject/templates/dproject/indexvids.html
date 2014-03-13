@@ -26,7 +26,19 @@ function onYouTubePlayerAPIReady() {
   <!--</div>-->
     <div id="captions"></div>
 
-  <div>{{ vidId }}</div>
+  <div>Vid ID: {{ vidId }}</div>
+  <div>
+    {% if VidId %}
+    <ul>
+      {% for poll in latest_poll_list %}
+      <li><a href="/polls/{{ poll.id }}/">{{ poll.question }}</a></li>
+      {% en
+      r %}
+    </ul>
+    {% else %}
+    <p>No vids are available.</p>
+    {% endif %}
+  </div>
 
   <div id="Viewer">
     Select transcript
