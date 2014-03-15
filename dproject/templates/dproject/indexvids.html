@@ -27,6 +27,8 @@ function onYouTubePlayerAPIReady() {
     <div id="captions"></div>
 
   <div>Vid ID: {{ vidId }}</div>
+  <div>Vid ID: {{ testvar }}</div>
+  {% comment %}
   <div>
     {% if VidId %}
     <ul>
@@ -39,6 +41,7 @@ function onYouTubePlayerAPIReady() {
     <p>No vids are available.</p>
     {% endif %}
   </div>
+  {% endcomment %}
 
   <div id="Viewer">
     Select transcript

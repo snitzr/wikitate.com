@@ -16,11 +16,17 @@ def about(request):
 
 def indexvids(request, vidId):
     # find vidId from URL
+    testvar = 'test'
     URLquery = request.GET.get('v')
     if URLquery and len(URLquery) == 11:
-        return render(request, 'dproject/indexvids.html', {'vidId': URLquery, 'video_search': video_search})
+        return render(request, 'dproject/indexvids.html', {'vidId': URLquery,
+                                                           'video_search': video_search
+                                                          })
     elif len(vidId) == 11:
-        return render(request, 'dproject/indexvids.html', {'vidId': vidId, 'video_search': video_search})
+        return render(request, 'dproject/indexvids.html', {'vidId': vidId,
+                                                           'video_search': video_search,
+                                                           'testvar': testvar
+                                                          })
     else:
         return notfound
 
@@ -29,4 +35,5 @@ def login(request):
 
 def notfound(request):
     message = 'Video or URL not found.'
-    return render(request, 'dproject/index.html', {'message': message, 'video_search': video_search})
+    return render(request, 'dproject/index.html', {'message': message,
+                                                   'video_search': video_search})
