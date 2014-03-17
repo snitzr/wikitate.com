@@ -1,6 +1,6 @@
 // load video interval
 function beginTimer() {
-  setInterval(updateCurrentTime, 150);
+  setInterval(updateCurrentTime, 100);
   captionTime(0.0);
 }
 $(window).load(beginTimer);
@@ -8,14 +8,12 @@ $(window).load(beginTimer);
 // link timer to timestamp and display caption function
 function updateCurrentTime() {
   $('#timeStamp').html('&nbsp;');
-  if (typeof (player) !== 'undefined') {
-    if (player.getPlayerState() === 1) {
-      var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
-      $('#timeStamp').html('rounded: ' + rounded + ' fixed: ' + player.getCurrentTime().toFixed(1));
-      console.log(player.getCurrentTime());
-      console.log(rounded + ' rounded');
-      captionTime(rounded);
-    }
+  if (player.getPlayerState() === 1) {
+    var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
+    $('#timeStamp').html('rounded: ' + rounded + ' fixed: ' + player.getCurrentTime().toFixed(1));
+    console.log(player.getCurrentTime());
+    console.log(rounded + ' rounded');
+    captionTime(rounded);
   }
 }
 

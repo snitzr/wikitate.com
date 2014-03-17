@@ -41,7 +41,8 @@ h1, h2, h3, h4, h5, h6 {
 #captions {
   background: transparent;
   color: #fafafa;
-  font-size: 24px;
+  color: yellow;
+  font-size: 28px;
   font-weight: bold;
   position: relative;
   text-align: center;

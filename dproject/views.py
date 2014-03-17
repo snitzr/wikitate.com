@@ -8,21 +8,25 @@ from django.contrib.auth import authenticate, login
 video_search = SearchForm().as_ul()
 
 def index(request):
-    """form sandbox"""
-    return render(request, 'dproject/index.html', {'video_search': video_search})
+    """Home page"""
+    context = {'video_search': video_search}
+    return render(request, 'dproject/index.html', context)
 
 def about(request):
-    return render(request, 'dproject/about.html', {'video_search': video_search})
+    """About page"""
+    context = {'video_search': video_search}
+    return render(request, 'dproject/about.html', context)
 
 def indexvids(request, vidId):
-    """find vidId from URL"""
+    """Find vidId from URL"""
     testvar = 'testvar'
     URLquery = request.GET.get('v')
+    context = {'video_search': video_search, 'testvar': testvar}
     if URLquery and len(URLquery) == 11:
-        context = {'vidId': URLquery, 'video_search': video_search, 'testvar': testvar}
+        context.update({'vidId': URLquery})
         return render(request, 'dproject/indexvids.html', context)
     elif len(vidId) == 11:
-        context = {'vidId': vidId, 'video_search': video_search, 'testvar': testvar}
+        context.update({'vidId': vidId})
         return render(request, 'dproject/indexvids.html', context) 
     else:
         return notfound
@@ -31,7 +35,10 @@ def login(request):
     return render(request, 'dproject/login.html', {'video_search': video_search})
 
 def notfound(request):
-    """404"""
+    """
+    Error message for unknown video ID or URL.
+    Cannot recognize 11 digit errors.
+    """
     message = 'Video or URL not found.'
     return render(request, 'dproject/index.html', {'message': message,
                                                    'video_search': video_search})
