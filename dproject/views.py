@@ -40,5 +40,5 @@ def notfound(request):
     Cannot recognize 11 digit errors.
     """
     message = 'Video or URL not found.'
-    return render(request, 'dproject/index.html', {'message': message,
-                                                   'video_search': video_search})
+    context = {'message': message, 'video_search': video_search}
+    return render(request, 'dproject/index.html', context)
