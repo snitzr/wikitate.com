@@ -1,6 +1,7 @@
 from django.shortcuts import render, Http404, get_object_or_404, redirect
 from django.http import HttpResponse
 from dproject.forms import SearchForm
+from dproject.models import Vid, Transcript
 # users
 from django.contrib.auth import authenticate, login
 
@@ -23,10 +24,14 @@ def indexvids(request, vidId):
     URLquery = request.GET.get('v')
     context = {'video_search': video_search, 'testvar': testvar}
     if URLquery and len(URLquery) == 11:
-        context.update({'vidId': URLquery})
+        v = Vid.objects.filter(vidId__contains=URLquery)
+        t = Transcript.objects.filter(vid__vidId__contains=URLquery)
+        context.update({'vidId': URLquery, 'v': v, 't': t})
         return render(request, 'dproject/indexvids.html', context)
     elif len(vidId) == 11:
-        context.update({'vidId': vidId})
+        v = Vid.objects.filter(vidId__contains=vidId)
+        t = Transcript.objects.filter(vid__vidId__contains=vidId)
+        context.update({'vidId': vidId, 'v': v, 't': t})
         return render(request, 'dproject/indexvids.html', context) 
     else:
         return notfound
