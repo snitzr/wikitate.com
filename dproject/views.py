@@ -20,9 +20,8 @@ def about(request):
 
 def indexvids(request, vidId):
     """Find vidId from URL"""
-    testvar = 'testvar'
     URLquery = request.GET.get('v')
-    context = {'video_search': video_search, 'testvar': testvar}
+    context = {'video_search': video_search}
     if URLquery and len(URLquery) == 11:
         v = Vid.objects.filter(vidId__contains=URLquery)
         t = Transcript.objects.filter(vid__vidId__contains=URLquery)
