@@ -34,15 +34,15 @@ videoId: '{{ vidId }}'
   {% endfor %}
 </ul>
 
-<!-- begin testing -->
+<!-- begin form testing -->
 <p>
 <form action="" method="post">
   {% csrf_token %}
-  <textarea id="textInput" placeholder="add transcript" rows="8" cols="50"></textarea><br />
+  <textarea id="textInput" placeholder="Add transcript" rows="8" cols="50"></textarea><br />
   <input type="submit" value="Submit transcript" />
 </form
 </p> 
-<!-- end testing -->
+<!-- end form testing -->
 
 <div id="Viewer">
   Select transcript
