@@ -23,10 +23,7 @@ def indexvids(request, vidId):
     URLquery = request.GET.get('v')
     context = {'video_search': video_search}
     if URLquery and len(URLquery) == 11:
-        v = Vid.objects.filter(vidId__contains=URLquery)
-        t = Transcript.objects.filter(vid__vidId__contains=URLquery)
-        context.update({'vidId': URLquery, 'v': v, 't': t})
-        return render(request, 'dproject/indexvids.html', context)
+        return redirect('/%s/' % URLquery)
     elif len(vidId) == 11:
         v = Vid.objects.filter(vidId__contains=vidId)
         t = Transcript.objects.filter(vid__vidId__contains=vidId)
