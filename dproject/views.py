@@ -32,9 +32,6 @@ def indexvids(request, vidId):
     else:
         return notfound
 
-def login(request):
-    return render(request, 'dproject/login.html', {'video_search': video_search})
-
 def notfound(request):
     """
     Error message for unknown video ID or URL.
