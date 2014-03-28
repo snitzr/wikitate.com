@@ -46,7 +46,7 @@ Authenticated user.
     </li>
     {% endblock video_search %}
 
-    {% block login %}
+    {% block baselogin %}
     <div id="login">
       {% if request.user.is_authenticated %}
         {% load account %}
@@ -59,7 +59,7 @@ Authenticated user.
       {% endif %}
 
     </div>
-    {% endblock login %}
+    {% endblock baselogin %}
 
   </ul>
   </div>

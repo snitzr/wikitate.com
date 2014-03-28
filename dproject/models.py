@@ -91,6 +91,7 @@ class Transcript(models.Model):
 
 
 # auth
+"""
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
 
@@ -108,3 +109,4 @@ class UserProfile(models.Model):
         return False
 
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
+"""

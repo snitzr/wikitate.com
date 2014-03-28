@@ -1,4 +1,7 @@
 .DS_Store
 *.pyc
+*.swp
 bpyth.py
 db.sqlite3
+*.db
+*~
