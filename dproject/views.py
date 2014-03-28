@@ -2,8 +2,6 @@ from django.shortcuts import render, Http404, get_object_or_404, redirect
 from django.http import HttpResponse
 from dproject.forms import SearchForm
 from dproject.models import Vid, Transcript
-# users. not auth? earlier testing before allauth?
-# from django.contrib.auth import authenticate, login
 
 # universal video_search bar
 video_search = SearchForm().as_ul()
