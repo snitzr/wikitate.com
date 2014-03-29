@@ -7,11 +7,8 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -48,14 +45,6 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 # }
 
 # auth
-AUTHENTICATION_BACKENDS = (
-    # Needed to login by username in Django admin, regardless of `allauth`
-    "django.contrib.auth.backends.ModelBackend",
-    # `allauth` specific authentication methods, such as login by e-mail
-    "allauth.account.auth_backends.AuthenticationBackend"
-)
-
-# auth
 TEMPLATE_CONTEXT_PROCESSORS = (
     # Required by allauth template tags
     "django.core.context_processors.request",
@@ -75,7 +64,6 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -145,3 +133,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# auth login prefs
+ACCOUNT_AUTHENTICATION_METHOD  = 'username_email'
+ACCOUNT_USERNAME_BLACKLIST = ['root',
+                              'fake'
+                              'bitch'
+                              'ass'
+                              'nigger'
+                              'fuck',
+                              'shit',
+                              'admin',
+                              'kngofwrld',
+                             ]
