@@ -1,0 +1,17 @@
+{% extends "mysite/base.html" %}{% load staticfiles %}
+{% block video_search%}
+{% endblock video_search %}
+{% block header %}
+<h1>dProject</h1>
+{% endblock header %}
+{% block content %}
+<div id="message">
+{{ message }}
+</div>
+<div id="main-search">
+<form action="/" method="post">{% csrf_token %}
+  {{ video_search }}
+  <input type="submit" value="Search" />
+</form>
+</div>
+{% endblock content %}

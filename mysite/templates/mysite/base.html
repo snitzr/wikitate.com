@@ -53,7 +53,7 @@ Authenticated user.
         {% user_display user %}
         <a href="/accounts/logout/?next={{request.path}}">Logout</a>
         <br />
-        <a href="#">Settings placeholder [add view]</a>
+        <a href="/accounts/profile/">Settings placeholder [add view]</a>
       {% else %}
         <a href="/accounts/login/?next={{request.path}}">Sign up / sign in and contribute</a>
       {% endif %}
