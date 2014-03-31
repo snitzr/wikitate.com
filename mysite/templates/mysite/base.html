@@ -23,12 +23,6 @@
 </head>
 <body>
 
-{% comment %}
-{% if user.is_authenticated  %}
-Authenticated user.
-{% endif %}
-{% endcomment %}
-
 <div class="container">
   <div id="header">
     <ul id="head">
@@ -48,12 +42,12 @@ Authenticated user.
 
     {% block baselogin %}
     <div id="login">
-      {% if request.user.is_authenticated %}
+      {% if user.is_authenticated %}
         {% load account %}
-        {% user_display user %}
         <a href="/accounts/logout/?next={{request.path}}">Logout</a>
+        {% user_display user %}
         <br />
-        <a href="/accounts/profile/">User Settings</a>
+        <a href="/accounts/profile/">Settings</a>
       {% else %}
         <a href="/accounts/login/?next={{request.path}}">Sign up / sign in and contribute</a>
       {% endif %}

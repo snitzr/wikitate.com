@@ -5,8 +5,8 @@ from accounts import views
 admin.autodiscover()
 
 urlpatterns = patterns('',
+                       url(r'^accounts/profile/$', views.profile, name='profile'),
                        url(r'^accounts/', include('allauth.urls')),
                        url(r'^$', TemplateView.as_view(template_name='index.html')),
-                       url(r'^accounts/profile/$', views.profile, name='profile'),
                        url(r'^admin/', include(admin.site.urls)),
 )
