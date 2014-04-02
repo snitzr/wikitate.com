@@ -17,9 +17,9 @@
 <ul>
   <li>{% user_display user %} is logged in.</li>
   <li>Preferred language</li>
-  <li>Change email</li>
   <li>Change password</li>
   <li>Change username</li>
+  <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
   <li>[SAVE] button if no JavaScript</li>
 </ul>
 {% else %}

@@ -55,7 +55,6 @@
 
 
     {% block body %}
-    mysite/accounts/templates
     {% if messages %}
     <div>
       <strong>Messages:</strong>
@@ -67,6 +66,7 @@
     </div>
     {% endif %}
 
+    {% comment %}
     <div>
       <strong>Menu:</strong>
       <ul>
@@ -79,6 +79,8 @@
         {% endif %}
       </ul>
     </div>
+    {% endcomment %}
+
     {% block content %}
     {% endblock content %}
     {% endblock body %}
@@ -86,6 +88,7 @@
     {% endblock extra_body %}
 
 
+    /accounts/templates
     <div id="footer">
       <a href="{% url 'about' %}">About</a>
     </div>

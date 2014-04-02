@@ -6,3 +6,6 @@ class SearchForm(forms.Form):
     transcript = forms.CharField(max_length=50,
                                  label = '',
                                  widget=forms.TextInput(attrs={'placeholder': 'enter video link'}))
+
+class FormTest(forms.Form):
+    subject = forms.CharField(max_length=100)
