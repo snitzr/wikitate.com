@@ -7,17 +7,17 @@ from dproject.models import Vid, Transcript
 video_search = SearchForm().as_ul()
 
 def index(request):
-    """Home page"""
+    """Home page AKA / AKA index"""
     context = {'video_search': video_search}
     return render(request, 'dproject/index.html', context)
 
 def about(request):
-    """About page"""
+    """About this website page"""
     context = {'video_search': video_search}
     return render(request, 'dproject/about.html', context)
 
 def indexvids(request, vidId):
-    """Find vidId from URL"""
+    """Find vidId from URL and show vid"""
     URLquery = request.GET.get('v')
     context = {'video_search': video_search}
     if URLquery and len(URLquery) == 11:
@@ -33,7 +33,7 @@ def indexvids(request, vidId):
 def notfound(request):
     """
     Error message for unknown video ID or URL.
-    Cannot recognize 11 digit errors.
+    Cannot recognize 11 digit missing vid errors or users/foo.
     """
     message = 'Video or URL not found.'
     context = {'message': message, 'video_search': video_search}
