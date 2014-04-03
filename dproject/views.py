@@ -11,11 +11,6 @@ def index(request):
     context = {'video_search': video_search}
     return render(request, 'dproject/index.html', context)
 
-def about(request):
-    """About this website page"""
-    context = {'video_search': video_search}
-    return render(request, 'dproject/about.html', context)
-
 def indexvids(request, vidId):
     """Find vidId from URL and show vid"""
     URLquery = request.GET.get('v')
@@ -29,6 +24,11 @@ def indexvids(request, vidId):
         return render(request, 'dproject/indexvids.html', context) 
     else:
         return notfound
+
+def about(request):
+    """About this website page"""
+    context = {'video_search': video_search}
+    return render(request, 'dproject/about.html', context)
 
 def notfound(request):
     """
