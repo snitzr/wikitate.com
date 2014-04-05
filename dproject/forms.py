@@ -1,5 +1,7 @@
 # coding=utf-8
 from django import forms
+from django.forms import ModelChoiceField
+from dproject import models
 
 LANGUAGE_CHOICES = (
                     ('af', 'Afrikaans'),
@@ -79,3 +81,7 @@ class LanguageDeclaration(forms.Form):
 
 class FormTest(forms.Form):
     subject = forms.CharField(widget=forms.Textarea)
+
+class LanguageModelChoiceField(forms.Form):
+        l = models.Transcript.LANGUAGES
+        languages_array = [x[1] for x in l]

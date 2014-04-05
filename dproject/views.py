@@ -1,6 +1,6 @@
 from django.shortcuts import render, Http404, get_object_or_404, redirect
 from django.http import HttpResponse
-from dproject.forms import SearchForm, FormTest, LanguageDeclaration
+from dproject.forms import SearchForm, FormTest, LanguageDeclaration, LanguageModelChoiceField
 from dproject.models import Vid, Transcript
 
 # universal video_search bar
@@ -14,10 +14,10 @@ def index(request):
 def indexvids(request, vidId):
     """Find vidId from URL and show vid"""
     URLquery = request.GET.get('v')
-    languagedeclaration = LanguageDeclaration()
+    language_list = LanguageModelChoiceField()
     formtest = FormTest()
     context = {'video_search': video_search,
-               'languagedeclaration': languagedeclaration,
+               'languages_array': language_list,
                'formtest': formtest}
     if URLquery and len(URLquery) == 11:
         return redirect('/%s/' % URLquery)
