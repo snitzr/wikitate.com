@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
    1px -1px 0 #333,
    -1px 1px 0 #333,
     1px 1px 0 #333;
-  top: -110px;
+  top: -150px;
   height: 0px; /* prevent template shift from captions */
 }
 
@@ -67,4 +67,17 @@ h1, h2, h3, h4, h5, h6 {
 
 #message {
   color: red;
+}
+
+#main-search {
+  font-size: 200%;
+  margin: 100px 0 100px 0;
+}
+
+#main-search li {
+  display: inline;
+}
+
+#transcript {
+  list-style-type: none;
 }

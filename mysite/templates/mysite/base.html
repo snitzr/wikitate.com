@@ -22,6 +22,7 @@
     <![endif]-->
 </head>
 <body>
+
 <div class="container">
   <div id="header">
     <ul id="head">
@@ -38,17 +39,22 @@
     </span>
     </li>
     {% endblock video_search %}
-    {% block login %}
+
+    {% block baselogin %}
     <div id="login">
-      {% if user.id == None %}
-      Sign up / in and contribute.
+      {% if user.is_authenticated %}
+        {% load account %}
+        <a href="/accounts/logout/?next={{request.path}}">Logout</a>
+        {% user_display user %}
+        <br />
+        <a href="/accounts/profile/">Settings</a>
       {% else %}
-      Welcome, {{ user.username }}.
+        <a href="/accounts/login/?next={{request.path}}">Sign up / sign in and contribute</a>
       {% endif %}
-      <br />
-      <a href="#">Settings [placeholder]</a>
+
     </div>
-    {% endblock login %}
+    {% endblock baselogin %}
+
   </ul>
   </div>
 

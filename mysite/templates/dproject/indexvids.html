@@ -1,4 +1,4 @@
-{% extends "dproject/base.html" %}{% load staticfiles %}
+{% extends "mysite/base.html" %}{% load staticfiles %}
 
 {% block content %}
 <div id="ytplayer"></div>
@@ -23,26 +23,41 @@ videoId: '{{ vidId }}'
 </script>
 <div id="captions"></div>
 
+<div>languages: {{ languages_array }}</div>
 <div>vidId: {{ vidId }}</div>
+{% if v %}
 <div>db v: {{ v }}</div>
-<ul>
+{% else%}
+db v: unavailable
+{% endif %}
+
+<h2>Transcript</h2>
+<ul id="transcript">
   {% for x in t %}
   <li>{{ x.transcript }}</li>
   {% empty %}
-  <li>Sorry, no transcripts available.</li>
+  <li>No transcripts available.</li>
   <li>Make your own! [link]</li>
   {% endfor %}
 </ul>
-
 <!-- begin form testing -->
+<h2>Add transcript</h2>
 <p>
+{% if user.is_authenticated %}
 <form action="" method="post">
   {% csrf_token %}
+  {{ formtest.as_p}}
+  {{ languagedeclaration.as_ul }}
   <textarea id="textInput" placeholder="Add transcript" rows="8" cols="50"></textarea><br />
   <input type="submit" value="Submit transcript" />
 </form
-</p> 
+{% else %}
+<a href="/accounts/login/?next={{request.path}}">Log in to add your own transcript.</a>
+{% endif %}
+</p>
 <!-- end form testing -->
+
+<hr />
 
 <div id="Viewer">
   Select transcript
@@ -59,17 +74,21 @@ videoId: '{{ vidId }}'
 <div id="returnYT">returnYT</div>
 
 <!--<div id="transcriptEdit">-->
-  <!--<div id="transcriptLine1">This a test of the CamStudio microphone.</div>-->
-  <!--<div id="transcriptLine2">It's just dangling from my ear.</div>-->
-  <!--<div id="transcriptLine3">Um, this is how we learn math.</div>-->
-  <!--<div id="transcriptLine4">Whoops!</div>-->
-  <!--<div id="transcriptLine5">Let's click click click delete "h."</div>-->
-  <!--<div id="transcriptLine6">Good.</div>-->
-  <!--<div id="transcriptLine7">Is it not recording?</div>-->
+<!--<div id="transcriptLine1">This a test of the CamStudio microphone.</div>-->
+<!--<div id="transcriptLine2">It's just dangling from my ear.</div>-->
+<!--<div id="transcriptLine3">Um, this is how we learn math.</div>-->
+<!--<div id="transcriptLine4">Whoops!</div>-->
+<!--<div id="transcriptLine5">Let's click click click delete "h."</div>-->
+<!--<div id="transcriptLine6">Good.</div>-->
+<!--<div id="transcriptLine7">Is it not recording?</div>-->
 <!--</div>-->
 <!-- DB views, template to access views, some kind of forms, validation of forms, key to access DB, {views: vid key from URL + ID, user or anon, language, chunk of transcript with times and content, rating},  -->
+<hr />
 <div>
   <p>Available transcripts</p>
+  <p>Edit your existing transcript</p>
+  <p>Rate +/-</p>
+  <p>When in edit mode, shrink vid 50%</p>
   <p>database info</p>
   <p>database info</p>
 </div>

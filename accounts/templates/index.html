@@ -1,0 +1,29 @@
+{% extends "account/base.html" %}{% load staticfiles %}
+
+{% block baselogin %}
+<div id="login">
+  {% if user.is_authenticated %}
+  {% load account %}
+  <a href="/accounts/logout/?next=/">Logout</a>
+  {% user_display user %}
+  {% else %}
+  <a href="/accounts/login/?next={{request.path}}">Sign up / sign in and contribute</a>
+  {% endif %}
+</div>
+{% endblock baselogin %}
+{% block body %}
+{% if user.is_authenticated %}
+{% load account %}
+<ul>
+  <li>{% user_display user %} is logged in.</li>
+  <li>Preferred language</li>
+  <li>Change password</li>
+  <li>Change username</li>
+  <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+  <li>[SAVE] button if no JavaScript</li>
+</ul>
+{% else %}
+logged out.
+http://127.0.0.1:8000/accounts/login/
+{% endif %}
+{% endblock body %}
