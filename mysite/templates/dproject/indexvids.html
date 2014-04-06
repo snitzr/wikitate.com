@@ -23,7 +23,7 @@ videoId: '{{ vidId }}'
 </script>
 <div id="captions"></div>
 
-<div>languages: {{ languages_array }}</div>
+<div>{{ languages_array.as_p }}</div>
 <div>vidId: {{ vidId }}</div>
 {% if v %}
 <div>db v: {{ v }}</div>

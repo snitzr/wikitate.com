@@ -1,6 +1,6 @@
 from django.shortcuts import render, Http404, get_object_or_404, redirect
 from django.http import HttpResponse
-from dproject.forms import SearchForm, FormTest, LanguageDeclaration, LanguageModelChoiceField
+from dproject.forms import SearchForm, FormTest, LanguageModelChoiceField
 from dproject.models import Vid, Transcript
 
 # universal video_search bar
