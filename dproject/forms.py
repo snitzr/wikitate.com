@@ -83,5 +83,4 @@ class FormTest(forms.Form):
     subject = forms.CharField(widget=forms.Textarea)
 
 class LanguageModelChoiceField(forms.Form):
-        l = models.Transcript.LANGUAGES
-        languages_array = [x[1] for x in l]
+        language = forms.ChoiceField(choices = models.Transcript.LANGUAGES)
