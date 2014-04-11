@@ -16,4 +16,4 @@ class FormTest(forms.Form):
 
 class LanguageModelChoiceField(forms.Form):
     Language = forms.ChoiceField(choices = models.Transcript.LANGUAGES,
-                                 initial={'Galego'})
+                                 initial = {'asdf'})
