@@ -1,6 +1,6 @@
 #ytplayer {
   height: 500px; /* prevent reformat after vid load */
-  /*width: 50%;*/
+  /*width: 50%; */ /* change on JS event to make transcript room */
   /*float: left;*/
 }
 ul, #header h1, #header p, #header li, #header form {
