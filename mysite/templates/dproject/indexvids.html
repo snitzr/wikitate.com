@@ -21,9 +21,9 @@ videoId: '{{ vidId }}'
 });
 }
 </script>
+
 <div id="captions"></div>
 
-<div>{{ languages_array.as_p }}</div>
 <div>vidId: {{ vidId }}</div>
 {% if v %}
 <div>db v: {{ v }}</div>
@@ -31,26 +31,29 @@ videoId: '{{ vidId }}'
 db v: unavailable
 {% endif %}
 
+<div id="submitted_transcripts">
 <h2>Transcript</h2>
 <ul id="transcript">
   {% for x in t %}
   <li>{{ x.transcript }}</li>
   {% empty %}
-  <li>No transcripts available.</li>
-  <li>Make your own! [link]</li>
+  <h2>Zero transcripts</h2>
   {% endfor %}
 </ul>
+</div>
+
 <!-- begin form testing -->
 <h2>Add transcript</h2>
 <p>
 {% if user.is_authenticated %}
 <form action="" method="post">
   {% csrf_token %}
-  {{ formtest.as_p}}
-  {{ languagedeclaration.as_ul }}
-  <textarea id="textInput" placeholder="Add transcript" rows="8" cols="50"></textarea><br />
+  {{ formtest.transcript }}
+  <br />
+  <p>Your default language: {{ languages_array.language }}</p>
   <input type="submit" value="Submit transcript" />
 </form
+
 {% else %}
 <a href="/accounts/login/?next={{request.path}}">Log in to add your own transcript.</a>
 {% endif %}

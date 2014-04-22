@@ -78,6 +78,11 @@ h1, h2, h3, h4, h5, h6 {
   display: inline;
 }
 
+#submitted_transcripts {
+  overflow: auto;
+  height: 200px;
+}
+
 #transcript {
   list-style-type: none;
 }
