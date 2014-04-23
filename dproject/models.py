@@ -18,6 +18,7 @@ class Transcript(models.Model):
     vid = models.ForeignKey(Vid)
     transcript = models.CharField(max_length=50000000)
     LANGUAGES = (
+        ('initial', '-'),
         ('af', 'Afrikaans'),
         ('id', 'Bahasa Indonesia'),
         ('ms', 'Bahasa Malaysia'),

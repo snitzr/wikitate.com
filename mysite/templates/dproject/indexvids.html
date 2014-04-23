@@ -4,7 +4,7 @@
 <div id="ytplayer"></div>
 
 <script>
-// Load the IFrame Player API code asynchronously.
+// Load the iFrame Player API code asynchronously.
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/player_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -50,7 +50,8 @@ db v: unavailable
   {% csrf_token %}
   {{ formtest.transcript }}
   <br />
-  <p>Your default language: {{ languages_array.language }}</p>
+  Transcript language: {{ languages_array.language }}
+  <br />
   <input type="submit" value="Submit transcript" />
 </form
 
