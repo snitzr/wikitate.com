@@ -1,5 +1,5 @@
 from django.shortcuts import render, Http404, get_object_or_404, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from dproject.forms import SearchForm, FormTest, LanguageModelChoiceField
 from dproject.models import Vid, Transcript
 
@@ -11,23 +11,28 @@ def index(request):
     context = {'video_search': video_search}
     return render(request, 'dproject/index.html', context)
 
+def indexvidsurl(request, vidId):
+    """Find vidId from URL and show vid else redirect"""
+    URLquery = request.GET.get('v')
+    if URLquery and len(URLquery) == 11:
+        return HttpResponseRedirect('/%s/' % URLquery)
+    elif len(vidId) != 11:
+        return notfound
+
 def indexvids(request, vidId):
-    """Find vidId from URL and show vid"""
     URLquery = request.GET.get('v')
     language_list = LanguageModelChoiceField()
     formtest = FormTest()
     context = {'video_search': video_search,
                'languages_array': language_list,
                'formtest': formtest}
-    if URLquery and len(URLquery) == 11:
-        return redirect('/%s/' % URLquery)
-    elif len(vidId) == 11:
-        v = Vid.objects.filter(vidId__contains=vidId)
-        t = Transcript.objects.filter(vid__vidId__contains=vidId)
-        context.update({'vidId': vidId, 'v': v, 't': t})
-        return render(request, 'dproject/indexvids.html', context) 
-    else:
+    v = Vid.objects.filter(vidId__contains=vidId)
+    t = Transcript.objects.filter(vid__vidId__contains=vidId)
+    context.update({'vidId': vidId, 'v': v, 't': t})
+    if len(vidId) != 11:
         return notfound
+    else:
+        return render(request, 'dproject/indexvids.html', context) 
 
 def about(request):
     """About this website page"""
