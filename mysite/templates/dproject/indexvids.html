@@ -46,7 +46,7 @@ db v: unavailable
 <h2>Add transcript</h2>
 <p>
 {% if user.is_authenticated %}
-<form action="" method="post">
+<form action="/transcript_submit/" method="post">
   {% csrf_token %}
   {{ formtest.transcript }}
   <br />

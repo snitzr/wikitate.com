@@ -34,6 +34,22 @@ def indexvids(request, vidId):
     else:
         return render(request, 'dproject/indexvids.html', context) 
 
+def transcript_submit(request):
+    return # placeholder to not break site while commented out
+    #"""Handle post data submit from trancript field"""
+    #if request.method == 'POST': # If the form has been submitted...
+        ## ContactForm was defined in the previous section
+        #form = FormTest(request.POST) # A form bound to the POST data
+        #if form.is_valid(): # All validation rules pass
+            ## Process the data in form.cleaned_data
+            ## ...
+            #return HttpResponseRedirect('/thanks/') # Redirect after POST
+    #else:
+        #form = FormTest() # An unbound form
+    #return render(request, 'contact.html', {
+        #'form': form,
+    #})
+
 def about(request):
     """About this website page"""
     context = {'video_search': video_search}
