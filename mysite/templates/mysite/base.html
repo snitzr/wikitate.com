@@ -29,7 +29,7 @@
   <div id="header">
     <ul id="head">
     {% block header %}
-    <li><h1><a href="{% url 'index' %}">dProject</a></h1></li>
+    <li><h1><a href="{% url 'index:index' %}">dProject</a></h1></li>
     {% endblock header %}
     {% block video_search %}
     <li>
@@ -64,7 +64,7 @@
   {% endblock content %}
   {% block footer %}
   <div id="footer">
-    <a href="{% url 'about' %}">About</a>
+    <a href="{% url 'index:about' %}">About</a>
   </div>
   {% endblock footer %}
 </div>
