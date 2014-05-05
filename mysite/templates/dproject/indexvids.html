@@ -32,7 +32,7 @@ db v: unavailable
 {% endif %}
 
 <div id="submitted_transcripts">
-<h2>Transcript</h2>
+  <h2>Transcript{{ t|pluralize }}</h2>
 <ul id="transcript">
   {% for x in t %}
   <li>{{ x.transcript }}</li>

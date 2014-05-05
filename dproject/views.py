@@ -26,9 +26,11 @@ def indexvids(request, vidId):
     context = {'video_search': video_search,
                'languages_array': language_list,
                'formtest': formtest}
+    if Vid.objects.filter(vidId__contains=vidId):
+        t = Transcript.objects.filter(vid__vidId__contains=vidId)
+        context.update({'t': t})
     v = Vid.objects.filter(vidId__contains=vidId)
-    t = Transcript.objects.filter(vid__vidId__contains=vidId)
-    context.update({'vidId': vidId, 'v': v, 't': t})
+    context.update({'vidId': vidId, 'v': v})
     if len(vidId) != 11:
         return notfound
     else:
