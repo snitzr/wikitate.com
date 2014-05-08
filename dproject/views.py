@@ -3,6 +3,17 @@ from django.http import HttpResponse, HttpResponseRedirect
 from dproject.forms import SearchForm, FormTest, LanguageModelChoiceField
 from dproject.models import Vid, Transcript
 
+#begin generic editing views test
+from django.views.generic.edit import UpdateView
+from dproject.models import Vid, Transcript
+
+class TranscriptUpdate(UpdateView):
+    model = Transcript
+    fields = ['transcript']
+    template_name_suffix = '_update_form'
+#end generic editing views test
+
+
 # universal video_search bar
 video_search = SearchForm().as_ul()
 

@@ -32,15 +32,32 @@ db v: unavailable
 {% endif %}
 
 <div id="submitted_transcripts">
-  <h2>Transcript{{ t|pluralize }}</h2>
+{% if t %}
+<h2>Transcript{{ t|pluralize }}</h2>
+{% else%}
+<h2>No transcripts</h2>
+{% endif %}
+
 <ul id="transcript">
+
+{% if t %}
   {% for x in t %}
   <li>{{ x.transcript }}</li>
   {% empty %}
-  <h2>Zero transcripts</h2>
+  <p>Zero transcripts</p>
   {% endfor %}
 </ul>
+{% endif %}
 </div>
+
+~~~~~~~~~~Testing\/
+<!-- begin generic editing views form testing -->
+<form action="" method="post">{% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Update" />
+</form>
+<!-- end  generic editing views form testing -->
+~~~~~~~~~~Testing^
 
 <!-- begin form testing -->
 <h2>Add transcript</h2>
