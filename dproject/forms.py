@@ -8,11 +8,14 @@ class SearchForm(forms.Form):
     # https://docs.djangoproject.com/en/1.6/topics/forms/modelforms/
     transcript = forms.CharField(max_length=50,
                                  label = '',
-                                 widget=forms.TextInput(attrs={'placeholder': 'enter video link'}))
+                                 widget=forms.TextInput(attrs=
+                                                        {'placeholder': 'enter video link'}
+                                                       ))
 
-class FormTest(forms.Form):
-    transcript = forms.CharField(widget=forms.Textarea(attrs={'placeholder':
-                                                              'Add transcript'}))
+class AddTranscript(forms.Form):
+    transcript = forms.CharField(widget=forms.Textarea(attrs=
+                                                       {'placeholder': 'Add transcript'}
+                                                      ))
 
 class LanguageModelChoiceField(forms.Form):
     language = forms.ChoiceField(choices = models.Transcript.LANGUAGES,

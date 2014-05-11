@@ -1,17 +1,7 @@
 from django.shortcuts import render, Http404, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from dproject.forms import SearchForm, FormTest, LanguageModelChoiceField
+from dproject.forms import SearchForm, AddTranscript, LanguageModelChoiceField
 from dproject.models import Vid, Transcript
-
-#begin generic editing views test
-from django.views.generic.edit import UpdateView
-from dproject.models import Vid, Transcript
-
-class TranscriptUpdate(UpdateView):
-    model = Transcript
-    fields = ['transcript']
-    template_name_suffix = '_update_form'
-#end generic editing views test
 
 
 # universal video_search bar
@@ -33,10 +23,10 @@ def indexvidsurl(request, vidId):
 def indexvids(request, vidId):
     URLquery = request.GET.get('v')
     language_list = LanguageModelChoiceField()
-    formtest = FormTest()
+    addtranscript = AddTranscript()
     context = {'video_search': video_search,
                'languages_array': language_list,
-               'formtest': formtest}
+               'addtranscript': addtranscript}
     if Vid.objects.filter(vidId__contains=vidId):
         t = Transcript.objects.filter(vid__vidId__contains=vidId)
         context.update({'t': t})
@@ -47,21 +37,17 @@ def indexvids(request, vidId):
     else:
         return render(request, 'dproject/indexvids.html', context) 
 
+
 def transcript_submit(request):
-    return # placeholder to not break site while commented out
-    #"""Handle post data submit from trancript field"""
-    #if request.method == 'POST': # If the form has been submitted...
-        ## ContactForm was defined in the previous section
-        #form = FormTest(request.POST) # A form bound to the POST data
-        #if form.is_valid(): # All validation rules pass
-            ## Process the data in form.cleaned_data
-            ## ...
-            #return HttpResponseRedirect('/thanks/') # Redirect after POST
-    #else:
-        #form = FormTest() # An unbound form
-    #return render(request, 'contact.html', {
-        #'form': form,
-    #})
+    """Handle post data submit from trancript field"""
+    if request.method == 'POST': # If the form has been submitted...
+        form = AddTranscript(request.POST) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            # Process the data in form.cleaned_data
+            # .save() something here
+            return HttpResponseRedirect('/242421412r234/') # Redirect after POST
+    else:
+        return #redirect code
 
 def about(request):
     """About this website page"""

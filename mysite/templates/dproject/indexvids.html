@@ -52,7 +52,7 @@ db v: unavailable
 
 ~~~~~~~~~~Testing\/
 <!-- begin generic editing views form testing -->
-<form action="" method="post">{% csrf_token %}
+<form action="/blah" method="post">{% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="Update" />
 </form>
@@ -65,7 +65,7 @@ db v: unavailable
 {% if user.is_authenticated %}
 <form action="/transcript_submit/" method="post">
   {% csrf_token %}
-  {{ formtest.transcript }}
+  {{ addtranscript.transcript }}
   <br />
   Transcript language: {{ languages_array.language }}
   <br />
