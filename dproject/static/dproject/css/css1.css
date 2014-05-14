@@ -80,9 +80,10 @@ h1, h2, h3, h4, h5, h6 {
 
 #submitted_transcripts {
   overflow: auto;
-  height: 200px;
+  height: 100%;
 }
 
 #transcript {
-  list-style-type: none;
+  /*list-style-type: none;*/
+  padding-left: 1.5em;
 }

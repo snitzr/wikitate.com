@@ -2,9 +2,6 @@
 
 from django.db import models
 
-# generic editing views testing
-from django.core.urlresolvers import reverse
-
 class Vid(models.Model):
     VIDSOURCE = (
         ('youtube','youtube'),
@@ -18,10 +15,10 @@ class Vid(models.Model):
 
 
 class Transcript(models.Model):
-    vid = models.ForeignKey(Vid)
+    vid = models.ForeignKey(Vid) # Django adds _id to create vid_id for its database column name
     transcript = models.CharField(max_length=50000000)
     LANGUAGES = (
-        ('initial', '-'),
+        ('initial', ''),
         ('af', 'Afrikaans'),
         ('id', 'Bahasa Indonesia'),
         ('ms', 'Bahasa Malaysia'),
@@ -88,7 +85,3 @@ class Transcript(models.Model):
     user = models.CharField(max_length=50)
     def __unicode__(self):  # Python 3: def __str__(self):
         return u'%s %s %s' % (self.transcript, self.language, self.user)
-
-    # generic editing views testing
-    def get_absolute_url(self):
-        return reverse('transcript-detail', kwargs={'pk': self.pk})

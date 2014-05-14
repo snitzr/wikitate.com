@@ -38,16 +38,19 @@ def indexvids(request, vidId):
         return render(request, 'dproject/indexvids.html', context) 
 
 
-def transcript_submit(request):
+def transcript_submit(request, vidId):
     """Handle post data submit from trancript field"""
     if request.method == 'POST': # If the form has been submitted...
         form = AddTranscript(request.POST) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             # Process the data in form.cleaned_data
-            # .save() something here
-            return HttpResponseRedirect('/242421412r234/') # Redirect after POST
+            foo = Transcript(transcript=form, vid_id=(Vid.objects.get(vidId=vidId).pk))
+            foo.save()
+            #return HttpResponseRedirect('') # add redirect after POST with message
+            return render(request, 'dproject/indexvids.html') #testing
     else:
-        return #redirect code
+        #return # add redirect code either way and message
+        return render(request, 'dproject/indexvids.html') #testing
 
 def about(request):
     """About this website page"""

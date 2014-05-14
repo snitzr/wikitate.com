@@ -38,15 +38,15 @@ db v: unavailable
 <h2>No transcripts</h2>
 {% endif %}
 
-<ul id="transcript">
+<ol id="transcript">
 
 {% if t %}
   {% for x in t %}
-  <li>{{ x.transcript }}</li>
+  <li>{{ x.transcript|truncatewords:100 }}</li>
   {% empty %}
   <p>Zero transcripts</p>
   {% endfor %}
-</ul>
+</ol>
 {% endif %}
 </div>
 
@@ -63,7 +63,7 @@ db v: unavailable
 <h2>Add transcript</h2>
 <p>
 {% if user.is_authenticated %}
-<form action="/transcript_submit/" method="post">
+<form action="/transcript_submit/{{ vidId }}/" method="post">
   {% csrf_token %}
   {{ addtranscript.transcript }}
   <br />
