@@ -2,6 +2,7 @@ from django.shortcuts import render, Http404, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from dproject.forms import SearchForm, AddTranscript, LanguageModelChoiceField
 from dproject.models import Vid, Transcript
+from django.core.urlresolvers import reverse
 
 
 # universal video_search bar
@@ -43,14 +44,14 @@ def transcript_submit(request, vidId):
     if request.method == 'POST': # If the form has been submitted...
         form = AddTranscript(request.POST) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
-            # Process the data in form.cleaned_data
-            foo = Transcript(transcript=form, vid_id=(Vid.objects.get(vidId=vidId).pk))
+            # Get primary key and save the data in form.cleaned_data
+            foo = Transcript(transcript=form.cleaned_data['transcript'], vid_id=(Vid.objects.get(vidId=vidId).pk))
             foo.save()
-            #return HttpResponseRedirect('') # add redirect after POST with message
-            return render(request, 'dproject/indexvids.html') #testing
+            # need a success or fail message here
+            return HttpResponseRedirect('/%s/' % vidId)
     else:
         #return # add redirect code either way and message
-        return render(request, 'dproject/indexvids.html') #testing
+        return redirect(to, 'dproject/indexvids.html') #testing
 
 def about(request):
     """About this website page"""
