@@ -41,18 +41,18 @@ def indexvids(request, vidId):
 
 def transcript_submit(request, vidId):
     """Handle post data submit from trancript field"""
-    """Need try except logic in place of some if then for this function"""
+    """Try try except logic in place of some if / then for this function"""
     if request.method == 'POST': # If the form has been submitted...
         transcriptForm = AddTranscript(request.POST) # A form bound to the POST data
         languageForm = LanguageModelChoiceField(request.POST)
         if transcriptForm.is_valid() and languageForm.is_valid(): # All validation rules pass
             # Get primary key and save the data in form.cleaned_data
-            foo = Transcript(
+            TranscriptData = Transcript(
                             transcript=transcriptForm.cleaned_data['transcript'],
-                            # language causing KeyError. transcript does not
                             language=languageForm.cleaned_data['language'],
                             vid_id=Vid.objects.get(vidId=vidId).pk)
-            foo.save()
+                            # need user here, too
+            TranscriptData.save()
             # need a success or fail message here
             return HttpResponseRedirect('/%s/' % vidId)
         else:

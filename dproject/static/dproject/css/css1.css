@@ -79,12 +79,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #submitted_transcripts {
+  /* trying to get transcript editor and transcript */
   overflow: auto;
   height: 100%;
 }
 
-#transcript {
-  /*list-style-type: none;*/
-  /* list alignment is not consistent with about page */
+#add_transcripts {
+  /* trying to get transcript editor and transcript */
+}
+
+#transcript ol {
+  /* list-style-type: none; */
+  /* list alignment is not consistent with About page */
   padding-left: 1.5em;
 }
