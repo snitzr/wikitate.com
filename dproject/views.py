@@ -41,17 +41,26 @@ def indexvids(request, vidId):
 
 def transcript_submit(request, vidId):
     """Handle post data submit from trancript field"""
+    """Need try except logic in place of some if then for this function"""
     if request.method == 'POST': # If the form has been submitted...
-        form = AddTranscript(request.POST) # A form bound to the POST data
-        if form.is_valid(): # All validation rules pass
+        transcriptForm = AddTranscript(request.POST) # A form bound to the POST data
+        languageForm = LanguageModelChoiceField(request.POST)
+        if transcriptForm.is_valid() and languageForm.is_valid(): # All validation rules pass
             # Get primary key and save the data in form.cleaned_data
-            foo = Transcript(transcript=form.cleaned_data['transcript'], vid_id=(Vid.objects.get(vidId=vidId).pk))
+            foo = Transcript(
+                            transcript=transcriptForm.cleaned_data['transcript'],
+                            # language causing KeyError. transcript does not
+                            language=languageForm.cleaned_data['language'],
+                            vid_id=Vid.objects.get(vidId=vidId).pk)
             foo.save()
             # need a success or fail message here
             return HttpResponseRedirect('/%s/' % vidId)
+        else:
+            #return # add redirect code either way and message
+            return HttpResponseRedirect('/%s/' % vidId)
     else:
         #return # add redirect code either way and message
-        return redirect(to, 'dproject/indexvids.html') #testing
+        return HttpResponseRedirect('/%s/' % vidId)
 
 def about(request):
     """About this website page"""

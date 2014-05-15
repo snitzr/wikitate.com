@@ -17,6 +17,7 @@ class Vid(models.Model):
 class Transcript(models.Model):
     vid = models.ForeignKey(Vid) # Django adds _id to create vid_id for its database column name
     transcript = models.CharField(max_length=50000000)
+    # rating = models.IntegerField()
     LANGUAGES = (
         ('initial', ''),
         ('af', 'Afrikaans'),
