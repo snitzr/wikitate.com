@@ -44,7 +44,7 @@ db v: unavailable
 
 {% if t %}
   {% for x in t %}
-  <li>{{ x.transcript|truncatewords:25 }}</li>
+  <li id="transcriptDisplaySelect{{ forloop.counter }}"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>
   {% empty %}
   <p>Zero transcripts</p>
   {% endfor %}

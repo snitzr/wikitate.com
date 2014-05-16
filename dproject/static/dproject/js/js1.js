@@ -45,8 +45,10 @@ function captionTime(currentTime) {
 }
 
 // select captions on click
-$('#transcriptSelect').click(function () {
+$('#transcriptDisplaySelect').click(function () {
   // add click content to transcript var
+  // testing
+  console.log('success for transcriptDisplaySelect');
 });
 
 // start / stop video control
