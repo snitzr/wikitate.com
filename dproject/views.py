@@ -6,7 +6,18 @@ from django.core.urlresolvers import reverse
 
 
 # universal video_search bar
-video_search = SearchForm().as_ul()
+video_search = SearchForm()
+
+# drafting universal video_search functionality
+# need page or url.py for this function
+# check template action
+def video_search_submit(request):
+    if request.method == 'POST' and searchForm.is_valid():
+        searchForm = SearchForm(request.POST)
+        return HttpResponseRedirect('/%s/' % searchForm.cleaned_data)
+    else:
+        return
+
 
 def index(request):
     """Home page AKA / AKA index"""
@@ -56,7 +67,6 @@ def transcript_submit(request, vidId):
                 vidSource='youtube',
                 vidId=vidId)
             VidData.save()
-        Vid.objects.get(vidId=vidId).pk
         if transcriptForm.is_valid() and languageForm.is_valid(): # All validation rules pass
             # Get primary key and save the data from .cleaned_data
             TranscriptData = Transcript(
