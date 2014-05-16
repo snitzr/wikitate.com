@@ -38,15 +38,27 @@ def indexvids(request, vidId):
     else:
         return render(request, 'dproject/indexvids.html', context) 
 
-
+"""
+Refactoring to prevent bogus data being written for nonexistant 11 char
+string URLs
+"""
 def transcript_submit(request, vidId):
     """Handle post data submit from trancript field"""
     """Try try except logic in place of some if / then for this function"""
     if request.method == 'POST': # If the form has been submitted...
-        transcriptForm = AddTranscript(request.POST) # A form bound to the POST data
-        languageForm = LanguageModelChoiceField(request.POST)
+        transcriptForm = AddTranscript(request.POST) # A form.py function bound to POST data
+        languageForm = LanguageModelChoiceField(request.POST) # A form.py function bound to POST data
+        try:
+            Vid.objects.get(vidId=vidId).pk
+        except:
+            # add new vidId and continue writing Transcript
+            VidData = Vid(
+                vidSource='youtube',
+                vidId=vidId)
+            VidData.save()
+        Vid.objects.get(vidId=vidId).pk
         if transcriptForm.is_valid() and languageForm.is_valid(): # All validation rules pass
-            # Get primary key and save the data in form.cleaned_data
+            # Get primary key and save the data from .cleaned_data
             TranscriptData = Transcript(
                             transcript=transcriptForm.cleaned_data['transcript'],
                             language=languageForm.cleaned_data['language'],

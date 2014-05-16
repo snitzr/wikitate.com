@@ -33,9 +33,9 @@ db v: unavailable
 
 <div id="submitted_transcripts">
 {% if t %}
-<h2>Transcript{{ t|pluralize }}</h2>
+<h2>Available Transcript{{ t|pluralize }}</h2>
 {% else%}
-<h2>No transcripts</h2>
+<h2>No Transcripts</h2>
 {% endif %}
 
 
@@ -53,7 +53,7 @@ db v: unavailable
 </div>
 
 <div id="add_transcripts">
-<h2>Add transcript</h2>
+<h2>Add Transcript</h2>
 {% if user.is_authenticated %}
 <form action="/transcript_submit/{{ vidId }}/" method="post">
   {% csrf_token %}
@@ -69,6 +69,7 @@ db v: unavailable
 {% endif %}
 </div>
 
+<p>_________________</p>
 <div id="Viewer">
   Select transcript
 </div>
@@ -93,7 +94,6 @@ db v: unavailable
 <!--<div id="transcriptLine7">Is it not recording?</div>-->
 <!--</div>-->
 <!-- DB views, template to access views, some kind of forms, validation of forms, key to access DB, {views: vid key from URL + ID, user or anon, language, chunk of transcript with times and content, rating},  -->
-<hr />
 <div>
   <p>Available transcripts</p>
   <p>Edit your existing transcript</p>
