@@ -20,21 +20,21 @@ function updateCurrentTime() {
 }
 
 
-var transcript = {
-  0: '',
-}
-
 //var transcript = {
-  //0: 'This a test of the CamStudio microphone.',
-  //3: 'It\'s just dangling from my ear.',
-  //5: 'Um, this is how we learn math.',
-  //10: 'Whoops!',
-  //13.0: 'Let\'s click click click delete "h."',
-  //17.5: 'Good.',
-  //20: '',
-  //24.0: 'Is it not recording?',
-  //25.0: ''
-//};
+  //0: '',
+//}
+
+var transcript = {
+  0: 'This a test of the CamStudio microphone.',
+  3: 'It\'s just dangling from my ear.',
+  5: 'Um, this is how we learn math.',
+  10: 'Whoops!',
+  13.0: 'Let\'s click click click delete "h."',
+  17.5: 'Good.',
+  20: '',
+  24.0: 'Is it not recording?',
+  25.0: ''
+};
 
 
 // display captions to page
@@ -45,10 +45,10 @@ function captionTime(currentTime) {
 }
 
 // select captions on click
-$('#transcriptDisplaySelect').click(function () {
+$('.transcriptDisplaySelect').click(function () {
   // add click content to transcript var
-  // testing
-  console.log('success for transcriptDisplaySelect');
+  console.log(typeof $(this).text())
+  transcript = $(this).text();
 });
 
 // start / stop video control
