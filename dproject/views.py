@@ -3,10 +3,16 @@ from django.http import HttpResponse, HttpResponseRedirect
 from dproject.forms import SearchForm, AddTranscript, LanguageModelChoiceField
 from dproject.models import Vid, Transcript
 from django.core.urlresolvers import reverse
+import re
 
 
 # universal video_search bar
 video_search = SearchForm()
+def video_serch_submit(request, searchInput):
+    if request.method == 'POST' and videoSearch.is_valid():
+        # videoSearch = SearchForm(request.POST)
+            return HttpResponseRedirect('%s/' % searchInput)
+
 
 # drafting universal video_search functionality
 # need page or url.py for this function
@@ -50,21 +56,25 @@ def indexvids(request, vidId):
         return render(request, 'dproject/indexvids.html', context) 
 
 """
-Refactoring to prevent bogus data being written for nonexistant 11 char
+Refactor to prevent bogus data being written for nonexistant 11 char
 string URLs
 """
 def transcript_submit(request, vidId):
     """Handle post data submit from trancript field"""
-    """Try try except logic in place of some if / then for this function"""
     if request.method == 'POST': # If the form has been submitted...
         transcriptForm = AddTranscript(request.POST) # A form.py function bound to POST data
         languageForm = LanguageModelChoiceField(request.POST) # A form.py function bound to POST data
         try:
             Vid.objects.get(vidId=vidId).pk
         except:
-            # add new vidId and continue writing Transcript
+            # determine if youtube or vimeo source
+            if re.search('[a-zA-Z]', vidId):
+                vidSource='youtube'
+            else:
+                vidSource='vimeo'
+            # assign source and vidId
             VidData = Vid(
-                vidSource='youtube',
+                vidSource=vidSource,
                 vidId=vidId)
             VidData.save()
         if transcriptForm.is_valid() and languageForm.is_valid(): # All validation rules pass

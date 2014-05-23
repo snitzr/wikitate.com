@@ -4,9 +4,7 @@ from django.forms import ModelChoiceField
 from dproject import models
 
 class SearchForm(forms.Form):
-    # dup of models
-    # https://docs.djangoproject.com/en/1.6/topics/forms/modelforms/
-    transcript = forms.CharField(max_length=100,
+    transcript_search = forms.CharField(max_length=100,
                                  label = '',
                                  widget=forms.TextInput(attrs=
                                                         {'placeholder': 'enter video link'}

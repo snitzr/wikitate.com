@@ -9,7 +9,7 @@
 {{ message }}
 </div>
 <div id="main-search">
-<form action="/" method="post">{% csrf_token %}
+<form action="/video_search_request/" method="post">{% csrf_token %}
   {{ video_search }}
   <input type="submit" value="Search" />
 </form>
