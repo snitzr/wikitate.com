@@ -79,8 +79,10 @@ def transcript_submit(request, vidId):
             VidData.save()
         if transcriptForm.is_valid() and languageForm.is_valid(): # All validation rules pass
             # Get primary key and save the data from .cleaned_data
+            transcript=transcriptForm.cleaned_data['transcript']
+            transcript = '{ ' + transcript + ' }'
             TranscriptData = Transcript(
-                            transcript=transcriptForm.cleaned_data['transcript'],
+                            transcript=transcript,
                             language=languageForm.cleaned_data['language'],
                             vid_id=Vid.objects.get(vidId=vidId).pk)
                             # need user here, too

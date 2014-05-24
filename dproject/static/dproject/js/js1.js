@@ -1,11 +1,7 @@
-// am I using too many global vars?
-
-// load video interval
-function beginTimer() {
+$(window).load(function () {
   setInterval(updateCurrentTime, 100);
   captionTime(0.0);
-}
-$(window).load(beginTimer);
+});
 
 // link timer to timestamp and display caption function
 function updateCurrentTime() {
@@ -21,7 +17,7 @@ function updateCurrentTime() {
 
 
 var transcript = {
-  0: '',
+  "0": "0",
 }
 
 //var transcript = {

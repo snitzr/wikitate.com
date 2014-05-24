@@ -44,10 +44,10 @@ db v: unavailable
 
 {% if t %}
   {% for x in t %}
-  <!--<li id="transcriptDisplaySelect{{ forloop.counter }}"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
   <!-- commenting out for now until can truncate while still passing to var untrancated -->
+  <!--<li id="transcriptDisplaySelect{{ forloop.counter }}"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
   <!--<li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
-  <li class="transcriptDisplaySelect"><a href="#">{{ x.transcript }}</a></li>
+  <li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|linebreaksbr }}</a></li>
   {% empty %}
   <p>Zero transcripts</p>
   {% endfor %}
