@@ -81,9 +81,13 @@ INSTALLED_APPS = (
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    # auth
     'bootstrapform',
+    # forms
+    'crispy_forms',
 )
+
+# forms
+CRISPY_TEMPLATE_PACK = 'uni_form'
 
 # auth
 SITE_ID = 1

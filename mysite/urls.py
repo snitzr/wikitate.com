@@ -11,5 +11,5 @@ urlpatterns = patterns('',
     # auth
     url(r'^accounts/', include('allauth.urls'), name='accounts'),
     url(r'^accounts/profile/$', include('accounts.urls'), name='profile'),
-    url(r'^', include('dproject.urls'), name='index'),
+    url(r'^', include('dproject.urls', namespace='index')),
 )

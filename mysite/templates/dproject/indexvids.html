@@ -4,7 +4,7 @@
 <div id="ytplayer"></div>
 
 <script>
-// Load the IFrame Player API code asynchronously.
+// Load the iFrame Player API code asynchronously.
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/player_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -21,9 +21,9 @@ videoId: '{{ vidId }}'
 });
 }
 </script>
+
 <div id="captions"></div>
 
-<div>languages: {{ languages_array }}</div>
 <div>vidId: {{ vidId }}</div>
 {% if v %}
 <div>db v: {{ v }}</div>
@@ -31,49 +31,64 @@ videoId: '{{ vidId }}'
 db v: unavailable
 {% endif %}
 
-<h2>Transcript</h2>
-<ul id="transcript">
+<div id="submitted_transcripts">
+{% if t %}
+<h2>Available Transcript{{ t|pluralize }}</h2>
+{% else%}
+<h2>No Transcripts</h2>
+{% endif %}
+
+
+<ol id="transcript">
+
+
+{% if t %}
   {% for x in t %}
-  <li>{{ x.transcript }}</li>
+  <!-- commenting out for now until can truncate while still passing to var untrancated -->
+  <!--<li id="transcriptDisplaySelect{{ forloop.counter }}"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
+  <!--<li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
+  <li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|linebreaksbr }}</a></li>
   {% empty %}
-  <li>No transcripts available.</li>
-  <li>Make your own! [link]</li>
+  <p>Zero transcripts</p>
   {% endfor %}
-</ul>
-<!-- begin form testing -->
-<h2>Add transcript</h2>
-<p>
+</ol>
+{% endif %}
+</div>
+
+<div id="add_transcripts">
+<h2>Add Transcript</h2>
 {% if user.is_authenticated %}
-<form action="" method="post">
+<form action="/transcript_submit/{{ vidId }}/" method="post">
   {% csrf_token %}
-  {{ formtest.as_p}}
-  {{ languagedeclaration.as_ul }}
-  <textarea id="textInput" placeholder="Add transcript" rows="8" cols="50"></textarea><br />
+  {{ addtranscript.transcript }}
+  <br />
+  Transcript language: {{ languages_array.language }}
+  <br />
   <input type="submit" value="Submit transcript" />
 </form
+
 {% else %}
 <a href="/accounts/login/?next={{request.path}}">Log in to add your own transcript.</a>
 {% endif %}
-</p>
-<!-- end form testing -->
+</div>
 
-<hr />
-
+<p>_________________</p>
 <div id="Viewer">
   Select transcript
 </div>
 <div id="Editor">
-  Select language from dropdown / type in autocomplete<br />
   Select time | Text (with character limit) | Duration<br />
 </div>
 <div id="starp">Start / Stop</div>
 <div id="skipBack">Skip back 1 second</div>
-<div id="timeStamp"></div>
 <div id="timeClick">Click for time display [test]</div>
 <div id="vidCode">vidCode</div>
 <div id="returnYT">returnYT</div>
+<div id="playerExistenceIndicator">player.getDuration()</div>
+<div id="timeStamp">Timestamp</div>
 
 <!--<div id="transcriptEdit">-->
+<!-- note that numbering can be done programmatically -->
 <!--<div id="transcriptLine1">This a test of the CamStudio microphone.</div>-->
 <!--<div id="transcriptLine2">It's just dangling from my ear.</div>-->
 <!--<div id="transcriptLine3">Um, this is how we learn math.</div>-->
@@ -83,14 +98,10 @@ db v: unavailable
 <!--<div id="transcriptLine7">Is it not recording?</div>-->
 <!--</div>-->
 <!-- DB views, template to access views, some kind of forms, validation of forms, key to access DB, {views: vid key from URL + ID, user or anon, language, chunk of transcript with times and content, rating},  -->
-<hr />
 <div>
-  <p>Available transcripts</p>
   <p>Edit your existing transcript</p>
   <p>Rate +/-</p>
   <p>When in edit mode, shrink vid 50%</p>
-  <p>database info</p>
-  <p>database info</p>
 </div>
 
 

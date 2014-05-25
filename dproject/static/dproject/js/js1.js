@@ -1,9 +1,7 @@
-// load video interval
-function beginTimer() {
+$(window).load(function () {
   setInterval(updateCurrentTime, 100);
   captionTime(0.0);
-}
-$(window).load(beginTimer);
+});
 
 // link timer to timestamp and display caption function
 function updateCurrentTime() {
@@ -19,23 +17,35 @@ function updateCurrentTime() {
 
 
 var transcript = {
-  0: 'This a test of the CamStudio microphone.',
-  3: 'It\'s just dangling from my ear.',
-  5: 'Um, this is how we learn math.',
-  10: 'Whoops!',
-  13.0: 'Let\'s click click click delete "h."',
-  17.5: 'Good.',
-  20: '',
-  24.0: 'Is it not recording?',
-  25.0: ''
-};
+  "0": "0",
+}
 
-// add captions to page
+//var transcript = {
+  //"0": "This a test of the CamStudio microphone.",
+  //"3": "It\'s just dangling from my ear.",
+  //"5": "Um, this is how we learn math.",
+  //"10": "Whoops!",
+  //"13": "Let\'s click click click delete \"h.\"",
+  //"17.5": "Good.",
+  //"20": "",
+  //"24": "Is it not recording?",
+  //"25": ""
+//};
+
+
+// display captions to page
 function captionTime(currentTime) {
   if ((transcript[currentTime]) !== undefined) {
     $('#captions').html(transcript[currentTime]);
   }
 }
+
+// select captions on click
+$('.transcriptDisplaySelect').click(function () {
+  // add click content to transcript var
+  transcript = $(this).text();
+  transcript = $.parseJSON(transcript);
+});
 
 // start / stop video control
 $('#starp').click(function () {
