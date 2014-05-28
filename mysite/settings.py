@@ -141,10 +141,10 @@ STATIC_URL = '/static/'
 # auth login prefs
 ACCOUNT_AUTHENTICATION_METHOD  = 'username_email'
 ACCOUNT_USERNAME_BLACKLIST = ['root',
-                              'fake'
-                              'bitch'
-                              'ass'
-                              'nigger'
+                              'fake',
+                              'bitch',
+                              'ass',
+                              'nigger',
                               'fuck',
                               'shit',
                               'admin',

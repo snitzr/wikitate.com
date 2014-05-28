@@ -49,7 +49,7 @@
         <a href="/accounts/logout/?next={{request.path}}">Logout</a>
         {% user_display user %}
         <br />
-        <a href="/accounts/profile/">Settings</a>
+        <a href="/accounts/profile/">Account</a>
       {% else %}
         <a href="/accounts/login/?next={{request.path}}">Sign up / sign in and contribute</a>
       {% endif %}

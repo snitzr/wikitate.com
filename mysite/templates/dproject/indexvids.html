@@ -58,6 +58,9 @@ db v: unavailable
 <div id="add_transcripts">
 <h2>Add Transcript</h2>
 {% if user.is_authenticated %}
+{% load account %}
+{% user_display user %}
+
 <form action="/transcript_submit/{{ vidId }}/" method="post">
   {% csrf_token %}
   {{ addtranscript.transcript }}

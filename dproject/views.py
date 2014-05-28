@@ -80,7 +80,10 @@ def transcript_submit(request, vidId):
         if transcriptForm.is_valid() and languageForm.is_valid(): # All validation rules pass
             # Get primary key and save the data from .cleaned_data
             transcript=transcriptForm.cleaned_data['transcript']
-            transcript = '{ ' + transcript + ' }'
+            # add braces. need check if braces exist in POST data
+            # commenting out for now for two step transcript and timing design
+            # transcript = '{ ' + transcript + ' }'
+            # .5 does not work as timestamp. 0.5, does
             TranscriptData = Transcript(
                             transcript=transcript,
                             language=languageForm.cleaned_data['language'],
@@ -88,13 +91,20 @@ def transcript_submit(request, vidId):
                             # need user here, too
             TranscriptData.save()
             # need a success or fail message here
-            return HttpResponseRedirect('/%s/' % vidId)
+            # best case scenario, go to next screen
+            return HttpResponseRedirect('/%s/blagh' % vidId)
+            # return HttpResponseRedirect('/%s/blagh' % vidId)
         else:
             #return # add redirect code either way and message
             return HttpResponseRedirect('/%s/' % vidId)
     else:
         #return # add redirect code either way and message
         return HttpResponseRedirect('/%s/' % vidId)
+
+# second step for creating transcript, the timing page
+def set_vid_timing(request):
+    context = 'test'
+    return render(request, '', context)
 
 def about(request):
     """About this website page"""
