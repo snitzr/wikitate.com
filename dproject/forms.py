@@ -7,14 +7,15 @@ class SearchForm(forms.Form):
     transcript_search = forms.CharField(max_length=100,
                                  label = '',
                                  widget=forms.TextInput(attrs=
-                                                        {'placeholder': 'enter video link'}
+                                                        {'placeholder': 'Enter video link'}
                                                        ))
 
 class AddTranscript(forms.Form):
     transcript = forms.CharField(widget=forms.Textarea(attrs=
-                                                       {'placeholder': 'Add transcript'}
+                                                       {'placeholder': 'Add new transcript'}
                                                       ))
 
 class LanguageModelChoiceField(forms.Form):
     language = forms.ChoiceField(choices = models.Transcript.LANGUAGES,
-                                 initial = 'initial')
+                                 #initial = 'initial'
+                                )

@@ -43,6 +43,7 @@ function captionTime(currentTime) {
 // select captions on click
 $('.transcriptDisplaySelect').click(function () {
   // add click content to transcript var
+  $('#captions').html(''); // clear current transcript display
   transcript = $(this).text();
   transcript = $.parseJSON(transcript);
 });

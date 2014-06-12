@@ -92,7 +92,7 @@ def transcript_submit(request, vidId):
             TranscriptData.save()
             # need a success or fail message here
             # best case scenario, go to next screen
-            return HttpResponseRedirect('/%s/blagh' % vidId)
+            return HttpResponseRedirect('/%s/' % vidId)
             # return HttpResponseRedirect('/%s/blagh' % vidId)
         else:
             #return # add redirect code either way and message
