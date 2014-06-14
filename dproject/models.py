@@ -19,7 +19,7 @@ class Transcript(models.Model):
     transcript = models.CharField(max_length=5000000)
     # rating = models.IntegerField()
     LANGUAGES = (
-        ('initial', ''),
+        # ('initial', 'Transcript language'),
         ('af', 'Afrikaans'),
         ('id', 'Bahasa Indonesia'),
         ('ms', 'Bahasa Malaysia'),

@@ -16,6 +16,4 @@ class AddTranscript(forms.Form):
                                                       ))
 
 class LanguageModelChoiceField(forms.Form):
-    language = forms.ChoiceField(choices = models.Transcript.LANGUAGES,
-                                 #initial = 'initial'
-                                )
+    language = forms.ChoiceField(choices = models.Transcript.LANGUAGES)
