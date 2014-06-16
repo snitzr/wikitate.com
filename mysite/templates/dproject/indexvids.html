@@ -143,6 +143,16 @@ db v: unavailable
   {% endcomment %}
   <br />
   {# transcript form #}
+
+
+  <!-- begin drafting timing set -->
+  <input class="time" type="number" autocomplete="off" step="0.5">
+  <br />
+  <input class="time" type="number" autocomplete="off" step="0.5">
+  <!-- end drafting timing set -->
+
+
+  <!-- Might need to hard code addtranscript.transcript too unless input forms are easier than dropdowns -->
   {{ addtranscript.transcript }} (required)
   <br />
   {# need jQuery to check if all required fields are chosen #}
@@ -153,7 +163,14 @@ db v: unavailable
 <a href="/accounts/login/?next={{request.path}}">Log in to add your own transcript.</a>
 {% endif %}
 </div>
-
+<dl>
+  <dt>Transcription tips:</dt>
+  <dd>make transcript first then set timing</dd>
+  <dd>line break with "\n" and add "-" to show each line is a separate person speaing. Recommended only for simultaneous dialogue</dd>
+  <dd>max line char is 100</dd>
+  <dd>music char</dd>
+  <dd>time .5 seconds before action occurs</dd>
+</dl>
 <p>_________________</p>
 <div id="Viewer">
   Select transcript
