@@ -147,14 +147,14 @@ db v: unavailable
 
 
   <!-- begin drafting timing set -->
-  <table>
+  <table id="transcripting">
     <tr>
-      <td><input id="timing" class="time" type="number" autocomplete="off" step="0.5"></td>
-      <td><input class="transcript_cell" placeholder="text" type="text" autocomplete="off"></td>
-  </tr>
+      <th>time</th>
+      <th>text</th>
+    </tr>
     <tr>
-      <td><input class="time" type="number" autocomplete="off" step="0.5"></td>
-      <td><input class="transcript_cell" type="text" autocomplete="off"></td>
+      <td><input class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td>
+      <td><input class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td>
   </tr>
     <!-- end drafting timing set -->
     <!-- Might need to hard code addtranscript.transcript too unless input forms are easier than dropdowns -->
@@ -172,10 +172,10 @@ db v: unavailable
 <dl>
   <dt>Transcription tips:</dt>
   <dd>make transcript first then set timing</dd>
-  <dd>line break with "\n" and add "-" to show each line is a separate person speaing. Recommended only for simultaneous dialogue</dd>
+  <dd>line break with "\n" and add "-" to show each line is a separate person speaking. Recommended only for simultaneous dialogue</dd>
   <dd>max line char is 100</dd>
   <dd>music char</dd>
-  <dd>time .5 seconds before action occurs</dd>
+  <dd>time text .5 seconds before dialogue appears. This gives the mind time to react and read the text with the action.</dd>
 </dl>
 <p>_________________</p>
 <div id="Viewer">
@@ -220,8 +220,7 @@ db v: unavailable
 <select>
 <!-- DB views, template to access views, some kind of forms, validation of forms, key to access DB, {views: vid key from URL + ID, user or anon, language, chunk of transcript with times and content, rating},  -->
 <div>
-  <p>Edit your existing transcript</p>
-  <p>Rate +/-</p>
+  <p>Edit your draft transcript</p>
   <p>When in edit mode, shrink vid 50%</p>
 </div>
 

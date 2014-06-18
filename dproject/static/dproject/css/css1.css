@@ -1,3 +1,17 @@
+#timestamp {
+  
+}
+.transcript_cell {
+  width: 500px;
+}
+
+#transcripting tr:nth-child(even){
+  background-color: black;
+}
+#transcripting tr:nth-child(odd){
+  background-color: red;
+}
+
 #ytplayer {
   height: 500px; /* prevent reformat after vid load */
   /*width: 50%; */ /* change on JS event to make transcript room */
@@ -38,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 30px;
 }
 
-#captions {
+#captions, {
   background: transparent;
   color: #fafafa;
   color: yellow;
@@ -53,6 +67,20 @@ h1, h2, h3, h4, h5, h6 {
     1px 1px 0 #333;
   top: -150px;
   height: 0px; /* prevent template shift from captions */
+}
+
+#timeStamp {
+  background: transparent;
+  color: #fafafa;
+  color: yellow;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow:
+  -1px -1px 0 #333,
+   1px -1px 0 #333,
+   -1px 1px 0 #333,
+    1px 1px 0 #333;
 }
 
 #transcriptEdit {

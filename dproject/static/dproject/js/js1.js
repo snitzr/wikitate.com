@@ -8,7 +8,7 @@ function updateCurrentTime() {
   $('#timeStamp').html('&nbsp;');
   if (player.getPlayerState() === 1) {
     var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
-    $('#timeStamp').html('rounded: ' + rounded + ' fixed: ' + player.getCurrentTime().toFixed(1));
+    $('#timeStamp').html('Timestamp: ' + 'rounded: ' + rounded + ' fixed: ' + player.getCurrentTime().toFixed(1));
     console.log(player.getCurrentTime());
     console.log(rounded + ' rounded');
     captionTime(rounded);
