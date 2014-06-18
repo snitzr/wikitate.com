@@ -62,6 +62,7 @@ db v: unavailable
 {% user_display user %}
 
 {# transcript submit #}
+  <!-- begin drafting form set -->
 <form method="post" action="/transcript_submit/{{ vidId }}/">
   {% csrf_token %}
   {# language drop down #}
@@ -70,9 +71,9 @@ db v: unavailable
   <!-- hard coding drop down until I have a programmable solution -->
   <select id="id_language" name="language">
     <option selected="selected" disabled="disabled">Transcript language </option>
-    <option {{ transcript_existence }} value="af">Afrikaans</option>
-    <option {{ transcript_existence }} value="id">Bahasa Indonesia</option>
-    <option {{ transcript_existence }} value="ms">Bahasa Malaysia</option>
+    <option {{ transcript_existence_af }} value="af">Afrikaans</option>
+    <option {{ transcript_existence_id }} value="id">Bahasa Indonesia</option>
+    <option {{ transcript_existence_etc }} value="ms">Bahasa Malaysia</option>
     <option {{ transcript_existence }} value="ca">Català</option>
     <option {{ transcript_existence }} value="cs">Čeština</option>
     <option {{ transcript_existence }} value="da">Dansk</option>
@@ -146,18 +147,23 @@ db v: unavailable
 
 
   <!-- begin drafting timing set -->
-  <input class="time" type="number" autocomplete="off" step="0.5">
-  <br />
-  <input class="time" type="number" autocomplete="off" step="0.5">
-  <!-- end drafting timing set -->
-
-
-  <!-- Might need to hard code addtranscript.transcript too unless input forms are easier than dropdowns -->
-  {{ addtranscript.transcript }} (required)
-  <br />
-  {# need jQuery to check if all required fields are chosen #}
-  <input type="submit" value="Submit transcript" />
-</form
+  <table>
+    <tr>
+      <td><input id="timing" class="time" type="number" autocomplete="off" step="0.5"></td>
+      <td><input class="transcript_cell" placeholder="text" type="text" autocomplete="off"></td>
+  </tr>
+    <tr>
+      <td><input class="time" type="number" autocomplete="off" step="0.5"></td>
+      <td><input class="transcript_cell" type="text" autocomplete="off"></td>
+  </tr>
+    <!-- end drafting timing set -->
+    <!-- Might need to hard code addtranscript.transcript too unless input forms are easier than dropdowns -->
+    {# {{ addtranscript.transcript }} (required) #}
+    {# need jQuery to check if all required fields are chosen #}
+  </table>
+    <input type="submit" value="Submit transcript" />
+</form>
+  <!-- end drafting form set -->
 
 {% else %}
 <a href="/accounts/login/?next={{request.path}}">Log in to add your own transcript.</a>

@@ -33,6 +33,13 @@ var transcript = {
 //};
 
 
+// jump timer vid to field time TESTING
+/*
+$('#timing').click(function () {
+  player.seekTo((document.getElementById('timing').innerHTML), true); //seekTo argument needs evaluation
+});
+*/
+
 // display captions to page
 function captionTime(currentTime) {
   if ((transcript[currentTime]) !== undefined) {
