@@ -1,6 +1,11 @@
-#timestamp {
-  
-}
+/*#ad {*/
+  /*height: 60px;*/
+  /*width: 468px;*/
+  /*padding: 0;*/
+  /*margin: 0;*/
+  /*border: 1px solid grey;*/
+/*}*/
+
 .transcript_cell {
   width: 500px;
 }
@@ -52,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 30px;
 }
 
-#captions, {
+#captions {
   background: transparent;
   color: #fafafa;
   color: yellow;

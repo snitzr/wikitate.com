@@ -15,7 +15,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 function onYouTubePlayerAPIReady() {
   player = new YT.Player('ytplayer', {
-height: '480',
+// height: '480',
 width: '100%',
 videoId: '{{ vidId }}'
 });
@@ -24,36 +24,14 @@ videoId: '{{ vidId }}'
 
 <div id="captions"></div>
 
+{% comment %}
 <div>vidId: {{ vidId }}</div>
 {% if v %}
 <div>db v: {{ v }}</div>
 {% else%}
 db v: unavailable
 {% endif %}
-
-<div id="submitted_transcripts">
-{% if t %}
-<h2>Available Transcript{{ t|pluralize }}</h2>
-{% else%}
-<h2>No Transcripts</h2>
-{% endif %}
-
-
-<ol id="transcript">
-
-
-{% if t %}
-  {% for x in t %}
-  <!-- commenting out for now until can truncate while still passing to var untrancated -->
-  <!--<li id="transcriptDisplaySelect{{ forloop.counter }}"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
-  <!--<li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
-  <li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|linebreaksbr }}</a></li>
-  {% empty %}
-  <p>Zero transcripts</p>
-  {% endfor %}
-</ol>
-{% endif %}
-</div>
+{% endcomment %}
 
 <div id="add_transcripts">
 <h2>Add Transcript</h2>
@@ -155,11 +133,15 @@ db v: unavailable
     <tr>
       <td><input class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td>
       <td><input class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td>
+    </tr>
+    <tr id="runout_row">
+      <td><input class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td>
+      <td id="runout_line"><input class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td>
   </tr>
     <!-- end drafting timing set -->
     <!-- Might need to hard code addtranscript.transcript too unless input forms are easier than dropdowns -->
     {# {{ addtranscript.transcript }} (required) #}
-    {# need jQuery to check if all required fields are chosen #}
+    {# need jQuery to check if all required fields are chosen? #}
   </table>
     <input type="submit" value="Submit transcript" />
 </form>
@@ -172,10 +154,11 @@ db v: unavailable
 <dl>
   <dt>Transcription tips:</dt>
   <dd>make transcript first then set timing</dd>
-  <dd>line break with "\n" and add "-" to show each line is a separate person speaking. Recommended only for simultaneous dialogue</dd>
+  <dd>line break with "-" to show each line is a separate person speaking. Recommended only for simultaneous dialogue</dd>
   <dd>max line char is 100</dd>
-  <dd>music char</dd>
-  <dd>time text .5 seconds before dialogue appears. This gives the mind time to react and read the text with the action.</dd>
+  <dd>indicate music with this character: ♫</dd>
+  <dd>time text half a second before dialogue appears. This gives the mind time to react and read the text with the action.</dd>
+  <dd>keyboard shortcuts: </dd>
 </dl>
 <p>_________________</p>
 <div id="Viewer">
@@ -222,6 +205,28 @@ db v: unavailable
 <div>
   <p>Edit your draft transcript</p>
   <p>When in edit mode, shrink vid 50%</p>
+</div>
+
+<div id="submitted_transcripts">
+{% if t %}
+<h2>Available Transcript{{ t|pluralize }} [make drop down]</h2>
+{% else%}
+<h2>No Transcripts</h2>
+{% endif %}
+
+
+<ol id="transcript">
+{% if t %}
+  {% for x in t %}
+  <!-- commenting out for now until can truncate while still passing to var untrancated -->
+  <!--<li id="transcriptDisplaySelect{{ forloop.counter }}"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
+  <!--<li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
+  <li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|linebreaksbr }}</a></li>
+  {% empty %}
+  <p>Zero transcripts</p>
+  {% endfor %}
+</ol>
+{% endif %}
 </div>
 
 

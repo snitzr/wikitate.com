@@ -78,6 +78,34 @@ $('#timeClick').mouseup(function () {
   console.log(player.getCurrentTime());
 });
 
+// append new time and text line to add transcript table on tab
+// allow tab through to Submit button if last text field is blank
+$('#runout_line').focusin(function() {
+  if $(this).val == True {
+  $('#runout_row').append('<tr id="runout_row"><td><input class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td><td id="runout_line"><input class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td></tr>');
+  }
+  console.log('working');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // find YT username
 // $('#username').html(document.getElementById('yt-masthead-user-displayname').innerHTML);
 
@@ -127,6 +155,22 @@ $('#text').keyup(function () {
   var activeForm = (document.getElementById('text').innerHTML);
   console.log(activeForm);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // sandboxing
 //
