@@ -80,10 +80,16 @@ $('#timeClick').mouseup(function () {
 
 // append new time and text line to add transcript table on tab
 // allow tab through to Submit button if last text field is blank
-$('#runout_line').focusin(function() {
-    $('<tr id="runout_row"><td><input class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td><td id="runout_line"><input class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td></tr>').insertBefore('#runout_row');
-  // $().prev().focus();
-  console.log('working' + $(this).val());
+$(this).focusin(function() {
+  // need logic to only append on last line
+  // jQuery logic to see if next tag is not table
+  if ((((document.activeElement).type) === 'text') && ((document.activeElement).value) !== '') {
+    // for maintainability the appended HTML should just make a copy of current tr minus text input and not be hardcoded HTML
+    $('#transcripting').append('<tr id="runout_row"><td><input class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td><td id="runout_line"><input class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td></tr>');
+  }
+  console.log('working');
+  console.log((document.activeElement).value);
+  console.log((document.activeElement).type);
 });
 
 
