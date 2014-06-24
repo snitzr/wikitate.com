@@ -78,11 +78,13 @@ $('#timeClick').mouseup(function () {
   console.log(player.getCurrentTime());
 });
 
+
 // append new time and text line to add transcript table on tab
 // allow tab through to Submit button if last text field is blank
 $(this).focusin(function() {
-  // need logic to only append on last line
-  // jQuery logic to see if next tag is not table
+  // need logic to only append on last row
+  // need logic to stop appending once new blank row is appended
+  // jQuery logic to see if next tag is not table so to only append last row
   if ((((document.activeElement).type) === 'text') && ((document.activeElement).value) !== '') {
     // for maintainability the appended HTML should just make a copy of current tr minus text input and not be hardcoded HTML
     $('#transcripting').append('<tr id="runout_row"><td><input class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td><td id="runout_line"><input class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td></tr>');
@@ -90,8 +92,11 @@ $(this).focusin(function() {
   console.log('working');
   console.log((document.activeElement).value);
   console.log((document.activeElement).type);
+  var runout =  $("#runout_line").next();
+  // if runout === '' {
+    // console.log('null next sibling');
+  // }
 });
-
 
 
 
