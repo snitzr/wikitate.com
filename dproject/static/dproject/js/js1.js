@@ -81,21 +81,27 @@ $('#timeClick').mouseup(function () {
 
 // append new time and text line to add transcript table on tab
 // allow tab through to Submit button if last text field is blank
+// make this function a variable to call? Currently having global vs local var issue because declaring var in function?
 $(this).focusin(function() {
   // need logic to only append on last row
   // need logic to stop appending once new blank row is appended
   // jQuery logic to see if next tag is not table so to only append last row
+  // tab order needs to be respected
+  // add overflow feature in CSS
+  console.log('1 working');
+  console.log('2 activeElement value:\t' + (document.activeElement).value);
+  console.log('3 activeElement type:\t' + (document.activeElement).type);
+  // test if previous cell has a value 
+  console.log('4 #runout_line prev val:\t' + $("#runout_line").prev().val());
+  // var prev_val = ($("#runout_line").prev().val());
+  // var runout = (': #runout_line next val');
+  // if runout === '' {
+    // console.log('null next sibling');
+  // }
   if ((((document.activeElement).type) === 'text') && ((document.activeElement).value) !== '') {
     // for maintainability the appended HTML should just make a copy of current tr minus text input and not be hardcoded HTML
     $('#transcripting').append('<tr id="runout_row"><td><input class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td><td id="runout_line"><input class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td></tr>');
   }
-  console.log('working');
-  console.log((document.activeElement).value);
-  console.log((document.activeElement).type);
-  var runout =  $("#runout_line").next();
-  // if runout === '' {
-    // console.log('null next sibling');
-  // }
 });
 
 
