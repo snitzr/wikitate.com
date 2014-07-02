@@ -14,7 +14,7 @@
   background-color: black;
 }
 #transcripting tr:nth-child(odd){
-  background-color: red;
+  background-color: purple;
 }
 
 #ytplayer {
@@ -44,7 +44,7 @@ a:hover{
 }
 
 body {
-  font-weight: 200; !important
+  font-weight: 200 !important;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -135,11 +135,7 @@ db v: unavailable
     <tr>
       <td><input id="n1" class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td>
       <td><input id="f1" class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td>
-      <td>+</td>
-    </tr>
-    <tr class="list">
-      <td><input id="n2" class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td>
-      <td><input id="runout_cell" class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td>
+      <!-- Add row disrupts tab flow and is lesser used. Therefore it should only appear on hover, focus, or similar event -->
       <td>+</td>
     </tr>
     <!-- end drafting timing set -->
@@ -150,6 +146,8 @@ db v: unavailable
   <input type="submit" value="Submit transcript" />
 </form>
 <!-- end drafting form set -->
+
+
 
 {% else %}
 <a href="/accounts/login/?next={{request.path}}">Log in to add your own transcript.</a>
