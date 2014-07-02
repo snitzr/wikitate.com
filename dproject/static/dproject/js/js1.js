@@ -4,9 +4,11 @@ $(window).load(function () {
 });
 
 // link timer to timestamp and display caption function
+// v2 time on user side, check API time as failsafe near user next caption time.
 function updateCurrentTime() {
   $('#timeStamp').html('&nbsp;');
   if (player.getPlayerState() === 1) {
+    // v2 why round? why not just match nonround to last transcript event?
     var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
     $('#timeStamp').html('Timestamp: ' + 'rounded: ' + rounded + ' fixed: ' + player.getCurrentTime().toFixed(1));
     console.log(player.getCurrentTime());
@@ -18,7 +20,11 @@ function updateCurrentTime() {
 
 var transcript = {
   "0": "0",
+  0.5: "hello",
 }
+
+// v2 caption format?
+// [{"time":"3", "time":3, "text":"hello"}, ...]
 
 //var transcript = {
   //"0": "This a test of the CamStudio microphone.",
@@ -79,10 +85,12 @@ $('#timeClick').mouseup(function () {
 });
 
 
+
 // append new time and text line to add transcript table on tab
+// clear any double blank rows after submit
 // allow tab through to Submit button if last text field is blank
 // make this function a variable to call? Currently having global vs local var issue because declaring var in function?
-$('#transcripting').focusin(function() {
+$('#transcripting').on('focusin', function() {
   // need logic to only append on last row
   // need logic to stop appending once new blank row is appended
   // jQuery logic to see if next tag is not table so to only append last row
@@ -91,7 +99,6 @@ $('#transcripting').focusin(function() {
   console.log('\n\n_________________v\nworking');
   console.log('1a activeElement value:\t' + document.activeElement.value);
   console.log('1b activeElement type:\t' + document.activeElement.type);
-  // test if previous cell has a value 
   console.log('2a this prev prev val:\t' + $(this).prev().prev().val());
   console.log('2b this prev val:\t' + $(this).prev().val());
   console.log('2c this prev:\t' + $(this).prev());
@@ -105,10 +112,10 @@ $('#transcripting').focusin(function() {
   // if runout === '' {
     // console.log('null next sibling');
   // }
-  if ((document.activeElement.type === 'text') && (document.activeElement.value !== '')) {
+  // if ((document.activeElement.type === 'text') && (document.activeElement.value !== '')) {
     // for maintainability the appended HTML should just make a copy of current tr minus text input and not be hardcoded HTML
-    $('#transcripting').append('<tr id="runout_row"><td><input class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td><td id="runout_line"><input class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td></tr>');
-  }
+    $('#transcripting').append('<tr id="runout_row"><td><input class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td><td id="runout_line"><input class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td><td>+</td></tr>');
+  // }
 });
 
 

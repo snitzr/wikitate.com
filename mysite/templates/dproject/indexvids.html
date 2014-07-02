@@ -125,6 +125,7 @@ db v: unavailable
 
 
   <!-- begin drafting timing set -->
+  <!-- needs responsive -->
   <table id="transcripting">
     <tr>
       <th>time</th>
@@ -136,22 +137,19 @@ db v: unavailable
       <td><input id="f1" class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td>
       <td>+</td>
     </tr>
-    <tr id="runout_row">
+    <tr class="list">
       <td><input id="n2" class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td>
-      <td id="runout_line f2"><input id="runout_cell" class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td>
-    <tr id="runout_row">
-      <td><input id="n3" class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td>
-      <td id="runout_line f3"><input id="runout_cell" class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td>
+      <td><input id="runout_cell" class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td>
       <td>+</td>
-  </tr>
+    </tr>
     <!-- end drafting timing set -->
     <!-- Might need to hard code addtranscript.transcript too unless input forms are easier than dropdowns -->
     {# {{ addtranscript.transcript }} (required) #}
     {# need jQuery to check if all required fields are chosen? #}
   </table>
-    <input type="submit" value="Submit transcript" />
+  <input type="submit" value="Submit transcript" />
 </form>
-  <!-- end drafting form set -->
+<!-- end drafting form set -->
 
 {% else %}
 <a href="/accounts/login/?next={{request.path}}">Log in to add your own transcript.</a>
