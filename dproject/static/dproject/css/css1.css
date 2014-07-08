@@ -10,12 +10,21 @@
   width: 500px;
 }
 
+/*
 #transcripting tr:nth-child(even){
   background-color: black;
 }
 #transcripting tr:nth-child(odd){
   background-color: purple;
 }
+*/
+
+/*
+#transcripting {
+  height: 300px;
+  overflow: hidden;
+}
+*/
 
 #ytplayer {
   height: 500px; /* prevent reformat after vid load */

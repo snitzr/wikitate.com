@@ -120,21 +120,28 @@ db v: unavailable
   {% endfor %}
   (required)
   {% endcomment %}
+
   <br />
+
   {# transcript form #}
-
-
   <!-- begin drafting timing set -->
   <!-- needs responsive -->
   <table id="transcripting">
+    <caption>Transcript</caption>
     <tr>
       <th>time</th>
       <th>text</th>
       <th>insert row</th>
     </tr>
     <tr>
-      <td><input id="n1" class="time" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"></td>
-      <td><input id="f1" class="transcript_cell" maxlength="100" placeholder="text" type="text" autocomplete="off"></td>
+      <td><input class="time_cell" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5" value="0"></td>
+      <td><input class="transcript_cell" maxlength="100" type="text" placeholder="text" autocomplete="off"></td>
+      <!-- Add row disrupts tab flow and is lesser used. Therefore it should only appear on hover, focus, or similar event -->
+      <td>+</td>
+    </tr>
+    <tr>
+      <td><input class="time_cell" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5" value="0"></td>
+      <td><input class="transcript_cell" maxlength="100" type="text" placeholder="text" autocomplete="off"></td>
       <!-- Add row disrupts tab flow and is lesser used. Therefore it should only appear on hover, focus, or similar event -->
       <td>+</td>
     </tr>
