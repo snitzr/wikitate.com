@@ -99,24 +99,13 @@ $('#transcripting').on('focusin', function() {
   console.log('\nworking_________________v\n');
   console.log('1a activeElement val:\t' + $(document.activeElement).val());
   console.log('1b activeElement type:\t' + document.activeElement.type);
-  console.log('2a this prev prev val:\t' + $(this).prev().prev().val());
-  console.log('2b this prev val:\t' + $(this).prev().val());
-  console.log('2c this prev:\t' + $(this).prev());
-  console.log('2d this siblings:\t' + $(this).siblings());
-  console.log('2e this next val:\t' + $(this).next().val()); // to check if next item is Submit button
-  console.log('2f this val:\t' + $(this).val()); // to check if next item is Submit button
-  console.log('3 this parent parent prev children val:\t' + $(this).parent().parent().prev().children().children().val());
-  console.log('4 #transcripting next val:\t' + $('#transcripting').next().val());
-  console.log('5 #transcripting last val:\t' + $('#transcripting').last().val());
-  console.log('6 last val:\t' + $('#transcripting').last().val());
-  console.log('7 #transcripting tr:last value:\t' + $('#transcripting tr:last').value);
-  console.log('8a #transcripting tr:last val:\t' + $('#transcripting tr:last').val());
-  console.log('8b #transcripting last val:\t' + $('#transcripting input').last().val());
-  console.log('8c #transcripting last prev val:\t' + $('#transcripting input').last().prev().val());
 
+
+  /*
   if ((document.activeElement) === $('#transcripting tr:last')) {
     console.log('last in focus');
   }
+  */
 
   // $('#transcripting tr:last').css('background-color', 'red');
   // $('#transcripting tr:last').prev().css('background-color', 'white');
@@ -124,7 +113,7 @@ $('#transcripting').on('focusin', function() {
   // if last row, if text, if !(prev prev row text False and prev row text False).
   if ((document.activeElement.type === 'text') /*&& (document.activeElement.value === '') && ('test' === 'test')*/) {
     // for maintainability the appended HTML should just make a copy of current tr minus text input and not be hardcoded HTML
-    $('#transcripting').append('<tr><td><input class="time_cell" cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"</td><td><input class="transcript_cell" maxlength="100" type="text" placeholder="text" autocomplete="off"></td><td>+</td></tr>');
+    $('#transcripting').append('<tr><td class="time_cell"><input cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"</td><td class="transcript_cell"><input maxlength="100" type="text" placeholder="text" autocomplete="off"></td><td>+</td></tr>');
    }
 });
 
@@ -250,3 +239,24 @@ function faster() {
 
 // delay interval load
 // $(window).load(window.setTimeout(funcX, 5500));
+
+
+/*
+remanants of cell traversal testing
+console.log('2a this prev prev val:\t' + $(this).prev().prev().val());
+console.log('2b this prev val:\t' + $(this).prev().val());
+console.log('2c this prev:\t' + $(this).prev());
+console.log('2d this siblings:\t' + $(this).siblings());
+console.log('2e this next val:\t' + $(this).next().val()); // to check if next item is Submit button
+console.log('2f this val:\t' + $(this).val()); // to check if next item is Submit button
+console.log('3 this parent parent prev children val:\t' + $(this).parent().parent().prev().children().children().val());
+console.log('4 #transcripting next val:\t' + $('#transcripting').next().val());
+console.log('5 #transcripting last val:\t' + $('#transcripting').last().val());
+console.log('6 last val:\t' + $('#transcripting').last().val());
+console.log('7 #transcripting tr:last value:\t' + $('#transcripting tr:last').value);
+console.log('8a #transcripting tr:last val:\t' + $('#transcripting tr:last').val());
+console.log('8b #transcripting last val:\t' + $('#transcripting input').last().val());
+console.log('8c #transcripting last prev val:\t' + $('#transcripting input').last().prev().val());
+console.log('9a #transcripting type nth 2:\t' + $('#transcripting input:nth-last-of-type(2)').type);
+console.log('9b #transcripting type nth 3:\t' + $('#transcripting input:nth-last-of-type(3)').type);
+*/
