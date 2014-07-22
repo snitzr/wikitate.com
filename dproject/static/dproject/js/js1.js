@@ -90,6 +90,15 @@ $('#timeClick').mouseup(function () {
 // clear any double blank rows after submit
 // allow tab through to Submit button if last text field is blank
 // make this function a variable to call? Currently having global vs local var issue because declaring var in function?
+$('#transcripting').on('click', 'a', function() {
+   var transcripting_row = ($(this).closest('tr').html());
+   $(this).closest('tr').after('<tr>' + transcripting_row + '</tr>');
+   $(this).closest('tr').next().children('.transcript_cell').children('input').focus();
+   return false;
+   });
+
+
+/*
 $('#transcripting').on('focusin', function() {
   // need logic to only append on last row
   // need logic to stop appending once new blank row is appended
@@ -99,7 +108,7 @@ $('#transcripting').on('focusin', function() {
   console.log('\nworking_________________v\n');
   console.log('1a activeElement val:\t' + $(document.activeElement).val());
   console.log('1b activeElement type:\t' + document.activeElement.type);
-
+*/
 
   /*
   if ((document.activeElement) === $('#transcripting tr:last')) {
@@ -111,11 +120,11 @@ $('#transcripting').on('focusin', function() {
   // $('#transcripting tr:last').prev().css('background-color', 'white');
 
   // if last row, if text, if !(prev prev row text False and prev row text False).
-  if ((document.activeElement.type === 'text') /*&& (document.activeElement.value === '') && ('test' === 'test')*/) {
+  // if ((document.activeElement.type === 'text') /*&& (document.activeElement.value === '') && ('test' === 'test')*/) {
     // for maintainability the appended HTML should just make a copy of current tr minus text input and not be hardcoded HTML
-    $('#transcripting').append('<tr><td class="time_cell"><input cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"</td><td class="transcript_cell"><input maxlength="100" type="text" placeholder="text" autocomplete="off"></td><td>+</td></tr>');
-   }
-});
+    // $('#transcripting').append('<tr><td class="time_cell"><input cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5"</td><td class="transcript_cell"><input maxlength="100" type="text" placeholder="text" autocomplete="off"></td><td>+</td></tr>');
+   // }
+// });
 
 
 

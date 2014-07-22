@@ -134,18 +134,24 @@ db v: unavailable
       <th>insert row</th>
     </tr>
     <tr>
-      <td class="time_cell"><input cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5" value="0"></td>
-      <td class="transcript_cell"><input maxlength="100" type="text" placeholder="text" autocomplete="off"></td>
-      <!-- Add row disrupts tab flow and is lesser used. Therefore it should only appear on hover, focus, or similar event -->
-      <td>+</td>
+      <td class="time_cell"><input cols="100" min="0" type="number" step="0.5" value="" /></td>
+      <td class="transcript_cell"><input maxlength="100" type="text" /></td>
+      <td class="insert_row"><a href="#notlink">+</a></td>
     </tr>
     <tr>
-      <td class="time_cell"><input cols="100" min="0" type="number" placeholder="time" autocomplete="off" step="0.5" value=""></td>
-      <td class="transcript_cell"><input maxlength="100" type="text" placeholder="text" autocomplete="off"></td>
-      <!-- Add row disrupts tab flow and is lesser used. Therefore it should only appear on hover, focus, or similar event -->
-      <td>+</td>
+      <td class="time_cell"><input cols="100" min="0" type="number" step="0.5" value="" /></td>
+      <td class="transcript_cell"><input maxlength="100" type="text" /></td>
+      <td class="insert_row"><a href="#notlink">+</a></td>
     </tr>
-    <!-- end drafting timing set -->
+    <tr>
+      <td class="time_cell"><input cols="100" min="0" type="number" step="0.5" value="" /></td>
+      <td class="transcript_cell"><input maxlength="100" type="text" /></td>
+      <td class="insert_row"><a href="#notlink">+</a></td>
+    </tr>
+
+
+
+<!-- end drafting timing set -->
     <!-- Might need to hard code addtranscript.transcript too unless input forms are easier than dropdowns -->
     {# {{ addtranscript.transcript }} (required) #}
     {# need jQuery to check if all required fields are chosen? #}

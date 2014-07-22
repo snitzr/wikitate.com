@@ -19,12 +19,13 @@
 }
 */
 
-/*
-#transcripting {
-  height: 300px;
-  overflow: hidden;
+#transcripting td.transcript_cell input {
+  width: 400px; /* check on iPad */
 }
-*/
+
+#transcripting td.insert_row {
+  text-align: center;
+}
 
 #ytplayer {
   height: 500px; /* prevent reformat after vid load */
