@@ -1,3 +1,18 @@
+.button-link {
+  padding: 3px 22px 4px 22px;
+  border: solid 1px grey;
+  text-decoration: none;
+}
+.button-link:hover {
+  border: solid 1px grey;
+  text-decoration: underline;
+}
+.button-link:active {
+  border: solid 1px grey;
+  text-decoration: underline;
+}
+
+
 /*#ad {*/
   /*height: 60px;*/
   /*width: 468px;*/

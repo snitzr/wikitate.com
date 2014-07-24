@@ -48,7 +48,7 @@ db v: unavailable
   {# need logic here to check for existing language transcripts and then disable existing in dropdown #}
   <!-- hard coding drop down until I have a programmable solution -->
   <select id="id_language" name="language">
-    <option selected="selected" disabled="disabled">Transcript language </option>
+    <option selected="selected" disabled="disabled">Transcript language (required)</option>
     <option {{ transcript_existence_af }} value="af">Afrikaans</option>
     <option {{ transcript_existence_id }} value="id">Bahasa Indonesia</option>
     <option {{ transcript_existence_etc }} value="ms">Bahasa Malaysia</option>
@@ -111,7 +111,6 @@ db v: unavailable
     <option {{ transcript_existence }} value="ja">日本語</option>
     <option {{ transcript_existence }} value="ko">한국어</option>
   </select>
-      (required) 
 
   {% comment %}
   {{ languages_array.management_form }}
@@ -136,24 +135,24 @@ db v: unavailable
     <tr>
       <td class="time_cell"><input cols="100" min="0" type="number" step="0.5" value="" /></td>
       <td class="transcript_cell"><input maxlength="100" type="text" /></td>
-      <td class="insert_row"><a href="#notlink">+</a></td>
+      <td class="insert_row"><a class="button-link" href="#notlink">+</a></td>
     </tr>
     <tr>
       <td class="time_cell"><input cols="100" min="0" type="number" step="0.5" value="" /></td>
       <td class="transcript_cell"><input maxlength="100" type="text" /></td>
-      <td class="insert_row"><a href="#notlink">+</a></td>
+      <td class="insert_row"><a class="button-link" href="#notlink">+</a></td>
     </tr>
     <tr>
       <td class="time_cell"><input cols="100" min="0" type="number" step="0.5" value="" /></td>
       <td class="transcript_cell"><input maxlength="100" type="text" /></td>
-      <td class="insert_row"><a href="#notlink">+</a></td>
+      <td class="insert_row"><a class="button-link" href="#notlink">+</a></td>
     </tr>
 
 
 
 <!-- end drafting timing set -->
     <!-- Might need to hard code addtranscript.transcript too unless input forms are easier than dropdowns -->
-    {# {{ addtranscript.transcript }} (required) #}
+    {{ addtranscript.transcript }} (required)
     {# need jQuery to check if all required fields are chosen? #}
   </table>
   <input type="submit" value="Submit transcript" />

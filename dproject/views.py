@@ -60,7 +60,7 @@ Refactor to prevent bogus data being written for nonexistant 11 char
 string URLs
 """
 def transcript_submit(request, vidId):
-    """Handle post data submit from trancript field"""
+    """Handle post data submit from transcript field"""
     if request.method == 'POST': # If the form has been submitted...
         transcriptForm = AddTranscript(request.POST) # A form.py function bound to POST data
         languageForm = LanguageModelChoiceField(request.POST) # A form.py function bound to POST data
@@ -101,7 +101,8 @@ def transcript_submit(request, vidId):
         #return # add redirect code either way and message
         return HttpResponseRedirect('/%s/' % vidId)
 
-# second step for creating transcript, the timing page
+# second step for creating transcript, the timing page.
+# currently unimplemented
 def set_vid_timing(request):
     context = 'test'
     return render(request, '', context)
