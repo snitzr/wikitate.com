@@ -81,6 +81,7 @@ class Transcript(models.Model):
         ('zh-HK', '中文 (香港)'),
         ('ja', '日本語'),
         ('ko', '한국어'),
+        ('ot', 'other'),
     )
     language = models.CharField(max_length=100, choices=LANGUAGES)
     user = models.CharField(max_length=50)

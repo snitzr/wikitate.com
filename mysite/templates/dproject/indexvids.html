@@ -110,6 +110,7 @@ db v: unavailable
     <option {{ transcript_existence }} value="zh-HK">中文 (香港)</option>
     <option {{ transcript_existence }} value="ja">日本語</option>
     <option {{ transcript_existence }} value="ko">한국어</option>
+    <option {{ transcript_existence }} value="ot">other</option>
   </select>
 
   {% comment %}
@@ -125,6 +126,7 @@ db v: unavailable
   {# transcript form #}
   <!-- begin drafting timing set -->
   <!-- needs responsive -->
+  <div id="id_transcript" name="transcript">
   <table id="transcripting">
     <caption>Transcript</caption>
     <tr>
@@ -133,8 +135,9 @@ db v: unavailable
       <th>insert row</th>
     </tr>
     <tr>
-      <td class="time_cell"><input cols="100" min="0" type="number" step="0.5" value="" /></td>
-      <td class="transcript_cell"><input maxlength="100" type="text" /></td>
+      <!-- how do id and name factor into Django form submit? how do I get each cell to submit? -->
+      <td class="time_cell"><input id="id_transcript" name="transcript" cols="100" min="0" type="number" step="0.5" value="" /></td>
+      <td class="transcript_cell"><input id="id_transcript" name="transcript" maxlength="100" type="text" /></td>
       <td class="insert_row"><a class="button-link" href="#notlink">+</a></td>
     </tr>
     <tr>
@@ -152,9 +155,11 @@ db v: unavailable
 
 <!-- end drafting timing set -->
     <!-- Might need to hard code addtranscript.transcript too unless input forms are easier than dropdowns -->
-    {{ addtranscript.transcript }} (required)
+    {# existing transcript form #}
+    {# {{ addtranscript.transcript }} (required) #}
     {# need jQuery to check if all required fields are chosen? #}
   </table>
+</div>
   <input type="submit" value="Submit transcript" />
 </form>
 <!-- end drafting form set -->
@@ -231,7 +236,7 @@ db v: unavailable
 <ol id="transcript">
 {% if t %}
   {% for x in t %}
-  <!-- commenting out for now until can truncate while still passing to var untrancated -->
+  <!-- commenting out for now until can truncate while still passing to var untruncated -->
   <!--<li id="transcriptDisplaySelect{{ forloop.counter }}"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
   <!--<li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
   <li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|linebreaksbr }}</a></li>

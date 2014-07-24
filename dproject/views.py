@@ -62,8 +62,8 @@ string URLs
 def transcript_submit(request, vidId):
     """Handle post data submit from transcript field"""
     if request.method == 'POST': # If the form has been submitted...
-        transcriptForm = AddTranscript(request.POST) # A form.py function bound to POST data
         languageForm = LanguageModelChoiceField(request.POST) # A form.py function bound to POST data
+        transcriptForm = AddTranscript(request.POST) # A form.py function bound to POST data
         try:
             Vid.objects.get(vidId=vidId).pk
         except:
