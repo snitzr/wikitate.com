@@ -1,6 +1,7 @@
 from django.shortcuts import render, Http404, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from dproject.forms import SearchForm, AddTranscript, LanguageModelChoiceField
+from django.forms.formsets import formset_factory
 from dproject.models import Vid, Transcript
 from django.core.urlresolvers import reverse
 import re

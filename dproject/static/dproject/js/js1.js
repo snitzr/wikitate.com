@@ -91,12 +91,20 @@ $('#timeClick').mouseup(function () {
 // allow tab through to Submit button if last text field is blank
 // make this function a variable to call? Currently having global vs local var issue because declaring var in function?
 $('#transcripting').on('click', 'a', function() {
-   var transcripting_row = ($(this).closest('tr').html());
-   $(this).closest('tr').after('<tr>' + transcripting_row + '</tr>');
-   $(this).closest('tr').next().children('.transcript_cell').children('input').focus();
-   return false;
-   });
+  var this_closest_tr = $(this).closest('tr'); // declare this tr as fast reusable var
+  var transcripting_row = ($(this_closest_tr).html());
+  $(this_closest_tr).after('<tr>' + transcripting_row + '</tr>');
+  $(this_closest_tr).next().children('.transcript_cell').children('input').focus();
+  return false;
+  });
 
+$('#transcripting').on('keyup', 'input', function() {
+  // var transcripting_form_values = $(this).val();
+  var transcripting_form_values = $('#transcripting').filter(':input').val();
+  console.log(transcripting_form_values);
+  // console.log($('#transcripting:input').val());
+  $('#concat_transcript').val(transcripting_form_values);
+});
 
 /*
 $('#transcripting').on('focusin', function() {
