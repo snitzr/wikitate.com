@@ -128,7 +128,7 @@ db v: unavailable
   {# transcript form #}
   <!-- begin drafting timing set -->
   <!-- needs responsive -->
-  <div id="id_transcript" name="transcript"> <!-- does name-transcript need to be here at all? -->
+  <div id="transcript_table" name="transcript_table"> <!-- does name-transcript need to be here at all? -->
   <table id="transcripting">
     <caption>Transcript</caption>
     <tr>
@@ -138,13 +138,8 @@ db v: unavailable
     </tr>
     <tr>
       <!-- how do id and name factor into Django form submit? how do I get each cell to submit? -->
-      <td class="time_cell"><input id="XXXXid_transcript" name="transcript" cols="100" min="0" type="number" step="0.5" value="" /></td>
-      <td class="transcript_cell"><input id="XXXXid_transcript" name="transcript" maxlength="100" type="text" /></td>
-      <td class="insert_row"><a class="button-link" href="#notlink">+</a></td>
-    </tr>
-    <tr>
-      <td class="time_cell"><input id="XXXXid_transcript" name="transcript" cols="100" min="0" type="number" step="0.5" value="" /></td>
-      <td class="transcript_cell"><input id="XXXXid_transcript" name="transcript" maxlength="100" type="text" /></td>
+      <td class="time_cell"><input id="id_transcript" name="transcript" cols="100" min="0" type="number" step="0.5" value="" /></td>
+      <td class="transcript_cell"><input id="id_transcript" name="transcript" maxlength="100" type="text" /></td>
       <td class="insert_row"><a class="button-link" href="#notlink">+</a></td>
     </tr>
 
@@ -152,7 +147,6 @@ db v: unavailable
 
 <!-- end drafting timing set -->
     <!-- Might need to hard code addtranscript.transcript too unless input forms are easier than dropdowns -->
-    {# existing transcript form #}
     {# {{ addtranscript.transcript }} (required) #}
     {# need jQuery to check if all required fields are chosen? #}
   </table>

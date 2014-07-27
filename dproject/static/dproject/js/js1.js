@@ -100,9 +100,9 @@ $('#transcripting').on('click', 'a', function() {
 
 $('#transcripting').on('keyup', 'input', function() {
   // var transcripting_form_values = $(this).val();
-  var transcripting_form_values = $('#transcripting').filter(':input').val();
+  var transcripting_form_values = $('form').serializeArray();
+  console.log($('form').serializeArray());
   console.log(transcripting_form_values);
-  // console.log($('#transcripting:input').val());
   $('#concat_transcript').val(transcripting_form_values);
 });
 
