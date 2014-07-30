@@ -99,9 +99,7 @@ $('#transcripting').on('click', 'a', function() {
   });
 
 $('#transcripting').on('keyup', 'input', function() {
-  // var transcripting_form_values = $(this).val();
   var transcripting_form_values = $('form').serializeArray();
-  console.log($('form').serializeArray());
   console.log(transcripting_form_values);
   $('#concat_transcript').val(transcripting_form_values);
 });
@@ -277,3 +275,7 @@ console.log('8c #transcripting last prev val:\t' + $('#transcripting input').las
 console.log('9a #transcripting type nth 2:\t' + $('#transcripting input:nth-last-of-type(2)').type);
 console.log('9b #transcripting type nth 3:\t' + $('#transcripting input:nth-last-of-type(3)').type);
 */
+
+
+// live reload
+document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
