@@ -98,10 +98,12 @@ $('#transcripting').on('click', 'a', function() {
   return false;
   });
 
+// serialze all transcript rows to JSON for single field submit to Django
 $('#transcripting').on('keyup', 'input', function() {
-  var transcripting_form_values = $('form').serializeArray();
+  var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
   console.log(transcripting_form_values);
-  $('#concat_transcript').val(transcripting_form_values);
+  console.log(JSON.parse(transcripting_form_values));
+  $('#id_transcript').val(transcripting_form_values);
 });
 
 /*
