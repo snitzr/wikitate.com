@@ -64,7 +64,7 @@ $('.transcriptDisplaySelect').click(function () {
 // start / stop video control
 $('#starp').click(function () {
   if (player.getPlayerState() === 1) {
-    player.pauseVideo(); 
+    player.pauseVideo();
   } else {
     player.playVideo();
   }
@@ -99,10 +99,17 @@ $('#transcripting').on('click', 'a', function() {
   });
 
 // serialze all transcript rows to JSON for single field submit to Django
+// var meta1 = player.getVideoUrl();
 $('#transcripting').on('keyup', 'input', function() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
-  console.log(transcripting_form_values);
-  console.log(JSON.parse(transcripting_form_values));
+  // console.log(transcripting_form_values);
+  console.log('{');
+  JSON.parse(transcripting_form_values, function (k, v) {
+    if (k === 'value') {
+      console.log('"' + v + '":');
+    }
+  });
+  console.log('}');
   $('#id_transcript').val(transcripting_form_values);
 });
 
@@ -155,8 +162,9 @@ $('#transcripting').on('focusin', function() {
 // find YT username
 // $('#username').html(document.getElementById('yt-masthead-user-displayname').innerHTML);
 
-// find vidID
-$('#vidCode').html(vidCode);
+// find vidID for meta JSON info
+// var vidCode = $('#vidCode').html(vidCode);
+// var vidCode = /v=11+/g.exec(vidCode); // or val.replace (,);
 // $('#returnYT').html('\"<a href=\"//youtube.com/watch?v=\"' + vidCode + 'returnYT</a>');
 
 // return to YouTube button
