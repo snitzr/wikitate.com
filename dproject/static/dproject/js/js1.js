@@ -88,8 +88,9 @@ $('#timeClick').mouseup(function () {
 
 // append new time and text row to add transcript table on click
 $('#transcripting').on('click', 'a', function() {
-  console.log($(this).html();
-  if ($(this).html()) !== '+' {
+  console.log($(this).html());
+  // /*
+  if ($(this).html() === '+') {
     var this_closest_tr = $(this).closest('tr');
     var transcripting_row = $(this_closest_tr).html();
     $(this_closest_tr).after('<tr>' + transcripting_row + '</tr>');
@@ -98,6 +99,7 @@ $('#transcripting').on('click', 'a', function() {
   else {
     $(this).closest('tr').remove();
   }
+  // */
 });
 
 // delete time and text row from add transcript table on click
