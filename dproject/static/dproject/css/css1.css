@@ -3,18 +3,22 @@
   /*float: right;*/
 /*}*/
 
-.button-link {
+#id_transcript {
+  width: 400px;
+}
+
+.insert_row a, .delete_row a {
   padding: 3px 22px 4px 22px;
   border: solid 1px grey;
   text-decoration: none;
 }
 
-.button-link:hover {
+.insert_row a:hover, .delete_row a:hover {
   border: solid 1px grey;
   text-decoration: underline;
 }
 
-.button-link:active {
+.insert_row a:active, .delete_row a:active {
   border: solid 1px grey;
   text-decoration: underline;
 }

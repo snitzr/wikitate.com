@@ -86,32 +86,51 @@ $('#timeClick').mouseup(function () {
 
 
 
-// append new time and text line to add transcript table on tab
-// clear any double blank rows after submit
-// allow tab through to Submit button if last text field is blank
-// make this function a variable to call? Currently having global vs local var issue because declaring var in function?
+// append new time and text row to add transcript table on click
 $('#transcripting').on('click', 'a', function() {
-  var this_closest_tr = $(this).closest('tr'); // declare this tr as fast reusable var
-  var transcripting_row = ($(this_closest_tr).html());
-  $(this_closest_tr).after('<tr>' + transcripting_row + '</tr>');
-  $(this_closest_tr).next().children('.transcript_cell').children('input').focus();
-  return false;
+  console.log($(this).html();
+  if ($(this).html()) !== '+' {
+    var this_closest_tr = $(this).closest('tr');
+    var transcripting_row = $(this_closest_tr).html();
+    $(this_closest_tr).after('<tr>' + transcripting_row + '</tr>');
+    $(this_closest_tr).next().children('.transcript_cell').children('input').focus();
+  }
+  else {
+    $(this).closest('tr').remove();
+  }
+});
+
+// delete time and text row from add transcript table on click
+// todo: allow removal of all but one row
+$('#transcripting').on('click', 'a', function() {
+  // var transcripting_row = $(this_closest_tr).html();
+  // $(this_closest_tr).after('<tr>' + transcripting_row + '</tr>');
+  // $(this_closest_tr).next().children('.transcript_cell').children('input').focus();
   });
 
+// todo: clear any double blank rows after submit
+  
 // serialze all transcript rows to JSON for single field submit to Django
 // var meta1 = player.getVideoUrl();
 $('#transcripting').on('keyup', 'input', function() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
   // console.log(transcripting_form_values);
-  console.log('{');
+  /*
   JSON.parse(transcripting_form_values, function (k, v) {
     if (k === 'value') {
-      console.log('"' + v + '":');
+      // console.log('"' + v + '":');
+      console.log(v + ':)');
+      $('#id_transcript').val(v + ':,');
     }
   });
-  console.log('}');
+  */
+  console.log(JSON.parse(transcripting_form_values));
+  console.log(JSON.parse(transcripting_form_values));
   $('#id_transcript').val(transcripting_form_values);
 });
+
+
+
 
 /*
 $('#transcripting').on('focusin', function() {
