@@ -1,7 +1,7 @@
-/*#id_transcript {*/
-  /*visibility: hidden;*/
-  /*float: right;*/
-/*}*/
+#id_transcript {
+  visibility: hidden;
+  float: right;
+}
 
 #id_transcript {
   width: 400px;

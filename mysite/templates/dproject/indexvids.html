@@ -151,7 +151,9 @@ db v: unavailable
     <!-- Might need to hard code addtranscript.transcript too unless input forms are easier than dropdowns -->
     {# {{ addtranscript.transcript }} (required) #}
     {# need jQuery to check if all required fields are chosen? #}
-<input id="id_transcript" name="transcript" type="text" />
+
+    <!-- hidden-->
+    <input id="id_transcript" name="transcript" type="text" />
   </table>
 </div>
   <input type="submit" value="Submit transcript" />
