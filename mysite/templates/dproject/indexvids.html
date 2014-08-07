@@ -15,8 +15,8 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 function onYouTubePlayerAPIReady() {
   player = new YT.Player('ytplayer', {
-// height: '480',
-width: '100%',
+// height: '480', // in CSS
+// width: '50%', // in CSS
 videoId: '{{ vidId }}'
 });
 }
@@ -34,7 +34,7 @@ db v: unavailable
 {% endcomment %}
 
 <div id="add_transcripts">
-<h2>Add Transcript</h2>
+<h2>Add Transcript to {{vidId|truncatewords:15}}</h2>
 {% if user.is_authenticated %}
 {% load account %}
 {% user_display user %}
@@ -140,7 +140,7 @@ db v: unavailable
     </tr>
     <tr>
       <td class="time_cell"><input id="timestamp_cell" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td>
-      <td class="transcript_cell"><input id="transcript_cell" name="transcript_cell" maxlength="100" type="text" /></td>
+      <td class="transcript_cell"><input id="transcript_cell" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td>
       <td class="insert_row"><a href="#notlink">+</a></td>
       <td class="delete_row"><a href="#notlink">-</a></td>
     </tr>

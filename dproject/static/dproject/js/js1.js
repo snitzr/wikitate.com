@@ -96,36 +96,28 @@ $('#transcripting').on('click', 'a', function() {
     $(this_closest_tr).after('<tr>' + transcripting_row + '</tr>');
     $(this_closest_tr).next().children('.transcript_cell').children('input').focus();
   }
-  else {
+  // todo: allow removal of all but one row
+  else if (($('#transcripting tr').length) > 2) {
     $(this).closest('tr').remove();
   }
   // */
 });
 
-// delete time and text row from add transcript table on click
-// todo: allow removal of all but one row
-$('#transcripting').on('click', 'a', function() {
-  // var transcripting_row = $(this_closest_tr).html();
-  // $(this_closest_tr).after('<tr>' + transcripting_row + '</tr>');
-  // $(this_closest_tr).next().children('.transcript_cell').children('input').focus();
-  });
-
 // todo: clear any double blank rows after submit
-  
 // serialze all transcript rows to JSON for single field submit to Django
 // var meta1 = player.getVideoUrl();
 $('#transcripting').on('keyup', 'input', function() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
   // console.log(transcripting_form_values);
-  /*
+  // /*
   JSON.parse(transcripting_form_values, function (k, v) {
     if (k === 'value') {
-      // console.log('"' + v + '":');
-      console.log(v + ':)');
+      // console.log('"' + v.join('":') + ','); // todo: reserach join
+      // console.log(v + ':)');
       $('#id_transcript').val(v + ':,');
     }
   });
-  */
+  // */
   console.log(JSON.parse(transcripting_form_values));
   console.log(JSON.parse(transcripting_form_values));
   $('#id_transcript').val(transcripting_form_values);
