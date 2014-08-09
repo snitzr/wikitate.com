@@ -103,23 +103,34 @@ $('#transcripting').on('click', 'a', function() {
   // */
 });
 
+
 // todo: clear any double blank rows after submit
 // serialze all transcript rows to JSON for single field submit to Django
 // var meta1 = player.getVideoUrl();
 $('#transcripting').on('keyup', 'input', function() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
   // console.log(transcripting_form_values);
-  // /*
+  /*
   JSON.parse(transcripting_form_values, function (k, v) {
     if (k === 'value') {
-      // console.log('"' + v.join('":') + ','); // todo: reserach join
+      // console.log('"' + v.join('":') + ',');
       // console.log(v + ':)');
       $('#id_transcript').val(v + ':,');
     }
   });
-  // */
-  console.log(JSON.parse(transcripting_form_values));
-  console.log(JSON.parse(transcripting_form_values));
+  */
+  
+  // console.log(JSON.parse(transcripting_form_values));
+  
+  // initial for loop for submitted transcript
+  
+  for (var i = 0; i < transcripting_form_values.length; i++) {
+    var parsed = JSON.parse(transcripting_form_values) 
+    if (typeof parsed[i] !== 'undefined') {
+      console.log(parsed[i].value);
+    }
+  }
+  
   $('#id_transcript').val(transcripting_form_values);
 });
 
