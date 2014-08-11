@@ -124,14 +124,23 @@ $('#transcripting').on('keyup', 'input', function() {
   
   // initial for loop for submitted transcript
   
+  var parsed_add = '{';
   for (var i = 0; i < transcripting_form_values.length; i++) {
-    var parsed = JSON.parse(transcripting_form_values) 
+    var parsed = JSON.parse(transcripting_form_values);
     if (typeof parsed[i] !== 'undefined') {
-      console.log(parsed[i].value);
+      if ((parsed[i].name) === ('timestamp_cell')) {
+        parsed_add += ('"' + parsed[i].value + '": ');
+      }
+      else if ((parsed[i].name) === ('transcript_cell')) {
+        parsed_add += ('"' + parsed[i].value + '"' + ', ');
+      }
     }
+    var parsed_for_slice = parsed_add;
+    console.log(parsed_for_slice.slice(0, -2) + '}');
   }
   
-  $('#id_transcript').val(transcripting_form_values);
+  // $('#id_transcript').val(transcripting_form_values);
+  $('#id_transcript').val(parsed_for_slice.slice(0, -2) + '}');
 });
 
 
