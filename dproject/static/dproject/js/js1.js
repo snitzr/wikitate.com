@@ -86,21 +86,19 @@ $('#timeClick').mouseup(function () {
 
 
 
-// append new time and text row to add transcript table on click
-$('#transcripting').on('click', 'a', function() {
+// append new time and text row to add transcript table on click or focus return
+$('#transcripting').on('click', 'a', function(event) {
+  event.preventDefault(); // prevent placeholder link from appering in browser URL
   console.log($(this).html());
-  // /*
   if ($(this).html() === '+') {
     var this_closest_tr = $(this).closest('tr');
     var transcripting_row = $(this_closest_tr).html();
     $(this_closest_tr).after('<tr>' + transcripting_row + '</tr>');
     $(this_closest_tr).next().children('.transcript_cell').children('input').focus();
   }
-  // todo: allow removal of all but one row
   else if (($('#transcripting tr').length) > 2) {
     $(this).closest('tr').remove();
   }
-  // */
 });
 
 
@@ -110,20 +108,9 @@ $('#transcripting').on('click', 'a', function() {
 $('#transcripting').on('keyup', 'input', function() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
   // console.log(transcripting_form_values);
-  /*
-  JSON.parse(transcripting_form_values, function (k, v) {
-    if (k === 'value') {
-      // console.log('"' + v.join('":') + ',');
-      // console.log(v + ':)');
-      $('#id_transcript').val(v + ':,');
-    }
-  });
-  */
-  
   // console.log(JSON.parse(transcripting_form_values));
   
-  // initial for loop for submitted transcript
-  
+  // for loop for submitted transcript
   var parsed_add = '{';
   for (var i = 0; i < transcripting_form_values.length; i++) {
     var parsed = JSON.parse(transcripting_form_values);
@@ -143,8 +130,23 @@ $('#transcripting').on('keyup', 'input', function() {
   $('#id_transcript').val(parsed_for_slice.slice(0, -2) + '}');
 });
 
+// prevent submit on enter for form field
+$('#transcripting').on('keyup keypress', 'input', function(event) {
+  var keycode = event.keyCode || event.which; 
+  if (keycode == 13) {               
+    event.preventDefault();
+    return false;
+  }
+});
 
-
+// test if language is selected. prohibit submit without language choice
+/*
+$('input').on('click', '#submit', function(event) {
+  if ($('select').val() === null) { // is this just the first drop down in the page?
+    event.preventDefault(); // prevent form submit
+  }
+});
+*/
 
 /*
 $('#transcripting').on('focusin', function() {
