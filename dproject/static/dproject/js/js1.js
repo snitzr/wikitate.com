@@ -139,6 +139,20 @@ $('#transcripting').on('keyup keypress', 'input', function(event) {
   }
 });
 
+// prevent submit without language choice
+// /*
+$('#submit').on('submit click keyup keypress', function(event) {
+  // if ($('#id_language option:selected').eq(0) === 'Transcript language (required)') {
+  if ($('#id_language').eq(0).val() === null) {
+    event.preventDefault();
+    var transcript_required_error_message = 'Transcript language required.';
+    $('#submit_message').html(transcript_required_error_message);
+    $('#language_message').html('&laquo; ' + transcript_required_error_message);
+    return false;
+  }
+});
+// */
+
 // test if language is selected. prohibit submit without language choice
 /*
 $('input').on('click', '#submit', function(event) {

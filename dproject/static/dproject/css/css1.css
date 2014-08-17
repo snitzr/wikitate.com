@@ -162,3 +162,7 @@ h1, h2, h3, h4, h5, h6 {
   /* list alignment is not consistent with About page */
   padding-left: 1.5em;
 }
+
+#submit_message, #language_message {
+  color: red;
+}
