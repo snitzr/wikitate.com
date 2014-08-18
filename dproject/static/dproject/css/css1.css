@@ -157,9 +157,10 @@ h1, h2, h3, h4, h5, h6 {
   /* trying to get transcript editor and transcript */
 }
 
-#transcript ol {
+#transcript {
   /* list-style-type: none; */
   /* list alignment is not consistent with About page */
+  width: 200px;
   padding-left: 1.5em;
 }
 

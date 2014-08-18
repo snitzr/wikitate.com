@@ -193,6 +193,7 @@ db v: unavailable
 <div id="playerExistenceIndicator">player.getDuration()</div>
 <div id="timeStamp">Timestamp</div>
 
+<!-- 
 <select>
 <div id="transcriptEdit">
   <option selected="selected">Choose another transcript language: </option>
@@ -218,6 +219,8 @@ db v: unavailable
   </option>
 </div>
 <select>
+-->
+
 <!-- DB views, template to access views, some kind of forms, validation of forms, key to access DB, {views: vid key from URL + ID, user or anon, language, chunk of transcript with times and content, rating},  -->
 <div>
   <p>Edit your draft transcript</p>
@@ -226,26 +229,26 @@ db v: unavailable
 
 <div id="submitted_transcripts">
 {% if t %}
-<h2>Available Transcript{{ t|pluralize }} [make drop down]</h2>
+<h2>Transcript{{ t|pluralize }}</h2>
 {% else%}
 <h2>No Transcripts</h2>
 {% endif %}
 
 
-<ol id="transcript">
+<select id="transcript" name="language">
+<option selected="selected" disabled="disabled">{{ t.count }} Available Transcript{{ t|pluralize }}</option>
 {% if t %}
   {% for x in t %}
   <!-- commenting out for now until can truncate while still passing to var untruncated -->
   <!--<li id="transcriptDisplaySelect{{ forloop.counter }}"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
   <!--<li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
-  <li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|linebreaksbr }}</a></li>
+  <!-- <li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|linebreaksbr }}</a></li> -->
+  <option class="transcriptDisplaySelect"><a href="#notlink">{{ x.transcript|linebreaksbr }}</a></option>
   {% empty %}
   <p>Zero transcripts</p>
   {% endfor %}
-</ol>
+</select>
 {% endif %}
 </div>
 
-
 {% endblock content %}
-
