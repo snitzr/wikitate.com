@@ -5,8 +5,8 @@ $(window).load(function () {
 
 // link timer to timestamp and display caption function
 // v2 time on user side, check API time as failsafe near user next caption time.
+$('#timeStamp').html('&nbsp;');
 function updateCurrentTime() {
-  $('#timeStamp').html('&nbsp;');
   if (player.getPlayerState() === 1) {
     // v2 why round? why not just match nonround to last transcript event?
     var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
@@ -17,6 +17,8 @@ function updateCurrentTime() {
   }
 }
 
+// todo: get player title and insert into template
+// $('.player_title').html(player_title);
 
 var transcript = {
   "0": "0",
@@ -138,9 +140,7 @@ $('#transcripting').on('keyup keypress', 'input', function(event) {
     return false;
   }
 });
-
 // prevent submit without language choice
-// /*
 $('#submit').on('submit click keyup keypress', function(event) {
   // if ($('#id_language option:selected').eq(0) === 'Transcript language (required)') {
   if ($('#id_language').eq(0).val() === null) {
@@ -151,7 +151,11 @@ $('#submit').on('submit click keyup keypress', function(event) {
     return false;
   }
 });
-// */
+
+// load drop down selection
+$('#transcript').on('change', function() {
+  // alert('hello');
+});
 
 // test if language is selected. prohibit submit without language choice
 /*

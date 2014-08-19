@@ -15,9 +15,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 function onYouTubePlayerAPIReady() {
   player = new YT.Player('ytplayer', {
-// height: '480', // in CSS
-// width: '50%', // in CSS
-videoId: '{{ vidId }}'
+  videoId: '{{ vidId }}'
 });
 }
 </script>
@@ -34,7 +32,7 @@ db v: unavailable
 {% endcomment %}
 
 <div id="add_transcripts">
-<h2>Add Transcript to {{vidId|truncatewords:15}}</h2>
+  <h2>Add Transcript to <span class="player_title">{{vidId|truncatewords:15}}</span></h2>
 {% if user.is_authenticated %}
 {% load account %}
 {% user_display user %}
@@ -239,11 +237,7 @@ db v: unavailable
 <option selected="selected" disabled="disabled">{{ t.count }} Available Transcript{{ t|pluralize }}</option>
 {% if t %}
   {% for x in t %}
-  <!-- commenting out for now until can truncate while still passing to var untruncated -->
-  <!--<li id="transcriptDisplaySelect{{ forloop.counter }}"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
-  <!--<li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|truncatewords:25 }}</a></li>-->
-  <!-- <li class="transcriptDisplaySelect"><a href="#">{{ x.transcript|linebreaksbr }}</a></li> -->
-  <option class="transcriptDisplaySelect"><a href="#notlink">{{ x.transcript|linebreaksbr }}</a></option>
+  <option class="transcriptDisplaySelect">{{ x.transcript|linebreaksbr }}</option>
   {% empty %}
   <p>Zero transcripts</p>
   {% endfor %}
