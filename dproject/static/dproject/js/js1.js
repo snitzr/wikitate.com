@@ -20,10 +20,7 @@ function updateCurrentTime() {
 // todo: get player title and insert into template
 // $('.player_title').html(player_title);
 
-var transcript = {
-  "0": "0",
-  0.5: "hello",
-}
+var transcript = {};
 
 // v2 caption format?
 // [{"time":"3", "time":3, "text":"hello"}, ...]
@@ -105,8 +102,6 @@ $('#transcripting').on('click', 'a', function(event) {
 
 
 // todo: clear any double blank rows after submit
-// serialze all transcript rows to JSON for single field submit to Django
-// var meta1 = player.getVideoUrl();
 $('#transcripting').on('keyup', 'input', function() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
   // console.log(transcripting_form_values);
@@ -128,7 +123,6 @@ $('#transcripting').on('keyup', 'input', function() {
     console.log(parsed_for_slice.slice(0, -2) + '}');
   }
   
-  // $('#id_transcript').val(transcripting_form_values);
   $('#id_transcript').val(parsed_for_slice.slice(0, -2) + '}');
 });
 
@@ -140,6 +134,7 @@ $('#transcripting').on('keyup keypress', 'input', function(event) {
     return false;
   }
 });
+
 // prevent submit without language choice
 $('#submit').on('submit click keyup keypress', function(event) {
   // if ($('#id_language option:selected').eq(0) === 'Transcript language (required)') {
@@ -152,9 +147,12 @@ $('#submit').on('submit click keyup keypress', function(event) {
   }
 });
 
+// convert drop down JSON to human readable
+// ('.transcriptDisplaySelect').;
+
 // load drop down selection
 $('#transcript').on('change', function() {
-  // alert('hello');
+  transcript = (JSON.parse(this.value));
 });
 
 // test if language is selected. prohibit submit without language choice
