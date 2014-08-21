@@ -7,23 +7,22 @@
   width: 400px;
 }
 
-#timestamp_cell {
+.timestamp_input {
   width: 90px;
+}
+.timestamp_input, .transcript_input {
+  border: solid 1px #454545;
 }
 
 .insert_row a, .delete_row a {
+  border: solid 1px #454545;
   padding: 3px 22px 4px 22px;
-  border: solid 1px grey;
   text-decoration: none;
 }
 
-.insert_row a:hover, .delete_row a:hover {
+.insert_row a:hover, .delete_row a:hover, .insert_row a:active, .delete_row a:active {
   border: solid 1px grey;
-  text-decoration: underline;
-}
-
-.insert_row a:active, .delete_row a:active {
-  border: solid 1px grey;
+  padding: 3px 22px 4px 22px;
   text-decoration: underline;
 }
 

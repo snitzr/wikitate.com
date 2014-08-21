@@ -138,8 +138,8 @@ db v: unavailable
       <th>delete row</th>
     </tr>
     <tr>
-      <td class="time_cell"><input id="timestamp_cell" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td>
-      <td class="transcript_cell"><input id="transcript_cell" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td>
+      <td class="time_cell"><input class="timestamp_input" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td>
+      <td class="transcript_cell"><input class="transcript_input" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td>
       <td class="insert_row"><a href="#notlink">+</a></td>
       <td class="delete_row"><a href="#notlink">-</a></td>
     </tr>
@@ -234,7 +234,7 @@ db v: unavailable
 
 
 <select id="transcript" name="language">
-<option selected="selected" disabled="disabled">{{ t.count }} Available Transcript{{ t|pluralize }}</option>
+<option selected="selected" disabled="disabled">{{ t.count }} Transcript{{ t|pluralize }} Available</option>
 {% if t %}
   {% for x in t %}
   <option value="{{ x.transcript }}">{{ x.transcript|linebreaksbr }}</option>

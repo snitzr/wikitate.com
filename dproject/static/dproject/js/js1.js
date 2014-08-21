@@ -17,26 +17,10 @@ function updateCurrentTime() {
   }
 }
 
-// todo: get player title and insert into template
-// $('.player_title').html(player_title);
-
 var transcript = {};
 
-// v2 caption format?
-// [{"time":"3", "time":3, "text":"hello"}, ...]
-
-//var transcript = {
-  //"0": "This a test of the CamStudio microphone.",
-  //"3": "It\'s just dangling from my ear.",
-  //"5": "Um, this is how we learn math.",
-  //"10": "Whoops!",
-  //"13": "Let\'s click click click delete \"h.\"",
-  //"17.5": "Good.",
-  //"20": "",
-  //"24": "Is it not recording?",
-  //"25": ""
-//};
-
+// todo: get player title and insert into template
+// $('.player_title').html(player_title);
 
 // jump timer vid to field time TESTING
 /*
@@ -104,8 +88,6 @@ $('#transcripting').on('click', 'a', function(event) {
 // todo: clear any double blank rows after submit
 $('#transcripting').on('keyup', 'input', function() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
-  // console.log(transcripting_form_values);
-  // console.log(JSON.parse(transcripting_form_values));
   
   // for loop for submitted transcript
   var parsed_add = '{';
@@ -137,7 +119,6 @@ $('#transcripting').on('keyup keypress', 'input', function(event) {
 
 // prevent submit without language choice
 $('#submit').on('submit click keyup keypress', function(event) {
-  // if ($('#id_language option:selected').eq(0) === 'Transcript language (required)') {
   if ($('#id_language').eq(0).val() === null) {
     event.preventDefault();
     var transcript_required_error_message = 'Transcript language required.';
@@ -147,12 +128,28 @@ $('#submit').on('submit click keyup keypress', function(event) {
   }
 });
 
+// remove error on langauge selec
+$('#id_language').on('change', function () {
+  if ($('#id_language').eq(0).val() === null) {
+    return false;
+  }
+  else {
+    $('#submit_message').html('');
+    $('#language_message').html('');
+  }
+});
+
 // convert drop down JSON to human readable
 // ('.transcriptDisplaySelect').;
 
 // load drop down selection
 $('#transcript').on('change', function() {
   transcript = (JSON.parse(this.value));
+});
+
+$('.timestamp_cell').on('keyup', function() {
+  // alert('h');
+  $(this).select();
 });
 
 // test if language is selected. prohibit submit without language choice
@@ -197,19 +194,6 @@ $('#transcripting').on('focusin', function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // find YT username
 // $('#username').html(document.getElementById('yt-masthead-user-displayname').innerHTML);
 
@@ -225,6 +209,7 @@ $('#transcripting').on('focusin', function() {
 $('#returnYT').click(function () {
   console.log(player.getVideoUrl());
 });
+
 // $('#returnYT').click(function () {
   // return document.URL = ('//www.youtube.com/watch?v=' + {{ vidId|escapejs }});
 // });
@@ -336,6 +321,21 @@ console.log('8c #transcripting last prev val:\t' + $('#transcripting input').las
 console.log('9a #transcripting type nth 2:\t' + $('#transcripting input:nth-last-of-type(2)').type);
 console.log('9b #transcripting type nth 3:\t' + $('#transcripting input:nth-last-of-type(3)').type);
 */
+
+// v2 caption format?
+// [{"time":"3", "time":3, "text":"hello"}, ...]
+
+//var transcript = {
+  //"0": "This a test of the CamStudio microphone.",
+  //"3": "It\'s just dangling from my ear.",
+  //"5": "Um, this is how we learn math.",
+  //"10": "Whoops!",
+  //"13": "Let\'s click click click delete \"h.\"",
+  //"17.5": "Good.",
+  //"20": "",
+  //"24": "Is it not recording?",
+  //"25": ""
+//};
 
 
 // live reload
