@@ -24,7 +24,7 @@ var transcript = {};
 
 // jump timer vid to field time TESTING
 /*
-$('#timing').click(function () {
+$('#timing').on('click', function () {
   player.seekTo((document.getElementById('timing').innerHTML), true); //seekTo argument needs evaluation
 });
 */
@@ -36,7 +36,7 @@ function captionTime(currentTime) {
   }
 }
 
-// select captions on click
+// load captions on click
 $('.transcriptDisplaySelect').click(function () {
   // add click content to transcript var
   $('#captions').html(''); // clear current transcript display
@@ -139,8 +139,12 @@ $('#id_language').on('change', function () {
   }
 });
 
-// convert drop down JSON to human readable
-// ('.transcriptDisplaySelect').;
+// convert drop down JSON to human readable format
+$('#transcript option').each(function(index) {
+  if (index !== 0) {
+    $('#transcript option').eq(index).html((this).value);
+  }
+});
 
 // load drop down selection
 $('#transcript').on('change', function() {
@@ -152,14 +156,6 @@ $('.timestamp_cell').on('keyup', function() {
   $(this).select();
 });
 
-// test if language is selected. prohibit submit without language choice
-/*
-$('input').on('click', '#submit', function(event) {
-  if ($('select').val() === null) { // is this just the first drop down in the page?
-    event.preventDefault(); // prevent form submit
-  }
-});
-*/
 
 /*
 $('#transcripting').on('focusin', function() {
