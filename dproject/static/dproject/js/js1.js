@@ -139,20 +139,25 @@ $('#id_language').on('change', function () {
   }
 });
 
-// convert drop down JSON to human readable format
+// drop down JSON to human readable format
 $('#transcript option').each(function(index) {
   if (index !== 0) {
-    $('#transcript option').eq(index).html((this).value);
+    var drop_down_value = this.value;
+    drop_down_value = JSON.parse(drop_down_value);
+    for (var i = 0; i <= 10; i+=0.5 ) {
+      if (drop_down_value[i] !== undefined) {
+        $(this).html(drop_down_value[i]);
+      }
+    }
   }
 });
 
-// load drop down selection
+// load drop down selection when chosen
 $('#transcript').on('change', function() {
   transcript = (JSON.parse(this.value));
 });
 
 $('.timestamp_cell').on('keyup', function() {
-  // alert('h');
   $(this).select();
 });
 
@@ -202,9 +207,11 @@ $('#transcripting').on('focusin', function() {
 // $('#returnYT').html('//www.youtube.com/watch?v=' + {{ vidId|escapejs }});
 // $('#returnYT').html(player.getVideoUrl());
 
+/*
 $('#returnYT').click(function () {
   console.log(player.getVideoUrl());
 });
+*/
 
 // $('#returnYT').click(function () {
   // return document.URL = ('//www.youtube.com/watch?v=' + {{ vidId|escapejs }});
@@ -224,9 +231,6 @@ $('#text').keyup(function () {
 // return to YouTube button
 // $('#returnYT').html('//www.youtube.com/watch?v=' + {{ vidId|escapejs }});
 // $('#returnYT').html(player.getVideoUrl());
-$('#returnYT').click(function () {
-  console.log(player.getVideoUrl());
-});
 // $('#returnYT').click(function () {
   // return document.URL = ('//www.youtube.com/watch?v=' + {{ vidId|escapejs }});
 // });
