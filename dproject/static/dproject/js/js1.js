@@ -141,14 +141,18 @@ $('#id_language').on('change', function () {
 
 // drop down JSON to human readable format
 $('#transcript option').each(function(index) {
+  var drop_foo = '';
   if (index !== 0) {
-    var drop_down_value = this.value;
-    drop_down_value = JSON.parse(drop_down_value);
-    for (var i = 0; i <= 10; i+=0.5 ) {
+    drop_down_value = JSON.parse(this.value);
+    for (var i = 0; i <= 10; i += 0.5 ) {
       if (drop_down_value[i] !== undefined) {
-        $(this).html(drop_down_value[i]);
+        drop_foo += (' ' + drop_down_value[i]);
+        console.log(drop_down_value[i]);
+        console.log('foo: ' + drop_foo);
+        $(this).html(drop_foo);
       }
     }
+  // $(this).html(drop_down_value[i]);
   }
 });
 
