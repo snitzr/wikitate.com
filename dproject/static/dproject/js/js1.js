@@ -11,8 +11,8 @@ function updateCurrentTime() {
     // v2 why round? why not just match nonround to last transcript event?
     var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
     $('#timeStamp').html('Timestamp: ' + 'rounded: ' + rounded + ' fixed: ' + player.getCurrentTime().toFixed(1));
-    console.log(player.getCurrentTime());
-    console.log(rounded + ' rounded');
+    // console.log(player.getCurrentTime());
+    // console.log(rounded + ' rounded');
     captionTime(rounded);
   }
 }
@@ -56,15 +56,15 @@ $('#starp').click(function () {
 // skip back control
 $('#skipBack').click(function () {
   player.seekTo((player.getCurrentTime() - 1), true);
-  console.log(player.getCurrentTime());
+  // console.log(player.getCurrentTime());
 });
 
 // mark time with mouse click
 $('#timeClick').mousedown(function () {
-  console.log(player.getCurrentTime());
+  // console.log(player.getCurrentTime());
 });
 $('#timeClick').mouseup(function () {
-  console.log(player.getCurrentTime());
+  // console.log(player.getCurrentTime());
 });
 
 
@@ -72,7 +72,7 @@ $('#timeClick').mouseup(function () {
 // append new time and text row to add transcript table on click or focus return
 $('#transcripting').on('click', 'a', function(event) {
   event.preventDefault(); // prevent placeholder link from appering in browser URL
-  console.log($(this).html());
+  // console.log($(this).html());
   if ($(this).html() === '+') {
     var this_closest_tr = $(this).closest('tr');
     var transcripting_row = $(this_closest_tr).html();
@@ -88,8 +88,9 @@ $('#transcripting').on('click', 'a', function(event) {
 // todo: clear any double blank rows after submit
 $('#transcripting').on('keyup', 'input', function() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
-  
+  console.log($('#transcripting :input, textarea').serializeArray());
   // for loop for submitted transcript
+  // todo: maybe add this to only work on submitted and not when submitting. do submit in Python
   var parsed_add = '{';
   for (var i = 0; i < transcripting_form_values.length; i++) {
     var parsed = JSON.parse(transcripting_form_values);
@@ -98,17 +99,20 @@ $('#transcripting').on('keyup', 'input', function() {
         parsed_add += ('"' + parsed[i].value + '": ');
       }
       else if ((parsed[i].name) === ('transcript_cell')) {
-        parsed_add += ('"' + parsed[i].value + '"' + ', ');
+        var parsed_escaped = parsed[i].value.replace(/\&/gi, "&amps;");
+        parsed_escaped = parsed_escaped.replace(/\"/gi, "&quot;");
+        // parsed_escaped = parsed_escaped.replace(/\'/gi, "&apos;");
+        console.log(parsed_escaped);
+        parsed_add += ("\"" + parsed_escaped + "\"" + ', ');
       }
     }
     var parsed_for_slice = parsed_add;
-    console.log(parsed_for_slice.slice(0, -2) + '}');
   }
   
   $('#id_transcript').val(parsed_for_slice.slice(0, -2) + '}');
 });
 
-// prevent submit on enter for form field
+// prevent submit on enter from form field
 $('#transcripting').on('keyup keypress', 'input', function(event) {
   var keycode = event.keyCode || event.which; 
   if (keycode == 13) {               
@@ -128,7 +132,7 @@ $('#submit').on('submit click keyup keypress', function(event) {
   }
 });
 
-// remove error on langauge selec
+// remove error message on langauge select
 $('#id_language').on('change', function () {
   if ($('#id_language').eq(0).val() === null) {
     return false;
@@ -141,24 +145,22 @@ $('#id_language').on('change', function () {
 
 // drop down JSON to human readable format
 $('#transcript option').each(function(index) {
-  var drop_foo = '';
+  var drop_concat = '';
   if (index !== 0) {
     drop_down_value = JSON.parse(this.value);
-    for (var i = 0; i <= 10; i += 0.5 ) {
+    for (var i = 0; i <= 20; i += 0.5 ) {
       if (drop_down_value[i] !== undefined) {
-        drop_foo += (' ' + drop_down_value[i]);
-        console.log(drop_down_value[i]);
-        console.log('foo: ' + drop_foo);
-        $(this).html(drop_foo);
+        drop_concat += (drop_down_value[i] + ' ');
+        $(this).html(drop_concat);
       }
     }
-  // $(this).html(drop_down_value[i]);
   }
 });
 
 // load drop down selection when chosen
 $('#transcript').on('change', function() {
   transcript = (JSON.parse(this.value));
+  console.log(JSON.parse(this.value));
 });
 
 $('.timestamp_cell').on('keyup', function() {

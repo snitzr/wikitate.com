@@ -61,7 +61,7 @@ Refactor to prevent bogus data being written for nonexistant 11 char
 string URLs
 """
 def transcript_submit(request, vidId):
-    """Handle post data submit from transcript field"""
+    """Handle POST data submit from transcript field"""
     if request.method == 'POST': # If the form has been submitted...
         languageForm = LanguageModelChoiceField(request.POST) # A form.py function bound to POST data
         transcriptForm = AddTranscript(request.POST) # A form.py function bound to POST data
@@ -81,10 +81,7 @@ def transcript_submit(request, vidId):
         if transcriptForm.is_valid() and languageForm.is_valid(): # All validation rules pass
             # Get primary key and save the data from .cleaned_data
             transcript=transcriptForm.cleaned_data['transcript']
-            # add braces. need check if braces exist in POST data
-            # commenting out for now for two step transcript and timing design
-            # transcript = '{ ' + transcript + ' }'
-            # .5 does not work as timestamp. 0.5, does
+            # todo: add value scrub here
             TranscriptData = Transcript(
                             transcript=transcript,
                             language=languageForm.cleaned_data['language'],
@@ -94,7 +91,6 @@ def transcript_submit(request, vidId):
             # need a success or fail message here
             # best case scenario, go to next screen
             return HttpResponseRedirect('/%s/' % vidId)
-            # return HttpResponseRedirect('/%s/blagh' % vidId)
         else:
             #return # add redirect code either way and message
             return HttpResponseRedirect('/%s/' % vidId)
@@ -109,7 +105,7 @@ def set_vid_timing(request):
     return render(request, '', context)
 
 def about(request):
-    """About this website page"""
+    """About this website"""
     context = {'video_search': video_search}
     return render(request, 'dproject/about.html', context)
 
