@@ -55,17 +55,12 @@ $('#starp').click(function () {
 
 // skip back control
 $('#skipBack').click(function () {
-  player.seekTo((player.getCurrentTime() - 1), true);
+  player.pauseVideo();
+  player.seekTo((player.getCurrentTime() - 3), true);
+  player.playVideo();
   // console.log(player.getCurrentTime());
 });
 
-// mark time with mouse click
-$('#timeClick').mousedown(function () {
-  // console.log(player.getCurrentTime());
-});
-$('#timeClick').mouseup(function () {
-  // console.log(player.getCurrentTime());
-});
 
 
 
@@ -101,8 +96,6 @@ $('#transcripting').on('keyup', 'input', function() {
       else if ((parsed[i].name) === ('transcript_cell')) {
         var parsed_escaped = parsed[i].value.replace(/\&/gi, "&amps;");
         parsed_escaped = parsed_escaped.replace(/\"/gi, "&quot;");
-        // parsed_escaped = parsed_escaped.replace(/\'/gi, "&apos;");
-        console.log(parsed_escaped);
         parsed_add += ("\"" + parsed_escaped + "\"" + ', ');
       }
     }
