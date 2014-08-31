@@ -99,10 +99,10 @@ $('#transcripting').on('keyup', 'input', function() {
         parsed_add += ("\"" + parsed_escaped + "\"" + ', ');
       }
     }
-    var parsed_for_slice = parsed_add;
+    var parsed_with_slice = (parsed_add.slice(0, -2) + '}');
   }
-  
-  $('#id_transcript').val(parsed_for_slice.slice(0, -2) + '}');
+  $('#id_transcript').val(parsed_with_slice);
+  transcript = JSON.parse(parsed_with_slice); // live preview
 });
 
 // prevent submit on enter from form field
