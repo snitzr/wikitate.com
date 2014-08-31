@@ -32,7 +32,15 @@ $('#timing').on('click', function () {
 // display captions to page
 function captionTime(currentTime) {
   if ((transcript[currentTime]) !== undefined) {
+    $('#captions').html(''); // clear current transcript display
     $('#captions').html(transcript[currentTime]);
+    // five second timer
+    setTimeout(capSleep, 5000);
+    function capSleep() {
+        // note: if player is paused, present sub will still clear
+        // todo: add listener for pause and persist subtitle
+        $('#captions').html(''); // clear current transcript display
+    }
   }
 }
 
@@ -152,8 +160,9 @@ $('#transcript option').each(function(index) {
 
 // load drop down selection when chosen
 $('#transcript').on('change', function() {
+  $('#captions').html(''); // clear current transcript display
   transcript = (JSON.parse(this.value));
-  console.log(JSON.parse(this.value));
+  // console.log(JSON.parse(this.value));
 });
 
 $('.timestamp_cell').on('keyup', function() {
