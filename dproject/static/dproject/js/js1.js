@@ -88,12 +88,11 @@ $('#transcripting').on('click', 'a', function(event) {
 });
 
 // create JSON from transcript table
-// todo: clear any double blank rows after submit
+// todo: clear any double blank text field rows after submit
+// todo: maybe add JSON parse to only work on already submitted text and not while submitting. do submit in Python
 $('#transcripting').on('keyup click', 'input', function() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
   // console.log($('#transcripting :input, textarea').serializeArray());
-  // for loop for submitted transcript
-  // todo: maybe add this to only work on submitted and not when submitting. do submit in Python
   var parsed_add = '{';
   for (var i = 0; i < transcripting_form_values.length; i++) {
     var parsed = JSON.parse(transcripting_form_values);
@@ -133,7 +132,6 @@ $('#submit').on('submit click keyup keypress', function(event) {
   }
 });
 
-// /*
 // prevent submit without all timestamps
 $('#submit').on('submit click keyup keypress', function(event) {
   for (var i = 0; i <= $('#transcripting .time_cell').children().length; i++) {
@@ -146,7 +144,6 @@ $('#submit').on('submit click keyup keypress', function(event) {
     }
   }
 });
-// */
 
 // remove error message on langauge select
 $('#id_language').on('change', function () {
@@ -160,16 +157,18 @@ $('#id_language').on('change', function () {
 });
 
 // remove error message on time select
-// error, only first row works
-$('.timestamp_input').on('click keyup keypress', function () {
-  if ($(this).val() === '') {
-    return;
-  }
-  else {
-    $('#time_submit_message').html('');
-    $('#time_message').html('');
-    $(this).css('border', '1px solid #454545');
-  }
+// todo; error, only first row works
+$('#transcripting').on('keyup click', 'input', function() {
+  $('.timestamp_input').each(function() {
+    if ($(this).val() === '') {
+      return;
+    }
+    else {
+      $('#time_submit_message').html('');
+      $('#time_message').html('');
+      $(this).css('border', '1px solid #454545');
+    }
+  });
 });
 
 // drop down JSON to human readable format
