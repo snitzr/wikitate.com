@@ -132,7 +132,7 @@ db v: unavailable
   <table id="transcripting">
     <caption>Transcript</caption>
     <tr>
-      <th>time</th>
+      <th>time (required)</th>
       <th>text</th>
       <th>insert row</th>
       <th>delete row</th>
@@ -146,20 +146,13 @@ db v: unavailable
 
 
 
-<!-- end drafting timing set -->
-    <!-- Might need to hard code addtranscript.transcript too unless input forms are easier than dropdowns -->
-    {# {{ addtranscript.transcript }} (required) #}
-    {# need jQuery to check if all required fields are chosen? #}
-
-    <!-- hidden-->
     <input id="id_transcript" name="transcript" type="text" />
   </table>
 </div>
   <input id="submit" type="submit" value="Submit transcript" />
-  <span id='submit_message'></span>
 </form>
-<!-- end drafting form set -->
-
+  <span id="language_submit_message"></span>
+  <span id="time_submit_message"></span>
 
 
 {% else %}

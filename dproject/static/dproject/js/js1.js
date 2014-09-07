@@ -34,11 +34,11 @@ function captionTime(currentTime) {
   if ((transcript[currentTime]) !== undefined) {
     $('#captions').html(''); // clear current transcript display
     $('#captions').html(transcript[currentTime]);
-    // five second timer
-    setTimeout(capSleep, 5000);
+    // six second timer
+    setTimeout(capSleep, 6000);
     function capSleep() {
         // note: if player is paused, present sub will still clear
-        // todo: add listener for pause and persist subtitle
+        // todo: add listener for pause and persist subtitle with clearTimeout()
         $('#captions').html(''); // clear current transcript display
     }
   }
@@ -87,11 +87,11 @@ $('#transcripting').on('click', 'a', function(event) {
   }
 });
 
-
+// create JSON from transcript table
 // todo: clear any double blank rows after submit
-$('#transcripting').on('keyup', 'input', function() {
+$('#transcripting').on('keyup click', 'input', function() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
-  console.log($('#transcripting :input, textarea').serializeArray());
+  // console.log($('#transcripting :input, textarea').serializeArray());
   // for loop for submitted transcript
   // todo: maybe add this to only work on submitted and not when submitting. do submit in Python
   var parsed_add = '{';
@@ -110,13 +110,13 @@ $('#transcripting').on('keyup', 'input', function() {
     var parsed_with_slice = (parsed_add.slice(0, -2) + '}');
   }
   $('#id_transcript').val(parsed_with_slice);
-  transcript = JSON.parse(parsed_with_slice); // live preview
+  transcript = JSON.parse(parsed_with_slice); // live preview in YT vid
 });
 
 // prevent submit on enter from form field
 $('#transcripting').on('keyup keypress', 'input', function(event) {
-  var keycode = event.keyCode || event.which; 
-  if (keycode == 13) {               
+  var keycode = event.keyCode || event.which;
+  if (keycode === 13) {
     event.preventDefault();
     return false;
   }
@@ -127,20 +127,48 @@ $('#submit').on('submit click keyup keypress', function(event) {
   if ($('#id_language').eq(0).val() === null) {
     event.preventDefault();
     var transcript_required_error_message = 'Transcript language required.';
-    $('#submit_message').html(transcript_required_error_message);
     $('#language_message').html('&laquo; ' + transcript_required_error_message);
+    $('#language_submit_message').html(transcript_required_error_message);
     return false;
   }
 });
 
+// /*
+// prevent submit without all timestamps
+$('#submit').on('submit click keyup keypress', function(event) {
+  for (var i = 0; i <= $('#transcripting .time_cell').children().length; i++) {
+    if ($('.timestamp_input').eq(i).val() === '') {
+      event.preventDefault();
+      $('.timestamp_input').eq(i).css('border', '2px solid red');
+      var transcript_required_error_message = 'Time value(s) required.';
+      $('#time_submit_message').html(transcript_required_error_message);
+      // make onchange event on addition of data to time field
+    }
+  }
+});
+// */
+
 // remove error message on langauge select
 $('#id_language').on('change', function () {
-  if ($('#id_language').eq(0).val() === null) {
+  if ($(this).eq(0).val() === null) {
     return false;
   }
   else {
-    $('#submit_message').html('');
     $('#language_message').html('');
+    $('#language_submit_message').html('');
+  }
+});
+
+// remove error message on time select
+// error, only first row works
+$('.timestamp_input').on('click keyup keypress', function () {
+  if ($(this).val() === '') {
+    return;
+  }
+  else {
+    $('#time_submit_message').html('');
+    $('#time_message').html('');
+    $(this).css('border', '1px solid #454545');
   }
 });
 
