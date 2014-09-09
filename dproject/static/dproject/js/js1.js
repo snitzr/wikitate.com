@@ -157,18 +157,25 @@ $('#id_language').on('change', function () {
 });
 
 // remove error message on time select
-// todo; error, only first row works
 $('#transcripting').on('keyup click', 'input', function() {
   $('.timestamp_input').each(function() {
     if ($(this).val() === '') {
       return;
     }
-    else {
-      $('#time_submit_message').html('');
-      $('#time_message').html('');
+    if ($(this).val() !== '') {
       $(this).css('border', '1px solid #454545');
+      return;
     }
   });
+  for (var i = 0; i <= ($('#transcripting .time_cell').children().length + 1); i++) {
+    console.log($('.timestamp_input').eq(i).val());
+    if ($('.timestamp_input').eq(i).val() === '') {
+      break;
+    }
+    else {
+      $('#time_submit_message').html('');
+    }
+  }
 });
 
 // drop down JSON to human readable format
