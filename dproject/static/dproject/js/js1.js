@@ -101,9 +101,11 @@ $('#transcripting').on('keyup click', 'input', function() {
         parsed_add += ('"' + parsed[i].value + '": ');
       }
       else if ((parsed[i].name) === ('transcript_cell')) {
-        var parsed_escaped = parsed[i].value.replace(/\&/gi, "&amps;");
-        parsed_escaped = parsed_escaped.replace(/\"/gi, "&quot;");
-        parsed_add += ("\"" + parsed_escaped + "\"" + ', ');
+        // replace danger characters with safe equivalent
+        var parsed_escaped = parsed[i].value.replace(/\&/gi, '&amps;');
+        parsed_escaped = parsed_escaped.replace(/\"/gi, '&quot;');
+        parsed_escaped = parsed_escaped.replace(/\\/gi, '&#92;');
+        parsed_add += ('\"' + parsed_escaped + '\"' + ', ');
       }
     }
     var parsed_with_slice = (parsed_add.slice(0, -2) + '}');
