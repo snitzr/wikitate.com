@@ -167,13 +167,15 @@ $('#transcripting').on('keyup click', 'input', function() {
       return;
     }
   });
-  for (var i = 0; i <= ($('#transcripting .time_cell').children().length + 1); i++) {
+  for (var i = 0; (i <= $('#transcripting .time_cell').children().length); i++) {
     console.log($('.timestamp_input').eq(i).val());
     if ($('.timestamp_input').eq(i).val() === '') {
       break;
     }
     else {
-      $('#time_submit_message').html('');
+      if (i === $('#transcripting .time_cell').children().length) {
+        $('#time_submit_message').html('');
+      }
     }
   }
 });
