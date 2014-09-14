@@ -3,9 +3,10 @@ $(window).load(function () {
   captionTime(0.0);
 });
 
+$('#timeStamp').html('&nbsp;');
+
 // link timer to timestamp and display caption function
 // v2 time on user side, check API time as failsafe near user next caption time.
-$('#timeStamp').html('&nbsp;');
 function updateCurrentTime() {
   if (player.getPlayerState() === 1) {
     // v2 why round? why not just match nonround to last transcript event?
@@ -19,6 +20,21 @@ function updateCurrentTime() {
 
 var transcript = {};
 
+// display captions to page and clear after six seconds
+function captionTime(currentTime) {
+  if ((transcript[currentTime]) !== undefined) {
+    window.hider;
+    // $('#captions').html(''); // clear current transcript display
+    endAndStartTimer();
+    function endAndStartTimer() {
+      clearTimeout(window.hider);
+      $('#captions').html(transcript[currentTime]).show(); //.delay(6000).fadeOut('fast'); // display transcript
+      window.hider = window.setTimeout(function() {$('#captions').fadeOut('fast');}, 6000); 
+    }
+  }
+}
+
+//
 // todo: get player title and insert into template
 // $('.player_title').html(player_title);
 
@@ -28,21 +44,6 @@ $('#timing').on('click', function () {
   player.seekTo((document.getElementById('timing').innerHTML), true); //seekTo argument needs evaluation
 });
 */
-
-// display captions to page
-function captionTime(currentTime) {
-  if ((transcript[currentTime]) !== undefined) {
-    $('#captions').html(''); // clear current transcript display
-    $('#captions').html(transcript[currentTime]);
-    // six second timer
-    setTimeout(capSleep, 6000);
-    function capSleep() {
-        // note: if player is paused, present sub will still clear
-        // todo: add listener for pause and persist subtitle with clearTimeout()
-        $('#captions').html(''); // clear current transcript display
-    }
-  }
-}
 
 // load captions on click
 $('.transcriptDisplaySelect').click(function () {
@@ -142,7 +143,6 @@ $('#submit').on('submit click keyup keypress', function(event) {
       $('.timestamp_input').eq(i).css('border', '2px solid red');
       var transcript_required_error_message = 'Time value(s) required.';
       $('#time_submit_message').html(transcript_required_error_message);
-      // make onchange event on addition of data to time field
     }
   }
 });
