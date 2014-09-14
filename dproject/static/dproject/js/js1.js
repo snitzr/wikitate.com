@@ -24,12 +24,13 @@ var transcript = {};
 function captionTime(currentTime) {
   if ((transcript[currentTime]) !== undefined) {
     window.hider;
-    // $('#captions').html(''); // clear current transcript display
     endAndStartTimer();
     function endAndStartTimer() {
       clearTimeout(window.hider);
-      $('#captions').html(transcript[currentTime]).show(); //.delay(6000).fadeOut('fast'); // display transcript
-      window.hider = window.setTimeout(function() {$('#captions').fadeOut('fast');}, 6000); 
+      $('#captions').html(transcript[currentTime]).show(); // display transcript
+      // window.hider = window.setTimeout(function() {$('#captions').fadeOut('fast');}, 6000); // todo
+      window.hider = window.setTimeout(function() {displayFade()}, 6000);
+      function displayFade() {$('#captions').fadeOut('fast')};
     }
   }
 }
