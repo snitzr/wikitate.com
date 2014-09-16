@@ -12,7 +12,8 @@ video_search = SearchForm()
 def video_serch_submit(request, searchInput):
     if request.method == 'POST' and videoSearch.is_valid():
         # videoSearch = SearchForm(request.POST)
-            return HttpResponseRedirect('%s/' % searchInput)
+        return HttpResponseRedirect('/%s/' % searchInput)
+        # return HttpResponseRedirect('/%s/' % 'http://127.0.0.1:8000/3BJ9YXy6zQk/')
 
 
 # drafting universal video_search functionality

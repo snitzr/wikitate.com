@@ -18,4 +18,6 @@ urlpatterns = patterns('',
     url(r'^video_search_request/(?P<searchInput>.+)/$', views.video_search_submit, name='video_search_submit'),
     # 404 redirect to top site level
     url(r'^.+/$', views.notfound, name='redirect')
+    # note: need Python or JavaScript to prevent live pages views with empty YT
+    # vids. host/asdf/asdf gives this kid of "ghost" page.
 )

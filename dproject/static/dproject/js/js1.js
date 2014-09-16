@@ -28,7 +28,6 @@ function captionTime(currentTime) {
     function endAndStartTimer() {
       clearTimeout(window.hider);
       $('#captions').html(transcript[currentTime]).show(); // display transcript
-      // window.hider = window.setTimeout(function() {$('#captions').fadeOut('fast');}, 6000); // todo
       window.hider = window.setTimeout(function() {displayFade()}, 6000);
       function displayFade() {$('#captions').fadeOut('fast')};
     }
@@ -94,7 +93,6 @@ $('#transcripting').on('click', 'a', function(event) {
 // todo: maybe add JSON parse to only work on already submitted text and not while submitting. do submit in Python
 $('#transcripting').on('keyup click', 'input', function() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
-  // console.log($('#transcripting :input, textarea').serializeArray());
   var parsed_add = '{';
   for (var i = 0; i < transcripting_form_values.length; i++) {
     var parsed = JSON.parse(transcripting_form_values);
@@ -204,9 +202,21 @@ $('#transcript').on('change', function() {
   // console.log(JSON.parse(this.value));
 });
 
+
+// top level page move search to URL
+$('#submit_vid_search').on('submit click keyup keypress', function(event) {
+  event.preventDefault();
+  // submit form content to URL
+  // window.location = ('//wikitate.com' + '/' + $('#id_transcript_search').val());
+  window.location = ('//127.0.0.1:8000' + '/' + $('#id_transcript_search').val());
+  // (window.location.host + '/' + $('#id_transcript_search').val()); = window.location.href;
+});
+
+/*
 $('.timestamp_cell').on('keyup', function() {
   $(this).select();
 });
+*/
 
 
 /*

@@ -9,9 +9,12 @@
 {{ message }}
 </div>
 <div id="main-search">
-<form action="/video_search_request/" method="post">{% csrf_token %}
+<form action="" method="post">{% csrf_token %}
+  {% comment %}
   {{ video_search }}
-  <input type="submit" value="Search" />
+  {% endcomment %}
+  <input id="id_transcript_search" maxlength="100" name="transcript_search" placeholder="Enter video link" type="text" />
+  <input id="submit_vid_search" type="submit" value="Search" />
 </form>
 </div>
 <a href="/3BJ9YXy6zQk/">127.0.0.1:8000/3BJ9YXy6zQk/</a>
