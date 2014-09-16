@@ -41,6 +41,30 @@ db v: unavailable
   <!-- begin drafting form set -->
 <form method="post" action="/transcript_submit/{{ vidId }}/">
   {% csrf_token %}
+
+  <br />
+
+  {# transcript form #}
+  <!-- begin drafting timing set -->
+  <!-- needs responsive -->
+  <div id="transcript_table" name="transcript_table"> <!-- does name-transcript need to be here at all? -->
+  <table id="transcripting">
+    <caption>Transcript</caption>
+    <tr>
+      <th>time (required)</th>
+      <th>text</th>
+      <th>insert row</th>
+      <th>delete row</th>
+    </tr>
+    <tr>
+      <td class="time_cell"><input class="timestamp_input" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td>
+      <td class="transcript_cell"><input class="transcript_input" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td>
+      <td class="insert_row"><a href="#notlink">+</a></td>
+      <td class="delete_row"><a href="#notlink">-</a></td>
+    </tr>
+    <input id="id_transcript" name="transcript" type="text" />
+  </table>
+</div>
   {# language drop down #}
   {# manually rendering each field in order to control disabled lanuages on dropdown #}
   {# need logic here to check for existing language transcripts and then disable existing in dropdown #}
@@ -112,33 +136,7 @@ db v: unavailable
     <option{{ transcript_existence }} value="ot">other</option>
   </select>
   <span id="language_message"></span>
-
   <br />
-
-  {# transcript form #}
-  <!-- begin drafting timing set -->
-  <!-- needs responsive -->
-  <div id="transcript_table" name="transcript_table"> <!-- does name-transcript need to be here at all? -->
-  <table id="transcripting">
-    <caption>Transcript</caption>
-    <tr>
-      <th>time (required)</th>
-      <th>text</th>
-      <th>insert row</th>
-      <th>delete row</th>
-    </tr>
-    <tr>
-      <td class="time_cell"><input class="timestamp_input" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td>
-      <td class="transcript_cell"><input class="transcript_input" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td>
-      <td class="insert_row"><a href="#notlink">+</a></td>
-      <td class="delete_row"><a href="#notlink">-</a></td>
-    </tr>
-
-
-
-    <input id="id_transcript" name="transcript" type="text" />
-  </table>
-</div>
   <input id="submit" type="submit" value="Submit transcript" />
 </form>
   <span id="language_submit_message"></span>

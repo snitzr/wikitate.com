@@ -204,7 +204,7 @@ $('#transcript').on('change', function() {
 
 
 // top level page move search to URL
-$('#submit_vid_search').on('submit click keyup keypress', function(event) {
+$('#submit_vid_search').on('submit click', function(event) {
   event.preventDefault();
   // submit form content to URL
   // window.location = ('//wikitate.com' + '/' + $('#id_transcript_search').val());
