@@ -209,7 +209,6 @@ $('#submit_vid_search').on('submit click keyup keypress', function(event) {
   // submit form content to URL
   // window.location = ('//wikitate.com' + '/' + $('#id_transcript_search').val());
   window.location = ('//127.0.0.1:8000' + '/' + $('#id_transcript_search').val());
-  // (window.location.host + '/' + $('#id_transcript_search').val()); = window.location.href;
 });
 
 /*
