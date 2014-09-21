@@ -8,8 +8,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
-
 
 
 
