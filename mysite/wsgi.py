@@ -20,13 +20,15 @@ application = get_wsgi_application()
 # """
 #### begin heroku setup
 from django.core.wsgi import get_wsgi_application
-# test \/\/\/ comment out
-# from dj_static import Cling
 
 # test \/\/\/ comment out
-# application = Cling(get_wsgi_application())
+from dj_static import Cling
+
+# test \/\/\/ comment out
+application = Cling(get_wsgi_application())
 
 # test \/\/\/
-application = get_wsgi_application()
+# application = get_wsgi_application()
+
 #### end heroku setup
 # """
