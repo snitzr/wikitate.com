@@ -156,7 +156,7 @@ ACCOUNT_USERNAME_BLACKLIST = ['root',
 
 
 
-"""
+# """
 #### start Heroku setup ####
 ## https://devcenter.heroku.com/articles/getting-started-with-django
 # Parse database configuration from $DATABASE_URL
@@ -180,4 +180,4 @@ STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
 )
 #### end Heroku setup
-"""
+# """
