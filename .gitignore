@@ -10,3 +10,4 @@ venv
 staticfiles
 .vagrant
 django-trunk
+heroku_test
