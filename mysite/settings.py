@@ -162,6 +162,7 @@ ACCOUNT_USERNAME_BLACKLIST = ['root',
 # Parse database configuration from $DATABASE_URL
 
 import dj_database_url
+DATABASES = {}
 DATABASES['default'] =  dj_database_url.config() # aaron comment out
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
