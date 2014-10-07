@@ -34,9 +34,8 @@ function captionTime(currentTime) {
   }
 }
 
-//
-// todo: get player title and insert into template
-// $('.player_title').html(player_title);
+// get player title and insert into template
+$('.player_title').html(player.A.videoData.title);
 
 // jump timer vid to field time TESTING
 /*
