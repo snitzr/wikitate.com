@@ -16,8 +16,8 @@ var player;
 function onYouTubePlayerAPIReady() {
   player = new YT.Player('ytplayer', {videoId: '{{ vidId }}'});
   // get player title and insert into template
-  $('.player_title').html(player.A.videoData.title);
 }
+$('.player_title').html(player.A.videoData.title);
 </script>
 
 <div id="captions"></div>
