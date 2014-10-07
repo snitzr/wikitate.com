@@ -112,7 +112,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-""" # comment out for Heroku
+""" # comment out sql for Heroku
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -142,17 +142,17 @@ STATIC_URL = '/static/'
 
 # auth login prefs
 ACCOUNT_AUTHENTICATION_METHOD  = 'username_email'
-ACCOUNT_USERNAME_BLACKLIST = ['root',
-                              'fake',
-                              'bitch',
-                              'ass',
-                              'nigger',
-                              'fuck',
-                              'shit',
-                              'admin',
-                              'kngofwrld',
+ACCOUNT_USERNAME_BLACKLIST = [
+                            'admin',
+                            'ass',
+                            'bitch',
+                            'fake',
+                            'fuck',
+                            'kngofwrld',
+                            'nigger',
+                            'root',
+                            'shit',
                              ]
-
 
 
 
@@ -164,6 +164,8 @@ ACCOUNT_USERNAME_BLACKLIST = ['root',
 import dj_database_url
 DATABASES = {}
 DATABASES['default'] =  dj_database_url.config()
+
+""" localhost db
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
@@ -174,6 +176,7 @@ DATABASES = {
         "PORT": "",
     }
 }
+"""
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
