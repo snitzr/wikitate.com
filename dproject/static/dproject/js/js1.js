@@ -35,7 +35,9 @@ function captionTime(currentTime) {
 }
 
 // get player title and insert into template
-$('.player_title').html(player.A.videoData.title);
+function onYouTubePlayerAPIReady() {
+  $('.player_title').html(player.A.videoData.title);
+}
 
 // jump timer vid to field time TESTING
 /*
