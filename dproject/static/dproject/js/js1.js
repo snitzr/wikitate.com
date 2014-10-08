@@ -1,7 +1,7 @@
 $(window).load(function () {
   setInterval(updateCurrentTime, 100);
   captionTime(0.0);
-  $('#player_title').(player.A.videoData.title)
+  $('#player_title').html(player.A.videoData.title); // fix headline with vid title
 });
 
 $('#timeStamp').html('&nbsp;');
