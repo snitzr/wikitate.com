@@ -1,6 +1,7 @@
 $(window).load(function () {
   setInterval(updateCurrentTime, 100);
   captionTime(0.0);
+  console.log(player.A.videoData.title)
 });
 
 $('#timeStamp').html('&nbsp;');
