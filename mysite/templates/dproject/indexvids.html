@@ -15,7 +15,6 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 function onYouTubePlayerAPIReady() {
   player = new YT.Player('ytplayer', {videoId: '{{ vidId }}'});
-  console.log(player.A.videoData.title);
 }
 </script>
 
