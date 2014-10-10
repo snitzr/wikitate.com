@@ -110,7 +110,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
 # Database
-https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+# https://docs.djangoproject.com/en/1.6/ref/settings/
 
 """ # comment out sql for Heroku
 DATABASES = {
@@ -175,7 +175,7 @@ DATABASES = {
 
 import dj_database_url
 DATABASES = {}
-# DATABASES['default'] =  dj_database_url.config() # comment out for localhost db
+DATABASES['default'] =  dj_database_url.config() # comment out for localhost db
 
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
