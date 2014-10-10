@@ -138,7 +138,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/' # comment out for Heroku
 
 # auth login prefs
 ACCOUNT_AUTHENTICATION_METHOD  = 'username_email'
