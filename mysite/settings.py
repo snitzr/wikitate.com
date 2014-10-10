@@ -155,6 +155,18 @@ ACCOUNT_USERNAME_BLACKLIST = [
                              ]
 
 
+""" localhost postgres db
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "local",
+        "USER": "aaron",
+        "PASSWORD": "",
+        "HOST": "localhost",
+        "PORT": "",
+    }
+}
+"""
 
 # """
 #### start Heroku setup ####
@@ -163,20 +175,8 @@ ACCOUNT_USERNAME_BLACKLIST = [
 
 import dj_database_url
 DATABASES = {}
-DATABASES['default'] =  dj_database_url.config()
+# DATABASES['default'] =  dj_database_url.config() # comment out for localhost db
 
-""" localhost db
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "[YOUR_DATABASE_NAME]",
-        "USER": "",
-        "PASSWORD": "",
-        "HOST": "localhost",
-        "PORT": "",
-    }
-}
-"""
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
