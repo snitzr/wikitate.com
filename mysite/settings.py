@@ -110,7 +110,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 """ # comment out sql for Heroku
 DATABASES = {
