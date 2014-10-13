@@ -48,6 +48,11 @@
 }
 */
 
+#transcript_table {
+  overflow: scroll;
+  height: 300px;
+  border: 1px solid red;
+}
 
 #transcripting td.transcript_cell input {
   width: 400px; /* check on iPad */
@@ -135,7 +140,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #vidId {
-  height: 1000px;
+  /* height: 1000px; */
+  width: 100%;
 }
 
 #message {
