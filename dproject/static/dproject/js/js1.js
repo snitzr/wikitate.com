@@ -299,11 +299,6 @@ $('#text').keyup(function () {
 //$('#' + userLanguage).attr('selected', true);
 
 
-// not getting latest form edit content
-$('#text').keyup(function () {
-  var activeForm = (document.getElementById('text').innerHTML);
-  console.log(activeForm);
-});
 
 
 
