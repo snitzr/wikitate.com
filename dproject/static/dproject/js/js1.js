@@ -1,4 +1,4 @@
-$(window).load(function () {
+$(window).load(function() {
   setInterval(updateCurrentTime, 100);
   captionTime(0.0);
   $('.player_title').html(player.A.videoData.title); // fix headline with vid title
@@ -43,13 +43,13 @@ function captionTime(currentTime) {
 
 // jump timer vid to field time TESTING
 /*
-$('#timing').on('click', function () {
+$('#timing').on('click', function() {
   player.seekTo((document.getElementById('timing').innerHTML), true); //seekTo argument needs evaluation
 });
 */
 
 // load captions on click
-$('.transcriptDisplaySelect').click(function () {
+$('.transcriptDisplaySelect').click(function() {
   // add click content to transcript var
   $('#captions').html(''); // clear current transcript display
   transcript = $(this).text();
@@ -57,7 +57,7 @@ $('.transcriptDisplaySelect').click(function () {
 });
 
 // start / stop video control
-$('#starp').click(function () {
+$('#starp').click(function() {
   if (player.getPlayerState() === 1) {
     player.pauseVideo();
   } else {
@@ -66,7 +66,7 @@ $('#starp').click(function () {
 });
 
 // skip back control
-$('#skipBack').click(function () {
+$('#skipBack').click(function() {
   player.pauseVideo();
   player.seekTo((player.getCurrentTime() - 3), true);
   player.playVideo();
@@ -150,7 +150,7 @@ $('#submit').on('submit click keyup keypress', function(event) {
 });
 
 // remove error message on langauge select
-$('#id_language').on('change', function () {
+$('#id_language').on('change', function() {
   if ($(this).eq(0).val() === null) {
     return false;
   }
@@ -210,8 +210,7 @@ $('#transcript').on('change', function() {
 $('#submit_vid_search').on('submit click', function(event) {
   event.preventDefault();
   // submit form content to URL
-  // window.location = ('//wikitate.com' + '/' + $('#id_transcript_search').val());
-  window.location = ('//127.0.0.1:8000' + '/' + $('#id_transcript_search').val());
+  window.location = ('//' + window.location.host' + '/' + $('#id_transcript_search').val());
 });
 
 /*
@@ -267,12 +266,12 @@ $('#transcripting').on('focusin', function() {
 // $('#returnYT').html(player.getVideoUrl());
 
 /*
-$('#returnYT').click(function () {
+$('#returnYT').click(function() {
   console.log(player.getVideoUrl());
 });
 */
 
-// $('#returnYT').click(function () {
+// $('#returnYT').click(function() {
   // return document.URL = ('//www.youtube.com/watch?v=' + {{ vidId|escapejs }});
 // });
 
@@ -282,7 +281,7 @@ $('#returnYT').click(function () {
 
 
 // not getting latest form edit content
-$('#text').keyup(function () {
+$('#text').keyup(function() {
   var activeForm = (document.getElementById('text').innerHTML);
   console.log(activeForm);
 });
@@ -290,7 +289,7 @@ $('#text').keyup(function () {
 // return to YouTube button
 // $('#returnYT').html('//www.youtube.com/watch?v=' + {{ vidId|escapejs }});
 // $('#returnYT').html(player.getVideoUrl());
-// $('#returnYT').click(function () {
+// $('#returnYT').click(function() {
   // return document.URL = ('//www.youtube.com/watch?v=' + {{ vidId|escapejs }});
 // });
 
@@ -330,7 +329,7 @@ function intervalTimer(f, start, interval, end) {
     setTimeout(repeat, start);          // Repetitions begin in start ms
     function repeat() {                 // Invoked by the timeout above             
       var h = setInterval(f, interval); // Invoke f every interval ms. And stop invoking after end ms, if end is defined             
-      if (end) setTimeout(function () { clearInterval(h); }, end);
+      if (end) setTimeout(function() { clearInterval(h); }, end);
     }
   }
 }

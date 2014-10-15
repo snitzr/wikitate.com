@@ -63,8 +63,7 @@
 }
 
 #ytplayer {
-  height: 400px; /* change on JS event to make transcript room */
-  /*float: left;*/
+  height: 600px; /* change on JS event to make transcript room */
 }
 ul, #header h1, #header p, #header li, #header form {
   display: inline;
