@@ -210,7 +210,7 @@ $('#transcript').on('change', function() {
 $('#submit_vid_search').on('submit click', function(event) {
   event.preventDefault();
   // submit form content to URL
-  window.location = ('//' + window.location.host' + '/' + $('#id_transcript_search').val());
+  window.location = ('//' + window.location.host + '/' + $('#id_transcript_search').val());
 });
 
 /*
