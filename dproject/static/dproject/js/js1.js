@@ -94,11 +94,13 @@ $('#transcripting').on('click', 'a', function(event) {
 // create JSON from transcript table
 // todo: clear any double blank text field rows after submit
 // todo: maybe add JSON parse to only work on already submitted text and not while submitting. do submit in Python
+
+
 $('#transcripting').on('keyup click', 'input', function() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
   var parsed_add = '{';
+  var parsed = JSON.parse(transcripting_form_values);
   for (var i = 0; i < transcripting_form_values.length; i++) {
-    var parsed = JSON.parse(transcripting_form_values);
     if (typeof parsed[i] !== 'undefined') {
       if ((parsed[i].name) === ('timestamp_cell')) {
         parsed_add += ('"' + parsed[i].value + '": ');
