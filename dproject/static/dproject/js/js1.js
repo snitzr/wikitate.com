@@ -94,8 +94,6 @@ $('#transcripting').on('click', 'a', function(event) {
 // create JSON from transcript table
 // todo: clear any double blank text field rows after submit
 // todo: maybe add JSON parse to only work on already submitted text and not while submitting. do submit in Python
-
-
 $('#transcripting').on('keyup click', 'input', function() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
   var parsed_add = '{';
@@ -204,22 +202,15 @@ $('#transcript option').each(function(index) {
 $('#transcript').on('change', function() {
   $('#captions').html(''); // clear current transcript display
   transcript = (JSON.parse(this.value));
-  // console.log(JSON.parse(this.value));
 });
 
 
-// top level page move search to URL
+// top level page move search box to URL
 $('#submit_vid_search').on('submit click', function(event) {
   event.preventDefault();
   // submit form content to URL
   window.location = ('//' + window.location.host + '/' + $('#id_transcript_search').val());
 });
-
-/*
-$('.timestamp_cell').on('keyup', function() {
-  $(this).select();
-});
-*/
 
 
 /*
