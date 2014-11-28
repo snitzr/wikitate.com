@@ -73,8 +73,18 @@ $('#skipBack').click(function() {
   // console.log(player.getCurrentTime());
 });
 
-
-
+// load transcript cells on language selection
+/* 
+$('#submit').on('submit click keyup keypress', function(event) {
+  if ($('#id_language').eq(0).val() === null) {
+    event.preventDefault();
+    var transcript_required_error_message = 'Transcript language required.';
+    $('#language_message').html('&laquo; ' + transcript_required_error_message);
+    $('#language_submit_message').html(transcript_required_error_message);
+    return false;
+  }
+});
+*/
 
 // append new time and text row to add transcript table on click or focus return
 $('#transcripting').on('click', 'a', function(event) {
@@ -92,8 +102,8 @@ $('#transcripting').on('click', 'a', function(event) {
 });
 
 // create JSON from transcript table
-// todo: clear any double blank text field rows after submit
-// todo: maybe add JSON parse to only work on already submitted text and not while submitting. do submit in Python
+// TODO: clear any double blank text field rows after submit
+// TODO: maybe add JSON parse to only work on already submitted text and not while submitting. do submit in Python
 $('#transcripting').on('keyup click', 'input', function() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
   var parsed_add = '{';
@@ -126,7 +136,7 @@ $('#transcripting').on('keyup keypress', 'input', function(event) {
   }
 });
 
-// prevent submit without language choice
+// prevent submit without drop down language choice
 $('#submit').on('submit click keyup keypress', function(event) {
   if ($('#id_language').eq(0).val() === null) {
     event.preventDefault();
