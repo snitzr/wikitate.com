@@ -50,9 +50,9 @@ $('#timing').on('click', function() {
 
 // load captions on click
 $('.transcriptDisplaySelect').click(function() {
-  // add click content to transcript var
   $('#captions').html(''); // clear current transcript display
-  transcript = $(this).text();
+  // add click content to transcript var
+  transcript = $(this).html();
   transcript = $.parseJSON(transcript);
 });
 
