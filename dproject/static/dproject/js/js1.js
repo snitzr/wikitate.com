@@ -1,7 +1,7 @@
-$(window).load(function() {
+$(document).ready(function() {
   setInterval(updateCurrentTime, 100);
   captionTime(0.0);
-  $('.player_title').html(player.A.videoData.title); // fix headline with vid title
+  $('.player_title').html(player.A.videoData.title); // replaces vid headline ID with vid title
 });
 
 
@@ -30,16 +30,16 @@ function captionTime(currentTime) {
     function endAndStartTimer() {
       clearTimeout(window.hider);
       $('#captions').html(transcript[currentTime]).show(); // display transcript
-      window.hider = window.setTimeout(function() {displayFade()}, 6000);
-      function displayFade() {$('#captions').fadeOut('fast')};
+      window.hider = window.setTimeout(function() {
+          displayFade()
+        }, 6000);
+      function displayFade() {
+        $('#captions').fadeOut('fast')
+      };
     }
   }
 }
 
-// get player title and insert into template
-// function onYouTubePlayerAPIReady() {
-  // $('.player_title').html(player.A.videoData.title);
-// }
 
 // jump timer vid to field time TESTING
 /*
@@ -284,10 +284,11 @@ $('#returnYT').click(function() {
 
 
 // not getting latest form edit content
-$('#text').keyup(function() {
-  var activeForm = (document.getElementById('text').innerHTML);
-  console.log(activeForm);
-});
+// test
+// $('#text').keyup(function() {
+//   var activeForm = (document.getElementById('text').innerHTML);
+//   console.log(activeForm);
+// });
 
 // return to YouTube button
 // $('#returnYT').html('//www.youtube.com/watch?v=' + {{ vidId|escapejs }});
