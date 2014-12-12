@@ -30,7 +30,8 @@ db v: unavailable
 {% endcomment %}
 
 <div id="add_transcripts">
-  <h2>Add Transcript to <span class="player_title">{{vidId|truncatewords:15}}</span></h2>
+  <h2>Edit / Add Transcript</h2>
+  <!-- <h2>Add Transcript to <span class="player_title">{{vidId|truncatewords:15}}</span></h2> -->
 
 {% if user.is_authenticated %}
 {% load account %}
@@ -151,11 +152,11 @@ db v: unavailable
   <dl>
     <dt>Transcription tips:</dt>
     <dd>make transcript first then set timing</dd>
-    <dd>clear transcript text with a new row with time field but no text field.</dd>
+    <dd>clear transcript text with a new row with time field but no text field. text will automatically disapear after 6 seconds, if not replaced by more text or a blank row.</dd>
     <dd>line break with "-" to show each line is a separate person speaking. Recommended only for simultaneous dialogue</dd>
-    <dd>max line char is 100</dd>
+    <dd>max line char per cell is 100</dd>
     <dd>indicate music with this character: ♫</dd>
-    <dd>time text half a second before dialogue appears. This gives the mind time to react and read the text with the action.</dd>
+    <dd>time text half a second before dialogue appears. This gives the brain time to react and read the text with the action.</dd>
     <dd>keyboard shortcuts: </dd>
   </dl>
 </div>

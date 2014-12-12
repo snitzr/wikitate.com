@@ -10,3 +10,7 @@ venv
 staticfiles
 .vagrant
 .secret_key
+settings.py
+wsgi.py
+settings_prod.py
+wsgi_prod.py
