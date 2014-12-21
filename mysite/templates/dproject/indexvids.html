@@ -20,17 +20,24 @@ function onYouTubePlayerAPIReady() {
 
 <div id="captions"></div>
 
-{% comment %}
-<div>vidId: {{ vidId }}</div>
-{% if v %}
-<div>db v: {{ v }}</div>
-{% else%}
-db v: unavailable
-{% endif %}
-{% endcomment %}
+
 
 <div id="add_transcripts">
   <h2>Edit / Add Transcript</h2>
+
+
+  <select id="transcript" name="language">
+<option selected="selected" disabled="disabled">choose transcript or add new</option>
+<option{{ transcript_existence_id }} value="{{ 1234xxx }}">add new</option>
+{% if t %}
+  {% for x in t %}
+  <option value="{{ x.transcript }}">{{ x.transcript|linebreaksbr }}</option>
+  {% empty %}
+  <p>Zero transcripts</p>
+  {% endfor %}
+</select>
+{% endif %}
+
   <!-- <h2>Add Transcript to <span class="player_title">{{vidId|truncatewords:15}}</span></h2> -->
 
 {% if user.is_authenticated %}

@@ -49,8 +49,6 @@
 */
 
 #transcript_table {
-  overflow: scroll;
-  /*height: 300px;*/
   border: 1px solid red;
 }
 
