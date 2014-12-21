@@ -86,8 +86,10 @@ def transcript_submit(request, vidId):
             TranscriptData = Transcript(
                             transcript=transcript,
                             language=languageForm.cleaned_data['language'],
-                            vid_id=Vid.objects.get(vidId=vidId).pk)
-                            # need user here, too
+                            # TODO: write vid object if nonexistent.
+                            vid_id=Vid.objects.get(vidId=vidId).pk # what if vidID nonexistent? Primary key would not link. 
+                            # need user here, too?
+                )
             TranscriptData.save()
             # need a success or fail message here
             # best case scenario, go to next screen
@@ -106,7 +108,7 @@ def set_vid_timing(request):
     return render(request, '', context)
 
 def about(request):
-    """About this website"""
+    """About this website static page"""
     context = {'video_search': video_search}
     return render(request, 'dproject/about.html', context)
 
