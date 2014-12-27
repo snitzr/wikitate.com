@@ -70,7 +70,8 @@ def transcript_submit(request, vidId):
             Vid.objects.get(vidId=vidId).pk
         except:
             # determine if youtube or vimeo source
-            if re.search('[a-zA-Z]', vidId):
+            # TODO: refactor RegEx for edge cases
+            if re.search('[a-zA-Z]', vidId): #check for characters in vidId. only YT has characters
                 vidSource='youtube'
             else:
                 vidSource='vimeo'
@@ -87,7 +88,8 @@ def transcript_submit(request, vidId):
                             transcript=transcript,
                             language=languageForm.cleaned_data['language'],
                             # TODO: write vid object if nonexistent.
-                            vid_id=Vid.objects.get(vidId=vidId).pk # what if vidID nonexistent? Primary key would not link. 
+                            # what if vidID nonexistent? Primary key would not link. It's not added in the try / except above?
+                            vid_id=Vid.objects.get(vidId=vidId).pk
                             # need user here, too?
                 )
             TranscriptData.save()

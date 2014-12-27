@@ -1,7 +1,7 @@
 $(document).ready(function() {
   setInterval(updateCurrentTime, 100);
   captionTime(0.0);
-  $('.player_title').html(player.A.videoData.title); // replaces vid headline ID with vid title
+  // $('.player_title').html(player.A.videoData.title); // replaces vid headline ID with vid title
 });
 
 
