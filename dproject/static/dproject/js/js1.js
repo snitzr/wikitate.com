@@ -159,7 +159,7 @@ $('#submit').on('submit click keyup keypress', function(event) {
   }
 });
 
-// remove error message on langauge select
+// remove error message on langauge select after drop down choose
 $('#id_language').on('change', function() {
   if ($(this).eq(0).val() === null) {
     return false;
@@ -170,7 +170,7 @@ $('#id_language').on('change', function() {
   }
 });
 
-// remove error message on time select
+// remove error message on time select after time add
 $('#transcripting').on('keyup click', 'input', function() {
   $('.timestamp_input').each(function() {
     if ($(this).val() === '') {
@@ -208,7 +208,7 @@ $('#transcript option').each(function(index) {
   }
 });
 
-// load drop down selection when chosen
+// load drop down selection after choice select
 $('#transcript').on('change', function() {
   $('#captions').html(''); // clear current transcript display
   transcript = (JSON.parse(this.value));

@@ -20,10 +20,27 @@ function onYouTubePlayerAPIReady() {
 
 <div id="captions"></div>
 
+<div id="submitted_transcripts">
+{% if t %}
+<h2>Select a Transcript</h2>
+{% else%}
+<h2>No Transcripts Available</h2>
+{% endif %}
 
+{% if t %}
+<select id="transcript" name="language">
+<option selected="selected" disabled="disabled">{{ t.count }} Transcript{{ t|pluralize }} Available</option>
+  {% for x in t %}
+  <option value="{{ x.transcript }}">{{ x.transcript|linebreaksbr }}</option>
+  {% empty %}
+  <p>Zero transcripts</p>
+  {% endfor %}
+</select>
+{% endif %}
+</div>
 
 <div id="add_transcripts">
-  <h2>Edit / Add Transcript</h2>
+  <h2>Make a Transcript</h2>
 
 <!-- TODO: refactor to prevent JSON parse errors. -->
 <!-- <select id="transcript" name="language">
@@ -189,24 +206,6 @@ function onYouTubePlayerAPIReady() {
   <p>When in edit mode, shrink vid 50%</p>
 </div>
 
-<div id="submitted_transcripts">
-{% if t %}
-<h2>Load a Transcript</h2>
-{% else%}
-<h2>No Transcripts</h2>
-{% endif %}
 
-
-<select id="transcript" name="language">
-<option selected="selected" disabled="disabled">{{ t.count }} Transcript{{ t|pluralize }} Available</option>
-{% if t %}
-  {% for x in t %}
-  <option value="{{ x.transcript }}">{{ x.transcript|linebreaksbr }}</option>
-  {% empty %}
-  <p>Zero transcripts</p>
-  {% endfor %}
-</select>
-{% endif %}
-</div>
 
 {% endblock content %}
