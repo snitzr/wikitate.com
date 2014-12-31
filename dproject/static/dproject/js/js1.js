@@ -86,7 +86,7 @@ $('#submit').on('submit click keyup keypress', function(event) {
 });
 */
 
-// append new time and text row to add transcript table on click or focus return
+// append new time and text row to add transcript table on click
 $('#transcripting').on('click', 'a', function(event) {
   event.preventDefault(); // prevent placeholder link from appering in browser URL
   // console.log($(this).html());
@@ -214,6 +214,26 @@ $('#transcript').on('change', function() {
   transcript = (JSON.parse(this.value));
 });
 
+// TESTING: transcript table JSON to human readable format
+$('#transcript_table_cell').each(function(index) {
+  var a_drop_concat = '';
+  a_drop_down_value = JSON.parse($('#transcript_table_cell').text());
+  // TODO: how to get all text if i <= x limits a large transcript?
+  for (var i = 0; i <= 10000; i += 0.5 ) {
+    if (a_drop_down_value[i] !== undefined) {
+      a_drop_concat += (a_drop_down_value[i] + '<br />');
+      $(this).html(a_drop_concat);
+    }
+  }
+});
+
+// // TESTING: load table selection after choice select
+// $('#transcript_table_cell').on('click', function() {
+//   $('#captions').html(''); // clear current transcript display
+//   // TODO: error in display / values:   need to keep JSON
+//   // var foo = $('transcript_table_cell').text()
+//   transcript = (JSON.parse($('transcript_table_cell').text()));
+// }); 
 
 // top level page move search box to URL
 $('#submit_vid_search').on('submit click', function(event) {
