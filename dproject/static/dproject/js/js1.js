@@ -1,14 +1,15 @@
 $(document).ready(function() {
   setInterval(updateCurrentTime, 100);
   captionTime(0.0);
-  // $('.player_title').html(player.A.videoData.title); // replaces vid headline ID with vid title
+  $('.vidNameNav').html(player.A.videoData.title); // replaces vid headline ID with vid title
 });
 
 
 $('#timeStamp').html('&nbsp;');
 
+
 // link timer to timestamp and display caption function
-// v2 time on user side, check API time as failsafe near user next caption time.
+// TODO: time on user side, check API time as failsafe near user next caption time.
 function updateCurrentTime() {
   if (player.getPlayerState() === 1) {
     // v2 why round? why not just match nonround to last transcript event?
@@ -23,22 +24,27 @@ function updateCurrentTime() {
 var transcript = {};
 
 // display captions to page and clear after six seconds
-function captionTime(currentTime) {
-  if ((transcript[currentTime]) !== undefined) {
+var captionTime;
+captionTime = function(currentTime) {
+  var endAndStartTimer;
+  if (transcript[currentTime] !== undefined) {
+    endAndStartTimer = function() {
+      var displayFade;
+      displayFade = function() {
+        $("#captions").fadeOut("fast");
+      };
+      clearTimeout(window.hider);
+      $("#captions").html(transcript[currentTime]).show();
+      window.hider = window.setTimeout(function() {
+        displayFade();
+      }, 6000);
+    };
     window.hider;
     endAndStartTimer();
-    function endAndStartTimer() {
-      clearTimeout(window.hider);
-      $('#captions').html(transcript[currentTime]).show(); // display transcript
-      window.hider = window.setTimeout(function() {
-          displayFade()
-        }, 6000);
-      function displayFade() {
-        $('#captions').fadeOut('fast')
-      };
-    }
   }
-}
+};
+
+
 
 
 // jump timer vid to field time TESTING
@@ -212,6 +218,7 @@ $('#transcript option').each(function(index) {
 $('#transcript').on('change', function() {
   $('#captions').html(''); // clear current transcript display
   transcript = (JSON.parse(this.value));
+  console.log(JSON.parse(this.value));
 });
 
 // TESTING: transcript table JSON to human readable format
@@ -226,6 +233,8 @@ $('#transcript_table_cell').each(function(index) {
     }
   }
 });
+
+
 
 // // TESTING: load table selection after choice select
 // $('#transcript_table_cell').on('click', function() {
@@ -414,6 +423,23 @@ console.log('9b #transcripting type nth 3:\t' + $('#transcripting input:nth-last
   //"25": ""
 //};
 
+// display captions to page and clear after six seconds. Legacy.
+// function captionTime(currentTime) {
+//   if ((transcript[currentTime]) !== undefined) {
+//     window.hider;
+//     endAndStartTimer();
+//     function endAndStartTimer() {
+//       clearTimeout(window.hider);
+//       $('#captions').html(transcript[currentTime]).show(); // display transcript
+//       window.hider = window.setTimeout(function() {
+//           displayFade()
+//         }, 6000);
+//       function displayFade() {
+//         $('#captions').fadeOut('fast')
+//       };
+//     }
+//   }
+// }
 
 // live reload
 document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
