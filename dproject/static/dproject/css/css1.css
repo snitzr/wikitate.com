@@ -181,6 +181,11 @@ h1, h2, h3, h4, h5, h6 {
   float: right;
 }
 
-#transcript_choose a:hover {
+#submitted_transcripts {
+  border-color: red;
+}
+
+.transcript_preview_row:hover{
   background-color: gray;
+  cursor: pointer;
 }

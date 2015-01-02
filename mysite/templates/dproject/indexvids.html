@@ -27,7 +27,7 @@ function onYouTubePlayerAPIReady() {
     <caption>Transcript{{ t|pluralize }}</caption>
     <tr><th>#</th><th>Language</th><th>Transcript</th></tr>
     {% for x in t %}
-    <tr><td>{{ forloop.counter }}</td><td>{{ x.language }}</td><td><span id="transcript_table_cell">{{ x.transcript }}</span></td><td>Active</td></tr>
+    <tr class="transcript_preview_row"><td>{{ forloop.counter }}</td><td>{{ x.language }}</td><td class="transcript_preview_cell">{{ x.transcript }}</td><td>Active</td></tr>
     {% empty %}
     {% endfor %}
   </table>

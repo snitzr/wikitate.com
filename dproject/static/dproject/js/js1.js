@@ -214,17 +214,22 @@ $('#transcript option').each(function(index) {
   }
 });
 
-// load drop down selection after choice select
+// load drop down selection after choice select and show load message
 $('#transcript').on('change', function() {
   $('#captions').html(''); // clear current transcript display
   transcript = (JSON.parse(this.value));
-  console.log(JSON.parse(this.value));
 });
 
-// TESTING: transcript table JSON to human readable format
-$('#transcript_table_cell').each(function(index) {
+// // TESTING: load drop down selection after choice select and show load message
+// $('.transcript_preview_cell').on('click', function() {
+//   $('#captions').html(''); // clear current transcript display
+//   transcript = (JSON.parse(this.value));
+// });
+
+// Transcript table JSON to human readable format
+$('.transcript_preview_cell').each(function(index) {
   var a_drop_concat = '';
-  a_drop_down_value = JSON.parse($('#transcript_table_cell').text());
+  a_drop_down_value = JSON.parse($(this).text());
   // TODO: how to get all text if i <= x limits a large transcript?
   for (var i = 0; i <= 10000; i += 0.5 ) {
     if (a_drop_down_value[i] !== undefined) {
