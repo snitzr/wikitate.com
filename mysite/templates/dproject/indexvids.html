@@ -22,31 +22,34 @@ function onYouTubePlayerAPIReady() {
 
 <div id="submitted_transcripts">
   {% if t %}
-  <h2>Transcript{{ t|pluralize }}</h2>
+  <h2>Choose a Transcript</h2>
+  <!-- <h2>Transcript{{ t|pluralize }}</h2> -->
   <table id="transcript_choose">
-    <caption>Transcript{{ t|pluralize }}</caption>
-    <tr><th>#</th><th>Language</th><th>Transcript</th></tr>
+    <caption>{{ t.count }} Transcript{{ t|pluralize }} Available</caption>
+    <tr><th>&nbsp;</th><th>Language</th><th>Transcript</th><th>&nbsp;</th><th>&nbsp;</th></tr>
     {% for x in t %}
-    <tr class="transcript_preview_row"><td>{{ forloop.counter }}</td><td>{{ x.language }}</td><td class="transcript_preview_cell">{{ x.transcript }}</td><td>Selected</td></tr>
+    <tr class="transcript_preview_row"><td>{{ forloop.counter }}</td><td>{{ x.language }}</td><td class="transcript_preview_cell">{{ x.transcript }}</td><td class="transcript_json_cell">{{ x.transcript }}</td><td class="transcript_loaded_cell"></td></tr>
     {% empty %}
     {% endfor %}
   </table>
     <p>Create new transcript in LANGUAGE drop down ^.</p>
-  <select id="transcript" name="language">
-    <option selected="selected" disabled="disabled">{{ t.count }} Transcript{{ t|pluralize }} Available</option>
-    {% for x in t %}
-    <option value="{{ x.transcript }}">{{ x.transcript|linebreaksbr }}</option>
-    {% empty %}
-    <p>Zero transcripts</p>
-    {% endfor %}
-  </select>
-  {% else%}
-  <h2>No Transcripts Available</h2>
-  {% endif %}
-</div>
 
-<div id="add_transcripts">
-  <h2>Make a Transcript</h2>
+
+    <select id="transcript" name="language">
+      <option selected="selected" disabled="disabled">{{ t.count }} Transcript{{ t|pluralize }} Available</option>
+      {% for x in t %}
+      <option value="{{ x.transcript }}">{{ x.transcript|linebreaksbr }}</option>
+      {% empty %}
+      <p>Zero transcripts</p>
+      {% endfor %}
+    </select>
+    {% else%}
+    <h2>No Transcripts Available</h2>
+    {% endif %}
+  </div>
+
+  <div id="add_transcripts">
+    <h2>Make a Transcript</h2>
 
 <!-- TODO: refactor to prevent JSON parse errors. -->
 <!-- <select id="transcript" name="language">
@@ -100,7 +103,6 @@ function onYouTubePlayerAPIReady() {
   {# manually rendering each field in order to control disabled lanuages on dropdown #}
   {# need logic here to check for existing language transcripts and then disable existing in dropdown #}
   <!-- hard coding drop down until I have a programmable solution -->
-  <!-- need warning if language not selected on submit -->
   <select id="id_language" name="language">
     <option selected="selected" disabled="disabled">Transcript language (required)</option>
     <option{{ transcript_existence_af }} value="af">Afrikaans</option>

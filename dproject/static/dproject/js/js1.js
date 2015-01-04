@@ -226,7 +226,7 @@ $('#transcript').on('change', function() {
 //   transcript = (JSON.parse(this.value));
 // });
 
-// Transcript table JSON to human readable format
+// Transcript table JSON to display human readable format
 $('.transcript_preview_cell').each(function(index) {
   var a_drop_concat = '';
   a_drop_down_value = JSON.parse($(this).text());
@@ -241,13 +241,14 @@ $('.transcript_preview_cell').each(function(index) {
 
 
 
-// // TESTING: load table selection after choice select
-// $('#transcript_table_cell').on('click', function() {
-//   $('#captions').html(''); // clear current transcript display
-//   // TODO: error in display / values:   need to keep JSON
-//   // var foo = $('transcript_table_cell').text()
-//   transcript = (JSON.parse($('transcript_table_cell').text()));
-// }); 
+// Load table selection after choice select
+$('.transcript_preview_row').on('click', function() {
+  $('#captions').html(''); // clear current transcript display
+  transcript = (JSON.parse($(this).children('.transcript_json_cell').text()));
+  ($('.transcript_loaded_cell').text(''));
+  ($(this).children('.transcript_loaded_cell').text('Loaded'));
+  // need to indicate what row is loaded
+}); 
 
 // top level page move search box to URL
 $('#submit_vid_search').on('submit click', function(event) {

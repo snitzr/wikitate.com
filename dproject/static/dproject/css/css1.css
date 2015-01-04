@@ -186,6 +186,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .transcript_preview_row:hover{
-  background-color: gray;
+  background-color: #D8D8D8;
+  color: black;
   cursor: pointer;
+}
+
+.transcript_json_cell {
+  /*visibility: hidden;*/
 }
