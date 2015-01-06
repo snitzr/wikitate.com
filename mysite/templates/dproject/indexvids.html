@@ -35,21 +35,11 @@ function onYouTubePlayerAPIReady() {
   </table>
     <p>Create new transcript in LANGUAGE drop down ^.</p>
 
-
-<!-- Drop down transcript select
-    <select id="transcript" name="language">
-      <option selected="selected" disabled="disabled">{{ t.count }} Transcript{{ t|pluralize }} Available</option>
-      {% for x in t %}
-      <option value="{{ x.transcript }}">{{ x.transcript|linebreaksbr }}</option>
-      {% empty %}
-      <p>Zero transcripts</p>
-      {% endfor %}
-    </select>
     {% else%}
     <h2>No Transcripts Available</h2>
     {% endif %}
   </div>
--->
+ 
 
   <div id="add_transcripts">
     <h2>Make a Transcript</h2>
