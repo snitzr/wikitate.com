@@ -53,7 +53,7 @@
 }
 
 #transcripting td.transcript_cell input {
-  width: 400px; /* check on iPad */
+  width: 400px; /* TODO: check on iPad */
 }
 
 #transcripting td.insert_row {
@@ -61,7 +61,7 @@
 }
 
 #ytplayer {
-  height: 600px; /* change on JS event to make transcript room */
+  height: 600px; /* TESTING: change on JS event to make transcript room. */
 }
 ul, #header h1, #header p, #header li, #header form {
   display: inline;
@@ -185,10 +185,25 @@ h1, h2, h3, h4, h5, h6 {
   border-color: red;
 }
 
-.transcript_preview_row:hover{
+.transcript_preview_row:hover {
   background-color: #D8D8D8;
   color: black;
   cursor: pointer;
+}
+
+#transcript_choose {
+  width: 100%;
+  table-layout: fixed;
+  border: 1px solid red;
+}
+
+#transcript_choose tr, #transcript_choose td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 30px;
+  width: 300px;
+  border: 1px solid red;
 }
 
 .transcript_json_cell {

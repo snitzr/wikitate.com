@@ -55,12 +55,15 @@ $('#timing').on('click', function() {
 */
 
 // load captions on click
-$('.transcriptDisplaySelect').click(function() {
-  $('#captions').html(''); // clear current transcript display
-  // add click content to transcript var
-  transcript = $(this).html();
-  transcript = $.parseJSON(transcript);
-});
+// $('.transcriptDisplaySelect').click(function() {
+//   if (player.getPlayerState() === 1) {
+//     player.playVideo();
+//   }
+//   $('#captions').html(''); // clear current transcript display
+//   transcript = $.parseJSON($(this).html());
+//   // autostart vid
+//   alert(player);
+// });
 
 // start / stop video control
 $('#starp').click(function() {
@@ -215,10 +218,10 @@ $('#transcript option').each(function(index) {
 });
 
 // load drop down selection after choice select and show load message
-$('#transcript').on('change', function() {
-  $('#captions').html(''); // clear current transcript display
-  transcript = (JSON.parse(this.value));
-});
+// $('#transcript').on('change', runction() {
+//   $('#captions').html(''); // clear current transcript display
+//   transcript = (JSON.parse(this.value));
+// });
 
 // // TESTING: load drop down selection after choice select and show load message
 // $('.transcript_preview_cell').on('click', function() {
@@ -243,11 +246,15 @@ $('.transcript_preview_cell').each(function(index) {
 
 // Load table selection after choice select
 $('.transcript_preview_row').on('click', function() {
-  $('#captions').html(''); // clear current transcript display
+  $('#captions').html(''); // clear out current transcript display
   transcript = (JSON.parse($(this).children('.transcript_json_cell').text()));
   ($('.transcript_loaded_cell').text(''));
-  ($(this).children('.transcript_loaded_cell').text('Loaded'));
-  // need to indicate what row is loaded
+  // TODO: I really should just be adding a class, instead?
+  ($('.transcript_preview_row').css('backgroundColor', 'white'));
+  ($(this).children('.transcript_loaded_cell').text('Selected'));
+  // TODO: autoplay video?
+  ($(this).css('backgroundColor', '#D8D8D8'));
+  player.playVideo();
 }); 
 
 // top level page move search box to URL

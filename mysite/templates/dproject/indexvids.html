@@ -20,13 +20,14 @@ function onYouTubePlayerAPIReady() {
 
 <div id="captions"></div>
 
+<!-- Caption choose and loadtable -->
 <div id="submitted_transcripts">
   {% if t %}
   <h2>Choose a Transcript</h2>
   <!-- <h2>Transcript{{ t|pluralize }}</h2> -->
   <table id="transcript_choose">
     <caption>{{ t.count }} Transcript{{ t|pluralize }} Available</caption>
-    <tr><th>&nbsp;</th><th>Language</th><th>Transcript</th><th>&nbsp;</th><th>&nbsp;</th></tr>
+    <tr><th>&nbsp;</th><th>Language</th><th>Transcript</th><th>JSON</th><th>Status</th></tr>
     {% for x in t %}
     <tr class="transcript_preview_row"><td>{{ forloop.counter }}</td><td>{{ x.language }}</td><td class="transcript_preview_cell">{{ x.transcript }}</td><td class="transcript_json_cell">{{ x.transcript }}</td><td class="transcript_loaded_cell"></td></tr>
     {% empty %}
@@ -35,6 +36,7 @@ function onYouTubePlayerAPIReady() {
     <p>Create new transcript in LANGUAGE drop down ^.</p>
 
 
+<!-- Drop down transcript select
     <select id="transcript" name="language">
       <option selected="selected" disabled="disabled">{{ t.count }} Transcript{{ t|pluralize }} Available</option>
       {% for x in t %}
@@ -47,24 +49,10 @@ function onYouTubePlayerAPIReady() {
     <h2>No Transcripts Available</h2>
     {% endif %}
   </div>
+-->
 
   <div id="add_transcripts">
     <h2>Make a Transcript</h2>
-
-<!-- TODO: refactor to prevent JSON parse errors. -->
-<!-- <select id="transcript" name="language">
-<option selected="selected" disabled="disabled">choose transcript or add new</option>
-<option{{ transcript_existence_id }} value="1234xxx">add new</option>
-{% if t %}
-  {% for x in t %}
-  <option value="{{ x.transcript }}">{{ x.transcript|linebreaksbr }}</option>
-  {% empty %}
-  <p>Zero transcripts</p>
-  {% endfor %}
-</select>
-{% endif %}
- -->
-  <!-- <h2>Add Transcript to <span class="player_title">{{vidId|truncatewords:15}}</span></h2> -->
 
 {% if user.is_authenticated %}
 {% load account %}
@@ -72,14 +60,12 @@ function onYouTubePlayerAPIReady() {
 {# {% user_display user %} #}
 
 {# transcript submit #}
-  <!-- begin drafting form set -->
 <form method="post" action="/transcript_submit/{{ vidId }}/">
   {% csrf_token %}
 
   <br />
 
   {# transcript form #}
-  <!-- begin drafting timing set -->
   <!-- needs responsive -->
   <div id="transcript_table" name="transcript_table"> <!-- does name-transcript need to be here at all? -->
   <table id="transcripting">
