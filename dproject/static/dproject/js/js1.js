@@ -203,19 +203,19 @@ $('#transcripting').on('keyup click', 'input', function() {
   }
 });
 
-// drop down JSON to human readable format
-$('#transcript option').each(function(index) {
-  var drop_concat = '';
-  if (index !== 0) {
-    drop_down_value = JSON.parse(this.value);
-    for (var i = 0; i <= 20; i += 0.5 ) {
-      if (drop_down_value[i] !== undefined) {
-        drop_concat += (drop_down_value[i] + ' ');
-        $(this).html(drop_concat);
-      }
-    }
-  }
-});
+// // drop down JSON to human readable format
+// $('#transcript option').each(function(index) {
+//   var drop_concat = '';
+//   if (index !== 0) {
+//     drop_down_value = JSON.parse(this.value);
+//     for (var i = 0; i <= 20; i += 0.5 ) {
+//       if (drop_down_value[i] !== undefined) {
+//         drop_concat += (drop_down_value[i] + ' ');
+//         $(this).html(drop_concat);
+//       }
+//     }
+//   }
+// });
 
 // load drop down selection after choice select and show load message
 // $('#transcript').on('change', runction() {
@@ -234,7 +234,7 @@ $('.transcript_preview_cell').each(function(index) {
   var a_drop_concat = '';
   a_drop_down_value = JSON.parse($(this).text());
   // TODO: how to get all text if i <= x limits a large transcript?
-  for (var i = 0; i <= 10000; i += 0.5 ) {
+  for (var i = 0; i <= 20000; i += 0.5 ) {
     if (a_drop_down_value[i] !== undefined) {
       a_drop_concat += (a_drop_down_value[i] + '<br />');
       $(this).html(a_drop_concat);
@@ -249,10 +249,8 @@ $('.transcript_preview_row').on('click', function() {
   $('#captions').html(''); // clear out current transcript display
   transcript = (JSON.parse($(this).children('.transcript_json_cell').text()));
   ($('.transcript_loaded_cell').text(''));
-  // TODO: I really should just be adding a class, instead?
-  ($('.transcript_preview_row').css('backgroundColor', 'white'));
   ($(this).children('.transcript_loaded_cell').text('Selected'));
-  // TODO: autoplay video?
+  ($('.transcript_preview_row').css('backgroundColor', 'white'));
   ($(this).css('backgroundColor', '#D8D8D8'));
   player.playVideo();
 }); 

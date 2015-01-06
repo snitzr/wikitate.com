@@ -26,7 +26,6 @@
   text-decoration: underline;
 }
 
-
 /*#ad {*/
   /*height: 60px;*/
   /*width: 468px;*/
@@ -191,12 +190,12 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
+/* trying to overflow */
 #transcript_choose {
   width: 100%;
   table-layout: fixed;
   border: 1px solid red;
 }
-
 #transcript_choose tr, #transcript_choose td {
   white-space: nowrap;
   overflow: hidden;
@@ -205,7 +204,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 300px;
   border: 1px solid red;
 }
-
 .transcript_json_cell {
   /*visibility: hidden;*/
 }
