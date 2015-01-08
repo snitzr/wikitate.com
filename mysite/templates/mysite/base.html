@@ -29,7 +29,7 @@
   <div id="header">
     <ul id="head">
     {% block header %}
-    <li><h1><a href="{% url 'index:index' %}">Wikitate</a> &#47; {{ vidId }}<span class="vidNameNav"></span></h1></li>
+    <li><h1><a href="{% url 'index:index' %}">Wikitate</a> &#47; <span class="vidNameNav">{{ vidId }}</span></h1></li>
     {% endblock header %}
     {% block video_search %}
     <li>
@@ -69,26 +69,22 @@
   </div>
   {% endblock footer %}
 </div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-{% comment %}
-<!-- Begin testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
-
-
+<!-- Begin TESTING code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
 <script>
 // var vidURL = document.URL.match(/v=.{11}/).toString().substring(2,13);
-var vidCode = '{{ vidId }}'
 
-// embed video on page
-var params = { allowScriptAccess: 'always' };
-var atts = { id: 'myytplayer' };
-swfobject.embedSWF('http://www.youtube.com/v/' + vidCode + '?enablejsapi=1&playerapiid=ytplayer&version=3',
-    'vidId', '100%', '480', '8', null, null, params, atts);
+// embed video on page.
+// var vidCode = '{{ vidId }}'
 
+// var params = { allowScriptAccess: 'always' };
+// var atts = { id: 'myytplayer' };
+// swfobject.embedSWF('http://www.youtube.com/v/' + vidCode + '?enablejsapi=1&playerapiid=ytplayer&version=3',
+//     'vidId', '100%', '480', '8', null, null, params, atts);
 </script>
-<!-- End testing code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
-{% endcomment %}
+<!-- End TESTING code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="{% static "dproject/js/bootstrap.min.js" %}"></script>
 <script src="{% static "dproject/js/js1.js" %}"></script>
 </body>

@@ -1,9 +1,12 @@
 $(document).ready(function() {
   setInterval(updateCurrentTime, 100);
   captionTime(0.0);
-  $('.vidNameNav').html(player.A.videoData.title); // replaces vid headline ID with vid title
 });
 
+function onYouTubePlayerReady() {
+  $('.vidNameNav').html(player.A.videoData.title); // replaces vid headline ID with vid title
+  alert('ready');
+}
 
 $('#timeStamp').html('&nbsp;');
 
@@ -15,8 +18,6 @@ function updateCurrentTime() {
     // v2 why round? why not just match nonround to last transcript event?
     var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
     $('#timeStamp').html('Timestamp: ' + 'rounded: ' + rounded + ' fixed: ' + player.getCurrentTime().toFixed(1));
-    // console.log(player.getCurrentTime());
-    // console.log(rounded + ' rounded');
     captionTime(rounded);
   }
 }
