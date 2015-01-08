@@ -3,7 +3,7 @@ $(document).ready(function() {
   captionTime(0.0);
 });
 
-function onYouTubePlayerReady() {
+function onYouTubePlayerReady(playerid) {
   $('.vidNameNav').html(player.A.videoData.title); // replaces vid headline ID with vid title
   alert('ready');
 }
