@@ -1,12 +1,25 @@
 $(document).ready(function() {
   setInterval(updateCurrentTime, 100);
   captionTime(0.0);
+  changeTitle(); // start search for video title to insert into headline
 });
 
-function onYouTubePlayerReady(playerid) {
-  $('.vidNameNav').html(player.A.videoData.title); // replaces vid headline ID with vid title
-  alert('ready');
+// begin vid title replacement
+var intervalHead, intervalHeadStop;
+function changeTitle() {
+  intervalHead = setInterval(titleReplace, 100);
+  intervalHeadStop = setTimeout(titleReplaceStop, 5000); // prevent infinite title search
 }
+function titleReplace() {
+  if (player.A.videoData.title) {
+    $('.vidNameNav').html(player.A.videoData.title); // replace vid headline ID with vid title
+    clearInterval(intervalHead);
+  }
+}
+function titleReplaceStop() {
+    clearInterval(intervalHead);
+}
+// end vid title replacement
 
 $('#timeStamp').html('&nbsp;');
 
