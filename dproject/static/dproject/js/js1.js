@@ -11,8 +11,8 @@ function changeTitle() {
   intervalHeadStop = setTimeout(titleReplaceStop, 5000); // prevent infinite title search
 }
 function titleReplace() {
-  if (player.A.videoData.title) {
-    $('.vidNameNav').html(player.A.videoData.title); // replace vid headline ID with vid title
+  if (player.getVideoData().title) {
+    $('.vidNameNav').html(player.getVideoData().title); // replace vid headline ID with vid title
     clearInterval(intervalHead);
   }
 }
@@ -21,8 +21,8 @@ function titleReplaceStop() {
 }
 // end vid title replacement
 
-$('#timeStamp').html('&nbsp;');
 
+$('#timeStamp').html('&nbsp;');
 
 // link timer to timestamp and display caption function
 // TODO: time on user side, check API time as failsafe near user next caption time.
@@ -58,9 +58,6 @@ captionTime = function(currentTime) {
   }
 };
 
-
-
-
 // jump timer vid to field time TESTING
 /*
 $('#timing').on('click', function() {
@@ -80,21 +77,21 @@ $('#timing').on('click', function() {
 // });
 
 // start / stop video control
-$('#starp').click(function() {
-  if (player.getPlayerState() === 1) {
-    player.pauseVideo();
-  } else {
-    player.playVideo();
-  }
-});
+// $('#starp').click(function() {
+//   if (player.getPlayerState() === 1) {
+//     player.pauseVideo();
+//   } else {
+//     player.playVideo();
+//   }
+// });
 
-// skip back control
-$('#skipBack').click(function() {
-  player.pauseVideo();
-  player.seekTo((player.getCurrentTime() - 3), true);
-  player.playVideo();
-  // console.log(player.getCurrentTime());
-});
+// // skip back control
+// $('#skipBack').click(function() {
+//   player.pauseVideo();
+//   player.seekTo((player.getCurrentTime() - 3), true);
+//   player.playVideo();
+//   // console.log(player.getCurrentTime());
+// });
 
 // load transcript cells on language selection
 /* 
@@ -250,7 +247,7 @@ $('.transcript_preview_cell').each(function(index) {
   // TODO: how to get all text if i <= x limits a large transcript?
   for (var i = 0; i <= 20000; i += 0.5 ) {
     if (a_drop_down_value[i] !== undefined) {
-      a_drop_concat += (a_drop_down_value[i] + '<br />');
+      a_drop_concat += (a_drop_down_value[i] + '<br>');
       $(this).html(a_drop_concat);
     }
   }

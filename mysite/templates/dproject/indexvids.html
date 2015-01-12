@@ -53,7 +53,7 @@ function onYouTubePlayerAPIReady() {
 <form method="post" action="/transcript_submit/{{ vidId }}/">
   {% csrf_token %}
 
-  <br />
+  <br>
 
   {# transcript form #}
   <!-- needs responsive -->
@@ -145,7 +145,7 @@ function onYouTubePlayerAPIReady() {
     <option{{ transcript_existence }} value="ot">other</option>
   </select>
   <span id="language_message"></span>
-  <br />
+  <br>
   <input id="submit" type="submit" value="Submit transcript" />
 </form>
   <span id="language_submit_message"></span>
@@ -175,7 +175,7 @@ function onYouTubePlayerAPIReady() {
   Select transcript
 </div>
 <div id="Editor">
-  Select time | Text (with character limit) | Duration<br />
+  Select time | Text (with character limit) | Duration<br>
 </div>
 <div id="starp">Start / Stop</div>
 <div id="skipBack">Skip back 3 seconds</div>
