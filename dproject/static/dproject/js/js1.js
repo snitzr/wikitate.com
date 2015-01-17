@@ -58,12 +58,15 @@ captionTime = function(currentTime) {
   }
 };
 
-// jump timer vid to field time TESTING
-/*
-$('#timing').on('click', function() {
-  player.seekTo((document.getElementById('timing').innerHTML), true); //seekTo argument needs evaluation
+// TESTING: jump timer vid to field time
+$('.transcript_input').on('focus', function() {
+  // TODO: seekTo auto starts the video. needs to auto start / not auto start based on context. Example: not autostart if timestamp empty.
+  // TODO: make auto start work for dynamicly generated rows.
+  // if (player.seekTo(($(this).closest('tr').find('input.timestamp_input').val()))) {
+    // alert('yo');
+  // }
 });
-*/
+
 
 // load captions on click
 // $('.transcriptDisplaySelect').click(function() {
@@ -255,7 +258,7 @@ $('.transcript_preview_cell').each(function(index) {
 
 
 
-// Load table selection after choice select
+// Load table selection after transcript selection
 $('.transcript_preview_row').on('click', function() {
   $('#captions').html(''); // clear out current transcript display
   transcript = (JSON.parse($(this).children('.transcript_json_cell').text()));
@@ -263,7 +266,9 @@ $('.transcript_preview_row').on('click', function() {
   ($(this).children('.transcript_loaded_cell').text('Selected'));
   ($('.transcript_preview_row').css('backgroundColor', 'white'));
   ($(this).css('backgroundColor', '#D8D8D8'));
+  player.seekTo('0');
   player.playVideo();
+  // player.playVideoAt('0');
 }); 
 
 // top level page move search box to URL

@@ -1,11 +1,14 @@
 {% extends "mysite/base.html" %}{% load staticfiles %}
 
+{% block header %}
+<h1><a href="{% url 'index:index' %}">Wikitate</a> &#47; About</h1>
+{% endblock header %}
 {% block content %}
 
 <h2>What is this?</h2>
 <p>This website helps users find and create transcripts to YouTube videos.</p>
 <h2>How to use</h2>
-<p>Copy and search by YouTube link or access Wikitate directly from YouTube with the <a href="javascript:var search_url = /youtube.com/g;var search_vid = /v=.........../g;var search_url_results = search_url.exec(location.host);var search_vid_results = search_vid.exec(location.search);if (search_url_results !== null) {window.location = ('//www.wikitate.com/' + search_vid_results[0].slice(2));}">view in Wikitate</a> <a href="https://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a>.</p>
+<p>Copy and search by YouTube link or access Wikitate directly from YouTube with the view in Wikitate bookmarklet. Add this link to your bookmarks and use it while in YouTube to instantly view the video in Wikitate: <a href="javascript:var search_url = /youtube.com/g;var search_vid = /v=.........../g;var search_url_results = search_url.exec(location.host);var search_vid_results = search_vid.exec(location.search);if (search_url_results !== null) {window.location = ('//www.wikitate.com/' + search_vid_results[0].slice(2));}">view in Wikitate</a>.</p>
 
 <h2>Purpose</h2>
 <ul>
