@@ -144,6 +144,9 @@ h1, h2, h3, h4, h5, h6 {
   color: red;
 }
 
+#video_search {
+}
+
 #main-search {
   font-size: 200%;
   margin: 100px 0 100px 0;
@@ -191,6 +194,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* trying to overflow */
+tbody {
+  /*background-color: red;*/
+  /*overflow: auto;*/
+}
+
 #transcript_choose {
   width: 100%;
   table-layout: fixed;
