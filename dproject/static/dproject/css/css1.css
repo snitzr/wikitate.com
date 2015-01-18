@@ -34,16 +34,16 @@
   /*border: 1px solid grey;*/
 /*}*/
 
-/*.transcript_cell {*/
-  /*width: 500px;*/
-/*}*/
-
-/*
-#transcripting tr:nth-child(even){
-  background-color: black;
+/*#transcript_choose tr:nth-child(even){
+  background-color: #E6E6E6;
 }
-#transcripting tr:nth-child(odd){
-  background-color: purple;
+
+#transcript_choose tr:nth-child(odd){
+  background-color: white;
+}
+
+#transcript_choose th {
+  background-color: white;
 }
 */
 
@@ -138,6 +138,10 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
+#ytplayer {
+  width: 100%;
+}
+
 #message {
   color: red;
 }
@@ -166,8 +170,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #transcript {
-  /* list-style-type: none; */
-  /* list alignment is not consistent with About page */
   width: 200px;
   padding-left: 1.5em;
 }
