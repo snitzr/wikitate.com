@@ -14,18 +14,18 @@
 {% block body %}
 {% if user.is_authenticated %}
 {% load account %}
+<p>Hello, {% user_display user %}.</p>
 <ul>
-  <li>{% user_display user %} is logged in.</li>
-  <li>Preferred language</li>
-  <li>Change password</li>
-  <li>Change username</li>
+  <!-- <li>Preferred language</li> -->
+  <!-- <li>Change password</li> -->
+  <!-- <li>Change username</li> -->
   <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-  <li>Your submissions. Drafts and published.</li>
+<!--   <li>Your submissions. Drafts and published.</li>
   <li>Delete account.</li>
-  <li>[SAVE] button</li>
+ -->  <!-- <li>[SAVE] button</li> -->
 </ul>
 {% else %}
-logged out.
-http://127.0.0.1:8000/accounts/login/
+Logged out.
+<!-- http://127.0.0.1:8000/accounts/login/ -->
 {% endif %}
 {% endblock body %}

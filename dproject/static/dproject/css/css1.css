@@ -193,6 +193,10 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
+#id_transcript_search {
+  width: 50%;
+}
+
 /* trying to overflow */
 tbody {
   /*background-color: red;*/

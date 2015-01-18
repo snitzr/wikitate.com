@@ -13,6 +13,7 @@ function changeTitle() {
 function titleReplace() {
   if (player.getVideoData().title) {
     $('.vidNameNav').html(player.getVideoData().title); // replace vid headline ID with vid title
+    $('title').append((' &#47; ') + (player.getVideoData().title)); // append video title to page title
     clearInterval(intervalHead);
   }
 }
@@ -266,7 +267,7 @@ $('.transcript_preview_row').on('click', function() {
   ($(this).children('.transcript_loaded_cell').text('Selected'));
   ($('.transcript_preview_row').css('backgroundColor', 'white'));
   ($(this).css('backgroundColor', '#D8D8D8'));
-  player.seekTo('0');
+  // player.seekTo('0');
   player.playVideo();
   // player.playVideoAt('0');
 }); 
