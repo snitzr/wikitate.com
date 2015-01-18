@@ -48,7 +48,7 @@
 */
 
 #transcript_table {
-  border: 1px solid red;
+  /*border: 1px solid grey;*/
 }
 
 #transcripting td.transcript_cell input {
@@ -100,7 +100,6 @@ h1, h2, h3, h4, h5, h6 {
 
 #captions {
   background: transparent;
-  color: #fafafa;
   color: yellow;
   font-size: 28px;
   font-weight: bold;
@@ -117,7 +116,6 @@ h1, h2, h3, h4, h5, h6 {
 
 #timeStamp {
   background: transparent;
-  color: #fafafa;
   color: yellow;
   font-size: 28px;
   font-weight: bold;
@@ -179,12 +177,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #transcription_tips {
-  /* visibility: hidden; */
-  /*float: right;*/
-}
-
-#submitted_transcripts {
-  border-color: red;
+  margin: 2em 0;
 }
 
 .transcript_preview_row:hover {
@@ -208,14 +201,19 @@ tbody {
   table-layout: fixed;
   border: 1px solid red;
 }
+
+th, #transcript_choose tr, #transcript_choose td {
+  padding: 4px;
+}
+
 #transcript_choose tr, #transcript_choose td {
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
   height: 30px;
   width: 300px;
-  border: 1px solid red;
+  border: 1px solid #454545;
 }
-.transcript_json_cell {
-  /*visibility: hidden;*/
+
+.transcript_json_cell, #JSON_table_header {
+  display: none;
 }

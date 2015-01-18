@@ -27,14 +27,12 @@ function onYouTubePlayerAPIReady() {
   <!-- <h2>Transcript{{ t|pluralize }}</h2> -->
   <table id="transcript_choose">
     <caption>{{ t.count }} Transcript{{ t|pluralize }} Available</caption>
-    <tr><th>&nbsp;</th><th>Language</th><th>Transcript</th><th>JSON</th><th>Status</th></tr>
+    <tr><th>#</th><th>Language</th><th>Transcript</th><th id="JSON_table_header">JSON</th><th>Status</th></tr>
     {% for x in t %}
     <tr class="transcript_preview_row"><td>{{ forloop.counter }}</td><td>{{ x.language }}</td><td class="transcript_preview_cell">{{ x.transcript }}</td><td class="transcript_json_cell">{{ x.transcript }}</td><td class="transcript_loaded_cell"></td></tr>
     {% empty %}
     {% endfor %}
   </table>
-    <p>Create new transcript in LANGUAGE drop down ^.</p>
-
     {% else%}
     <h2>No Transcripts Available</h2>
     {% endif %}
@@ -56,6 +54,7 @@ function onYouTubePlayerAPIReady() {
 
   {# transcript form #}
   <!-- needs responsive -->
+  <h2>Add a new transcript</h2>
   <div id="transcript_table" name="transcript_table"> <!-- does name-transcript need to be here at all? -->
   <table id="transcripting">
     <caption>Transcript</caption>
@@ -156,16 +155,16 @@ function onYouTubePlayerAPIReady() {
 {% endif %}
 </div>
 <div id="transcription_tips">
-  <dl>
-    <dt>Transcription tips:</dt>
-    <dd>Transcribe first, then set timing.</dd>
-    <dd>Subtitle text automatically disapears six seconds after it appears, unless replaced by more text or a blank row.</dd>
+    <h3>Transcribing tips</h3>
+  <ul>
+    <li>Transcribe first, then set timing.</li>
+    <li>Subtitle text automatically disapears six seconds after it appears, unless replaced by more text or a blank row.</li>
     <!-- <dd>Line break with "-" to show each line is a separate person speaking. Recommended only for simultaneous dialogue.</dd> -->
-    <dd>100 characters max per text line.</dd>
-    <dd>Indicate music with: ♫</dd>
-    <dd>Set text timing &frac12; second before dialogue appears. This gives the brain time to react and read the text with the action.</dd>
+    <li>100 characters max per text line.</li>
+    <li>Indicate music with: ♫</li>
+    <li>Set text timing &frac12; second before dialogue appears. This gives the brain time to react and read the text with the action.</li>
     <!-- <dd>Keyboard shortcuts: </dd> -->
-  </dl>
+  </ul>
 </div>
 
 <!--
