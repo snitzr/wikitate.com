@@ -204,8 +204,8 @@ tbody {
   border: 1px solid red;
 }
 
-#transcript_choose_row_number, #transcript_choose_column_number {
-  width: 30px;
+.transcript_choose_column_number, .transcript_choose_column_language, .transcript_choose_column_status {
+  width: 80px;
   text-align: center;
 }
 
