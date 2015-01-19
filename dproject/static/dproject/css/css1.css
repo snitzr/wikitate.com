@@ -195,7 +195,7 @@ h1, h2, h3, h4, h5, h6 {
 /* trying to overflow */
 tbody {
   /*background-color: red;*/
-  /*overflow: auto;*/
+  overflow: auto;
 }
 
 #transcript_choose {
@@ -204,8 +204,14 @@ tbody {
   border: 1px solid red;
 }
 
+#transcript_choose_row_number, #transcript_choose_column_number {
+  width: 30px;
+  text-align: center;
+}
+
 th, #transcript_choose tr, #transcript_choose td {
   padding: 4px;
+  overflow: auto;
 }
 
 #transcript_choose tr, #transcript_choose td {
