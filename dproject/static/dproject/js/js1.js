@@ -6,7 +6,8 @@ $(document).ready(function() {
 
 
 // testing player listener
-function player.addEventListener(onReady, funtime)
+function onPlayerReady(event) {
+  alert('testsalkj')
 };
 
 function funtime() {
