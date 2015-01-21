@@ -4,6 +4,12 @@ $(document).ready(function() {
   changeTitle(); // start search for video title to insert into headline
 });
 
+
+// testing
+function onYouTubePlayerReady(playerid) {
+  alert('plid')
+};
+
 // begin vid title replacement
 var intervalHead, intervalHeadStop;
 function changeTitle() {
