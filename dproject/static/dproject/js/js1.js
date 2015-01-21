@@ -5,8 +5,11 @@ $(document).ready(function() {
 });
 
 
-// testing
-function onYouTubePlayerReady(playerid) {
+// testing player listener
+function player.addEventListener(onReady, funtime)
+};
+
+function funtime() {
   alert('plid')
 };
 
