@@ -6,13 +6,9 @@ $(document).ready(function() {
 
 
 // testing player listener
-function onPlayerReady(event) {
-  alert('testsalkj')
-};
-
-function funtime() {
-  alert('plid')
-};
+// function onPlayerReady(event) {
+  // alert('testsalkj')
+// };
 
 // begin vid title replacement
 var intervalHead, intervalHeadStop;
