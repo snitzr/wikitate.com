@@ -5,6 +5,11 @@ $(document).ready(function() {
 });
 
 
+function onPlayerStateChange(event) {
+    alert('event');
+}
+
+
 // testing player listener
 // function onPlayerReady(event) {
   // alert('testsalkj')
