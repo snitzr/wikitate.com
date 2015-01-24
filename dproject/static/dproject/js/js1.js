@@ -1,37 +1,21 @@
 $(document).ready(function() {
   setInterval(updateCurrentTime, 100);
   captionTime(0.0);
-  changeTitle(); // start search for video title to insert into headline
+  // changeTitle(); // start search for video title to insert into headline
 });
 
-
-function onPlayerStateChange(event) {
-    alert('event');
+function onApiChange(event) {
+  alert('onApiChange');
 }
-
-
-// testing player listener
-// function onPlayerReady(event) {
-  // alert('testsalkj')
-// };
-
-// begin vid title replacement
-var intervalHead, intervalHeadStop;
-function changeTitle() {
-  intervalHead = setInterval(titleReplace, 100);
-  intervalHeadStop = setTimeout(titleReplaceStop, 5000); // prevent infinite title search
-}
-function titleReplace() {
+function onPlayerReady(event) {
   if (player.getVideoData().title) {
     $('.vidNameNav').html(player.getVideoData().title); // replace vid headline ID with vid title
     $('title').append((' &#47; ') + (player.getVideoData().title)); // append video title to page title
-    clearInterval(intervalHead);
+    alert('onplayerready');
   }
 }
-function titleReplaceStop() {
-    clearInterval(intervalHead);
-}
-// end vid title replacement
+
+
 
 
 $('#timeStamp').html('&nbsp;');
@@ -39,7 +23,7 @@ $('#timeStamp').html('&nbsp;');
 // link timer to timestamp and display caption function
 // TODO: time on user side, check API time as failsafe near user next caption time.
 function updateCurrentTime() {
-  if (player.getPlayerState() === 1) {
+  if (player.getPlayerState() === 1) { // if player playing
     // v2 why round? why not just match nonround to last transcript event?
     var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
     $('#timeStamp').html('Timestamp: ' + 'rounded: ' + rounded + ' fixed: ' + player.getCurrentTime().toFixed(1));
@@ -479,6 +463,26 @@ console.log('9b #transcripting type nth 3:\t' + $('#transcripting input:nth-last
 //     }
 //   }
 // }
+
+// begin vid title replacement (DEPRICATED)
+// var intervalHead, intervalHeadStop;
+// function changeTitle() {
+  // intervalHead = setInterval(titleReplace, 100);
+  // intervalHeadStop = setTimeout(titleReplaceStop, 5000); // prevent infinite title search
+// }
+// function titleReplace() {
+  // if (player.getVideoData().title) {
+    // $('.vidNameNav').html(player.getVideoData().title); // replace vid headline ID with vid title
+    // $('title').append((' &#47; ') + (player.getVideoData().title)); // append video title to page title
+    // clearInterval(intervalHead);
+  // }
+// }
+// function titleReplaceStop() {
+    // clearInterval(intervalHead);
+// }
+// end vid title replacement
+
+
 
 // live reload
 document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
