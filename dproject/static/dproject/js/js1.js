@@ -5,13 +5,13 @@ $(document).ready(function() {
 });
 
 function onApiChange(event) {
-  alert('onApiChange');
+  // alert('onApiChange');
 }
 function onPlayerReady(event) {
   if (player.getVideoData().title) {
     $('.vidNameNav').html(player.getVideoData().title); // replace vid headline ID with vid title
     $('title').append((' &#47; ') + (player.getVideoData().title)); // append video title to page title
-    alert('onplayerready');
+    console.log('onplayerready');
   }
 }
 
