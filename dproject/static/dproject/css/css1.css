@@ -74,14 +74,11 @@ ul {
 }
 
 #video_search form {
-  position: relative; /* position main search bar */
-  bottom: 5px; /* position main search bar */
   white-space: nowrap;
 }
 
 #header {
   margin: 10px 0 10px 0;
-  padding: 10px;
 }
 
 #login {

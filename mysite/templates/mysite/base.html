@@ -32,17 +32,7 @@
     <!-- <li><h1><a href="{% url 'index:index' %}">Wikitate</a> &#47; <span class="vidNameNav">{{ vidId }}</span></h1></li> -->
     <li><h1><a href="{% url 'index:index' %}">Wikitate</a> &#47; <span class="vidNameNav"></span></h1></li>
     {% endblock header %}
-    {% block video_search %}
-    <li>
-    <span id="video_search">
-      <form action="" method="post">{% csrf_token %}
-        <input id="id_transcript_search" maxlength="300" name="transcript_search" placeholder="Enter video link" type="text" />
-        <input type="submit" id="submit_vid_search" value="Search" />
-      </form>
-    </span>
-    </li>
-    {% endblock video_search %}
-    <!--<li>Advertisement: <img src="{% static "dproject/img/lotta-banner468-60.gif" %}" alt="ad" height="60" width="468" /></li>-->
+
     {% block baselogin %}
     <div id="login">
       {% if user.is_authenticated %}
@@ -57,6 +47,18 @@
 
     </div>
     {% endblock baselogin %}
+    {% block video_search %}
+    <li>
+    <span id="video_search">
+      <form action="" method="post">{% csrf_token %}
+        <input id="id_transcript_search" maxlength="300" name="transcript_search" placeholder="Enter video link" type="text" />
+        <input type="submit" id="submit_vid_search" value="Search" />
+      </form>
+    </span>
+    </li>
+    {% endblock video_search %}
+    <!--<li>Advertisement: <img src="{% static "dproject/img/lotta-banner468-60.gif" %}" alt="ad" height="60" width="468" /></li>-->
+    
 
   </ul>
   </div>
