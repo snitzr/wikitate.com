@@ -189,8 +189,10 @@ function onYouTubePlayerAPIReady() {
   player = new YT.Player('ytplayer', {
     videoId: '{{ vidId }}',
     events: {
-      'onReady': onPlayerReady
-      // 'onApiChange': onApiChange
+      'onReady': onPlayerReady,
+      // 'onApiChange': onApiChange,
+      'onStateChange': onStateChange
+      // 'onError': onError // TODO: message for unembedable video
     }
   });
 }

@@ -1,27 +1,43 @@
 $(document).ready(function() {
   setInterval(updateCurrentTime, 100);
   captionTime(0.0);
-  // changeTitle(); // start search for video title to insert into headline
 });
 
-function onApiChange(event) {
-  // alert('onApiChange');
+var transcript = {};
+
+// function onApiChange(event) {
+// video name headline onStateChange
+function onStateChange(event) {
+  // if (event['playerState'] === 3) {
+  if (event) {
+    throw (event['playerState']);
+  }
+  if (player.getVideoData().title) {
+    $('.vidNameNav').html(player.getVideoData().title); // replace vid headline ID with vid title
+    $('title').append((' &#47; ') + (player.getVideoData().title)); // append video title to page title
+    // window.location = ('/' + player.getVideoData()['video_id']); // TODO: stop this from switching on playback. TODO: stop flash of error message.
+    throw 'state'
+  }
 }
+
+// video name headline onPlayerReady
 function onPlayerReady(event) {
   if (player.getVideoData().title) {
     $('.vidNameNav').html(player.getVideoData().title); // replace vid headline ID with vid title
     $('title').append((' &#47; ') + (player.getVideoData().title)); // append video title to page title
-    console.log('onplayerready');
+    throw 'ready'
   }
 }
 
+// TODO: test for videos that cannot be embeded
+// function onError(event) {
+//   throw event
+// }
 
-
-
-$('#timeStamp').html('&nbsp;');
 
 // link timer to timestamp and display caption function
 // TODO: time on user side, check API time as failsafe near user next caption time.
+$('#timeStamp').html('&nbsp;');
 function updateCurrentTime() {
   if (player.getPlayerState() === 1) { // if player playing
     // v2 why round? why not just match nonround to last transcript event?
@@ -30,8 +46,6 @@ function updateCurrentTime() {
     captionTime(rounded);
   }
 }
-
-var transcript = {};
 
 // display captions to page and clear after six seconds
 var captionTime;

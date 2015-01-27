@@ -62,14 +62,27 @@
 #ytplayer {
   height: 600px; /* TESTING: change on JS event to make transcript room. */
 }
-ul, #header h1, #header p, #header li, #header form {
+
+ul {
+  padding: 0 0 0 1em; /* bullet lists hug margin on left */
+}
+
+#header ul, #header h1, #header p, #header li, #header form {
   display: inline;
   padding: 0;
+  /*border: 1px solid red;*/
   margin-right: 10px;
+}
+
+#video_search form {
+  /* position main search bar */
+  position: relative;
+  bottom: 5px;
 }
 
 #header {
   margin: 10px 0 10px 0;
+  padding: 10px;
 }
 
 #login {
