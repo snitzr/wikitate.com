@@ -75,6 +75,7 @@ ul {
 
 #video_search form {
   white-space: nowrap;
+  vertical-align: super; /* better align with h1 */
 }
 
 #header {
