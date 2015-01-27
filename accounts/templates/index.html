@@ -4,7 +4,7 @@
 <div id="login">
   {% if user.is_authenticated %}
   {% load account %}
-  <a href="/accounts/logout/?next=/">Logout</a>
+  <!-- <a href="/accounts/logout/?next=/">Logout</a> -->
   {% user_display user %}
   {% else %}
   <a href="/accounts/login/?next={{request.path}}">Sign up / sign in and contribute</a>
@@ -20,6 +20,8 @@
   <!-- <li>Change password</li> -->
   <!-- <li>Change username</li> -->
   <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+  <!-- <li><a href="/accounts/logout/?next={{request.path}}">Logout</a></li> -->
+  <li><a href="/accounts/logout/?next=/">Logout</a></li>
 <!--   <li>Your submissions. Drafts and published.</li>
   <li>Delete account.</li>
  -->  <!-- <li>[SAVE] button</li> -->

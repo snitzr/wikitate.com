@@ -37,10 +37,9 @@
     <div id="login">
       {% if user.is_authenticated %}
         {% load account %}
-        <a href="/accounts/logout/?next={{request.path}}">Logout</a>
-        {% user_display user %}
-        <br />
-        <a href="/accounts/profile/">Account</a>
+        <!-- <a href="/accounts/logout/?next={{request.path}}">Logout</a> -->
+        <a href="/accounts/profile/">{% user_display user %}</a>
+        <!-- <br /><a href="/accounts/profile/">Account</a> -->
       {% else %}
         <a href="/accounts/login/?next={{request.path}}">Sign up / sign in</a>
       {% endif %}
