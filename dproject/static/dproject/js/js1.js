@@ -272,13 +272,11 @@ $('.transcript_preview_cell').each(function(index) {
 $('.transcript_preview_row').on('click', function() {
   $('#captions').html(''); // clear out current transcript display
   transcript = (JSON.parse($(this).children('.transcript_json_cell').text()));
-  ($('.transcript_loaded_cell').text(''));
+  ($('.transcript_loaded_cell').text('► Play'));
   ($(this).children('.transcript_loaded_cell').text('Selected'));
   ($('.transcript_preview_row').css('backgroundColor', 'white'));
   ($(this).css('backgroundColor', '#D8D8D8'));
-  // player.seekTo('0');
   player.playVideo();
-  // player.playVideoAt('0');
 }); 
 
 // top level page move search box to URL
