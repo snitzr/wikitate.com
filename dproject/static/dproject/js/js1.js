@@ -10,13 +10,13 @@ var transcript = {};
 function onStateChange(event) {
   // if (event['playerState'] === 3) {
   if (event) {
-    throw (event['playerState']);
+    // throw (event['playerState']);
   }
   if (player.getVideoData().title) {
     $('.vidNameNav').html(player.getVideoData().title); // replace vid headline ID with vid title
     $('title').append((' &#47; ') + (player.getVideoData().title)); // append video title to page title
     // window.location = ('/' + player.getVideoData()['video_id']); // TODO: stop this from switching on playback. TODO: stop flash of error message.
-    throw 'state'
+    // throw 'state'
   }
 }
 
@@ -25,7 +25,7 @@ function onPlayerReady(event) {
   if (player.getVideoData().title) {
     $('.vidNameNav').html(player.getVideoData().title); // replace vid headline ID with vid title
     $('title').append((' &#47; ') + (player.getVideoData().title)); // append video title to page title
-    throw 'ready'
+    // throw 'ready'
   }
 }
 
