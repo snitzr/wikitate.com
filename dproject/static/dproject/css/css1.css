@@ -1,6 +1,6 @@
 #id_transcript {
-  visibility: hidden;
   float: right;
+  visibility: hidden;
 }
 
 #id_transcript {
@@ -88,6 +88,7 @@ ul {
 a {
   text-decoration: underline;
 }
+
 a:hover{
   border-bottom: 1px solid #2a6496;
 }
@@ -103,8 +104,8 @@ h1, h2, h3, h4, h5, h6 {
 
 #footer {
   border-top: 2px solid #E5E4E2;
-  margin-top: 10px;
   margin-bottom: 30px;
+  margin-top: 10px;
 }
 
 #captions {
@@ -208,9 +209,9 @@ tbody {
 }
 
 #transcript_choose {
-  width: 100%;
-  table-layout: fixed;
   border: 1px solid red;
+  table-layout: fixed;
+  width: 100%;
 }
 
 .transcript_choose_column_number, .transcript_choose_column_language, .transcript_choose_column_status {
@@ -224,11 +225,11 @@ th, #transcript_choose tr, #transcript_choose td {
 }
 
 #transcript_choose tr, #transcript_choose td {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  height: 30px;
-  width: 300px;
   border: 1px solid #454545;
+  height: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 300px;
 }
 
 .transcript_json_cell, #JSON_table_header {
