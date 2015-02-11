@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  // TODO: start function on playerReady
   setInterval(updateCurrentTime, 100);
   captionTime(0.0);
 });
@@ -20,12 +21,21 @@ function onStateChange(event) {
   }
 }
 
+// switch URL with related link embed click
+function onStateChange(event) {
+ if (window.yovid !== player.getVideoUrl()) {
+  if (window.yovid !== undefined) {
+    window.location = '/' + player.getVideoData()['video_id'];
+  }
+}
+window.yovid = player.getVideoUrl();
+}
+
 // video name headline onPlayerReady
 function onPlayerReady(event) {
   if (player.getVideoData().title) {
     $('.vidNameNav').html(player.getVideoData().title); // replace vid headline ID with vid title
     $('title').append((' &#47; ') + (player.getVideoData().title)); // append video title to page title
-    // throw 'ready'
   }
 }
 
@@ -76,7 +86,6 @@ $('.transcript_input').on('focus', function() {
     // alert('yo');
   // }
 });
-
 
 // load captions on click
 // $('.transcriptDisplaySelect').click(function() {
