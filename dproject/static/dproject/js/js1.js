@@ -6,18 +6,11 @@ $(document).ready(function() {
 
 var transcript = {};
 
-// function onApiChange(event) {
-// video name headline onStateChange
+// video name headline change with onStateChange
 function onStateChange(event) {
-  // if (event['playerState'] === 3) {
-  if (event) {
-    // throw (event['playerState']);
-  }
   if (player.getVideoData().title) {
     $('.vidNameNav').html(player.getVideoData().title); // replace vid headline ID with vid title
     $('title').append((' &#47; ') + (player.getVideoData().title)); // append video title to page title
-    // window.location = ('/' + player.getVideoData()['video_id']); // TODO: stop this from switching on playback. TODO: stop flash of error message.
-    // throw 'state'
   }
 }
 
@@ -31,7 +24,7 @@ function onStateChange(event) {
 window.yovid = player.getVideoUrl();
 }
 
-// video name headline onPlayerReady
+// video name to title on onPlayerReady
 function onPlayerReady(event) {
   if (player.getVideoData().title) {
     $('.vidNameNav').html(player.getVideoData().title); // replace vid headline ID with vid title
@@ -169,7 +162,7 @@ $('#transcripting').on('keyup click', 'input', function() {
   transcript = JSON.parse(parsed_with_slice); // live preview in YT vid
 });
 
-// prevent submit on enter from form field
+// pform validation: revent submit on enter from form field
 $('#transcripting').on('keyup keypress', 'input', function(event) {
   var keycode = event.keyCode || event.which;
   if (keycode === 13) {
@@ -178,7 +171,7 @@ $('#transcripting').on('keyup keypress', 'input', function(event) {
   }
 });
 
-// prevent submit without drop down language choice
+// form validation: prevent submit without drop down language choice
 $('#submit').on('submit click keyup keypress', function(event) {
   if ($('#id_language').eq(0).val() === null) {
     event.preventDefault();
@@ -189,7 +182,7 @@ $('#submit').on('submit click keyup keypress', function(event) {
   }
 });
 
-// prevent submit without all timestamps
+// form validation: prevent submit without all timestamps
 $('#submit').on('submit click keyup keypress', function(event) {
   for (var i = 0; i <= $('#transcripting .time_cell').children().length; i++) {
     if ($('.timestamp_input').eq(i).val() === '') {
@@ -201,7 +194,7 @@ $('#submit').on('submit click keyup keypress', function(event) {
   }
 });
 
-// remove error message on langauge select after drop down choose
+// form validation: remove error message on langauge select after drop down choose
 $('#id_language').on('change', function() {
   if ($(this).eq(0).val() === null) {
     return false;
@@ -212,7 +205,7 @@ $('#id_language').on('change', function() {
   }
 });
 
-// remove error message on time select after time add
+// form validation: remove error message on time select after time add
 $('#transcripting').on('keyup click', 'input', function() {
   $('.timestamp_input').each(function() {
     if ($(this).val() === '') {
@@ -262,7 +255,7 @@ $('#transcripting').on('keyup click', 'input', function() {
 //   transcript = (JSON.parse(this.value));
 // });
 
-// Transcript table JSON to display human readable format
+// transcript table JSON to display human readable format
 $('.transcript_preview_cell').each(function(index) {
   var a_drop_concat = '';
   a_drop_down_value = JSON.parse($(this).text());
@@ -277,7 +270,7 @@ $('.transcript_preview_cell').each(function(index) {
 
 
 
-// Load table selection after transcript selection
+// load table selection after transcript selection
 $('.transcript_preview_row').on('click', function() {
   $('#captions').html(''); // clear out current transcript display
   transcript = (JSON.parse($(this).children('.transcript_json_cell').text()));
@@ -286,6 +279,7 @@ $('.transcript_preview_row').on('click', function() {
   ($('.transcript_preview_row').css('backgroundColor', 'white'));
   ($(this).css('backgroundColor', '#D8D8D8'));
   player.playVideo();
+  $('html, body').scrollTop(0);
 }); 
 
 // top level page move search box to URL
