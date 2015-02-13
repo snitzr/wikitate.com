@@ -9,17 +9,21 @@
 <p>Wikitate helps you add transcripts to other people's YouTube videos.</p>
 
 <h2>Navigation</h2>
-<p>Copy and paste a YouTube link into the search box.
-<br>
-<br>
-Access Wikitate directly from YouTube with the view in Wikitate bookmarklet. Add this link to your bookmarks and use it while in YouTube to instantly jump the video into the Wikitate player: <a href="javascript:var search_url = /youtube.com/g;var search_vid = /v=.........../g;var search_url_results = search_url.exec(location.host);var search_vid_results = search_vid.exec(location.search);if (search_url_results !== null) {window.location = ('http://www.wikitate.com/' + search_vid_results[0].slice(2));}">view in Wikitate</a>.</p>
+<p>Copy and paste a YouTube link into the search box.</p>
+<p>Access Wikitate directly from YouTube with the view in Wikitate bookmarklet. Add this link to your bookmarks and use it while in YouTube to instantly jump the video into the Wikitate player: <a href="javascript:var search_url = /youtube.com/g;var search_vid = /v=.........../g;var search_url_results = search_url.exec(location.host);var search_vid_results = search_vid.exec(location.search);if (search_url_results !== null) {window.location = ('http://www.wikitate.com/' + search_vid_results[0].slice(2));}">view in Wikitate</a>.</p>
 
 <h2>Purpose</h2>
 <ul>
-  <li>Access for the deaf and hard of hearing. <a href="http://www.who.int/mediacentre/factsheets/fs300/en/">Greater than 5% of the total world population has significant hearing loss.</a></li>
-  <li>Make video more discoverable. Search engines (like Google) work best with text.</li>
-  <li>Open a video to a larger audience by translating a video into another language.</li>
-  <li>Browse without sound.</li>
+	<li>Access for the deaf and hard of hearing. <a href="http://www.who.int/mediacentre/factsheets/fs300/en/">Greater than 5% of the total world population has significant hearing loss.</a></li>
+	<li>Make video more discoverable. Search engines (like Google) work best with text.</li>
+	<li>Open a video to a larger audience by translating a video into another language.</li>
+	<li>Browse without sound.</li>
+</ul>
+<h2>Next Steps</h2>
+<ul>
+	<li>Native iPhone app.</li>
+	<li>Paid transcription and translation requests.</li>
+	<li>Crowdsourced transcriptions and translations.</li>
 </ul>
 <h2>Author</h2>
 <p><a href="//aaronsnitzer.com/">Aaron Snitzer</a> made this. This project is independent of YouTube.</p>
@@ -27,6 +31,6 @@ Access Wikitate directly from YouTube with the view in Wikitate bookmarklet. Add
 {% endblock content %}
 {% block footer %}
 <div id="footer">
-  <p>&copy; Aaron Snitzer</p>
+	<p>&copy; Aaron Snitzer</p>
 </div>
 {% endblock footer %}
