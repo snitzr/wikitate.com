@@ -214,7 +214,7 @@ tbody {
   width: 100%;
 }
 
-.transcript_choose_column_number, .transcript_choose_column_language, .transcript_choose_column_status {
+.transcript_choose_column_language, .transcript_choose_column_status, .transcript_choose_share {
   width: 80px;
   text-align: center;
 }

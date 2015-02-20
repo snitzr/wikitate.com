@@ -58,7 +58,7 @@ def indexvids(request, vidId):
         return render(request, 'dproject/indexvids.html', context) 
 
 """
-Refactor to prevent bogus data being written for nonexistant 11 char
+TODO: Refactor to prevent bogus data being written for nonexistant 11 char
 string URLs
 """
 def transcript_submit(request, vidId):
@@ -97,7 +97,7 @@ def transcript_submit(request, vidId):
             # best case scenario, go to next screen
             return HttpResponseRedirect('/%s/' % vidId)
         else:
-            #return # add redirect code either way and message
+            #return # TODO: add redirect code either way and message
             return HttpResponseRedirect('/%s/' % vidId)
     else:
         #return # add redirect code either way and message
