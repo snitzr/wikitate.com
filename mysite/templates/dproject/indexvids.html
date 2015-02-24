@@ -7,7 +7,7 @@ ADD {% if t%}or Modify {% endif %}TRANSCRIPT
 <div id="ytplayer"></div>
 
 <div id="captions"></div>
-    <!-- Caption choose and loadtable -->
+<!-- Caption choose and loadtable -->
 <div id="submitted_transcripts">
   {% if t %}
   <h2>{{ t.count }} Transcript{{ t|pluralize }} Available</h2>
@@ -31,127 +31,127 @@ ADD {% if t%}or Modify {% endif %}TRANSCRIPT
     {% empty %}
     {% endfor %}
   </table>
-    {% else%}
-    <h2>No Transcripts</h2>
-    {% endif %}
-  </div>
- 
-
-  <div id="add_transcripts">
-
-{% if user.is_authenticated %}
-{% load account %}
-
-{# {% user_display user %} #}
-
-{# transcript submit #}
-<form method="post" action="/transcript_submit/{{ vidId }}/">
-  {% csrf_token %}
-
-  {# transcript form #}
-  <!-- needs responsive -->
-  <h2>Add new transcript</h2>
-  <div id="transcript_table" name="transcript_table"> <!-- does name-transcript need to be here at all? -->
-  <table id="transcripting">
-    <caption></caption>
-    <tr>
-      <th>time (required)</th>
-      <th>text</th>
-      <th>insert row</th>
-      <th>delete row</th>
-    </tr>
-    <tr>
-      <td class="time_cell"><input class="timestamp_input" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td>
-      <td class="transcript_cell"><input class="transcript_input" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td>
-      <td class="insert_row"><a href="#notlink">+</a></td>
-      <td class="delete_row"><a href="#notlink">-</a></td>
-    </tr>
-    <input id="id_transcript" name="transcript" type="text" />
-  </table>
+  {% else%}
+  <h2>No Transcripts</h2>
+  {% endif %}
 </div>
-  {# language drop down #}
-  {# manually rendering each field in order to control disabled lanuages on dropdown #}
-  {# need logic here to check for existing language transcripts and then disable existing in dropdown #}
-  <!-- hard coding drop down until I have a programmable solution -->
-  <select id="id_language" name="language">
-    <option selected="selected" disabled="disabled">Transcript language (required)</option>
-    <option{{ transcript_existence_af }} value="af">Afrikaans</option>
-    <option{{ transcript_existence_id }} value="id">Bahasa Indonesia</option>
-    <option{{ transcript_existence_etc }} value="ms">Bahasa Malaysia</option>
-    <option{{ transcript_existence }} value="ca">Català</option>
-    <option{{ transcript_existence }} value="cs">Čeština</option>
-    <option{{ transcript_existence }} value="da">Dansk</option>
-    <option{{ transcript_existence }} value="de">Deutsch</option>
-    <option{{ transcript_existence }} value="et">Eesti</option>
-    <option{{ transcript_existence }} value="en-GB">English (UK)</option>
-    <option{{ transcript_existence }} value="en">English (US)</option>
-    <option{{ transcript_existence }} value="es">Español (España)</option>
-    <option{{ transcript_existence }} value="es-419">Español (Latinoamérica)</option>
-    <option{{ transcript_existence }} value="eu">Euskara</option>
-    <option{{ transcript_existence }} value="fil">Filipino</option>
-    <option{{ transcript_existence }} value="fr">Français</option>
-    <option{{ transcript_existence }} value="fr-CA">Français (Canada)</option>
-    <option{{ transcript_existence }} value="gl">Galego</option>
-    <option{{ transcript_existence }} value="hr">Hrvatski</option>
-    <option{{ transcript_existence }} value="zu">IsiZulu</option>
-    <option{{ transcript_existence }} value="is">Íslenska</option>
-    <option{{ transcript_existence }} value="it">Italiano</option>
-    <option{{ transcript_existence }} value="sw">Kiswahili</option>
-    <option{{ transcript_existence }} value="lv">Latviešu valoda</option>
-    <option{{ transcript_existence }} value="lt">Lietuvių</option>
-    <option{{ transcript_existence }} value="hu">Magyar</option>
-    <option{{ transcript_existence }} value="nl">Nederlands</option>
-    <option{{ transcript_existence }} value="no">Norsk</option>
-    <option{{ transcript_existence }} value="pl">Polski</option>
-    <option{{ transcript_existence }} value="pt-PT">Português</option>
-    <option{{ transcript_existence }} value="pt">Português (Brasil)</option>
-    <option{{ transcript_existence }} value="ro">Română</option>
-    <option{{ transcript_existence }} value="sk">Slovenčina</option>
-    <option{{ transcript_existence }} value="sl">Slovenščina</option>
-    <option{{ transcript_existence }} value="fi">Suomi</option>
-    <option{{ transcript_existence }} value="sv">Svenska</option>
-    <option{{ transcript_existence }} value="vi">Tiếng Việt</option>
-    <option{{ transcript_existence }} value="tr">Türkçe</option>
-    <option{{ transcript_existence }} value="bg">Български</option>
-    <option{{ transcript_existence }} value="ru">Русский</option>
-    <option{{ transcript_existence }} value="sr">Српски</option>
-    <option{{ transcript_existence }} value="uk">Українська</option>
-    <option{{ transcript_existence }} value="el">Ελληνικά</option>
-    <option{{ transcript_existence }} value="iw">עברית</option>
-    <option{{ transcript_existence }} value="ur">اردو</option>
-    <option{{ transcript_existence }} value="ar">العربية</option>
-    <option{{ transcript_existence }} value="fa">فارسی</option>
-    <option{{ transcript_existence }} value="mr">मराठी</option>
-    <option{{ transcript_existence }} value="hi">हिन्दी</option>
-    <option{{ transcript_existence }} value="bn">বাংলা</option>
-    <option{{ transcript_existence }} value="gu">ગુજરાતી</option>
-    <option{{ transcript_existence }} value="ta">தமிழ்</option>
-    <option{{ transcript_existence }} value="te">తెలుగు</option>
-    <option{{ transcript_existence }} value="kn">ಕನ್ನಡ</option>
-    <option{{ transcript_existence }} value="ml">മലയാളം </option>
-    <option{{ transcript_existence }} value="th">ภาษาไทย</option>
-    <option{{ transcript_existence }} value="am">አማርኛ</option>
-    <option{{ transcript_existence }} value="zh-CN">中文 (简体)</option>
-    <option{{ transcript_existence }} value="zh-TW">中文 (繁體)</option>
-    <option{{ transcript_existence }} value="zh-HK">中文 (香港)</option>
-    <option{{ transcript_existence }} value="ja">日本語</option>
-    <option{{ transcript_existence }} value="ko">한국어</option>
-    <option{{ transcript_existence }} value="ot">other</option>
-  </select>
-  <span id="language_message"></span>
-  <br>
-  <input id="submit" type="submit" value="Submit transcript" />
-</form>
+
+
+<div id="add_transcripts">
+
+  {% if user.is_authenticated %}
+  {% load account %}
+
+  {# {% user_display user %} #}
+
+  {# transcript submit #}
+  <form method="post" action="/transcript_submit/{{ vidId }}/">
+    {% csrf_token %}
+
+    {# transcript form #}
+    <!-- needs responsive -->
+    <h2>Add new transcript</h2>
+    <div id="transcript_table" name="transcript_table"> <!-- does name-transcript need to be here at all? -->
+      <table id="transcripting">
+        <caption></caption>
+        <tr>
+          <th>time (required)</th>
+          <th>text</th>
+          <th>insert row</th>
+          <th>delete row</th>
+        </tr>
+        <tr>
+          <td class="time_cell"><input class="timestamp_input" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td>
+          <td class="transcript_cell"><input class="transcript_input" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td>
+          <td class="insert_row"><a href="#notlink">+</a></td>
+          <td class="delete_row"><a href="#notlink">-</a></td>
+        </tr>
+        <input id="id_transcript" name="transcript" type="text" />
+      </table>
+    </div>
+    {# language drop down #}
+    {# manually rendering each field in order to control disabled lanuages on dropdown #}
+    {# need logic here to check for existing language transcripts and then disable existing in dropdown #}
+    <!-- hard coding drop down until I have a programmable solution -->
+    <select id="id_language" name="language">
+      <option selected="selected" disabled="disabled">Transcript language (required)</option>
+      <option{{ transcript_existence_af }} value="af">Afrikaans</option>
+      <option{{ transcript_existence_id }} value="id">Bahasa Indonesia</option>
+      <option{{ transcript_existence_etc }} value="ms">Bahasa Malaysia</option>
+      <option{{ transcript_existence }} value="ca">Català</option>
+      <option{{ transcript_existence }} value="cs">Čeština</option>
+      <option{{ transcript_existence }} value="da">Dansk</option>
+      <option{{ transcript_existence }} value="de">Deutsch</option>
+      <option{{ transcript_existence }} value="et">Eesti</option>
+      <option{{ transcript_existence }} value="en-GB">English (UK)</option>
+      <option{{ transcript_existence }} value="en">English (US)</option>
+      <option{{ transcript_existence }} value="es">Español (España)</option>
+      <option{{ transcript_existence }} value="es-419">Español (Latinoamérica)</option>
+      <option{{ transcript_existence }} value="eu">Euskara</option>
+      <option{{ transcript_existence }} value="fil">Filipino</option>
+      <option{{ transcript_existence }} value="fr">Français</option>
+      <option{{ transcript_existence }} value="fr-CA">Français (Canada)</option>
+      <option{{ transcript_existence }} value="gl">Galego</option>
+      <option{{ transcript_existence }} value="hr">Hrvatski</option>
+      <option{{ transcript_existence }} value="zu">IsiZulu</option>
+      <option{{ transcript_existence }} value="is">Íslenska</option>
+      <option{{ transcript_existence }} value="it">Italiano</option>
+      <option{{ transcript_existence }} value="sw">Kiswahili</option>
+      <option{{ transcript_existence }} value="lv">Latviešu valoda</option>
+      <option{{ transcript_existence }} value="lt">Lietuvių</option>
+      <option{{ transcript_existence }} value="hu">Magyar</option>
+      <option{{ transcript_existence }} value="nl">Nederlands</option>
+      <option{{ transcript_existence }} value="no">Norsk</option>
+      <option{{ transcript_existence }} value="pl">Polski</option>
+      <option{{ transcript_existence }} value="pt-PT">Português</option>
+      <option{{ transcript_existence }} value="pt">Português (Brasil)</option>
+      <option{{ transcript_existence }} value="ro">Română</option>
+      <option{{ transcript_existence }} value="sk">Slovenčina</option>
+      <option{{ transcript_existence }} value="sl">Slovenščina</option>
+      <option{{ transcript_existence }} value="fi">Suomi</option>
+      <option{{ transcript_existence }} value="sv">Svenska</option>
+      <option{{ transcript_existence }} value="vi">Tiếng Việt</option>
+      <option{{ transcript_existence }} value="tr">Türkçe</option>
+      <option{{ transcript_existence }} value="bg">Български</option>
+      <option{{ transcript_existence }} value="ru">Русский</option>
+      <option{{ transcript_existence }} value="sr">Српски</option>
+      <option{{ transcript_existence }} value="uk">Українська</option>
+      <option{{ transcript_existence }} value="el">Ελληνικά</option>
+      <option{{ transcript_existence }} value="iw">עברית</option>
+      <option{{ transcript_existence }} value="ur">اردو</option>
+      <option{{ transcript_existence }} value="ar">العربية</option>
+      <option{{ transcript_existence }} value="fa">فارسی</option>
+      <option{{ transcript_existence }} value="mr">मराठी</option>
+      <option{{ transcript_existence }} value="hi">हिन्दी</option>
+      <option{{ transcript_existence }} value="bn">বাংলা</option>
+      <option{{ transcript_existence }} value="gu">ગુજરાતી</option>
+      <option{{ transcript_existence }} value="ta">தமிழ்</option>
+      <option{{ transcript_existence }} value="te">తెలుగు</option>
+      <option{{ transcript_existence }} value="kn">ಕನ್ನಡ</option>
+      <option{{ transcript_existence }} value="ml">മലയാളം </option>
+      <option{{ transcript_existence }} value="th">ภาษาไทย</option>
+      <option{{ transcript_existence }} value="am">አማርኛ</option>
+      <option{{ transcript_existence }} value="zh-CN">中文 (简体)</option>
+      <option{{ transcript_existence }} value="zh-TW">中文 (繁體)</option>
+      <option{{ transcript_existence }} value="zh-HK">中文 (香港)</option>
+      <option{{ transcript_existence }} value="ja">日本語</option>
+      <option{{ transcript_existence }} value="ko">한국어</option>
+      <option{{ transcript_existence }} value="ot">other</option>
+    </select>
+    <span id="language_message"></span>
+    <br>
+    <input id="submit" type="submit" value="Submit transcript" />
+  </form>
   <span id="language_submit_message"></span>
   <span id="time_submit_message"></span>
 
 
-{% else %}
-<a href="/accounts/login/?next={{request.path}}">Log in to add or edit a transcript.</a>
-{% endif %}
+  {% else %}
+  <a href="/accounts/login/?next={{request.path}}">Log in to add or edit a transcript.</a>
+  {% endif %}
 </div>
 <div id="transcription_tips">
-    <h3>Transcribing tips</h3>
+  <h3>Transcribing tips</h3>
   <ul>
     <li>Transcribe first, then set timing.</li>
     <li>Subtitle text automatically disapears six seconds after it appears, if not replaced by another text line.</li>
