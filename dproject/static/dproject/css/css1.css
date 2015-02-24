@@ -176,7 +176,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #add_transcripts {
-  /* trying to get transcript editor and transcript */
+  display: none;
+  border: 1px solid #333;
+  padding: 0 5px 0 5px;
+  position: absolute;
+  width: 50%;
+  height: 600px;
+  overflow: auto;
+  background: white;
 }
 
 #transcript {
@@ -190,6 +197,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #transcription_tips {
   margin: 2em 0;
+  display: none;
 }
 
 .transcript_preview_row:hover {

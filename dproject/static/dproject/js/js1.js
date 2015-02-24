@@ -344,6 +344,19 @@ $('.transcript_preview_cell').each(function(index) {
 });
 
 
+// show hide add transcript
+$('#show_hide_add_transcripts').on('click', function() {
+  $('#add_transcripts').slideToggle('slow');
+  $('#transcription_tips').slideToggle('fast');
+  // add logic to toggle back ytplayer to 100%
+  if ($('#ytplayer').css('margin-left') === '0px') {
+    $('#ytplayer').css({'margin-left': '50%', 'width': '50%'});
+  } else {
+    $('#ytplayer').css({'margin-left': '0', 'width': '100%'});
+  }
+});
+
+
 
 // load table selection after transcript selection
 $('.transcript_preview_row').on('click', function() {
@@ -364,6 +377,10 @@ $('#submit_vid_search').on('submit click', function(event) {
   // submit form content to URL
   window.location = ('//' + window.location.host + '/' + $('#id_transcript_search').val());
 });
+
+
+
+
 
 
 /*
