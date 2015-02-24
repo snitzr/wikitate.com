@@ -7,8 +7,7 @@ ADD TRANSCRIPT
 <div id="ytplayer"></div>
 
 <div id="captions"></div>
-
-<!-- Caption choose and loadtable -->
+    <!-- Caption choose and loadtable -->
 <div id="submitted_transcripts">
   {% if t %}
   <h2>{{ t.count }} Transcript{{ t|pluralize }} Available</h2>
@@ -27,7 +26,7 @@ ADD TRANSCRIPT
       <td class="transcript_choose_column_language">{{ x.language }}</td>
       <td class="transcript_preview_cell">{{ x.transcript }}</td>
       <td class="transcript_json_cell">{{ x.transcript }}</td>
-      <td class="transcript_choose_share">Share</td>
+      <td class="transcript_choose_share"><a href="/{{vidId}}/{{ x.language }}/">Link</a></td> <!-- TODO: add language link view -->
     </tr>
     {% empty %}
     {% endfor %}
