@@ -255,6 +255,81 @@ $('#transcripting').on('keyup click', 'input', function() {
 //   transcript = (JSON.parse(this.value));
 // });
 
+// kludge to replace language abbreviations with their full names
+$('.transcript_choose_column_language').each(function(index) {
+  var shortLanguage = $(this).text();
+  var mapObj = {
+    'Language': 'Language',
+    'af': 'Afrikaans',
+    'id': 'Bahasa Indonesia',
+    'ms': 'Bahasa Malaysia',
+    'ca': 'Català',
+    'cs': 'Čeština',
+    'da': 'Dansk',
+    'de': 'Deutsch',
+    'et': 'Eesti',
+    'en-GB': 'English (UK)',
+    'en': 'English (US)',
+    'es': 'Español (España)',
+    'es-419': 'Español (Latinoamérica)',
+    'eu': 'Euskara',
+    'fil': 'Filipino',
+    'fr': 'Français',
+    'fr-CA': 'Français (Canada)',
+    'gl': 'Galego',
+    'hr': 'Hrvatski',
+    'zu': 'IsiZulu',
+    'is': 'Íslenska',
+    'it': 'Italiano',
+    'sw': 'Kiswahili',
+    'lv': 'Latviešu valoda',
+    'lt': 'Lietuvių',
+    'hu': 'Magyar',
+    'nl': 'Nederlands',
+    'no': 'Norsk',
+    'pl': 'Polski',
+    'pt-PT': 'Português',
+    'pt': 'Português (Brasil)',
+    'ro': 'Română',
+    'sk': 'Slovenčina',
+    'sl': 'Slovenščina',
+    'fi': 'Suomi',
+    'sv': 'Svenska',
+    'vi': 'Tiếng Việt',
+    'tr': 'Türkçe',
+    'bg': 'Български',
+    'ru': 'Русский',
+    'sr': 'Српски',
+    'uk': 'Українська',
+    'el': 'Ελληνικά',
+    'iw': 'עברית',
+    'ur': 'اردو',
+    'ar': 'العربية',
+    'fa': 'فارسی',
+    'mr': 'मराठी',
+    'hi': 'हिन्दी',
+    'bn': 'বাংলা',
+    'gu': 'ગુજરાતી',
+    'ta': 'தமிழ்',
+    'te': 'తెలుగు',
+    'kn': 'ಕನ್ನಡ',
+    'ml': 'മലയാളം ',
+    'th': 'ภาษาไทย',
+    'am': 'አማርኛ',
+    'zh-CN': '中文 (简体)',
+    'zh-TW': '中文 (繁體)',
+    'zh-HK': '中文 (香港)',
+    'ja': '日本語',
+    'ko': '한국어',
+    'ot': 'other'
+  }
+  var newString = shortLanguage.replace(/Language|af|id|ms|ca|cs|da|de|et|en-GB|en|es|es-419|eu|fil|fr|fr-CA|gl|hr|zu|is|it|sw|lv|lt|hu|nl|no|pl|pt-PT|pt|ro|sk|sl|fi|sv|vi|tr|bg|ru|sr|uk|el|iw|ur|ar|fa|mr|hi|bn|gu|ta|te|kn|ml|th|am|zh-CN|zh-TW|zh-HK|ja|ko|ot/, function(matched){
+    return mapObj[matched];
+  });
+  $(this).text(newString);
+});
+
+
 // transcript table JSON to display human readable format
 $('.transcript_preview_cell').each(function(index) {
   var a_drop_concat = '';
@@ -278,8 +353,9 @@ $('.transcript_preview_row').on('click', function() {
   ($(this).children('.transcript_loaded_cell').text('Selected'));
   ($('.transcript_preview_row').css('backgroundColor', 'white'));
   ($(this).css('backgroundColor', '#D8D8D8'));
+  // TODO: add logic to pause video if clicked when video is playing
   player.playVideo();
-  $('html, body').scrollTop(0);
+  $('html, body').scrollTop(50);
 }); 
 
 // top level page move search box to URL
@@ -496,8 +572,3 @@ console.log('9b #transcripting type nth 3:\t' + $('#transcripting input:nth-last
     // clearInterval(intervalHead);
 // }
 // end vid title replacement
-
-
-
-// live reload
-document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
