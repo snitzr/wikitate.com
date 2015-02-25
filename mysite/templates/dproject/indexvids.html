@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<span id="show_hide_add_transcripts">&#43; ADD {% if t%}or Modify {% endif %}TRANSCRIPT</span>
+<a href="#notlink" id="show_hide_add_transcripts">&#43; Add {% if t%}or modify {% endif %}transcript</a>
 
 
 <div id="add_transcripts">
@@ -145,7 +145,7 @@
     <tr>
       <th class="transcript_choose_column_status">&nbsp;</th>
       <th class="transcript_choose_column_language">Language</th>
-      <th>Transcript</th>
+      <th class="transcript_preview_column">Transcript</th>
       <th id="JSON_table_header">JSON</th>
       <th class="transcript_choose_share">&nbsp;</th>
     </tr>
@@ -153,7 +153,7 @@
     <tr class="transcript_preview_row">
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language">{{ x.language }}</td>
-      <td class="transcript_preview_cell">{{ x.transcript }}</td>
+      <td class="transcript_preview_cell transcript_preview_column">{{ x.transcript }}</td>
       <td class="transcript_json_cell">{{ x.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ x.language }}/">Link</a></td> <!-- TODO: add language link view -->
     </tr>

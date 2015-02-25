@@ -72,13 +72,13 @@ captionTime = function(currentTime) {
 };
 
 // TESTING: jump timer vid to field time
-$('.transcript_input').on('focus', function() {
+// $('.transcript_input').on('focus', function() {
   // TODO: seekTo auto starts the video. needs to auto start / not auto start based on context. Example: not autostart if timestamp empty.
   // TODO: make auto start work for dynamicly generated rows.
   // if (player.seekTo(($(this).closest('tr').find('input.timestamp_input').val()))) {
     // alert('yo');
   // }
-});
+// });
 
 // load captions on click
 // $('.transcriptDisplaySelect').click(function() {
@@ -323,7 +323,7 @@ $('.transcript_choose_column_language').each(function(index) {
     'ko': '한국어',
     'ot': 'other'
   }
-  var newString = shortLanguage.replace(/Language|af|id|ms|ca|cs|da|de|et|en-GB|en|es|es-419|eu|fil|fr|fr-CA|gl|hr|zu|is|it|sw|lv|lt|hu|nl|no|pl|pt-PT|pt|ro|sk|sl|fi|sv|vi|tr|bg|ru|sr|uk|el|iw|ur|ar|fa|mr|hi|bn|gu|ta|te|kn|ml|th|am|zh-CN|zh-TW|zh-HK|ja|ko|ot/, function(matched){
+  var newString = shortLanguage.replace(/^Language$|^af$|^id$|^ms$|^ca$|^cs$|^da$|^de$|^et$|^en-GB$|^en$|^es$|^es-419$|^eu$|^fil$|^fr$|^fr-CA$|^gl$|^hr$|^zu$|^is$|^it$|^sw$|^lv$|^lt$|^hu$|^nl$|^no$|^pl$|^pt-PT$|^pt$|^ro$|^sk$|^sl$|^fi$|^sv$|^vi$|^tr$|^bg$|^ru$|^sr$|^uk$|^el$|^iw$|^ur$|^ar$|^fa$|^mr$|^hi$|^bn$|^gu$|^ta$|^te$|^kn$|^ml$|^th$|^am$|^zh-CN$|^zh-TW$|^zh-HK$|^ja$|^ko$|^ot$/, function(matched){
     return mapObj[matched];
   });
   $(this).text(newString);
@@ -345,7 +345,8 @@ $('.transcript_preview_cell').each(function(index) {
 
 
 // show hide add transcript
-$('#show_hide_add_transcripts').on('click', function() {
+$('#show_hide_add_transcripts').on('click', function(event) {
+  event.preventDefault(); // prevent placeholder link from appering in browser URL
   $('#add_transcripts').slideToggle('slow');
   $('#transcription_tips').slideToggle('fast');
   // add logic to toggle back ytplayer to 100%

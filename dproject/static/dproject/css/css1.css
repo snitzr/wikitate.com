@@ -222,8 +222,11 @@ tbody {
   width: 100%;
 }
 
+.transcript_preview_column {
+  width: 60%;
+}
+
 .transcript_choose_column_language, .transcript_choose_column_status, .transcript_choose_share {
-  width: 80px;
   text-align: center;
 }
 
