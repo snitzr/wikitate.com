@@ -58,10 +58,6 @@
   text-align: center;
 }
 
-#ytplayer {
-  height: 600px; /* TESTING: change on JS event to make transcript room. */
-}
-
 ul {
   padding: 0 0 0 1em; /* bullet lists hug margin on left */
 }
@@ -148,10 +144,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
-#ytplayer {
-  width: 100%;
-}
-
 #message {
   color: red;
 }
@@ -175,15 +167,23 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
 }
 
+#show_hide_add_transcripts {
+}
+
 #add_transcripts {
   display: none;
   border: 1px solid #333;
   padding: 0 5px 0 5px;
-  position: absolute;
-  width: 50%;
+  /*position: absolute;*/
+  width: 49%;
   height: 600px;
   overflow: auto;
   background: white;
+}
+
+#ytplayer {
+  height: 600px;
+  width: 100%;
 }
 
 #transcript {

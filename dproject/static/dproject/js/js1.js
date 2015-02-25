@@ -344,16 +344,18 @@ $('.transcript_preview_cell').each(function(index) {
 });
 
 
-// show hide add transcript
+// show hide add transcript and tips and resize player
 $('#show_hide_add_transcripts').on('click', function(event) {
   event.preventDefault(); // prevent placeholder link from appering in browser URL
-  $('#add_transcripts').slideToggle('slow');
-  $('#transcription_tips').slideToggle('fast');
-  // add logic to toggle back ytplayer to 100%
-  if ($('#ytplayer').css('margin-left') === '0px') {
-    $('#ytplayer').css({'margin-left': '50%', 'width': '50%'});
+  if ($('#add_transcripts').css('display') === 'none') {
+    $('#add_transcripts').slideToggle(100);
+    $('#transcription_tips').slideToggle(100);
+    $('#add_transcripts').css({'display': 'inline-block'});
+    $('#ytplayer').css({'display': 'inline-block', 'width': '50%'});
   } else {
-    $('#ytplayer').css({'margin-left': '0', 'width': '100%'});
+    $('#add_transcripts').slideToggle(100);
+    $('#transcription_tips').slideToggle(100);
+    $('#ytplayer').css({'display': 'block', 'width': '100%'});
   }
 });
 
