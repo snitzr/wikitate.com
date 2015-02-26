@@ -1,7 +1,14 @@
+
 $(document).ready(function() {
   // TODO: start function on playerReady
   setInterval(updateCurrentTime, 100);
   captionTime(0.0);
+
+  // check for short youtube URL and redirect to short Wikitate URL
+  if (/youtu.be\/(...........)/.test(location.href)) {
+    var vidIdMatch = location.href.match(/youtu.be\/(...........)/, '$1')
+    window.location = ('/' + vidIdMatch[1] +'/');
+  }
 });
 
 var transcript = {};

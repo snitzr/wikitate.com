@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     # url(r'youtube.com/(?P<vidId>.+)/timing/$', views.set_vid_timing, name='set_vid_timing'),
     # main vid viewing and transcripts
     url(r'^(?P<vidId>.{11})/', views.indexvids, name='indexvids'),
+    url(r'youtu.be/(?P<vidId>.{11})/', views.indexvids, name='indexvids'),
     # holder for form submit
     url(r'^transcript_submit/(?P<vidId>.+)/$', views.transcript_submit, name='transcript_submit'),
     # not sure if still active
