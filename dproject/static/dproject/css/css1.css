@@ -167,11 +167,20 @@ h1, h2, h3, h4, h5, h6 {
 #show_hide_add_transcripts {
 }
 
+#transcript_table_scrollbox {
+  display: none;
+  padding: 0 5px 0 5px;
+  /*width: 49%;*/
+  /*height: 600px;*/
+  /*overflow: auto;*/
+  background: white;
+  position: absolute;
+}
+
 #add_transcripts {
   display: none;
-  border: 1px solid #333;
+  /*border: 1px solid #333;*/
   padding: 0 5px 0 5px;
-  /*position: absolute;*/
   width: 49%;
   height: 600px;
   overflow: auto;
@@ -193,7 +202,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #transcription_tips {
-  margin: 2em 0;
+  margin: 5em 0 2em 0;
   display: none;
 }
 
