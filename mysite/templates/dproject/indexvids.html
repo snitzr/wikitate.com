@@ -23,12 +23,14 @@
       <table id="transcripting">
         <caption></caption>
         <tr>
+          <th>timestamp (click into time)</th>
           <th>time (required)</th>
           <th>text</th>
           <th>insert row</th>
           <th>delete row</th>
         </tr>
         <tr>
+          <td class="timeStamp">&nbsp;&rarr;</td>
           <td class="time_cell"><input class="timestamp_input" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td>
           <td class="transcript_cell"><input class="transcript_input" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td>
           <td class="insert_row"><a href="#notlink">+</a></td>
@@ -37,6 +39,8 @@
         <input id="id_transcript" name="transcript" type="text" />
       </table>
     </div>
+  </div>
+  <div id="transcript_table_scrollbox">
     {# language drop down #}
     {# manually rendering each field in order to control disabled lanuages on dropdown #}
     {# need logic here to check for existing language transcripts and then disable existing in dropdown #}
@@ -132,6 +136,7 @@
     <li>100 characters max per text line.</li>
     <li>Indicate music with: ♫</li>
     <li>Set text timing &frac12; second before dialogue appears. This gives the brain time to react and read the text with the action.</li>
+    <li>Click timestamp to push time into that subtitle row. This is helpful for setting the timestamp while the video plays after entering transcription text. Timestamp is the number of seconds. For example: two minutes and ten seconds is a timestamp of 130.</li>
     <!-- <dd>Keyboard shortcuts: </dd> -->
   </ul>
 </div>
@@ -168,8 +173,8 @@
 
 
 
-<!--
-<p>_________________</p>
+
+<!-- <p>_________________</p>
 <div id="Viewer">
   Select transcript
 </div>
@@ -180,9 +185,9 @@
 <div id="skipBack">Skip back 3 seconds</div>
 <div id="vidCode">vidCode</div>
 <div id="returnYT">returnYT</div>
-<div id="playerExistenceIndicator">player.getDuration()</div>
-<div id="timeStamp">Timestamp</div>
--->
+<div id="playerExistenceIndicator">player.getDuration()</div> -->
+
+
 
 
 <!-- DB views, template to access views, some kind of forms, validation of forms, key to access DB, {views: vid key from URL + ID, user or anon, language, chunk of transcript with times and content, rating},  -->

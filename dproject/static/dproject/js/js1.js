@@ -47,15 +47,21 @@ function onPlayerReady(event) {
 
 // link timer to timestamp and display caption function
 // TODO: time on user side, check API time as failsafe near user next caption time.
-$('#timeStamp').html('&nbsp;');
 function updateCurrentTime() {
   if (player.getPlayerState() === 1) { // if player playing
     // v2 why round? why not just match nonround to last transcript event?
     var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
-    $('#timeStamp').html('Timestamp: ' + 'rounded: ' + rounded + ' fixed: ' + player.getCurrentTime().toFixed(1));
+    $('.timeStamp').html('<a href="#notlink">' + rounded + '&nbsp;&rarr;</a>');
+    // $('.timeStamp').html('Timestamp: ' + 'rounded: ' + rounded + ' fixed: ' + player.getCurrentTime().toFixed(1));
     captionTime(rounded);
   }
 }
+
+// push timestamp into time field of transcription table
+$('.timeStamp').on('click', function(event) {
+  event.preventDefault();
+  $(alert($(this).text));
+});
 
 // display captions to page and clear after six seconds
 var captionTime;
@@ -224,7 +230,7 @@ $('#transcripting').on('keyup click', 'input', function() {
     }
   });
   for (var i = 0; (i <= $('#transcripting .time_cell').children().length); i++) {
-    console.log($('.timestamp_input').eq(i).val());
+    // console.log($('.timestamp_input').eq(i).val());
     if ($('.timestamp_input').eq(i).val() === '') {
       break;
     }
@@ -357,10 +363,12 @@ $('#show_hide_add_transcripts').on('click', function(event) {
   if ($('#add_transcripts').css('display') === 'none') {
     $('#add_transcripts').slideToggle(100);
     $('#transcription_tips').slideToggle(100);
+    $('#transcript_table_scrollbox').slideToggle(100);
     $('#add_transcripts').css({'display': 'inline-block'});
     $('#ytplayer').css({'display': 'inline-block', 'width': '50%'});
   } else {
     $('#add_transcripts').slideToggle(100);
+    $('#transcript_table_scrollbox').slideToggle(100);
     $('#transcription_tips').slideToggle(100);
     $('#ytplayer').css({'display': 'block', 'width': '100%'});
   }
