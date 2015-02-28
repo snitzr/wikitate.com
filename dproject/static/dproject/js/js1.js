@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
   // TODO: start function on playerReady
   setInterval(updateCurrentTime, 100);
@@ -38,11 +37,6 @@ function onPlayerReady(event) {
     $('title').append((' &#47; ') + (player.getVideoData().title)); // append video title to page title
   }
 }
-
-// TODO: test for videos that cannot be embeded
-// function onError(event) {
-//   throw event
-// }
 
 
 // link timer to timestamp and display caption function
@@ -84,55 +78,8 @@ captionTime = function(currentTime) {
   }
 };
 
-// TESTING: jump timer vid to field time
-// $('.transcript_input').on('focus', function() {
-  // TODO: seekTo auto starts the video. needs to auto start / not auto start based on context. Example: not autostart if timestamp empty.
-  // TODO: make auto start work for dynamicly generated rows.
-  // if (player.seekTo(($(this).closest('tr').find('input.timestamp_input').val()))) {
-    // alert('yo');
-  // }
-// });
 
-// load captions on click
-// $('.transcriptDisplaySelect').click(function() {
-//   if (player.getPlayerState() === 1) {
-//     player.playVideo();
-//   }
-//   $('#captions').html(''); // clear current transcript display
-//   transcript = $.parseJSON($(this).html());
-//   // autostart vid
-//   alert(player);
-// });
 
-// start / stop video control
-// $('#starp').click(function() {
-//   if (player.getPlayerState() === 1) {
-//     player.pauseVideo();
-//   } else {
-//     player.playVideo();
-//   }
-// });
-
-// // skip back control
-// $('#skipBack').click(function() {
-//   player.pauseVideo();
-//   player.seekTo((player.getCurrentTime() - 3), true);
-//   player.playVideo();
-//   // console.log(player.getCurrentTime());
-// });
-
-// load transcript cells on language selection
-/* 
-$('#submit').on('submit click keyup keypress', function(event) {
-  if ($('#id_language').eq(0).val() === null) {
-    event.preventDefault();
-    var transcript_required_error_message = 'Transcript language required.';
-    $('#language_message').html('&laquo; ' + transcript_required_error_message);
-    $('#language_submit_message').html(transcript_required_error_message);
-    return false;
-  }
-});
-*/
 
 // append new time and text row to add transcript table on click
 $('#transcripting').on('click', 'a', function(event) {
@@ -242,37 +189,12 @@ $('#transcripting').on('keyup click', 'input', function() {
   }
 });
 
-// // drop down JSON to human readable format
-// $('#transcript option').each(function(index) {
-//   var drop_concat = '';
-//   if (index !== 0) {
-//     drop_down_value = JSON.parse(this.value);
-//     for (var i = 0; i <= 20; i += 0.5 ) {
-//       if (drop_down_value[i] !== undefined) {
-//         drop_concat += (drop_down_value[i] + ' ');
-//         $(this).html(drop_concat);
-//       }
-//     }
-//   }
-// });
 
-// load drop down selection after choice select and show load message
-// $('#transcript').on('change', runction() {
-//   $('#captions').html(''); // clear current transcript display
-//   transcript = (JSON.parse(this.value));
-// });
-
-// // TESTING: load drop down selection after choice select and show load message
-// $('.transcript_preview_cell').on('click', function() {
-//   $('#captions').html(''); // clear current transcript display
-//   transcript = (JSON.parse(this.value));
-// });
 
 // kludge to replace language abbreviations with their full names
-$('.transcript_choose_column_language').each(function(index) {
+$('.language_abbr').each(function(index) {
   var shortLanguage = $(this).text();
   var mapObj = {
-    'Language': 'Language',
     'af': 'Afrikaans',
     'id': 'Bahasa Indonesia',
     'ms': 'Bahasa Malaysia',
@@ -336,10 +258,27 @@ $('.transcript_choose_column_language').each(function(index) {
     'ko': '한국어',
     'ot': 'other'
   }
-  var newString = shortLanguage.replace(/^Language$|^af$|^id$|^ms$|^ca$|^cs$|^da$|^de$|^et$|^en-GB$|^en$|^es$|^es-419$|^eu$|^fil$|^fr$|^fr-CA$|^gl$|^hr$|^zu$|^is$|^it$|^sw$|^lv$|^lt$|^hu$|^nl$|^no$|^pl$|^pt-PT$|^pt$|^ro$|^sk$|^sl$|^fi$|^sv$|^vi$|^tr$|^bg$|^ru$|^sr$|^uk$|^el$|^iw$|^ur$|^ar$|^fa$|^mr$|^hi$|^bn$|^gu$|^ta$|^te$|^kn$|^ml$|^th$|^am$|^zh-CN$|^zh-TW$|^zh-HK$|^ja$|^ko$|^ot$/, function(matched){
+  var newString = shortLanguage.replace(/\baf\b|\bid\b|\bms\b|\bca\b|\bcs\b|\bda\b|\bde\b|\bet\b|\ben\b|\ben-GB\b|\bes\-419\b|\bes\b|\beu\b|\bfil\b|\bfr-CA\b|\bfr\b|\bgl\b|\bhr\b|\bzu\b|\bis\b|\bit\b|\bsw\b|\blv\b|\blt\b|\bhu\b|\bnl\b|\bno\b|\bpl\b|\bpt-PT\b|\bpt\b|\bro\b|\bsk\b|\bsl\b|\bfi\b|\bsv\b|\bvi\b|\btr\b|\bbg\b|\bru\b|\bsr\b|\buk\b|\bel\b|\biw\b|\bur\b|\bar\b|\bfa\b|\bmr\b|\bhi\b|\bbn\b|\bgu\b|\bta\b|\bte\b|\bkn\b|\bml\b|\bth\b|\bam\b|\bzh-CN\b|\bzh-TW\b|\bzh-HK\b|\bja\b|\bko\b|\bot\b/, function(matched){
     return mapObj[matched];
   });
   $(this).text(newString);
+});
+
+// enter edit transcript mode after dropdown selection
+$('#dropdown_language_dropdown').on('change', function(event) {
+  event.preventDefault(); // prevent placeholder link from appering in browser URL
+  if ($('#add_transcripts').css('display') === 'none') {
+    $('#add_transcripts').slideToggle(100);
+    $('#transcription_tips').slideToggle(100);
+    $('#transcript_table_scrollbox').slideToggle(100);
+    $('#add_transcripts').css({'display': 'inline-block'});
+    $('#ytplayer').css({'display': 'inline-block', 'width': '50%'});
+  } else {
+    $('#add_transcripts').slideToggle(100);
+    $('#transcript_table_scrollbox').slideToggle(100);
+    $('#transcription_tips').slideToggle(100);
+    $('#ytplayer').css({'display': 'block', 'width': '100%'});
+  }
 });
 
 
@@ -398,7 +337,62 @@ $('#submit_vid_search').on('submit click', function(event) {
 
 
 
+// TODO: test for videos that cannot be embeded
+// function onError(event) {
+//   throw event
+// }
 
+
+// TESTING: jump timer vid to field time
+// $('.transcript_input').on('focus', function() {
+  // TODO: seekTo auto starts the video. needs to auto start / not auto start based on context. Example: not autostart if timestamp empty.
+  // TODO: make auto start work for dynamicly generated rows.
+  // if (player.seekTo(($(this).closest('tr').find('input.timestamp_input').val()))) {
+    // alert('yo');
+  // }
+// });
+
+
+// load captions on click
+// $('.transcriptDisplaySelect').click(function() {
+//   if (player.getPlayerState() === 1) {
+//     player.playVideo();
+//   }
+//   $('#captions').html(''); // clear current transcript display
+//   transcript = $.parseJSON($(this).html());
+//   // autostart vid
+//   alert(player);
+// });
+
+// start / stop video control
+// $('#starp').click(function() {
+//   if (player.getPlayerState() === 1) {
+//     player.pauseVideo();
+//   } else {
+//     player.playVideo();
+//   }
+// });
+
+// // skip back control
+// $('#skipBack').click(function() {
+//   player.pauseVideo();
+//   player.seekTo((player.getCurrentTime() - 3), true);
+//   player.playVideo();
+//   // console.log(player.getCurrentTime());
+// });
+
+// load transcript cells on language selection
+/* 
+$('#submit').on('submit click keyup keypress', function(event) {
+  if ($('#id_language').eq(0).val() === null) {
+    event.preventDefault();
+    var transcript_required_error_message = 'Transcript language required.';
+    $('#language_message').html('&laquo; ' + transcript_required_error_message);
+    $('#language_submit_message').html(transcript_required_error_message);
+    return false;
+  }
+});
+*/
 
 
 /*
@@ -481,16 +475,31 @@ $('#returnYT').click(function() {
 
 
 
+// // drop down JSON to human readable format
+// $('#transcript option').each(function(index) {
+//   var drop_concat = '';
+//   if (index !== 0) {
+//     drop_down_value = JSON.parse(this.value);
+//     for (var i = 0; i <= 20; i += 0.5 ) {
+//       if (drop_down_value[i] !== undefined) {
+//         drop_concat += (drop_down_value[i] + ' ');
+//         $(this).html(drop_concat);
+//       }
+//     }
+//   }
+// });
 
+// load drop down selection after choice select and show load message
+// $('#transcript').on('change', runction() {
+//   $('#captions').html(''); // clear current transcript display
+//   transcript = (JSON.parse(this.value));
+// });
 
-
-
-
-
-
-
-
-
+// // TESTING: load drop down selection after choice select and show load message
+// $('.transcript_preview_cell').on('click', function() {
+//   $('#captions').html(''); // clear current transcript display
+//   transcript = (JSON.parse(this.value));
+// });
 
 
 

@@ -2,6 +2,26 @@
 
 {% block content %}
 
+<!-- TESTING -->
+<!-- Caption choose to edit and add -->
+<div id="show_hide_add_transcripts_picker">
+<form>
+  {% if t %}
+  <select id="dropdown_language_dropdown" name="language">
+    <option selected="selected" disabled="disabled">&#43; Create or modify a transcript</option>
+  {% for x in t %}
+  <option class="add_transcript_picker language_abbr" value="{{ x.language }}">{{ x.language }} (edit existing)</option>
+  {% empty %}
+  {% endfor %}
+  </select>
+  {% else%}
+  <a href="#notlink" id="show_hide_add_transcripts">&#43; Add {% if t%}or modify {% endif %}transcript</a>
+  {% endif %}
+  </form>
+</div>
+<!-- END TESTING -->
+
+
 <a href="#notlink" id="show_hide_add_transcripts">&#43; Add {% if t%}or modify {% endif %}transcript</a>
 <br />
 
@@ -41,74 +61,70 @@
     </div>
   </div>
   <div id="transcript_table_scrollbox">
-    {# language drop down #}
-    {# manually rendering each field in order to control disabled lanuages on dropdown #}
-    {# need logic here to check for existing language transcripts and then disable existing in dropdown #}
-    <!-- hard coding drop down until I have a programmable solution -->
     <select id="id_language" name="language">
       <option selected="selected" disabled="disabled">Transcript language (required)</option>
-      <option{{ transcript_existence_af }} value="af">Afrikaans</option>
-      <option{{ transcript_existence_id }} value="id">Bahasa Indonesia</option>
-      <option{{ transcript_existence_etc }} value="ms">Bahasa Malaysia</option>
-      <option{{ transcript_existence }} value="ca">Català</option>
-      <option{{ transcript_existence }} value="cs">Čeština</option>
-      <option{{ transcript_existence }} value="da">Dansk</option>
-      <option{{ transcript_existence }} value="de">Deutsch</option>
-      <option{{ transcript_existence }} value="et">Eesti</option>
-      <option{{ transcript_existence }} value="en-GB">English (UK)</option>
-      <option{{ transcript_existence }} value="en">English (US)</option>
-      <option{{ transcript_existence }} value="es">Español (España)</option>
-      <option{{ transcript_existence }} value="es-419">Español (Latinoamérica)</option>
-      <option{{ transcript_existence }} value="eu">Euskara</option>
-      <option{{ transcript_existence }} value="fil">Filipino</option>
-      <option{{ transcript_existence }} value="fr">Français</option>
-      <option{{ transcript_existence }} value="fr-CA">Français (Canada)</option>
-      <option{{ transcript_existence }} value="gl">Galego</option>
-      <option{{ transcript_existence }} value="hr">Hrvatski</option>
-      <option{{ transcript_existence }} value="zu">IsiZulu</option>
-      <option{{ transcript_existence }} value="is">Íslenska</option>
-      <option{{ transcript_existence }} value="it">Italiano</option>
-      <option{{ transcript_existence }} value="sw">Kiswahili</option>
-      <option{{ transcript_existence }} value="lv">Latviešu valoda</option>
-      <option{{ transcript_existence }} value="lt">Lietuvių</option>
-      <option{{ transcript_existence }} value="hu">Magyar</option>
-      <option{{ transcript_existence }} value="nl">Nederlands</option>
-      <option{{ transcript_existence }} value="no">Norsk</option>
-      <option{{ transcript_existence }} value="pl">Polski</option>
-      <option{{ transcript_existence }} value="pt-PT">Português</option>
-      <option{{ transcript_existence }} value="pt">Português (Brasil)</option>
-      <option{{ transcript_existence }} value="ro">Română</option>
-      <option{{ transcript_existence }} value="sk">Slovenčina</option>
-      <option{{ transcript_existence }} value="sl">Slovenščina</option>
-      <option{{ transcript_existence }} value="fi">Suomi</option>
-      <option{{ transcript_existence }} value="sv">Svenska</option>
-      <option{{ transcript_existence }} value="vi">Tiếng Việt</option>
-      <option{{ transcript_existence }} value="tr">Türkçe</option>
-      <option{{ transcript_existence }} value="bg">Български</option>
-      <option{{ transcript_existence }} value="ru">Русский</option>
-      <option{{ transcript_existence }} value="sr">Српски</option>
-      <option{{ transcript_existence }} value="uk">Українська</option>
-      <option{{ transcript_existence }} value="el">Ελληνικά</option>
-      <option{{ transcript_existence }} value="iw">עברית</option>
-      <option{{ transcript_existence }} value="ur">اردو</option>
-      <option{{ transcript_existence }} value="ar">العربية</option>
-      <option{{ transcript_existence }} value="fa">فارسی</option>
-      <option{{ transcript_existence }} value="mr">मराठी</option>
-      <option{{ transcript_existence }} value="hi">हिन्दी</option>
-      <option{{ transcript_existence }} value="bn">বাংলা</option>
-      <option{{ transcript_existence }} value="gu">ગુજરાતી</option>
-      <option{{ transcript_existence }} value="ta">தமிழ்</option>
-      <option{{ transcript_existence }} value="te">తెలుగు</option>
-      <option{{ transcript_existence }} value="kn">ಕನ್ನಡ</option>
-      <option{{ transcript_existence }} value="ml">മലയാളം </option>
-      <option{{ transcript_existence }} value="th">ภาษาไทย</option>
-      <option{{ transcript_existence }} value="am">አማርኛ</option>
-      <option{{ transcript_existence }} value="zh-CN">中文 (简体)</option>
-      <option{{ transcript_existence }} value="zh-TW">中文 (繁體)</option>
-      <option{{ transcript_existence }} value="zh-HK">中文 (香港)</option>
-      <option{{ transcript_existence }} value="ja">日本語</option>
-      <option{{ transcript_existence }} value="ko">한국어</option>
-      <option{{ transcript_existence }} value="ot">other</option>
+      <option value="af">Afrikaans</option>
+      <option value="id">Bahasa Indonesia</option>
+      <option value="ms">Bahasa Malaysia</option>
+      <option value="ca">Català</option>
+      <option value="cs">Čeština</option>
+      <option value="da">Dansk</option>
+      <option value="de">Deutsch</option>
+      <option value="et">Eesti</option>
+      <option value="en-GB">English (UK)</option>
+      <option value="en">English (US)</option>
+      <option value="es">Español (España)</option>
+      <option value="es-419">Español (Latinoamérica)</option>
+      <option value="eu">Euskara</option>
+      <option value="fil">Filipino</option>
+      <option value="fr">Français</option>
+      <option value="fr-CA">Français (Canada)</option>
+      <option value="gl">Galego</option>
+      <option value="hr">Hrvatski</option>
+      <option value="zu">IsiZulu</option>
+      <option value="is">Íslenska</option>
+      <option value="it">Italiano</option>
+      <option value="sw">Kiswahili</option>
+      <option value="lv">Latviešu valoda</option>
+      <option value="lt">Lietuvių</option>
+      <option value="hu">Magyar</option>
+      <option value="nl">Nederlands</option>
+      <option value="no">Norsk</option>
+      <option value="pl">Polski</option>
+      <option value="pt-PT">Português</option>
+      <option value="pt">Português (Brasil)</option>
+      <option value="ro">Română</option>
+      <option value="sk">Slovenčina</option>
+      <option value="sl">Slovenščina</option>
+      <option value="fi">Suomi</option>
+      <option value="sv">Svenska</option>
+      <option value="vi">Tiếng Việt</option>
+      <option value="tr">Türkçe</option>
+      <option value="bg">Български</option>
+      <option value="ru">Русский</option>
+      <option value="sr">Српски</option>
+      <option value="uk">Українська</option>
+      <option value="el">Ελληνικά</option>
+      <option value="iw">עברית</option>
+      <option value="ur">اردو</option>
+      <option value="ar">العربية</option>
+      <option value="fa">فارسی</option>
+      <option value="mr">मराठी</option>
+      <option value="hi">हिन्दी</option>
+      <option value="bn">বাংলা</option>
+      <option value="gu">ગુજરાતી</option>
+      <option value="ta">தமிழ்</option>
+      <option value="te">తెలుగు</option>
+      <option value="kn">ಕನ್ನಡ</option>
+      <option value="ml">മലയാളം </option>
+      <option value="th">ภาษาไทย</option>
+      <option value="am">አማርኛ</option>
+      <option value="zh-CN">中文 (简体)</option>
+      <option value="zh-TW">中文 (繁體)</option>
+      <option value="zh-HK">中文 (香港)</option>
+      <option value="ja">日本語</option>
+      <option value="ko">한국어</option>
+      <option value="ot">other</option>
     </select>
     <span id="language_message"></span>
     <br>
@@ -157,10 +173,10 @@
     {% for x in t %}
     <tr class="transcript_preview_row">
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
-      <td class="transcript_choose_column_language">{{ x.language }}</td>
+      <td class="transcript_choose_column_language language_abbr">{{ x.language }}</td>
       <td class="transcript_preview_cell transcript_preview_column">{{ x.transcript }}</td>
       <td class="transcript_json_cell">{{ x.transcript }}</td>
-      <td class="transcript_choose_share"><a href="/{{vidId}}/{{ x.language }}/">Link</a></td> <!-- TODO: add language link view -->
+      <td class="transcript_choose_share"><a href="/{{vidId}}/{{ x.language }}/">Link</a></td> <!-- TODO: add language link view in JS -->
     </tr>
     {% empty %}
     {% endfor %}
@@ -188,14 +204,6 @@
 <div id="playerExistenceIndicator">player.getDuration()</div> -->
 
 
-
-
-<!-- DB views, template to access views, some kind of forms, validation of forms, key to access DB, {views: vid key from URL + ID, user or anon, language, chunk of transcript with times and content, rating},  -->
-
-<!-- <div>
-  <p>Edit your draft transcript</p>
-  <p>When in edit mode, shrink vid 50%</p>
-</div> -->
 
 <script>
 // Load the iFrame Player API code asynchronously.
