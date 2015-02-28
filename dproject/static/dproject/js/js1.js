@@ -258,7 +258,7 @@ $('.language_abbr').each(function(index) {
     'ko': '한국어',
     'ot': 'other'
   }
-  var newString = shortLanguage.replace(/\baf\b|\bid\b|\bms\b|\bca\b|\bcs\b|\bda\b|\bde\b|\bet\b|\ben\b|\ben-GB\b|\bes\-419\b|\bes\b|\beu\b|\bfil\b|\bfr-CA\b|\bfr\b|\bgl\b|\bhr\b|\bzu\b|\bis\b|\bit\b|\bsw\b|\blv\b|\blt\b|\bhu\b|\bnl\b|\bno\b|\bpl\b|\bpt-PT\b|\bpt\b|\bro\b|\bsk\b|\bsl\b|\bfi\b|\bsv\b|\bvi\b|\btr\b|\bbg\b|\bru\b|\bsr\b|\buk\b|\bel\b|\biw\b|\bur\b|\bar\b|\bfa\b|\bmr\b|\bhi\b|\bbn\b|\bgu\b|\bta\b|\bte\b|\bkn\b|\bml\b|\bth\b|\bam\b|\bzh-CN\b|\bzh-TW\b|\bzh-HK\b|\bja\b|\bko\b|\bot\b/, function(matched){
+  var newString = shortLanguage.replace(/\baf\b|\bid\b|\bms\b|\bca\b|\bcs\b|\bda\b|\bde\b|\bet\b|\ben\-GB\b|\ben\b|\bes\-419\b|\bes\b|\beu\b|\bfil\b|\bfr\-CA\b|\bfr\b|\bgl\b|\bhr\b|\bzu\b|\bis\b|\bit\b|\bsw\b|\blv\b|\blt\b|\bhu\b|\bnl\b|\bno\b|\bpl\b|\bpt\-PT\b|\bpt\b|\bro\b|\bsk\b|\bsl\b|\bfi\b|\bsv\b|\bvi\b|\btr\b|\bbg\b|\bru\b|\bsr\b|\buk\b|\bel\b|\biw\b|\bur\b|\bar\b|\bfa\b|\bmr\b|\bhi\b|\bbn\b|\bgu\b|\bta\b|\bte\b|\bkn\b|\bml\b|\bth\b|\bam\b|\bzh\-CN\b|\bzh\-TW\b|\bzh\-HK\b|\bja\b|\bko\b|\bot\b/, function(matched){
     return mapObj[matched];
   });
   $(this).text(newString);
@@ -295,23 +295,6 @@ $('.transcript_preview_cell').each(function(index) {
   }
 });
 
-
-// show hide add transcript and tips and resize player
-$('#show_hide_add_transcripts').on('click', function(event) {
-  event.preventDefault(); // prevent placeholder link from appering in browser URL
-  if ($('#add_transcripts').css('display') === 'none') {
-    $('#add_transcripts').slideToggle(100);
-    $('#transcription_tips').slideToggle(100);
-    $('#transcript_table_scrollbox').slideToggle(100);
-    $('#add_transcripts').css({'display': 'inline-block'});
-    $('#ytplayer').css({'display': 'inline-block', 'width': '50%'});
-  } else {
-    $('#add_transcripts').slideToggle(100);
-    $('#transcript_table_scrollbox').slideToggle(100);
-    $('#transcription_tips').slideToggle(100);
-    $('#ytplayer').css({'display': 'block', 'width': '100%'});
-  }
-});
 
 
 
@@ -616,3 +599,23 @@ console.log('9b #transcripting type nth 3:\t' + $('#transcripting input:nth-last
     // clearInterval(intervalHead);
 // }
 // end vid title replacement
+
+
+
+
+// show hide add transcript and tips and resize player
+// $('#show_hide_add_transcripts').on('click', function(event) {
+//   event.preventDefault(); // prevent placeholder link from appering in browser URL
+//   if ($('#add_transcripts').css('display') === 'none') {
+//     $('#add_transcripts').slideToggle(100);
+//     $('#transcription_tips').slideToggle(100);
+//     $('#transcript_table_scrollbox').slideToggle(100);
+//     $('#add_transcripts').css({'display': 'inline-block'});
+//     $('#ytplayer').css({'display': 'inline-block', 'width': '50%'});
+//   } else {
+//     $('#add_transcripts').slideToggle(100);
+//     $('#transcript_table_scrollbox').slideToggle(100);
+//     $('#transcription_tips').slideToggle(100);
+//     $('#ytplayer').css({'display': 'block', 'width': '100%'});
+//   }
+// });
