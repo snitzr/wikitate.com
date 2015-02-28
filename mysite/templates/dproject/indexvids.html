@@ -4,62 +4,140 @@
 
 <!-- TESTING -->
 <!-- Caption choose to edit and add -->
-<div id="show_hide_add_transcripts_picker">
-<form>
-  {% if t %}
-  <select id="dropdown_language_dropdown" name="language">
-    <option selected="selected" disabled="disabled">&#43; Create or modify a transcript</option>
-  {% for x in t %}
-  <option class="add_transcript_picker language_abbr" value="{{ x.language }}">{{ x.language }} (edit existing)</option>
-  {% empty %}
-  {% endfor %}
-  </select>
-  {% else%}
-  <a href="#notlink" id="show_hide_add_transcripts">&#43; Add {% if t%}or modify {% endif %}transcript</a>
-  {% endif %}
-  </form>
-</div>
-<!-- END TESTING -->
-
-
-<!-- <a href="#notlink" id="show_hide_add_transcripts">&#43; Add {% if t%}or modify {% endif %}transcript</a> -->
-<!-- <br /> -->
-
-<div id="add_transcripts">
-
-  {% if user.is_authenticated %}
-  {% load account %}
-
-  {# {% user_display user %} #}
-
-  {# transcript submit #}
-  <form method="post" action="/transcript_submit/{{ vidId }}/">
-    {% csrf_token %}
-
-    {# transcript form #}
-    <div id="transcript_table" name="transcript_table"> <!-- does name-transcript need to be here at all? -->
-      <table id="transcripting">
-        <caption></caption>
-        <tr>
-          <th>timestamp (click into time)</th>
-          <th>time (required)</th>
-          <th>text</th>
-          <th>insert row</th>
-          <th>delete row</th>
-        </tr>
-        <tr>
-          <td class="timeStamp">&nbsp;&rarr;</td>
-          <td class="time_cell"><input class="timestamp_input" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td>
-          <td class="transcript_cell"><input class="transcript_input" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td>
-          <td class="insert_row"><a href="#notlink">+</a></td>
-          <td class="delete_row"><a href="#notlink">-</a></td>
-        </tr>
-        <input id="id_transcript" name="transcript" type="text" />
-      </table>
-    </div>
+<div id="show_hide_add_transcripts_picker id_language" name="language">
+  <form method="post" action="/transcript_submit/{{ vidId }}/">    {% if t %}
+    <select id="dropdown_language_dropdown" name="language">
+      <option selected="selected" disabled="disabled">&#43; Create or modify a transcript</option>
+      {% for x in t %}
+      <option class="add_transcript_picker language_abbr" value="{{ x.language }}">{{ x.language }} (edit existing)</option>
+      {% empty %}
+      {% endfor %}
+    </select>
+    {% else%}
+    <a href="#notlink" id="show_hide_add_transcripts">&#43; Add {% if t%}or modify {% endif %}transcript</a>
+    {% endif %}
   </div>
-  <div id="transcript_table_scrollbox">
-    <select id="id_language" name="language">
+  <!-- END TESTING -->
+
+
+  <div id="add_transcripts">
+
+    {% if user.is_authenticated %}
+    {% load account %}
+
+    {# {% user_display user %} #}
+
+    {# transcript submit #}
+    <form method="post" action="/transcript_submit/{{ vidId }}/">
+      {% csrf_token %}
+
+      {# transcript form #}
+      <div id="transcript_table" name="transcript_table"> <!-- does name-transcript need to be here at all? -->
+        <table id="transcripting">
+          <caption></caption>
+          <tr>
+            <th>timestamp (click into time)</th>
+            <th>time (required)</th>
+            <th>text</th>
+            <th>insert row</th>
+            <th>delete row</th>
+          </tr>
+          <tr>
+            <td class="timeStamp">&nbsp;&rarr;</td>
+            <td class="time_cell"><input class="timestamp_input" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td>
+            <td class="transcript_cell"><input class="transcript_input" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td>
+            <td class="insert_row"><a href="#notlink">+</a></td>
+            <td class="delete_row"><a href="#notlink">-</a></td>
+          </tr>
+          <input id="id_transcript" name="transcript" type="text" />
+        </table>
+      </div>
+    </div>
+    <div id="transcript_table_scrollbox">
+
+
+
+
+
+      <span id="language_message"></span>
+      <br>
+      <input id="submit" type="submit" value="Submit transcript" />
+    </form>
+    <span id="language_submit_message"></span>
+    <span id="time_submit_message"></span>
+
+
+    {% else %}
+    <a href="/accounts/login/?next={{request.path}}">Log in to add or edit a transcript.</a>
+    {% endif %}
+  </div>
+
+  <div id="ytplayer"></div>
+
+  <div id="captions"></div>
+
+  <div id="transcription_tips">
+    <h3>Transcribing tips</h3>
+    <ul>
+      <li>Transcribe first, then set timing.</li>
+      <li>Unless it is replaced with another line, subtitle text automatically disapears six seconds after it appears.</li>
+      <!-- <dd>Line break with "-" to show each line is a separate person speaking. Recommended only for simultaneous dialogue.</dd> -->
+      <li>100 characters max per text line.</li>
+      <li>Indicate music with: ♫</li>
+      <li>Set text timing &frac12; second before dialogue appears. This gives the brain time to react and read the text with the action.</li>
+      <li>Click timestamp to push time into that subtitle row. This is helpful for setting the timestamp while the video plays after entering transcription text. Timestamp is the number of seconds. For example: two minutes and ten seconds is a timestamp of 130.</li>
+      <!-- <dd>Keyboard shortcuts: </dd> -->
+    </ul>
+  </div>
+
+  <!-- Caption choose and loadtable -->
+  <div id="submitted_transcripts">
+    {% if t %}
+    <h2>{{ t.count }} Transcript{{ t|pluralize }} Available</h2>
+    <!-- <h2>Transcript{{ t|pluralize }}</h2> -->
+    <table id="transcript_choose">
+      <tr>
+        <th class="transcript_choose_column_status">&nbsp;</th>
+        <th class="transcript_choose_column_language">Language</th>
+        <th class="transcript_preview_column">Transcript</th>
+        <th id="JSON_table_header">JSON</th>
+        <th class="transcript_choose_share">&nbsp;</th>
+      </tr>
+      {% for x in t %}
+      <tr class="transcript_preview_row">
+        <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
+        <td class="transcript_choose_column_language language_abbr">{{ x.language }}</td>
+        <td class="transcript_preview_cell transcript_preview_column">{{ x.transcript }}</td>
+        <td class="transcript_json_cell">{{ x.transcript }}</td>
+        <td class="transcript_choose_share"><a href="/{{vidId}}/{{ x.language }}/">Link</a></td> <!-- TODO: add language link view in JS -->
+      </tr>
+      {% empty %}
+      {% endfor %}
+    </table>
+    {% else%}
+    <h2>No Transcripts</h2>
+    {% endif %}
+  </div>
+
+
+
+
+
+<!-- <p>_________________</p>
+<div id="Viewer">
+  Select transcript
+</div>
+<div id="Editor">
+  Select time | Text (with character limit) | Duration<br>
+</div>
+<div id="starp">Start / Stop</div>
+<div id="skipBack">Skip back 3 seconds</div>
+<div id="vidCode">vidCode</div>
+<div id="returnYT">returnYT</div>
+<div id="playerExistenceIndicator">player.getDuration()</div> -->
+
+
+   <!--  <select id="id_language" name="language">
       <option selected="selected" disabled="disabled">Transcript language (required)</option>
       <option value="af">Afrikaans</option>
       <option value="id">Bahasa Indonesia</option>
@@ -123,83 +201,7 @@
       <option value="ja">日本語</option>
       <option value="ko">한국어</option>
       <option value="ot">other</option>
-    </select>
-    <span id="language_message"></span>
-    <br>
-    <input id="submit" type="submit" value="Submit transcript" />
-  </form>
-  <span id="language_submit_message"></span>
-  <span id="time_submit_message"></span>
-
-
-  {% else %}
-  <a href="/accounts/login/?next={{request.path}}">Log in to add or edit a transcript.</a>
-  {% endif %}
-</div>
-
-<div id="ytplayer"></div>
-
-<div id="captions"></div>
-
-<div id="transcription_tips">
-  <h3>Transcribing tips</h3>
-  <ul>
-    <li>Transcribe first, then set timing.</li>
-    <li>Unless it is replaced with another line, subtitle text automatically disapears six seconds after it appears.</li>
-    <!-- <dd>Line break with "-" to show each line is a separate person speaking. Recommended only for simultaneous dialogue.</dd> -->
-    <li>100 characters max per text line.</li>
-    <li>Indicate music with: ♫</li>
-    <li>Set text timing &frac12; second before dialogue appears. This gives the brain time to react and read the text with the action.</li>
-    <li>Click timestamp to push time into that subtitle row. This is helpful for setting the timestamp while the video plays after entering transcription text. Timestamp is the number of seconds. For example: two minutes and ten seconds is a timestamp of 130.</li>
-    <!-- <dd>Keyboard shortcuts: </dd> -->
-  </ul>
-</div>
-
-<!-- Caption choose and loadtable -->
-<div id="submitted_transcripts">
-  {% if t %}
-  <h2>{{ t.count }} Transcript{{ t|pluralize }} Available</h2>
-  <!-- <h2>Transcript{{ t|pluralize }}</h2> -->
-  <table id="transcript_choose">
-    <tr>
-      <th class="transcript_choose_column_status">&nbsp;</th>
-      <th class="transcript_choose_column_language">Language</th>
-      <th class="transcript_preview_column">Transcript</th>
-      <th id="JSON_table_header">JSON</th>
-      <th class="transcript_choose_share">&nbsp;</th>
-    </tr>
-    {% for x in t %}
-    <tr class="transcript_preview_row">
-      <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
-      <td class="transcript_choose_column_language language_abbr">{{ x.language }}</td>
-      <td class="transcript_preview_cell transcript_preview_column">{{ x.transcript }}</td>
-      <td class="transcript_json_cell">{{ x.transcript }}</td>
-      <td class="transcript_choose_share"><a href="/{{vidId}}/{{ x.language }}/">Link</a></td> <!-- TODO: add language link view in JS -->
-    </tr>
-    {% empty %}
-    {% endfor %}
-  </table>
-  {% else%}
-  <h2>No Transcripts</h2>
-  {% endif %}
-</div>
-
-
-
-
-
-<!-- <p>_________________</p>
-<div id="Viewer">
-  Select transcript
-</div>
-<div id="Editor">
-  Select time | Text (with character limit) | Duration<br>
-</div>
-<div id="starp">Start / Stop</div>
-<div id="skipBack">Skip back 3 seconds</div>
-<div id="vidCode">vidCode</div>
-<div id="returnYT">returnYT</div>
-<div id="playerExistenceIndicator">player.getDuration()</div> -->
+    </select> -->
 
 
 
