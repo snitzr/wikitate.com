@@ -5,18 +5,93 @@
 <!-- TESTING -->
 <!-- Caption choose to edit and add -->
 <div id="show_hide_add_transcripts_picker id_language" name="language">
-  <form method="post" action="/transcript_submit/{{ vidId }}/">    {% if t %}
+  <form method="post" action="/transcript_submit/{{ vidId }}/">
+    {% if t %}
     <select class="show_hide_add_transcripts" name="language">
       <option selected="selected" disabled="disabled">&#43; Create or modify a transcript</option>
+      <option disabled="disabled">Choose language</option>
       {% for x in t %}
       <option class="add_transcript_picker language_abbr" value="{{ x.language }}">{{ x.language }} (edit existing)</option>
+
       {% empty %}
-      {% endfor %}
+      {% endfor %}  
+
     </select>
+
     {% else%}
-    <a href="#notlink" class="show_hide_add_transcripts">&#43; Add transcript</a>
+
+    <!-- <a href="#notlink" class="show_hide_add_transcripts">&#43; Add transcript</a> -->
+    <select class="show_hide_add_transcripts" id="id_language" name="language">
+      <option selected="selected" disabled="disabled">&#43; Create a transcript</option>
+      <option disabled="disabled">Choose language</option>
+      <option value="af">Afrikaans</option>
+      <option value="id">Bahasa Indonesia</option>
+      <option value="ms">Bahasa Malaysia</option>
+      <option value="ca">Català</option>
+      <option value="cs">Čeština</option>
+      <option value="da">Dansk</option>
+      <option value="de">Deutsch</option>
+      <option value="et">Eesti</option>
+      <option value="en-GB">English (UK)</option>
+      <option value="en">English (US)</option>
+      <option value="es">Español (España)</option>
+      <option value="es-419">Español (Latinoamérica)</option>
+      <option value="eu">Euskara</option>
+      <option value="fil">Filipino</option>
+      <option value="fr">Français</option>
+      <option value="fr-CA">Français (Canada)</option>
+      <option value="gl">Galego</option>
+      <option value="hr">Hrvatski</option>
+      <option value="zu">IsiZulu</option>
+      <option value="is">Íslenska</option>
+      <option value="it">Italiano</option>
+      <option value="sw">Kiswahili</option>
+      <option value="lv">Latviešu valoda</option>
+      <option value="lt">Lietuvių</option>
+      <option value="hu">Magyar</option>
+      <option value="nl">Nederlands</option>
+      <option value="no">Norsk</option>
+      <option value="pl">Polski</option>
+      <option value="pt-PT">Português</option>
+      <option value="pt">Português (Brasil)</option>
+      <option value="ro">Română</option>
+      <option value="sk">Slovenčina</option>
+      <option value="sl">Slovenščina</option>
+      <option value="fi">Suomi</option>
+      <option value="sv">Svenska</option>
+      <option value="vi">Tiếng Việt</option>
+      <option value="tr">Türkçe</option>
+      <option value="bg">Български</option>
+      <option value="ru">Русский</option>
+      <option value="sr">Српски</option>
+      <option value="uk">Українська</option>
+      <option value="el">Ελληνικά</option>
+      <option value="iw">עברית</option>
+      <option value="ur">اردو</option>
+      <option value="ar">العربية</option>
+      <option value="fa">فارسی</option>
+      <option value="mr">मराठी</option>
+      <option value="hi">हिन्दी</option>
+      <option value="bn">বাংলা</option>
+      <option value="gu">ગુજરાતી</option>
+      <option value="ta">தமிழ்</option>
+      <option value="te">తెలుగు</option>
+      <option value="kn">ಕನ್ನಡ</option>
+      <option value="ml">മലയാളം </option>
+      <option value="th">ภาษาไทย</option>
+      <option value="am">አማርኛ</option>
+      <option value="zh-CN">中文 (简体)</option>
+      <option value="zh-TW">中文 (繁體)</option>
+      <option value="zh-HK">中文 (香港)</option>
+      <option value="ja">日本語</option>
+      <option value="ko">한국어</option>
+      <option value="ot">other</option>
+    </select>
+
     {% endif %}
+
   </div>
+
   <!-- END TESTING -->
 
 

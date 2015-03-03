@@ -265,17 +265,15 @@ $('.language_abbr').each(function(index) {
 });
 
 // enter edit transcript mode after dropdown selection
-$('.show_hide_add_transcripts').on('change click', function(event) {
+$('.show_hide_add_transcripts').on('change', function(event) {
   event.preventDefault(); // prevent placeholder link from appering in browser URL
   if ($('#add_transcripts').css('display') === 'none') {
     $('#ytplayer').css({'display': 'inline-block', 'width': '50%'});    
-  } else {
-    $('#ytplayer').css({'display': 'inline-block', 'width': '100%'});    
+    $('#add_transcripts').slideToggle(100);
+    $('#transcription_tips').slideToggle(100);
+    $('#transcript_table_scrollbox').slideToggle(100);
+    $('#add_transcripts').css({'display': 'inline-block'});
   }
-  $('#add_transcripts').slideToggle(100);
-  $('#transcription_tips').slideToggle(100);
-  $('#transcript_table_scrollbox').slideToggle(100);
-  $('#add_transcripts').css({'display': 'inline-block'});
 });
 
 // TODO: cancel transcript add edit 

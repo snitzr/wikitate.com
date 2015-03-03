@@ -1,3 +1,10 @@
+#logo {
+  /*font-family: Georgia, fixed;*/
+  letter-spacing: 0.25em;
+  /*font-weight: bold;*/
+  /*font-variant: small-caps;*/
+}
+
 #id_transcript {
   float: right;
   visibility: hidden;
@@ -92,7 +99,12 @@ body {
   padding-bottom: 100px;
 }
 
+h1, h2 {
+  font-family: sans-serif;
+}
+
 h1, h2, h3, h4, h5, h6 {
+  font-family: sans-serif;
   font-weight:  300;
   margin: 10px 0 0 0;
 }
