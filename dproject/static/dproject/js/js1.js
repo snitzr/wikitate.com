@@ -65,10 +65,10 @@ captionTime = function(currentTime) {
     endAndStartTimer = function() {
       var displayFade;
       displayFade = function() {
-        $("#captions").fadeOut("fast");
+        $("#captions").fadeOut('fast');
       };
       clearTimeout(window.hider);
-      $("#captions").html(transcript[currentTime]).show();
+      $('#captions').html(transcript[currentTime]).show();
       window.hider = window.setTimeout(function() {
         displayFade();
       }, 6000);
@@ -122,7 +122,7 @@ $('#transcripting').on('keyup click', 'input', function() {
   transcript = JSON.parse(parsed_with_slice); // live preview in YT vid
 });
 
-// pform validation: revent submit on enter from form field
+// form validation: revent submit on enter from form field
 $('#transcripting').on('keyup keypress', 'input', function(event) {
   var keycode = event.keyCode || event.which;
   if (keycode === 13) {
@@ -265,22 +265,24 @@ $('.language_abbr').each(function(index) {
 });
 
 // enter edit transcript mode after dropdown selection
-$('#dropdown_language_dropdown').on('change', function(event) {
+$('.show_hide_add_transcripts').on('change click', function(event) {
   event.preventDefault(); // prevent placeholder link from appering in browser URL
   if ($('#add_transcripts').css('display') === 'none') {
-    $('#add_transcripts').slideToggle(100);
-    $('#transcription_tips').slideToggle(100);
-    $('#transcript_table_scrollbox').slideToggle(100);
-    $('#add_transcripts').css({'display': 'inline-block'});
-    $('#ytplayer').css({'display': 'inline-block', 'width': '50%'});
+    $('#ytplayer').css({'display': 'inline-block', 'width': '50%'});    
   } else {
-    $('#add_transcripts').slideToggle(100);
-    $('#transcript_table_scrollbox').slideToggle(100);
-    $('#transcription_tips').slideToggle(100);
-    $('#ytplayer').css({'display': 'block', 'width': '100%'});
+    $('#ytplayer').css({'display': 'inline-block', 'width': '100%'});    
   }
+  $('#add_transcripts').slideToggle(100);
+  $('#transcription_tips').slideToggle(100);
+  $('#transcript_table_scrollbox').slideToggle(100);
+  $('#add_transcripts').css({'display': 'inline-block'});
 });
 
+// TODO: cancel transcript add edit 
+    // $('#add_transcripts').slideToggle(100);
+    // $('#transcript_table_scrollbox').slideToggle(100);
+    // $('#transcription_tips').slideToggle(100);
+    // $('#ytplayer').css({'display': 'block', 'width': '100%'});
 
 // transcript table JSON to display human readable format
 $('.transcript_preview_cell').each(function(index) {

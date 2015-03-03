@@ -6,7 +6,7 @@
 <!-- Caption choose to edit and add -->
 <div id="show_hide_add_transcripts_picker id_language" name="language">
   <form method="post" action="/transcript_submit/{{ vidId }}/">    {% if t %}
-    <select id="dropdown_language_dropdown" name="language">
+    <select class="show_hide_add_transcripts" name="language">
       <option selected="selected" disabled="disabled">&#43; Create or modify a transcript</option>
       {% for x in t %}
       <option class="add_transcript_picker language_abbr" value="{{ x.language }}">{{ x.language }} (edit existing)</option>
@@ -14,7 +14,7 @@
       {% endfor %}
     </select>
     {% else%}
-    <a href="#notlink" id="show_hide_add_transcripts">&#43; Add {% if t%}or modify {% endif %}transcript</a>
+    <a href="#notlink" class="show_hide_add_transcripts">&#43; Add transcript</a>
     {% endif %}
   </div>
   <!-- END TESTING -->

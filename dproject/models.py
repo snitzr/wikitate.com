@@ -1,6 +1,7 @@
 # coding=utf-8
 
 from django.db import models
+import datetime
 
 class Vid(models.Model):
     VIDSOURCE = (
@@ -17,7 +18,6 @@ class Vid(models.Model):
 class Transcript(models.Model):
     vid = models.ForeignKey(Vid) # Django adds _id to create vid_id for its database column name
     transcript = models.CharField(max_length=5000000)
-    # rating = models.IntegerField()
     LANGUAGES = (
         # ('initial', 'Transcript language'),
         ('af', 'Afrikaans'),
@@ -85,5 +85,10 @@ class Transcript(models.Model):
     )
     language = models.CharField(max_length=100, choices=LANGUAGES)
     user = models.CharField(max_length=50)
+
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+
     def __unicode__(self):  # Python 3: def __str__(self):
         return u'%s %s %s' % (self.transcript, self.language, self.user)
