@@ -59,6 +59,10 @@
   /*width: 200px;*/
 }
 
+td {
+ text-align: center;
+}
+
 #transcripting td.insert_row {
   text-align: center;
 }
@@ -244,6 +248,7 @@ tbody {
 }
 
 .transcript_preview_column {
+  text-align: left;
   width: 60%;
 }
 
