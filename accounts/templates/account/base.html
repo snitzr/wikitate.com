@@ -26,7 +26,7 @@
       <div id="header">
         <ul id="head">
 
-          <li><h1><a href="/">Wikitate</a> &#47; Account</h1></li>
+          <li><h1><a href="/">W</a> &#47; Account</h1></li>
 
           <li>
            {% block video_search %}
@@ -74,7 +74,7 @@
       <strong>Menu:</strong>
       <ul>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+        <!-- <li><a href="{% url 'account_email' %}">Change E-mail</a></li> -->
         <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
         {% else %}
         <li><a href="{% url 'account_login' %}">Sign In</a></li>
@@ -95,7 +95,7 @@
       <a href="{% url 'index:about' %}">About</a>
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="/static/dproject/js/bootstrap.min.js"></script>
     <script src="/static/dproject/js/js1.js"></script>
   </div>

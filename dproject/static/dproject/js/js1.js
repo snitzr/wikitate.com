@@ -276,6 +276,12 @@ $('.show_hide_add_transcripts').on('change', function(event) {
   }
 });
 
+
+$('.existing_transcript').on('change', function(event) {
+  event.preventDefault();
+  // TODO: load JSON into form for editing
+});
+
 // TODO: cancel transcript add edit 
     // $('#add_transcripts').slideToggle(100);
     // $('#transcript_table_scrollbox').slideToggle(100);

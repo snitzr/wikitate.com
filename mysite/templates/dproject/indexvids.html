@@ -2,7 +2,6 @@
 
 {% block content %}
 
-<!-- TESTING -->
 <!-- Caption choose to edit and add -->
 <div id="show_hide_add_transcripts_picker id_language" name="language">
   <form method="post" action="/transcript_submit/{{ vidId }}/">
@@ -11,7 +10,7 @@
       <option selected="selected" disabled="disabled">&#43; Create or modify a transcript</option>
       <option disabled="disabled">Choose language</option>
       {% for x in t %}
-      <option class="add_transcript_picker language_abbr" value="{{ x.language }}">{{ x.language }} (edit existing)</option>
+      <option class="add_transcript_picker language_abbr existing_transcript" value="{{ x.language }}">{{ x.language }} (edit existing)</option>
 
       {% empty %}
       {% endfor %}  
@@ -20,7 +19,6 @@
 
     {% else%}
 
-    <!-- <a href="#notlink" class="show_hide_add_transcripts">&#43; Add transcript</a> -->
     <select class="show_hide_add_transcripts" id="id_language" name="language">
       <option selected="selected" disabled="disabled">&#43; Create a transcript</option>
       <option disabled="disabled">Choose language</option>
@@ -92,15 +90,12 @@
 
   </div>
 
-  <!-- END TESTING -->
 
 
   <div id="add_transcripts">
 
     {% if user.is_authenticated %}
     {% load account %}
-
-    {# {% user_display user %} #}
 
     {# transcript submit #}
     <form method="post" action="/transcript_submit/{{ vidId }}/">
@@ -111,10 +106,10 @@
         <table id="transcripting">
           <caption></caption>
           <tr>
-            <th>timestamp (click into time)</th>
-            <th>time (required)</th>
-            <th>text</th>
-            <th>insert row</th>
+            <th>current timestamp</th>
+            <th>text line timestamp (required)</th>
+            <th>text line</th>
+            <th>new row insert</th>
             <th>delete row</th>
           </tr>
           <tr>
@@ -132,8 +127,6 @@
 
 
 
-
-
       <span id="language_message"></span>
       <br>
       <input id="submit" type="submit" value="Submit transcript" />
@@ -143,7 +136,7 @@
 
 
     {% else %}
-    <a href="/accounts/login/?next={{request.path}}">Log in to add or edit a transcript.</a>
+    <a href="/accounts/signup/?next={{request.path}}">Sign up / log in to add or edit a transcript.</a>
     {% endif %}
   </div>
 
@@ -185,16 +178,16 @@
         <td class="transcript_preview_cell transcript_preview_column">{{ x.transcript }}</td>
         <td class="transcript_json_cell">{{ x.transcript }}</td>
         <td class="transcript_choose_share"><a href="/{{vidId}}/{{ x.language }}/">Link</a></td> <!-- TODO: add language link view in JS -->
+        <td class=""><a href="#notlink">Edit</a></td>
       </tr>
       {% empty %}
       {% endfor %}
     </table>
     {% else%}
     <h2>No Transcripts</h2>
+    <p>ADD ADD TRANSCRIPT LINK</p>
     {% endif %}
   </div>
-
-
 
 
 
@@ -212,75 +205,8 @@
 <div id="playerExistenceIndicator">player.getDuration()</div> -->
 
 
-   <!--  <select id="id_language" name="language">
-      <option selected="selected" disabled="disabled">Transcript language (required)</option>
-      <option value="af">Afrikaans</option>
-      <option value="id">Bahasa Indonesia</option>
-      <option value="ms">Bahasa Malaysia</option>
-      <option value="ca">Català</option>
-      <option value="cs">Čeština</option>
-      <option value="da">Dansk</option>
-      <option value="de">Deutsch</option>
-      <option value="et">Eesti</option>
-      <option value="en-GB">English (UK)</option>
-      <option value="en">English (US)</option>
-      <option value="es">Español (España)</option>
-      <option value="es-419">Español (Latinoamérica)</option>
-      <option value="eu">Euskara</option>
-      <option value="fil">Filipino</option>
-      <option value="fr">Français</option>
-      <option value="fr-CA">Français (Canada)</option>
-      <option value="gl">Galego</option>
-      <option value="hr">Hrvatski</option>
-      <option value="zu">IsiZulu</option>
-      <option value="is">Íslenska</option>
-      <option value="it">Italiano</option>
-      <option value="sw">Kiswahili</option>
-      <option value="lv">Latviešu valoda</option>
-      <option value="lt">Lietuvių</option>
-      <option value="hu">Magyar</option>
-      <option value="nl">Nederlands</option>
-      <option value="no">Norsk</option>
-      <option value="pl">Polski</option>
-      <option value="pt-PT">Português</option>
-      <option value="pt">Português (Brasil)</option>
-      <option value="ro">Română</option>
-      <option value="sk">Slovenčina</option>
-      <option value="sl">Slovenščina</option>
-      <option value="fi">Suomi</option>
-      <option value="sv">Svenska</option>
-      <option value="vi">Tiếng Việt</option>
-      <option value="tr">Türkçe</option>
-      <option value="bg">Български</option>
-      <option value="ru">Русский</option>
-      <option value="sr">Српски</option>
-      <option value="uk">Українська</option>
-      <option value="el">Ελληνικά</option>
-      <option value="iw">עברית</option>
-      <option value="ur">اردو</option>
-      <option value="ar">العربية</option>
-      <option value="fa">فارسی</option>
-      <option value="mr">मराठी</option>
-      <option value="hi">हिन्दी</option>
-      <option value="bn">বাংলা</option>
-      <option value="gu">ગુજરાતી</option>
-      <option value="ta">தமிழ்</option>
-      <option value="te">తెలుగు</option>
-      <option value="kn">ಕನ್ನಡ</option>
-      <option value="ml">മലയാളം </option>
-      <option value="th">ภาษาไทย</option>
-      <option value="am">አማርኛ</option>
-      <option value="zh-CN">中文 (简体)</option>
-      <option value="zh-TW">中文 (繁體)</option>
-      <option value="zh-HK">中文 (香港)</option>
-      <option value="ja">日本語</option>
-      <option value="ko">한국어</option>
-      <option value="ot">other</option>
-    </select> -->
 
-
-
-<script>
+    <script>
 // Load the iFrame Player API code asynchronously.
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/player_api";
