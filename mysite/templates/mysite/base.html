@@ -1,18 +1,18 @@
 <!DOCTYPE html>{% load staticfiles %}
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Add subtitles to almost any YouTube video.">
-<meta name="author" content="Aaron Snitzer">
-<link rel="shortcut icon" href="{% static "dproject/favicon.ico" %}">
-<title>{% block title %}Wikitate{% endblock title %}</title>
-<link href="{% static "dproject/css/bootstrap.min.css" %}" rel="stylesheet">
-<link href="{% static "dproject/css/css1.css" %}" rel="stylesheet">
-<link href="{% static "dproject/css/default.uni-form.css" %}" rel="stylesheet">
-<link href="{% static "dproject/css/uni-form.css" %}" rel="stylesheet">
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Add subtitles to almost any YouTube video.">
+  <meta name="author" content="Aaron Snitzer">
+  <link rel="shortcut icon" href="{% static "dproject/favicon.ico" %}">
+  <title>{% block title %}Wikitate{% endblock title %}</title>
+  <link href="{% static "dproject/css/bootstrap.min.css" %}" rel="stylesheet">
+  <link href="{% static "dproject/css/css1.css" %}" rel="stylesheet">
+  <link href="{% static "dproject/css/default.uni-form.css" %}" rel="stylesheet">
+  <link href="{% static "dproject/css/uni-form.css" %}" rel="stylesheet">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
@@ -22,76 +22,66 @@
       document.createElement("abbr");
     </script>
     <![endif]-->
-</head>
-<body>
+  </head>
+  <body>
 
-<div class="container">
-  <div id="header">
-    <ul id="head">
-    {% block header %}
-    <!-- <li><h1><a href="{% url 'index:index' %}">Wikitate</a> &#47; <span class="vidNameNav">{{ vidId }}</span></h1></li> -->
-    <li><h1><a href="{% url 'index:index' %}">W</a> &#47; <span class="vidNameNav"><br /></span></h1></li>
-    {% endblock header %}
+    <div class="container">
+      <div id="header">
+        <ul id="head">
+          {% block header %}
+          <!-- <li><h1><a href="{% url 'index:index' %}">Wikitate</a> &#47; <span class="vidNameNav">{{ vidId }}</span></h1></li> -->
+          <li><h1><a href="{% url 'index:index' %}">W</a> &#47; <span class="vidNameNav"><br /></span></h1></li>
+          {% endblock header %}
 
-    {% block baselogin %}
-    <div id="login">
-      {% if user.is_authenticated %}
-        {% load account %}
-        <!-- <a href="/accounts/logout/?next={{request.path}}">Logout</a> -->
-        <a href="/accounts/profile/">{% user_display user %}</a>
-        <!-- <br /><a href="/accounts/profile/">Account</a> -->
-      {% else %}
-        <a href="/accounts/login/?next={{request.path}}">Sign up / sign in</a>
-      {% endif %}
+          
+          {% block baselogin %}
+          <div id="login">
+            {% if user.is_authenticated %}
+            {% load account %}
+            <!-- <a href="/accounts/logout/?next={{request.path}}">Logout</a> -->
+            <a href="/accounts/profile/">{% user_display user %}</a>
+            <!-- <br /> -->
+            <!-- <a href="/accounts/profile/">Account</a> -->
+            {% else %}
+            <a href="/accounts/login/?next={{request.path}}">Sign up / sign in</a>
+            {% endif %}
 
+          </div>
+          {% endblock baselogin %}
+
+
+          {% block video_search %}
+          <li>
+            <span id="video_search">
+              <form action="" method="post">{% csrf_token %}
+                <input id="id_transcript_search" maxlength="300" name="transcript_search" placeholder="Enter video link" type="text" />
+                <input type="submit" id="submit_vid_search" value="Search" />
+              </form>
+            </span>
+          </li>
+          {% endblock video_search %}
+          <!-- <li>Advertisement: <img src="{% static "dproject/img/lotta-banner468-60.gif" %}" alt="ad" height="60" width="468" /></li> -->
+          
+
+        </ul>
+      </div>
+
+      {% block content %}
+      {% endblock content %}
+      {% block footer %}
+      <div id="footer">
+        <a href="{% url 'index:about' %}">About</a>
+      </div>
+      {% endblock footer %}
     </div>
-    {% endblock baselogin %}
-    {% block video_search %}
-    <li>
-    <span id="video_search">
-      <form action="" method="post">{% csrf_token %}
-        <input id="id_transcript_search" maxlength="300" name="transcript_search" placeholder="Enter video link" type="text" />
-        <input type="submit" id="submit_vid_search" value="Search" />
-      </form>
-    </span>
-    </li>
-    {% endblock video_search %}
-    <!--<li>Advertisement: <img src="{% static "dproject/img/lotta-banner468-60.gif" %}" alt="ad" height="60" width="468" /></li>-->
-    
-
-  </ul>
-  </div>
-
-  {% block content %}
-  {% endblock content %}
-  {% block footer %}
-  <div id="footer">
-    <a href="{% url 'index:about' %}">About</a>
-  </div>
-  {% endblock footer %}
-</div>
-
-<!-- Begin TESTING code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
-<script>
-// var vidURL = document.URL.match(/v=.{11}/).toString().substring(2,13);
-
-// embed video on page.
-// var vidCode = '{{ vidId }}'
-
-// var params = { allowScriptAccess: 'always' };
-// var atts = { id: 'myytplayer' };
-// swfobject.embedSWF('http://www.youtube.com/v/' + vidCode + '?enablejsapi=1&playerapiid=ytplayer&version=3',
-//     'vidId', '100%', '480', '8', null, null, params, atts);
-</script>
-<!-- End TESTING code from YT, Adobe. This is the YT recommended way to pass vid rather than iframe. -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="{% static "dproject/js/bootstrap.min.js" %}"></script>
 <script src="{% static "dproject/js/js1.js" %}"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-58801782-1', 'auto');

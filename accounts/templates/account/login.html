@@ -11,15 +11,17 @@
 
 <h1>{% trans "Sign In" %}</h1>
 
+<a href="{{ signup_url }}">or go to new user sign up</a>.
+<br />
+<br />
+
 <!-- {% if socialaccount.providers  %} -->
 <!-- <p>{% blocktrans with site.name as site_name %}Please sign in with one
 of your existing third party accounts.
 <br>
- -->
- <a href="{{ signup_url }}">New user sign up</a>.
- <br />
- <br />
- Sign in with an existing account below:{% endblocktrans %}</p>
+-->
+
+{% endblocktrans %}
 
 <!-- <div class="socialaccount_ballot">
 
@@ -37,7 +39,7 @@ of your existing third party accounts.
 <p>{% blocktrans %}If you have not created an account yet, then please
 <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 {% endif %}
- -->
+-->
 <form class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
 
@@ -48,20 +50,21 @@ of your existing third party accounts.
   <!-- custom code -->
   <form class="login" method="POST" action="/accounts/login/">
     {% csrf_token %}    
-  <p><label for="id_login">Login:</label> <input autofocus="autofocus" id="id_login" name="login" placeholder="Username or e-mail" type="text" /></p>
-<p><label for="id_password">Password:</label> <input id="id_password" name="password" placeholder="Password" type="password" /></p>
-<p><label for="id_remember">Remember Me:</label> <input id="id_remember" name="remember" type="checkbox"  checked/></p>
-  <!-- custom code -->
-  
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-  <br>
-  <br>
-   <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  <br>
-  <br>
-</form>
+    <p><label for="id_login">Login:</label> <input autofocus="autofocus" id="id_login" name="login" placeholder="Username or e-mail" type="text" /></p>
+    <p><label for="id_password">Password:</label> <input id="id_password" name="password" placeholder="Password" type="password" /></p>
+    <p><label for="id_remember">Remember Me:</label> <input id="id_remember" name="remember" type="checkbox"  checked/></p>
+    <!-- custom code -->
 
-{% endblock content %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+    <br />
+    <br />
+  </form>
+
+
+
+
+  {% endblock content %}

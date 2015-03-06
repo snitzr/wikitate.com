@@ -7,7 +7,7 @@
   <!-- <a href="/accounts/logout/?next=/">Logout</a> -->
   {% user_display user %}
   {% else %}
-  <a href="/accounts/login/?next={{request.path}}">Sign up / sign in and contribute</a>
+  <a href="/accounts/login/?next={{request.path}}">Sign up / sign in</a>
   {% endif %}
 </div>
 {% endblock baselogin %}

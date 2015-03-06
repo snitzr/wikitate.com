@@ -3,10 +3,14 @@
 {% load url from future %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{% trans "Sign up" %}{% endblock %}
 
 {% block content %}
 <h1>{% trans "Sign Up" %}</h1>
+
+<a href="/accounts/login/?next=">or go to existing user sign in</a>.
+<br />
+<br />
 
 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
@@ -17,7 +21,6 @@
   <button type="submit">{% trans "Sign Up" %}</button>
 </form>
 
+<br />
 
 {% endblock %}
-
-
