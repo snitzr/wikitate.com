@@ -1,6 +1,19 @@
 {% extends "mysite/base.html" %}{% load staticfiles %}
 
+
 {% block content %}
+
+<!-- TESTING -->
+{{ t }}
+<br />
+{% if t %}
+{% for x in t %}
+{{ x.language }}
+{% endfor%}
+{% endif%}
+<!-- END TESTING -->
+
+
 
 <!-- Caption choose to edit and add -->
 <div id="show_hide_add_transcripts_picker id_language" name="language">
@@ -98,7 +111,6 @@
     {% load account %}
 
     {# transcript submit #}
-    <form method="post" action="/transcript_submit/{{ vidId }}/">
       {% csrf_token %}
 
       {# transcript form #}
@@ -130,6 +142,7 @@
       <span id="language_message"></span>
       <br>
       <input id="submit" type="submit" value="Submit transcript" />
+      <a href="#notlink" id="cancel_edit">Cancel edit</a>
     </form>
     <span id="language_submit_message"></span>
     <span id="time_submit_message"></span>

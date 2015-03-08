@@ -282,11 +282,15 @@ $('.existing_transcript').on('change', function(event) {
   // TODO: load JSON into form for editing
 });
 
-// TODO: cancel transcript add edit 
-    // $('#add_transcripts').slideToggle(100);
-    // $('#transcript_table_scrollbox').slideToggle(100);
-    // $('#transcription_tips').slideToggle(100);
-    // $('#ytplayer').css({'display': 'block', 'width': '100%'});
+// hide edit transcript mode
+$('#cancel_edit').on('click', function(event) {
+  event.preventDefault();
+  $('#add_transcripts').slideToggle(100);
+  $('#transcript_table_scrollbox').slideToggle(100);
+  $('#transcription_tips').slideToggle(100);
+  $('#ytplayer').css({'display': 'block', 'width': '100%'});
+  // TODO: check for existing edits or add simple 'are you sure'
+});
 
 // transcript table JSON to display human readable format
 $('.transcript_preview_cell').each(function(index) {
