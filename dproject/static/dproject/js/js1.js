@@ -43,13 +43,19 @@ function onPlayerReady(event) {
 // TODO: time on user side, check API time as failsafe near user next caption time.
 function updateCurrentTime() {
   if (player.getPlayerState() === 1) { // if player playing
-    // v2 why round? why not just match nonround to last transcript event?
     var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
-    $('.timeStamp').html('<a href="#notlink">' + rounded + '&nbsp;&rarr;</a>');
-    // $('.timeStamp').html('Timestamp: ' + 'rounded: ' + rounded + ' fixed: ' + player.getCurrentTime().toFixed(1));
+    $('.timestamp_display').html('<a href="#notlink">' + rounded + '&nbsp;&rarr;</a>');
     captionTime(rounded);
   }
 }
+
+// current time display --> timestamp field
+$('.timestamp_display').on('click', function(event) {
+  // $(this).next().css('border','1px solid red');
+  // $(this).next().children('input').css('background-color','red');
+  $(this).next().children('input').val(Math.round(((player.getCurrentTime()) * 2)) / 2);
+  }
+)
 
 // push timestamp into time field of transcription table
 $('.timeStamp').on('click', function(event) {
@@ -285,11 +291,15 @@ $('.existing_transcript').on('change', function(event) {
 // hide edit transcript mode
 $('#cancel_edit').on('click', function(event) {
   event.preventDefault();
-  $('#add_transcripts').slideToggle(100);
-  $('#transcript_table_scrollbox').slideToggle(100);
-  $('#transcription_tips').slideToggle(100);
-  $('#ytplayer').css({'display': 'block', 'width': '100%'});
   // TODO: check for existing edits or add simple 'are you sure'
+  if (confirm('Cancel edit?')) {
+    $('#add_transcripts').slideToggle(100);
+    $('#transcript_table_scrollbox').slideToggle(100);
+    $('#transcription_tips').slideToggle(100);
+    $('#ytplayer').css({'display': 'block', 'width': '100%'});
+  } else {
+    return
+  }
 });
 
 // transcript table JSON to display human readable format

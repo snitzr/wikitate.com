@@ -135,6 +135,10 @@ h1, h2, h3, h4, h5, h6 {
   height: 0; /* prevent template shift from captions */
 }
 
+.timestamp_display {
+  text-align: left;
+}
+
 #timeStamp {
   background: transparent;
   color: yellow;

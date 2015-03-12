@@ -4,14 +4,14 @@
 {% block content %}
 
 <!-- TESTING -->
-{{ t }}
+<!-- {{ t }}
 <br />
 {% if t %}
 {% for x in t %}
 {{ x.language }}
 {% endfor%}
 {% endif%}
-<!-- END TESTING -->
+ --><!-- END TESTING -->
 
 
 
@@ -118,14 +118,14 @@
         <table id="transcripting">
           <caption></caption>
           <tr>
-            <th>current timestamp</th>
-            <th>text line timestamp (required)</th>
+            <th>current time</th>
+            <th>timestamp (required)</th>
             <th>text line</th>
             <th>new row insert</th>
             <th>delete row</th>
           </tr>
           <tr>
-            <td class="timeStamp">&nbsp;&rarr;</td>
+            <td class="timestamp_display">&nbsp;&rarr;</td>
             <td class="time_cell"><input class="timestamp_input" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td>
             <td class="transcript_cell"><input class="transcript_input" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td>
             <td class="insert_row"><a href="#notlink">+</a></td>
