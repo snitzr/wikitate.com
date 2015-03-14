@@ -11,7 +11,7 @@
 {{ x.language }}
 {% endfor%}
 {% endif%}
- --><!-- END TESTING -->
+--><!-- END TESTING -->
 
 
 
@@ -111,96 +111,97 @@
     {% load account %}
 
     {# transcript submit #}
-      {% csrf_token %}
+    {% csrf_token %}
 
-      {# transcript form #}
-      <div id="transcript_table" name="transcript_table"> <!-- does name-transcript need to be here at all? -->
-        <table id="transcripting">
-          <caption></caption>
-          <tr>
-            <th>current time</th>
-            <th>timestamp (required)</th>
-            <th>text line</th>
-            <th>new row insert</th>
-            <th>delete row</th>
-          </tr>
-          <tr>
-            <td class="timestamp_display">&nbsp;&rarr;</td>
-            <td class="time_cell"><input class="timestamp_input" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td>
-            <td class="transcript_cell"><input class="transcript_input" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td>
-            <td class="insert_row"><a href="#notlink">+</a></td>
-            <td class="delete_row"><a href="#notlink">-</a></td>
-          </tr>
-          <input id="id_transcript" name="transcript" type="text" />
-        </table>
-      </div>
+    {# transcript form #}
+    <div id="transcript_table" name="transcript_table"> <!-- does name-transcript need to be here at all? -->
+      <table id="transcripting">
+        <caption></caption>
+        <tr>
+          <th>current time</th>
+          <th>timestamp (required)</th>
+          <th>text line</th>
+          <th>new row insert</th>
+          <th>delete row</th>
+        </tr>
+        <tr>
+          <td class="timestamp_display"><a href="#notlink">0</a></td>
+          <td class="time_cell"><input class="timestamp_input" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td>
+          <td class="transcript_cell"><input class="transcript_input" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td>
+          <td class="insert_row"><a href="#notlink">+</a></td>
+          <td class="delete_row"><a href="#notlink">-</a></td>
+        </tr>
+        <input id="id_transcript" name="transcript" type="text" />
+      </table>
     </div>
-    <div id="transcript_table_scrollbox">
-
-
-
-      <span id="language_message"></span>
-      <br>
-      <input id="submit" type="submit" value="Submit transcript" />
-      <a href="#notlink" id="cancel_edit">Cancel edit</a>
-    </form>
-    <span id="language_submit_message"></span>
-    <span id="time_submit_message"></span>
-
-
-    {% else %}
-    <a href="/accounts/signup/?next={{request.path}}">Sign up / log in to add or edit transcripts.</a>
-    {% endif %}
   </div>
+  <div id="transcript_table_scrollbox">
 
-  <div id="ytplayer"></div>
 
-  <div id="captions"></div>
+  {% else %}
+  <a href="/accounts/signup/?next={{request.path}}">Sign up / log in to add or edit transcripts.</a>
+  {% endif %}
+</div>
 
-  <div id="transcription_tips">
-    <h3>Transcribing tips</h3>
-    <ul>
-      <li>Transcribe first, then set timing.</li>
-      <li>Unless it is replaced with another line, subtitle text automatically disapears six seconds after it appears.</li>
-      <!-- <dd>Line break with "-" to show each line is a separate person speaking. Recommended only for simultaneous dialogue.</dd> -->
-      <li>100 characters max per text line.</li>
-      <li>Indicate music with: ♫</li>
-      <li>Set text timing &frac12; second before dialogue appears. This gives the brain time to react and read the text with the action.</li>
-      <li>Click timestamp to push time into that subtitle row. This is helpful for setting the timestamp while the video plays after entering transcription text. Timestamp is the number of seconds. For example: two minutes and ten seconds is a timestamp of 130.</li>
-      <!-- <dd>Keyboard shortcuts: </dd> -->
-    </ul>
-  </div>
+<div id="ytplayer"></div>
 
-  <!-- Caption choose and loadtable -->
-  <div id="submitted_transcripts">
-    {% if t %}
-    <h2>{{ t.count }} Transcript{{ t|pluralize }} Available</h2>
-    <!-- <h2>Transcript{{ t|pluralize }}</h2> -->
-    <table id="transcript_choose">
-      <tr>
-        <th class="transcript_choose_column_status">&nbsp;</th>
-        <th class="transcript_choose_column_language">Language</th>
-        <th class="transcript_preview_column">Transcript</th>
-        <th id="JSON_table_header">JSON</th>
-        <th class="transcript_choose_share">&nbsp;</th>
-      </tr>
-      {% for x in t %}
-      <tr class="transcript_preview_row">
-        <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
-        <td class="transcript_choose_column_language language_abbr">{{ x.language }}</td>
-        <td class="transcript_preview_cell transcript_preview_column">{{ x.transcript }}</td>
-        <td class="transcript_json_cell">{{ x.transcript }}</td>
-        <td class="transcript_choose_share"><a href="/{{vidId}}/{{ x.language }}/">Link</a></td> <!-- TODO: add language link view in JS -->
-        <td class=""><a href="#notlink">Edit</a></td>
-      </tr>
-      {% empty %}
-      {% endfor %}
-    </table>
-    {% else%}
-    <h2>No Transcripts</h2>
-    <p>ADD ADD TRANSCRIPT LINK</p>
-    {% endif %}
-  </div>
+<div id="captions"></div>
+
+<div id="submit_edit">
+  <input id="submit" type="submit" value="Submit transcript" />
+  <a href="#notlink" id="cancel_edit">Cancel edit</a>
+  <span id="language_message"></span>
+  <span id="language_submit_message"></span>
+  <span id="time_submit_message"></span>
+</div>
+</form>
+<div id="transcription_tips">
+  <h3>Transcribing tips</h3>
+  <ul>
+    <li>Transcribe first, then set timing.</li>
+    <li>Unless it is replaced with another line, subtitle text automatically disapears six seconds after it appears.</li>
+    <!-- <dd>Line break with "-" to show each line is a separate person speaking. Recommended only for simultaneous dialogue.</dd> -->
+    <li>100 characters max per text line.</li>
+    <li>Indicate music with: ♫</li>
+    <li>Set text timing &frac12; second before dialogue appears. This gives the brain time to react and read the text with the action.</li>
+    <li>Click timestamp to push time into that subtitle row. This is helpful for setting the timestamp while the video plays after entering transcription text. Timestamp is the number of seconds. For example: two minutes and ten seconds is a timestamp of 130.</li>
+    <!-- <li>It might be easier to transcribe videos over ten minutes in an external text editor and then copy paste in.</li> -->
+    <!-- <dd>Keyboard shortcuts: </dd> -->
+  </ul>
+</div>
+
+<!-- Caption choose and loadtable -->
+<div id="submitted_transcripts">
+  {% if t %}
+  <h2>{{ t.count }} Transcript{{ t|pluralize }} Available</h2>
+  <!-- <h2>Transcript{{ t|pluralize }}</h2> -->
+  <table id="transcript_choose">
+    <tr>
+      <th class="transcript_choose_column_status">&nbsp;</th>
+      <th class="transcript_choose_column_language">Language</th>
+      <th class="transcript_preview_column">Transcript</th>
+      <th id="JSON_table_header">JSON</th>
+      <th class="transcript_choose_share">&nbsp;</th>
+    </tr>
+    {% for x in t %}
+    <tr class="transcript_preview_row">
+      <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
+      <td class="transcript_choose_column_language language_abbr">{{ x.language }}</td>
+      <td class="transcript_preview_cell transcript_preview_column">{{ x.transcript }}</td>
+      <td class="transcript_json_cell">{{ x.transcript }}</td>
+      <!-- TODO: add language link view in JS -->
+      <td class="transcript_choose_share"><a href="/{{vidId}}/{{ x.language }}/">Link</a></td>
+      <!-- TODO: load transcript to edit -->
+      <td class=""><a href="#notlink">Edit</a></td>
+    </tr>
+    {% empty %}
+    {% endfor %}
+  </table>
+  {% else%}
+  <h2>No Transcripts</h2>
+  <p>ADD ADD TRANSCRIPT LINK</p>
+  {% endif %}
+</div>
 
 
 
@@ -219,7 +220,7 @@
 
 
 
-    <script>
+<script>
 // Load the iFrame Player API code asynchronously.
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/player_api";

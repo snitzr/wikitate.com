@@ -42,25 +42,36 @@ function onPlayerReady(event) {
 // link timer to timestamp and display caption function
 // TODO: time on user side, check API time as failsafe near user next caption time.
 function updateCurrentTime() {
-  if (player.getPlayerState() === 1) { // if player playing
+  if (player.getPlayerState() === 1) {
     var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
-    $('.timestamp_display').html('<a href="#notlink">' + rounded + '&nbsp;&rarr;</a>');
+    $('.timestamp_display').html('<a href="#notlink">' + rounded + '</a>');
     captionTime(rounded);
   }
 }
 
 // current time display --> timestamp field
-$('.timestamp_display').on('click', function(event) {
-  // $(this).next().css('border','1px solid red');
-  // $(this).next().children('input').css('background-color','red');
-  $(this).next().children('input').val(Math.round(((player.getCurrentTime()) * 2)) / 2);
+$('#transcripting').on('click', function(event) {
+  event.preventDefault();
+  // alert($(this).parent().hasClass('timestamp_display'));
+  // if ($(this).html() === '.timestamp_display') {
+    // $(this).next('tr').children('input').val(Math.round(((player.getCurrentTime()) * 2)) / 2);
+    // $(this).next().children('input').css('background-color', 'red');
+    // }
   }
 )
 
-// push timestamp into time field of transcription table
-$('.timeStamp').on('click', function(event) {
-  event.preventDefault();
-  $(alert($(this).text));
+// append or delete new time and text row to add transcript table on click
+$('#transcripting').on('click', 'a', function(event) {
+  event.preventDefault(); // prevent placeholder link from appering in browser URL
+  if ($(this).html() === '+') {
+    var this_closest_tr = $(this).closest('tr');
+    var transcripting_row = $(this_closest_tr).html();
+    $(this_closest_tr).after('<tr>' + transcripting_row + '</tr>');
+    $(this_closest_tr).next().children('.transcript_cell').children('input').focus();
+  }
+  else if ((($('#transcripting tr').length) > 2) && ($(this).html() === '-')) {
+    $(this).closest('tr').remove();
+  }
 });
 
 // display captions to page and clear after six seconds
@@ -83,24 +94,6 @@ captionTime = function(currentTime) {
     endAndStartTimer();
   }
 };
-
-
-
-
-// append new time and text row to add transcript table on click
-$('#transcripting').on('click', 'a', function(event) {
-  event.preventDefault(); // prevent placeholder link from appering in browser URL
-  // console.log($(this).html());
-  if ($(this).html() === '+') {
-    var this_closest_tr = $(this).closest('tr');
-    var transcripting_row = $(this_closest_tr).html();
-    $(this_closest_tr).after('<tr>' + transcripting_row + '</tr>');
-    $(this_closest_tr).next().children('.transcript_cell').children('input').focus();
-  }
-  else if (($('#transcripting tr').length) > 2) {
-    $(this).closest('tr').remove();
-  }
-});
 
 // create JSON from transcript table
 // TODO: clear any double blank text field rows after submit
@@ -183,7 +176,6 @@ $('#transcripting').on('keyup click', 'input', function() {
     }
   });
   for (var i = 0; (i <= $('#transcripting .time_cell').children().length); i++) {
-    // console.log($('.timestamp_input').eq(i).val());
     if ($('.timestamp_input').eq(i).val() === '') {
       break;
     }
@@ -274,15 +266,17 @@ $('.language_abbr').each(function(index) {
 $('.show_hide_add_transcripts').on('change', function(event) {
   event.preventDefault(); // prevent placeholder link from appering in browser URL
   if ($('#add_transcripts').css('display') === 'none') {
-    $('#ytplayer').css({'display': 'inline-block', 'width': '50%'});    
     $('#add_transcripts').slideToggle(100);
     $('#transcription_tips').slideToggle(100);
     $('#transcript_table_scrollbox').slideToggle(100);
-    $('#add_transcripts').css({'display': 'inline-block'});
+    $('#ytplayer').css({'display': 'inline-block', 'width': '50%'});
+    $('#add_transcripts').css({'display': 'inline-block', 'float': 'left'});
+    $('#submit_edit').css({'visibility': 'visible'});
   }
 });
 
 
+// TODO: load transcript from JSON
 $('.existing_transcript').on('change', function(event) {
   event.preventDefault();
   // TODO: load JSON into form for editing
@@ -297,6 +291,7 @@ $('#cancel_edit').on('click', function(event) {
     $('#transcript_table_scrollbox').slideToggle(100);
     $('#transcription_tips').slideToggle(100);
     $('#ytplayer').css({'display': 'block', 'width': '100%'});
+    $('#submit_edit').css({'visibility': 'hidden'});
   } else {
     return
   }

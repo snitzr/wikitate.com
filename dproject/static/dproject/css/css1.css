@@ -10,6 +10,10 @@
   visibility: hidden;
 }
 
+#submit_edit {
+  visibility: hidden;
+}
+
 #id_transcript {
   width: 400px;
 }
@@ -255,9 +259,13 @@ tbody {
   text-align: left;
   width: 60%;
 }
-
 .transcript_choose_column_language, .transcript_choose_column_status, .transcript_choose_share {
   text-align: center;
+  width: 130px;
+}
+
+.transcript_choose_column_status {
+  width: 65px;
 }
 
 th, #transcript_choose tr, #transcript_choose td {
