@@ -50,13 +50,11 @@ function updateCurrentTime() {
 }
 
 // current time display --> timestamp field
-$('#transcripting').on('click', function(event) {
+// $('.timestamp_display').on('click', 'a', function(event) {
+  $('#transcripting').on('click', 'a', function(event) {
   event.preventDefault();
   // alert($(this).parent().hasClass('timestamp_display'));
-  // if ($(this).html() === '.timestamp_display') {
-    // $(this).next('tr').children('input').val(Math.round(((player.getCurrentTime()) * 2)) / 2);
-    // $(this).next().children('input').css('background-color', 'red');
-    // }
+    $(this).parent().next('td').children('input').val(Math.round(((player.getCurrentTime()) * 2)) / 2);
   }
 )
 
