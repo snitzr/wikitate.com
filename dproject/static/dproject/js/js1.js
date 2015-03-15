@@ -333,6 +333,17 @@ $('#submit_vid_search').on('submit click', function(event) {
 
 
 
+
+// Mousetrap
+
+Mousetrap.bind(['command+space'], function(e) {
+    alert('mouse')
+    return false;
+});
+
+// END Mouserap
+
+
 // TODO: test for videos that cannot be embeded
 // function onError(event) {
 //   throw event
