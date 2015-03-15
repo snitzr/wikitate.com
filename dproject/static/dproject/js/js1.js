@@ -336,8 +336,12 @@ $('#submit_vid_search').on('submit click', function(event) {
 
 // Mousetrap
 
-Mousetrap.bind(['command+space'], function(e) {
-    alert('mouse')
+Mousetrap.bind(['ctrl+space'], function(e) {
+    if (player.getPlayerState() !== 1) {
+      player.playVideo();
+    } else {
+      player.pauseVideo();
+    }
     return false;
 });
 
