@@ -141,6 +141,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .timestamp_display {
   text-align: left;
+  border: 1px solid #454545;
 }
 
 #timeStamp {
