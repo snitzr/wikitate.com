@@ -25,6 +25,30 @@
   border: solid 1px #454545;
 }
 
+.timestamp_display {
+  text-align: left;
+}
+
+.timestamp_display a {
+  /*border: 1px solid red;*/
+  overflow: hidden;
+  padding-top: 3px;
+  padding-bottom: 2px;
+  text-align: left;
+  text-decoration: none;
+}
+
+.timestamp_display:hover a {
+  background-color: #D8D8D8;
+  /*border: 1px solid red;*/
+  border-bottom-width: 2px;
+  overflow: hidden;
+  padding-top: 3px;
+  padding-bottom: 2px;
+  text-align: left;
+  text-decoration: none;
+}
+
 .insert_row a, .delete_row a {
   border: solid 1px #454545;
   padding: 2.5px 20px 2.5px 20px;
@@ -35,8 +59,8 @@
 
 .insert_row a:hover, .delete_row a:hover, .insert_row a:active, .delete_row a:active {
   padding: 2.5px 20px 2.5px 20px;
-  text-decoration: underline;
   background-color: #D8D8D8;
+  border-bottom-width: 2px;
 }
 
 /*#ad {*/
@@ -140,11 +164,6 @@ h1, h2, h3, h4, h5, h6 {
     1px 1px 0 #333;
   top: -150px;
   height: 0; /* prevent template shift from captions */
-}
-
-.timestamp_display {
-  text-align: left;
-  border: 1px solid red;
 }
 
 #timeStamp {

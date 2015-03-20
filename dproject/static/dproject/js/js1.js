@@ -44,19 +44,21 @@ function onPlayerReady(event) {
 function updateCurrentTime() {
   if (player.getPlayerState() === 1) {
     var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
-    $('.timestamp_display').html('<a href="#notlink">' + rounded + '</a>');
+    $('.timestamp_display').html('<a href="#notlink">' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + rounded + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>');
     captionTime(rounded);
   }
 }
 
 // current time display --> timestamp field
-// $('.timestamp_display').on('click', 'a', function(event) {
-  $('#transcripting').on('click', 'a', function(event) {
+$('#transcripting').on('click', 'a', function(event) {
   event.preventDefault();
-  // alert($(this).parent().hasClass('timestamp_display'));
+  if ((Math.round(((player.getCurrentTime()) * 2)) / 2) > 2.5) {
+    $(this).parent().next('td').children('input').val((Math.round(((player.getCurrentTime()) * 2)) / 2) - 1);
+  } else {
     $(this).parent().next('td').children('input').val(Math.round(((player.getCurrentTime()) * 2)) / 2);
   }
-)
+  // TODO: add JSON serialize live preview
+})
 
 // append or delete new time and text row to add transcript table on click
 $('#transcripting').on('click', 'a', function(event) {
