@@ -27,13 +27,16 @@
 
 .insert_row a, .delete_row a {
   border: solid 1px #454545;
-  padding: 2px 22px 3px 22px;
+  padding: 2.5px 20px 2.5px 20px;
+  position: inherit;
   text-decoration: none;
+  margin: 0;
 }
 
 .insert_row a:hover, .delete_row a:hover, .insert_row a:active, .delete_row a:active {
-  padding: 2px 22px 3px 22px;
+  padding: 2.5px 20px 2.5px 20px;
   text-decoration: underline;
+  background-color: #D8D8D8;
 }
 
 /*#ad {*/
@@ -114,7 +117,7 @@ h1, h2 {
 h1, h2, h3, h4, h5, h6 {
   font-family: sans-serif;
   font-weight:  300;
-  margin: 10px 0 0 0;
+  margin: 20px 0 0 0;
 }
 
 #footer {
@@ -141,7 +144,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .timestamp_display {
   text-align: left;
-  border: 1px solid #454545;
+  border: 1px solid red;
 }
 
 #timeStamp {
