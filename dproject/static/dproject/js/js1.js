@@ -43,8 +43,8 @@ function onPlayerReady(event) {
 // TODO: time on user side, check API time as failsafe near user next caption time.
 function updateCurrentTime() {
   if (player.getPlayerState() === 1) {
-    var rounded = (Math.round(((player.getCurrentTime()) * 2)) / 2);
-    $('.timestamp_display').html('<a href="#notlink">' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + rounded + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>');
+    var rounded = ((Math.round((player.getCurrentTime()) * 2)) / 2);
+    $('.timestamp_display').html('<a href="#notlink">' + '&nbsp;&nbsp;&nbsp;&nbsp;' + Math.round(rounded) + '&nbsp;&nbsp;&nbsp;&rArr;</a>');
     captionTime(rounded);
   }
 }
