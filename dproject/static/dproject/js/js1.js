@@ -351,10 +351,10 @@ Mousetrap.bind(['ctrl+space'], function(e) {
 // write timestamp if focused and move to next timestamp field
 Mousetrap.bind(['ctrl+t'], function(e) {
   if ($('.timestamp_input').is(':focus')) {
-    if ((Math.round(((player.getCurrentTime()) * 2)) / 2) > 2.5) {
-      $('.timestamp_input:focus').val(Math.round((player.getCurrentTime() * 2) / 2) - 1);
+    if (((player.getCurrentTime() * 2) / 2) > 2.5) {
+      $('.timestamp_input:focus').val((Math.round((player.getCurrentTime()) * 2) / 2) - 1);
     } else {
-      $('.timestamp_input:focus').val(Math.round((player.getCurrentTime() * 2) / 2));
+      $('.timestamp_input:focus').val((Math.round((player.getCurrentTime()) * 2) / 2));
     }
   }
     // move focus to next
