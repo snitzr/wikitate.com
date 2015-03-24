@@ -86,8 +86,7 @@
 
 
 #transcripting td.transcript_cell input {
-  /*TODO: check on iPad */
-  /*width: 200px;*/
+  width: 250px;
 }
 
 td {

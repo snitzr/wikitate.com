@@ -50,7 +50,7 @@ function updateCurrentTime() {
 }
 
 // current time display --> timestamp field
-$('#transcripting').on('click', 'a', function(event) {
+$('#transcripting').on('click mouseup', 'a', function(event) {
   event.preventDefault();
   if ((Math.round(((player.getCurrentTime()) * 2)) / 2) > 2.5) {
     $(this).parent().next('td').children('input').val((Math.round(((player.getCurrentTime()) * 2)) / 2) - 1);
@@ -338,6 +338,7 @@ $('#submit_vid_search').on('submit click', function(event) {
 
 // Mousetrap
 
+// play pause video
 Mousetrap.bind(['ctrl+space'], function(e) {
     if (player.getPlayerState() !== 1) {
       player.playVideo();
@@ -345,7 +346,21 @@ Mousetrap.bind(['ctrl+space'], function(e) {
       player.pauseVideo();
     }
     return false;
-});
+  });
+
+// write timestamp if focused and move to next timestamp field
+Mousetrap.bind(['ctrl+t'], function(e) {
+  if ($('.timestamp_input').is(':focus')) {
+    if ((Math.round(((player.getCurrentTime()) * 2)) / 2) > 2.5) {
+      $('.timestamp_input:focus').val(Math.round((player.getCurrentTime() * 2) / 2) - 1);
+    } else {
+      $('.timestamp_input:focus').val(Math.round((player.getCurrentTime() * 2) / 2));
+    }
+  }
+    // move focus to next
+    $('.timestamp_input:focus').parent().parent().next().find('.timestamp_input').focus();
+    return false;
+  });
 
 // END Mouserap
 
