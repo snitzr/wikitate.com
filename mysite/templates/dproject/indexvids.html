@@ -33,7 +33,7 @@
     {% else%}
 
     <select class="show_hide_add_transcripts" id="id_language" name="language">
-      <option selected="selected" disabled="disabled">&#43; Create transcripts</option>
+      <option selected="selected" disabled="disabled">&#43; Create transcript</option>
       <option disabled="disabled">Choose language</option>
       <option value="af">Afrikaans</option>
       <option value="id">Bahasa Indonesia</option>
@@ -176,7 +176,7 @@
 <!-- Caption choose and loadtable -->
 <div id="submitted_transcripts">
   {% if t %}
-  <h2>{{ t.count }} Transcript{{ t|pluralize }} Available</h2>
+  <h2>{{ t.count }} Transcript{{ t|pluralize }} Available for <span class="vidNameNav">{{ vidId }}</span></h2>
   <!-- <h2>Transcript{{ t|pluralize }}</h2> -->
   <table id="transcript_choose">
     <tr>
@@ -201,8 +201,7 @@
     {% endfor %}
   </table>
   {% else%}
-  <h2>No Transcripts</h2>
-  <p>ADD ADD TRANSCRIPT LINK</p>
+  <h2>No Transcripts Available for <span class="vidNameNav">{{ vidId }}</span></h2>
   {% endif %}
 </div>
 
