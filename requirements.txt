@@ -1,4 +1,4 @@
-django==1.7.2
+django==1.8
 django-allauth==0.18.0
 Pillow==2.3.1
 Pygments==1.6

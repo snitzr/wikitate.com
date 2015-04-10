@@ -266,9 +266,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* trying to overflow */
-tbody {
-  /*background-color: red;*/
-  overflow: auto;
+.scrollit {
+  overflow: scroll;
+  height: 100px;
+  width: 100px;
+  background-color: red;
 }
 
 #transcript_choose {
@@ -281,7 +283,7 @@ tbody {
   text-align: left;
   width: 60%;
 }
-.transcript_choose_column_language, .transcript_choose_column_status, .transcript_choose_share {
+.transcript_choose_column_language, .transcript_choose_column_status, .transcript_choose_share, .transcript_choose_edit {
   text-align: center;
   width: 130px;
 }
@@ -303,6 +305,6 @@ th, #transcript_choose tr, #transcript_choose td {
   width: 300px;
 }
 
-.transcript_json_cell, #JSON_table_header {
+.transcript_json_cell, .JSON_table_header {
   display: none;
 }

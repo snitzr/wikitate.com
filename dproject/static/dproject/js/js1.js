@@ -119,7 +119,17 @@ $('#transcripting').on('keyup click', 'input', function() {
   }
   $('#id_transcript').val(parsed_with_slice);
   transcript = JSON.parse(parsed_with_slice); // live preview in YT vid
+  console.log(parsed_with_slice);
 });
+
+// create form from JSON
+// this to console.log for test
+$('.transcript_choose_edit').on('keyup click', function() {
+  // console.log($(this).html());
+  // var fooJSON = $();
+})
+
+
 
 // form validation: revent submit on enter from form field
 $('#transcripting').on('keyup keypress', 'input', function(event) {
