@@ -1,5 +1,5 @@
 django==1.8
-django-allauth==0.18.0
+django-allauth==0.19.1
 Pillow==2.3.1
 Pygments==1.6
 bpython==0.12
@@ -26,4 +26,3 @@ virtualenv-clone==0.2.4
 virtualenvwrapper==4.2
 wsgiref==0.1.2
 yolk==0.4.3
-
