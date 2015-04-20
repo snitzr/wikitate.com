@@ -108,7 +108,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'dproject.urls'
 
-WSGI_APPLICATION = 'mysite.wsgi.application'
+WSGI_APPLICATION = 'dproject.wsgi.application'
 
 
 # Database
