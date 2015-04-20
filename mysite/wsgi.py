@@ -27,5 +27,13 @@ from dj_static import Cling
 
 application = Cling(get_wsgi_application())
 
+# static files start
+from django.core.wsgi import get_wsgi_application
+from whitenoise.django import DjangoWhiteNoise
+
+application = get_wsgi_application()
+application = DjangoWhiteNoise(application)
+# static files end
+
 #### end heroku setup
 # """
