@@ -102,7 +102,7 @@ ul {
   padding: 0 0 0 1em; /* bullet lists hug margin on left */
 }
 
-#header ul, #header h1, /*#header p,*/ #header li, #header form {
+#header ul, #header h1, #header p, #header li, #header form {
   display: inline;
   padding: 0;
   margin-right: 10px;
