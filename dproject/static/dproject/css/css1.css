@@ -1,3 +1,4 @@
+
 #logo {
   /*font-family: Georgia, fixed;*/
   letter-spacing: 0.25em;
@@ -197,7 +198,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #main-search {
-  font-size: 200%;
+  /*font-size: 200%;*/
   margin: 100px 0 100px 0;
   width: 100%;
 }
