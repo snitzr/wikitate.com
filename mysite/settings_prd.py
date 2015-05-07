@@ -8,6 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 import os
+from secret_settings import *
 
 
 
@@ -16,8 +17,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-%xk%*rd(8ug7-#fcpd)e1cf$cyb-zh&b%(yq(5ixpb6hi@w9^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
