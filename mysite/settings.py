@@ -11,6 +11,8 @@ import os
 from secret_settings import *
 
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = '-%xk%*rd(8ug7-#fcpd)e1cf$cyb-zh&b%(yq(5ixpb6hi@w9^'
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
