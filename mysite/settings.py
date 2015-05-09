@@ -8,7 +8,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 import os
-from secret_settings import *
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
