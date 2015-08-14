@@ -60,7 +60,7 @@ $('#transcripting').on('click mouseup', 'a', function(event) {
   // TODO: add JSON serialize live preview
 })
 
-// append or delete new time and text row to add transcript table on click
+// append or delete new time and text row to add transcript table on click. TODO: make better with Firefox and keyboard.
 $('#transcripting').on('click', 'a', function(event) {
   event.preventDefault(); // prevent placeholder link from appering in browser URL
   if ($(this).html() === '+') {
@@ -346,7 +346,7 @@ $('#submit_vid_search').on('submit click', function(event) {
 
 
 
-// Mousetrap
+// START Mousetrap
 
 // play pause video
 Mousetrap.bind(['ctrl+space'], function(e) {
