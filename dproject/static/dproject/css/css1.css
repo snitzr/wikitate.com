@@ -265,7 +265,7 @@ h1, h2, h3, h4, h5, h6 {
   /*text-decoration: underline;*/
 }
 
-.transcript_choose_column_status:hover, .transcript_choose_edit:hover {
+td.transcript_choose_column_status:hover, td.transcript_choose_edit:hover {
   background-color: #D8D8D8;
   /*text-decoration: underline;*/
   cursor: pointer; 
