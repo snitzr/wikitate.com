@@ -324,13 +324,14 @@ $('.transcript_preview_cell').each(function(index) {
 
 
 // load table selection after transcript selection
-$('.transcript_preview_row').on('click', function() {
+// $('.transcript_preview_row').on('click', function() {
+$('.transcript_choose_column_status').on('click', function() {
   $('#captions').html(''); // clear out current transcript display
-  transcript = (JSON.parse($(this).children('.transcript_json_cell').text()));
+  transcript = (JSON.parse($(this).siblings('.transcript_json_cell').text()));
   ($('.transcript_loaded_cell').text('► Play'));
-  ($(this).children('.transcript_loaded_cell').text('Selected'));
+  ($(this).html('.transcript_loaded_cell').text('Selected'));
   ($('.transcript_preview_row').css('backgroundColor', 'white'));
-  ($(this).css('backgroundColor', '#D8D8D8'));
+  ($(this).parent().css('backgroundColor', '#D8D8D8'));
   // TODO: add logic to pause video if clicked when video is playing
   player.playVideo();
   $('html, body').scrollTop(50);
