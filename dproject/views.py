@@ -419,8 +419,8 @@ def indexvids(request, vidId):
             page_ot = 'No transcript for ot.'
 
 
-        latest_transcripts = [page_af, page_id, page_ms, page_ca, page_cs, page_da, page_de, page_et, page_en_GB, page_en, page_es, page_es_419, page_eu, page_fil, page_fr, page_fr_CA, page_gl, page_hr, page_zu, page_is, page_it, page_sw, page_lv, page_lt, page_hu, page_nl, page_no, page_pl, page_pt_PT, page_pt, page_ro, page_sk, page_sl, page_fi, page_sv, page_vi, page_tr, page_bg, page_ru, page_sr, page_uk, page_el, page_iw, page_ur, page_ar, page_fa, page_mr, page_hi, page_bn, page_gu, page_ta, page_te, page_kn, page_ml, page_th, page_am, page_zh_CN, page_zh_TW, page_zh_HK, page_ja, page_ko, page_ot] # TODO: how to add only the variables that exist to latest_transcripts?
-        context.update({'latest_transcripts': latest_transcripts})
+        latest_transcripts = [page_af, page_id, page_ms, page_ca, page_cs, page_da, page_de, page_et, page_en_GB, page_en, page_es, page_es_419, page_eu, page_fil, page_fr, page_fr_CA, page_gl, page_hr, page_zu, page_is, page_it, page_sw, page_lv, page_lt, page_hu, page_nl, page_no, page_pl, page_pt_PT, page_pt, page_ro, page_sk, page_sl, page_fi, page_sv, page_vi, page_tr, page_bg, page_ru, page_sr, page_uk, page_el, page_iw, page_ur, page_ar, page_fa, page_mr, page_hi, page_bn, page_gu, page_ta, page_te, page_kn, page_ml, page_th, page_am, page_zh_CN, page_zh_TW, page_zh_HK, page_ja, page_ko, page_ot]
+        context.update({'latest_transcripts': latest_transcripts, 'page_ms': page_ms})
         # end latest transcripts queries
     v = Vid.objects.filter(vidId__contains=vidId)
     context.update({'vidId': vidId, 'v': v})

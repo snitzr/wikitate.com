@@ -15,7 +15,7 @@
       <option class="add_transcript_picker language_abbr existing_transcript" value="{{ x.language }}">{{ x.language }} Modified: {{x.modified|date:"U"}} (edit existing transcript)</option>
 
       {% empty %}
-      {% endfor %}  
+      {% endfor %}
 
     </select>
 
@@ -93,9 +93,13 @@
   </div>
 
 <!-- START TESTING: query only latest transcripts for each language -->
-<hr>
-{{latest_transcripts}}
-<hr>
+<!-- <hr> -->
+<!-- {{ latest_transcripts }} -->
+<!-- <hr> -->
+<!-- {% if page_ms %} -->
+  <!-- {{ page_ms.transcript }} -->
+<!-- {% endif %} -->
+<!-- <hr> -->
 <!-- END TESTING: query only latest transcripts for each language -->
 
   <div id="add_transcripts">
@@ -154,22 +158,24 @@
     <li>Transcribe first, then set timing as the video plays.</li>
     <li>Key combos:</li>
     <ul>
-      <li>control + spacebar : Play / pause video.</li>
+      <li>control + space bar : Play / pause video.</li>
       <li>control + t : If a timestamp field has focus, write timestamp into that field and move focus to next time field.</li>
     </ul>
-    <li>Set text timing about &frac12; second before dialogue appears. This gives the brain time to react and read the text with the action. When setting timing with the video time link, the timestamp automatically sets one second earlier for you.</li>
     <li>Clicking the dynamic timestamp in the "video time" column pushes time into that subtitle row. This is helpful for adding the timestamp to a line of text during video playback. Timestamp is in total seconds. For example: two minutes and ten seconds is a timestamp of 130. You can also use the control + t key combo for this.</li>
+    <li>Set text timing about &frac12; second before dialog appears. This gives the brain time to react and read the text with the action. When setting timing with the "video time" link, this happens automatically.</li>
     <li>100 character limit each text line.</li>
-    <li>Unless it is replaced with another line, subtitle text automatically disapears six seconds after it appears during playback.</li>
+    <li>During video playback, displayed text will fade out after six seconds. You don't need to add a blank line after text to clear subtitles.</li>
     <li>Music symbol: ♫</li>
     <li>Two lines cannot have the same timestamp.</li>
+    <li>You can always save an incomplete draft and come back to edit it later. No edit is permanent.</li>
   </ul>
 </div>
 
 <!-- Caption choose and loadtable -->
 <div id="submitted_transcripts">
   {% if t %}
-  <h2>{{ t.count }} Transcript{{ t|pluralize }} Available for <span class="vidNameNav">{{ vidId }}</span></h2>
+  <!-- <h2>{{ t.count }} Transcript{{ t|pluralize }} Available for <span class="vidNameNav">{{ vidId }}</span></h2> -->
+  <h2>Transcript{{ t|pluralize }} Available for <span class="vidNameNav">{{ vidId }}</span></h2>
   <table id="transcript_choose">
     <tr>
       <th class="transcript_choose_column_status">&nbsp;</th>
@@ -179,19 +185,40 @@
       <th class="transcript_choose_share">Share</th>
       <th class="transcript_choose_edit">Edit</th>
     </tr>
-    {% for x in t %}
+    {% if page_af %}
     <tr class="transcript_preview_row">
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
-      <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ x.language }}</div></td>
-      <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ x.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ x.transcript }}</td>
-      <!-- TODO: add language link view in JS -->
-      <td class="transcript_choose_share"><a href="/{{vidId}}/{{ x.language }}/">Link</a></td>
-      <!-- TODO: load transcript to edit -->
+      <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_af.language }}</div></td>
+      <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_af.transcript }}</div></td>
+      <td class="transcript_json_cell">{{ page_af.transcript }}</td>
+      <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_af.language }}/">Permalink</a></td>
       <td class="transcript_choose_edit"><a href="#notlink">Edit</a></td>
     </tr>
-    {% empty %}
-    {% endfor %}
+    {% endif %}
+    {% if page_id %}
+    <tr class="transcript_preview_row">
+      <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
+      <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_id.language }}</div></td>
+      <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_id.transcript }}</div></td>
+      <td class="transcript_json_cell">{{ page_id.transcript }}</td>
+      <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_id.language }}/">Permalink</a></td>
+      <td class="transcript_choose_edit"><a href="#notlink">Edit</a></td>
+    </tr>
+    {% endif %}
+    {% if page_ms %}
+    <tr class="transcript_preview_row">
+      <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
+      <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_ms.language }}</div></td>
+      <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_ms.transcript }}</div></td>
+      <td class="transcript_json_cell">{{ page_ms.transcript }}</td>
+      <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_ms.language }}/">wikitate.com/{{vidId}}/{{page_ms.language}}/</a></td>
+      <td class="transcript_choose_edit"><a href="#notlink">✎</a></td>
+    </tr>
+    {% endif %}
+
+
+
+
   </table>
   {% else%}
   <h2>No Transcripts Available for <span class="vidNameNav">{{ vidId }}</span></h2>
