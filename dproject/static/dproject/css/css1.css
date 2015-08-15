@@ -255,10 +255,20 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
+.transcript_preview_row a {
+  text-decoration: none;
+}
 .transcript_preview_row:hover {
+  /*background-color: #D8D8D8;*/
+  /*color: black;*/
+  /*  cursor: pointer; */
+  /*text-decoration: underline;*/
+}
+
+.transcript_choose_column_status:hover, .transcript_choose_edit:hover {
   background-color: #D8D8D8;
-  color: black;
-  cursor: pointer;
+  /*text-decoration: underline;*/
+  cursor: pointer; 
 }
 
 #id_transcript_search {
@@ -270,7 +280,7 @@ h1, h2, h3, h4, h5, h6 {
   overflow: scroll;
   height: 100px;
   width: 100px;
-  background-color: red;
+  /*background-color: red;*/
 }
 
 #transcript_choose {
@@ -285,7 +295,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 .transcript_choose_column_language, .transcript_choose_column_status, .transcript_choose_share, .transcript_choose_edit {
   text-align: center;
+}
+
+.transcript_choose_column_language, .transcript_choose_column_status {
   width: 130px;
+}
+
+.transcript_choose_share {
+  width: 220px;
+}
+
+.transcript_choose_edit {
+  width: 60px;
 }
 
 .transcript_choose_column_status {
@@ -300,7 +321,7 @@ th, #transcript_choose tr, #transcript_choose td {
 #transcript_choose tr, #transcript_choose td {
   border: 1px solid #454545;
   height: 30px;
-  text-overflow: ellipsis;
+  /*text-overflow: ellipsis;*/
   white-space: nowrap;
   width: 300px;
 }
