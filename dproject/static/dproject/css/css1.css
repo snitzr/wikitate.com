@@ -267,8 +267,12 @@ h1, h2, h3, h4, h5, h6 {
 
 td.transcript_choose_column_status:hover, td.transcript_choose_edit:hover {
   background-color: #D8D8D8;
-  /*text-decoration: underline;*/
   cursor: pointer; 
+}
+
+td.transcript_choose_edit:hover a {
+  border-bottom: none;
+  color: #333;
 }
 
 #id_transcript_search {
@@ -307,6 +311,10 @@ td.transcript_choose_column_status:hover, td.transcript_choose_edit:hover {
 
 .transcript_choose_edit {
   width: 60px;
+}
+  
+.transcript_choose_edit a {
+  color: #333;
 }
 
 .transcript_choose_column_status {
