@@ -21,32 +21,9 @@
 .timestamp_input {
   width: 66px;
 }
+
 .timestamp_input, .transcript_input {
   border: solid 1px #454545;
-}
-
-.timestamp_display {
-  text-align: left;
-}
-
-.timestamp_display a {
-  /*border: 1px solid red;*/
-  overflow: hidden;
-  padding-top: 3px;
-  padding-bottom: 2px;
-  text-align: left;
-  text-decoration: none;
-}
-
-.timestamp_display:hover a {
-  background-color: #D8D8D8;
-  /*border: 1px solid red;*/
-  border-bottom-width: 2px;
-  overflow: hidden;
-  padding-top: 3px;
-  padding-bottom: 2px;
-  text-align: left;
-  text-decoration: none;
 }
 
 .insert_row a, .delete_row a {
