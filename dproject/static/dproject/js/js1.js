@@ -295,7 +295,6 @@ $('.existing_transcript').on('change', function(event) {
 // hide edit transcript mode
 $('#cancel_edit').on('click', function(event) {
   event.preventDefault();
-  // TODO: check for existing edits or add simple 'are you sure'
   if (confirm('Cancel edit?')) {
     $('#add_transcripts').slideToggle(100);
     $('#transcript_table_scrollbox').slideToggle(100);
