@@ -10,11 +10,20 @@
     <select class="show_hide_add_transcripts" id="id_language" name="language">
       <option selected="selected" disabled="disabled">&#43; Create or modify transcripts by language:</option>
       <option disabled="disabled">Choose language</option>
-      <option value="af">Afrikaans</option>
-      <option value="id">Bahasa Indonesia</option>
+      {% if page_af %}
+      <option value="af">Afrikaans (edit existing)</option>
+      {% else %}
+      <option value="af">Afrikaans (create new)</option>
+      {% endif %}
+
+      {% if page_id %}
+      <option value="id">Bahasa Indonesia(edit existing)</option>
+      {% else %}
+      <option value="id">Bahasa Indonesia (create new)</option>
+      {% endif %}
+
       {% if page_ms %}
       <option value="ms">Bahasa Malaysia (edit existing)</option>
-      <!-- TODO: add class to edit existing for jQuery listener to check and load from DB -->
       {% else %}
       <option value="ms">Bahasa Malaysia (create new)</option>
       {% endif %}
@@ -36,76 +45,347 @@
       {% else %}
       <option value="da">Dansk (create new)</option>
       {% endif %}
-      <option value="de">Deutsch</option>
-      <option value="et">Eesti</option>
-      <option value="en-GB">English (UK)</option>
-      <option value="en">English (US)</option>
-      <option value="es">Español (España)</option>
-      <option value="es-419">Español (Latinoamérica)</option>
-      <option value="eu">Euskara</option>
-      <option value="fil">Filipino</option>
-      <option value="fr">Français</option>
-      <option value="fr-CA">Français (Canada)</option>
-      <option value="gl">Galego</option>
-      <option value="hr">Hrvatski</option>
-      <option value="zu">IsiZulu</option>
-      <option value="is">Íslenska</option>
-      <option value="it">Italiano</option>
-      <option value="sw">Kiswahili</option>
-      <option value="lv">Latviešu valoda</option>
-      <option value="lt">Lietuvių</option>
-      <option value="hu">Magyar</option>
-      <option value="nl">Nederlands</option>
-      <option value="no">Norsk</option>
-      <option value="pl">Polski</option>
-      <option value="pt-PT">Português</option>
-      <option value="pt">Português (Brasil)</option>
-      <option value="ro">Română</option>
-      <option value="sk">Slovenčina</option>
-      <option value="sl">Slovenščina</option>
-      <option value="fi">Suomi</option>
-      <option value="sv">Svenska</option>
-      <option value="vi">Tiếng Việt</option>
-      <option value="tr">Türkçe</option>
-      <option value="bg">Български</option>
-      <option value="ru">Русский</option>
-      <option value="sr">Српски</option>
-      <option value="uk">Українська</option>
-      <option value="el">Ελληνικά</option>
-      <option value="iw">עברית</option>
-      <option value="ur">اردو</option>
-      <option value="ar">العربية</option>
-      <option value="fa">فارسی</option>
-      <option value="mr">मराठी</option>
-      <option value="hi">हिन्दी</option>
-      <option value="bn">বাংলা</option>
-      <option value="gu">ગુજરાતી</option>
-      <option value="ta">தமிழ்</option>
-      <option value="te">తెలుగు</option>
-      <option value="kn">ಕನ್ನಡ</option>
-      <option value="ml">മലയാളം </option>
-      <option value="th">ภาษาไทย</option>
-      <option value="am">አማርኛ</option>
-      <option value="zh-CN">中文 (简体)</option>
-      <option value="zh-TW">中文 (繁體)</option>
-      <option value="zh-HK">中文 (香港)</option>
-      <option value="ja">日本語</option>
-      <option value="ko">한국어</option>
-      <option value="ot">other</option>
+
+      {% if page_de %}
+      <option value="de">Deutsch (edit existing)</option>
+      {% else %}
+      <option value="de">Deutsch (create new)</option>
+      {% endif %}
+
+      {% if page_et %}
+      <option value="et">Eesti (edit existing)</option>
+      {% else %}
+      <option value="et">Eesti (create new)</option>
+      {% endif %}
+
+      {% if page_en_GB %}
+      <option value="en-GB">English (UK) (edit existing)</option>
+      {% else %}
+      <option value="en-GB">English (UK) (create new)</option>
+      {% endif %}
+
+      {% if page_en %}
+      <option value="en">English (US) (edit existing)</option>
+      {% else %}
+      <option value="en">English (US) (create new)</option>
+      {% endif %}
+
+      {% if page_es %}
+      <option value="es">Español (España) (edit existing)</option>
+      {% else %}
+      <option value="es">Español (España) (create new)</option>
+      {% endif %}
+
+      {% if page_es_419 %}
+      <option value="es-419">Español (Latinoamérica) (edit existing)</option>
+      {% else %}
+      <option value="es-419">Español (Latinoamérica) (create new)</option>
+      {% endif %}
+
+      {% if page_eu %}
+      <option value="eu">Euskara (edit existing)</option>
+      {% else %}
+      <option value="eu">Euskara (create new)</option>
+      {% endif %}
+
+      {% if page_fil %}
+      <option value="fil">Filipino (edit existing)</option>
+      {% else %}
+      <option value="fil">Filipino (create new)</option>
+      {% endif %}
+
+      {% if page_fr %}
+      <option value="fr">Français (edit existing)</option>
+      {% else %}
+      <option value="fr">Français (create new)</option>
+      {% endif %}
+
+      {% if page_fr_CA %}
+      <option value="fr-CA">Français (Canada) (edit existing)</option>
+      {% else %}
+      <option value="fr-CA">Français (Canada) (create new)</option>
+      {% endif %}
+
+      {% if page_gl %}
+      <option value="gl">Galego (edit existing)</option>
+      {% else %}
+      <option value="gl">Galego (create new)</option>
+      {% endif %}
+
+      {% if page_hr %}
+      <option value="hr">Hrvatski (edit existing)</option>
+      {% else %}
+      <option value="hr">Hrvatski (create new)</option>
+      {% endif %}
+
+      {% if page_zu %}
+      <option value="zu">IsiZulu (edit existing)</option>
+      {% else %}
+      <option value="zu">IsiZulu (create new)</option>
+      {% endif %}
+
+      {% if page_is %}
+      <option value="is">Íslenska (edit existing)</option>
+      {% else %}
+      <option value="is">Íslenska (create new)</option>
+      {% endif %}
+
+      {% if page_it %}
+      <option value="it">Italiano (edit existing)</option>
+      {% else %}
+      <option value="it">Italiano (create new)</option>
+      {% endif %}
+
+      {% if page_sw %}
+      <option value="sw">Kiswahili (edit existing)</option>
+      {% else %}
+      <option value="sw">Kiswahili (create new)</option>
+      {% endif %}
+
+      {% if page_lv %}
+      <option value="lv">Latviešu valoda (edit existing)</option>
+      {% else %}
+      <option value="lv">Latviešu valoda (create new)</option>
+      {% endif %}
+
+      {% if page_lt %}
+      <option value="lt">Lietuvių (edit existing)</option>
+      {% else %}
+      <option value="lt">Lietuvių (create new)</option>
+      {% endif %}
+
+      {% if page_hu %}
+      <option value="hu">Magyar (edit existing)</option>
+      {% else %}
+      <option value="hu">Magyar (create new)</option>
+      {% endif %}
+
+      {% if page_nl %}
+      <option value="nl">Nederlands (edit existing)</option>
+      {% else %}
+      <option value="nl">Nederlands (create new)</option>
+      {% endif %}
+
+      {% if page_no %}
+      <option value="no">Norsk (edit existing)</option>
+      {% else %}
+      <option value="no">Norsk (create new)</option>
+      {% endif %}
+
+      {% if page_pl %}
+      <option value="pl">Polski (edit existing)</option>
+      {% else %}
+      <option value="pl">Polski (create new)</option>
+      {% endif %}
+
+      {% if page_pt_PT %}
+      <option value="pt-PT">Português (edit existing)</option>
+      {% else %}
+      <option value="pt-PT">Português (create new)</option>
+      {% endif %}
+
+      {% if page_pt %}
+      <option value="pt">Português (Brasil) (edit existing)</option>
+      {% else %}
+      <option value="pt">Português (Brasil) (create new)</option>
+      {% endif %}
+
+      {% if page_ro %}
+      <option value="ro">Română (edit existing)</option>
+      {% else %}
+      <option value="ro">Română (create new)</option>
+      {% endif %}
+
+      {% if page_sk %}
+      <option value="sk">Slovenčina (edit existing)</option>
+      {% else %}
+      <option value="sk">Slovenčina (create new)</option>
+      {% endif %}
+
+      {% if page_sl %}
+      <option value="sl">Slovenščina (edit existing)</option>
+      {% else %}
+      <option value="sl">Slovenščina (create new)</option>
+      {% endif %}
+
+      {% if page_fi %}
+      <option value="fi">Suomi (edit existing)</option>
+      {% else %}
+      <option value="fi">Suomi (create new)</option>
+      {% endif %}
+
+      {% if page_sv %}
+      <option value="sv">Svenska (edit existing)</option>
+      {% else %}
+      <option value="sv">Svenska (create new)</option>
+      {% endif %}
+
+      {% if page_vi %}
+      <option value="vi">Tiếng Việt (edit existing)</option>
+      {% else %}
+      <option value="vi">Tiếng Việt (create new)</option>
+      {% endif %}
+
+      {% if page_tr %}
+      <option value="tr">Türkçe (edit existing)</option>
+      {% else %}
+      <option value="tr">Türkçe (create new)</option>
+      {% endif %}
+
+      {% if page_bg %}
+      <option value="bg">Български (edit existing)</option>
+      {% else %}
+      <option value="bg">Български (create new)</option>
+      {% endif %}
+
+      {% if page_ru %}
+      <option value="ru">Русский (edit existing)</option>
+      {% else %}
+      <option value="ru">Русский (create new)</option>
+      {% endif %}
+
+      {% if page_sr %}
+      <option value="sr">Српски (edit existing)</option>
+      {% else %}
+      <option value="sr">Српски (create new)</option>
+      {% endif %}
+
+      {% if page_uk %}
+      <option value="uk">Українська (edit existing)</option>
+      {% else %}
+      <option value="uk">Українська (create new)</option>
+      {% endif %}
+
+      {% if page_el %}
+      <option value="el">Ελληνικά (edit existing)</option>
+      {% else %}
+      <option value="el">Ελληνικά (create new)</option>
+      {% endif %}
+
+      {% if page_iw %}
+      <option value="iw">עברית (edit existing)</option>
+      {% else %}
+      <option value="iw">עברית (create new)</option>
+      {% endif %}
+
+      {% if page_ur %}
+      <option value="ur">اردو (edit existing)</option>
+      {% else %}
+      <option value="ur">اردو (create new)</option>
+      {% endif %}
+
+      {% if page_ar %}
+      <option value="ar">العربية (edit existing)</option>
+      {% else %}
+      <option value="ar">العربية (create new)</option>
+      {% endif %}
+
+      {% if page_fa %}
+      <option value="fa">فارسی (edit existing)</option>
+      {% else %}
+      <option value="fa">فارسی (create new)</option>
+      {% endif %}
+
+      {% if page_mr %}
+      <option value="mr">मराठी (edit existing)</option>
+      {% else %}
+      <option value="mr">मराठी (create new)</option>
+      {% endif %}
+
+      {% if page_hi %}
+      <option value="hi">हिन्दी (edit existing)</option>
+      {% else %}
+      <option value="hi">हिन्दी (create new)</option>
+      {% endif %}
+
+      {% if page_bn %}
+      <option value="bn">বাংলা (edit existing)</option>
+      {% else %}
+      <option value="bn">বাংলা (create new)</option>
+      {% endif %}
+
+      {% if page_gu %}
+      <option value="gu">ગુજરાતી (edit existing)</option>
+      {% else %}
+      <option value="gu">ગુજરાતી (create new)</option>
+      {% endif %}
+
+      {% if page_ta %}
+      <option value="ta">தமிழ் (edit existing)</option>
+      {% else %}
+      <option value="ta">தமிழ் (create new)</option>
+      {% endif %}
+
+      {% if page_te %}
+      <option value="te">తెలుగు (edit existing)</option>
+      {% else %}
+      <option value="te">తెలుగు (create new)</option>
+      {% endif %}
+
+      {% if page_kn %}
+      <option value="kn">ಕನ್ನಡ (edit existing)</option>
+      {% else %}
+      <option value="kn">ಕನ್ನಡ (create new)</option>
+      {% endif %}
+
+      {% if page_ml %}
+      <option value="ml">മലയാളം  (edit existing)</option>
+      {% else %}
+      <option value="ml">മലയാളം  (create new)</option>
+      {% endif %}
+
+      {% if page_th %}
+      <option value="th">ภาษาไทย (edit existing)</option>
+      {% else %}
+      <option value="th">ภาษาไทย (create new)</option>
+      {% endif %}
+
+      {% if page_am %}
+      <option value="am">አማርኛ (edit existing)</option>
+      {% else %}
+      <option value="am">አማርኛ (create new)</option>
+      {% endif %}
+
+      {% if page_zh_CN %}
+      <option value="zh-CN">中文 (简体) (edit existing)</option>
+      {% else %}
+      <option value="zh-CN">中文 (简体) (create new)</option>
+      {% endif %}
+
+      {% if page_zh_TW %}
+      <option value="zh-TW">中文 (繁體) (edit existing)</option>
+      {% else %}
+      <option value="zh-TW">中文 (繁體) (create new)</option>
+      {% endif %}
+
+      {% if page_zh_HK %}
+      <option value="zh-HK">中文 (香港) (edit existing)</option>
+      {% else %}
+      <option value="zh-HK">中文 (香港) (create new)</option>
+      {% endif %}
+
+      {% if page_ja %}
+      <option value="ja">日本語 (edit existing)</option>
+      {% else %}
+      <option value="ja">日本語 (create new)</option>
+      {% endif %}
+
+      {% if page_ko %}
+      <option value="ko">한국어 (edit existing)</option>
+      {% else %}
+      <option value="ko">한국어 (create new)</option>
+      {% endif %}
+
+      {% if page_ot %}
+      <option value="ot">other (edit existing)</option>
+      {% else %}
+      <option value="ot">other (create new)</option>
+      {% endif %}
+
     </select>
 
 
   </div>
-
-  <!-- START TESTING: query only latest transcripts for each language -->
-  <!-- <hr> -->
-  <!-- {{ latest_transcripts }} -->
-  <!-- <hr> -->
-  <!-- {% if page_ms %} -->
-  <!-- {{ page_ms.transcript }} -->
-  <!-- {% endif %} -->
-  <!-- <hr> -->
-  <!-- END TESTING: query only latest transcripts for each language -->
 
   <div id="add_transcripts">
 
