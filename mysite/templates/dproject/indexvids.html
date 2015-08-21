@@ -13,28 +13,28 @@
       <option value="af">Afrikaans</option>
       <option value="id">Bahasa Indonesia</option>
       {% if page_ms %}
-      <option value="ms">✎ Bahasa Malaysia (edit existing transcript)</option>
+      <option value="ms">Bahasa Malaysia (edit existing)</option>
       <!-- TODO: add class to edit existing for jQuery listener to check and load from DB -->
       {% else %}
-      <option value="ms">+ Bahasa Malaysia (no transcript, create new)</option>
+      <option value="ms">Bahasa Malaysia (create new)</option>
       {% endif %}
 
       {% if page_ca %}
-      <option value="ca">✎ Català (edit existing transcript)</option>
+      <option value="ca">Català (edit existing)</option>
       {% else %}
-      <option value="ca">&#43;&nbsp;Català (no transcript, create new)</option>
+      <option value="ca">Català (create new)</option>
       {% endif %}
 
       {% if page_cs %}
-      <option value="cs">✎ Čeština (edit existing transcript)</option>
+      <option value="cs">Čeština (edit existing)</option>
       {% else %}
-      <option value="cs">&#43;&nbsp;&nbsp;Čeština (no transcript, create new)</option>
+      <option value="cs">Čeština (create new)</option>
       {% endif %}
 
       {% if page_da %}
-      <option value="da">✎ Dansk (edit existing transcript)</option>
+      <option value="da">Dansk (edit existing)</option>
       {% else %}
-      <option value="da">+ Dansk (no transcript, create new)</option>
+      <option value="da">Dansk (create new)</option>
       {% endif %}
       <option value="de">Deutsch</option>
       <option value="et">Eesti</option>
@@ -853,11 +853,10 @@ var player;
 function onYouTubePlayerAPIReady() {
   player = new YT.Player('ytplayer', {
     videoId: '{{ vidId }}',
+    playerVars: { 'fs': 0, 'rel': 0, 'showinfo': 0 },
     events: {
       'onReady': onPlayerReady,
-      // 'onApiChange': onApiChange,
       'onStateChange': onStateChange
-      // 'onError': onError // TODO: message for unembedable video
     }
   });
 }
