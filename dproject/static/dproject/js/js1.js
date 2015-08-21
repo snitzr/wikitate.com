@@ -274,6 +274,12 @@ $('.language_abbr').each(function(index) {
 
 // enter edit transcript mode after dropdown selection
 $('.show_hide_add_transcripts').on('change', function(event) {
+  open_editor(event);
+});
+$('.transcript_choose_edit').on('mouseup', function(event) {
+  open_editor(event);
+});
+function open_editor(event) {
   event.preventDefault(); // prevent placeholder link from appering in browser URL
   if ($('#add_transcripts').css('display') === 'none') {
     $('#add_transcripts').slideToggle(100);
@@ -283,7 +289,7 @@ $('.show_hide_add_transcripts').on('change', function(event) {
     $('#add_transcripts').css({'display': 'inline-block', 'float': 'left'});
     $('#submit_edit').css({'visibility': 'visible'});
   }
-});
+}
 
 
 // TODO: load transcript from JSON
