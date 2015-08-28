@@ -40,7 +40,6 @@ function onPlayerReady(event) {
 
 
 // link timer to timestamp and display caption function
-// TODO: time on user side, check API time as failsafe near user next caption time.
 function updateCurrentTime() {
   if (player.getPlayerState() === 1) {
     var rounded = ((Math.round((player.getCurrentTime()) * 2)) / 2);
@@ -49,16 +48,7 @@ function updateCurrentTime() {
   }
 }
 
-// current time display --> timestamp field
-$('#transcripting').on('click mouseup', 'a', function(event) {
-  event.preventDefault();
-  if ((Math.round(((player.getCurrentTime()) * 2)) / 2) > 2.5) {
-    $(this).parent().next('td').children('input').val((Math.round(((player.getCurrentTime()) * 2)) / 2) - 1);
-  } else {
-    $(this).parent().next('td').children('input').val(Math.round(((player.getCurrentTime()) * 2)) / 2);
-  }
-  // TODO: add JSON serialize live preview
-})
+
 
 // append or delete new time and text row to add transcript table on click. TODO: make better with Firefox and keyboard.
 $('#transcripting').on('click', 'a', function(event) {
@@ -95,10 +85,24 @@ captionTime = function(currentTime) {
   }
 };
 
+// current time display --> timestamp field and trigger create JSON from transcript table
+$('#transcripting').on('click mouseup', 'a', function(event) {
+  event.preventDefault();
+  if ((Math.round(((player.getCurrentTime()) * 2)) / 2) > 2.5) {
+    var adjustTime = ((Math.round((player.getCurrentTime() * 2)) / 2) - 1);
+    $(this).parent().next('td').children('input').val(adjustTime);
+  } else {
+    $(this).parent().next('td').children('input').val(Math.round(((player.getCurrentTime()) * 2)) / 2);
+  }
+  transcript2JSON();
+})
 // create JSON from transcript table
 // TODO: clear any double blank text field rows after submit
 // TODO: maybe add JSON parse to only work on already submitted text and not while submitting. do submit in Python
 $('#transcripting').on('keyup click', 'input', function() {
+  transcript2JSON();
+});
+function transcript2JSON() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
   var parsed_add = '{';
   var parsed = JSON.parse(transcripting_form_values);
@@ -120,7 +124,7 @@ $('#transcripting').on('keyup click', 'input', function() {
   $('#id_transcript').val(parsed_with_slice);
   transcript = JSON.parse(parsed_with_slice); // live preview in YT vid
   console.log(parsed_with_slice);
-});
+}
 
 // create form from JSON
 // this to console.log for test
@@ -285,9 +289,10 @@ function open_editor(event) {
     $('#add_transcripts').slideToggle(100);
     $('#transcription_tips').slideToggle(100);
     $('#transcript_table_scrollbox').slideToggle(100);
-    $('#ytplayer').css({'display': 'inline-block', 'width': '50%'});
+    $('#ytplayer').css({'height': '600px', 'width': '100%', 'display': 'inline-block', 'width': '40%'});
+    $('#submitted_transcripts').css({'visibility': 'hidden', 'display': 'none'});
     $('#add_transcripts').css({'display': 'inline-block', 'float': 'left'});
-    $('#submit_edit').css({'visibility': 'visible'});
+    $('#submit_edit').css({'visibility': 'visible', 'display': 'block'});
   }
 }
 
@@ -302,11 +307,13 @@ $('.existing_transcript').on('change', function(event) {
 $('#cancel_edit').on('click', function(event) {
   event.preventDefault();
   if (confirm('Cancel edit?')) {
-    $('#add_transcripts').slideToggle(100);
-    $('#transcript_table_scrollbox').slideToggle(100);
-    $('#transcription_tips').slideToggle(100);
-    $('#ytplayer').css({'display': 'block', 'width': '100%'});
-    $('#submit_edit').css({'visibility': 'hidden'});
+    location.reload();
+    // $('#add_transcripts').slideToggle(100);
+    // $('#transcript_table_scrollbox').slideToggle(100);
+    // $('#transcription_tips').slideToggle(100);
+    // $('#ytplayer').css({'display': 'block', 'height': '200px', 'width': '25%'});
+    // $('#submit_edit').css({'visibility': 'hidden', 'display': 'none'});
+    // $('#submitted_transcripts').css({'visibility': 'visible', 'display': 'block'});
   } else {
     return
   }
@@ -337,6 +344,10 @@ $('.transcript_choose_column_status').on('click', function() {
   ($(this).html('.transcript_loaded_cell').text('Selected'));
   ($('.transcript_preview_row').css('backgroundColor', 'white'));
   ($(this).parent().css('backgroundColor', '#D8D8D8'));
+  $('#ytplayer').animate({
+    height: '600px',
+    width: '100%'}
+    , 150);
   // TODO: add logic to pause video if clicked when video is playing
   player.playVideo();
   $('html, body').scrollTop(50);
