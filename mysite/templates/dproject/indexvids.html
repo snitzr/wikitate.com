@@ -8,8 +8,8 @@
 <div id="show_hide_add_transcripts_picker id_language" name="language">
   <form method="post" action="/transcript_submit/{{ vidId }}/">
     <select class="show_hide_add_transcripts" id="id_language" name="language">
-      <option selected="selected" disabled="disabled">&#43; Create or modify transcripts by language:</option>
-      <option disabled="disabled">Choose language</option>
+      <option selected="selected" disabled="disabled">&#9998; Create or modify transcripts by language:&nbsp;</option>
+      <option disabled="disabled">Choose language:</option>
       {% if page_af %}
       <option value="af">Afrikaans (edit existing)</option>
       {% else %}
@@ -413,12 +413,32 @@
           <td class="insert_row" tabindex="0"><a href="#notlink">+</a></td>
           <td class="delete_row"><a href="#notlink">-</a></td>
         </tr>
+
+
         <input id="id_transcript" name="transcript" type="text" />
       </table>
+<div id="transcription_tips">
+  <h3>Transcribing tips</h3>
+  <ul>
+    <li>Transcribe first, then set timing as the video plays.</li>
+    <li>Key combos:</li>
+    <ul>
+      <li>control&nbsp;+&nbsp;space bar&nbsp;: Play / pause video.</li>
+      <li>control&nbsp;+&nbsp;t&nbsp;: If a timestamp field has focus, write timestamp into that field and move focus to next time field.</li>
+    </ul>
+    <li>Clicking the dynamic timestamp in the "video time" column pushes time into that subtitle row. This is helpful for adding the timestamp to a line of text during video playback. Timestamp is in total seconds. For example: two minutes and ten seconds is a timestamp of 130. You can also use the control&nbsp;+&nbsp;t key combo for this.</li>
+    <li>Set text timing about &frac12; second before dialog appears. This gives the brain time to react and read the text with the action. When setting timing with the "video time" link, this happens automatically.</li>
+    <li>100 character limit each text line.</li>
+    <li>During video playback, displayed text will fade out after six seconds. You don't need to add a blank line after text to clear subtitles.</li>
+    <li>Music symbol: ♫</li>
+    <li>Two lines cannot have the same timestamp.</li>
+    <li>You can always save an incomplete draft and come back to edit it later. No edit is permanent.</li>
+  </ul>
+</div>
+
     </div>
   </div>
   <div id="transcript_table_scrollbox">
-
 
     {% else %}
     <a href="/accounts/signup/?next={{request.path}}">Sign up / log in to add or edit transcripts.</a>
@@ -428,7 +448,7 @@
   <div id="ytplayer"></div>
 
   <div id="captions"></div>
-
+  <!-- <div id="noselect_message"><p>No transcript selected.</p></div> -->
   <div id="submit_edit">
     <input id="submit" type="submit" value="Submit transcript" />
     <a href="#notlink" id="cancel_edit">Cancel edit</a>
@@ -437,24 +457,7 @@
     <span id="time_submit_message"></span>
   </div>
 </form>
-<div id="transcription_tips">
-  <h3>Transcribing tips</h3>
-  <ul>
-    <li>Transcribe first, then set timing as the video plays.</li>
-    <li>Key combos:</li>
-    <ul>
-      <li>control + space bar : Play / pause video.</li>
-      <li>control + t : If a timestamp field has focus, write timestamp into that field and move focus to next time field.</li>
-    </ul>
-    <li>Clicking the dynamic timestamp in the "video time" column pushes time into that subtitle row. This is helpful for adding the timestamp to a line of text during video playback. Timestamp is in total seconds. For example: two minutes and ten seconds is a timestamp of 130. You can also use the control + t key combo for this.</li>
-    <li>Set text timing about &frac12; second before dialog appears. This gives the brain time to react and read the text with the action. When setting timing with the "video time" link, this happens automatically.</li>
-    <li>100 character limit each text line.</li>
-    <li>During video playback, displayed text will fade out after six seconds. You don't need to add a blank line after text to clear subtitles.</li>
-    <li>Music symbol: ♫</li>
-    <li>Two lines cannot have the same timestamp.</li>
-    <li>You can always save an incomplete draft and come back to edit it later. No edit is permanent.</li>
-  </ul>
-</div>
+
 
 <!-- Caption choose and loadtable -->
 <div id="submitted_transcripts">
@@ -465,9 +468,9 @@
     <tr>
       <th class="transcript_choose_column_status">&nbsp;</th>
       <th class="transcript_choose_column_language">Language</th>
-      <th class="transcript_preview_column">Transcript Preview</th>
+      <th class="transcript_preview_column">Transcript preview</th>
       <th class="JSON_table_header">JSON</th>
-      <th class="transcript_choose_share">Share</th>
+      <th class="transcript_choose_share">Share link</th>
       <th class="transcript_choose_edit">Edit</th>
     </tr>
 
@@ -1100,7 +1103,8 @@
 
   </table>
   {% else%}
-  <h2>No Transcripts Available for <span class="vidNameNav">{{ vidId }}</span></h2>
+  <!-- <h2>No Transcripts Available for <span class="vidNameNav">{{ vidId }}</span></h2> -->
+  <h2>No Transcripts Available</h2>
   {% endif %}
 </div>
 

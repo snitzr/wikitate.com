@@ -15,6 +15,7 @@
 }
 
 #submit_edit {
+  margin-top: 20px;
   visibility: hidden;
   display: none;
 }
@@ -131,7 +132,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #captions {
-  background: transparent;
+  /*background: transparent;*/
+  background-color: black;
   color: yellow;
   font-size: 28px;
   font-weight: bold;
@@ -193,7 +195,9 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
 }
 
-#show_hide_add_transcripts {
+.show_hide_add_transcripts {
+  font-size: 48px;
+  margin-bottom: 15px;
 }
 
 #transcript_table_scrollbox {
@@ -322,4 +326,8 @@ th, #transcript_choose tr, #transcript_choose td {
 
 select {
   font-family: Monospace !important;
+}
+
+.vidNameNav {
+  font-weight: 400;
 }
