@@ -20,15 +20,16 @@ function onStateChange(event) {
   }
 }
 
+// TODO: prevent reload page when pausing some videos. Commenting out for now.
 // switch URL with related link embed click
-function onStateChange(event) {
- if (window.yovid !== player.getVideoUrl()) {
-  if (window.yovid !== undefined) {
-    window.location = '/' + player.getVideoData()['video_id'];
-  }
-}
-window.yovid = player.getVideoUrl();
-}
+// function onStateChange(event) {
+//  if (window.yovid !== player.getVideoUrl()) {
+//   if (window.yovid !== undefined) {
+//     window.location = '/' + player.getVideoData()['video_id'];
+//   }
+// }
+// window.yovid = player.getVideoUrl();
+// }
 
 // video name to title on onPlayerReady
 function onPlayerReady(event) {
@@ -366,7 +367,7 @@ $('#submit_vid_search').on('submit click', function(event) {
 // START Mousetrap
 
 // play pause video
-Mousetrap.bind(['ctrl+space'], function(e) {
+Mousetrap.bind(['ctrl+space'], function() {
     if (player.getPlayerState() !== 1) {
       player.playVideo();
     } else {
@@ -376,7 +377,7 @@ Mousetrap.bind(['ctrl+space'], function(e) {
   });
 
 // write timestamp if focused and move to next timestamp field
-Mousetrap.bind(['ctrl+t'], function(e) {
+Mousetrap.bind(['ctrl+t'], function() {
   if ($('.timestamp_input').is(':focus')) {
     if (((player.getCurrentTime() * 2) / 2) > 2.5) {
       $('.timestamp_input:focus').val((Math.round((player.getCurrentTime()) * 2) / 2) - 1);
