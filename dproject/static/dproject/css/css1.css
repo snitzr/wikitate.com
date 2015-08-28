@@ -10,6 +10,10 @@
   visibility: hidden;
 }
 
+#submit {
+  font-weight: bold;
+}
+
 #submit_edit {
   visibility: hidden;
 }
@@ -214,8 +218,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #ytplayer {
-  height: 600px;
-  width: 100%;
+  height: 200px;
+  width: 25%;
+  /*height: 600px; width: 100%;*/
 }
 
 #transcript {
@@ -279,11 +284,11 @@ td.transcript_choose_edit:hover a {
 }
 
 .transcript_choose_column_language, .transcript_choose_column_status {
-  width: 130px;
+  width: 190px;
 }
 
 .transcript_choose_share {
-  width: 220px;
+  width: 250px;
 }
 
 .transcript_choose_edit {
