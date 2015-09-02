@@ -277,7 +277,7 @@ $('.language_abbr').each(function(index) {
   $(this).text(newString);
 });
 
-// enter edit transcript mode after dropdown selection
+// enter edit transcript two column mode after dropdown selection
 $('.show_hide_add_transcripts').on('change', function(event) {
   open_editor(event);
 });
@@ -294,6 +294,7 @@ function open_editor(event) {
     $('#submitted_transcripts').css({'visibility': 'hidden', 'display': 'none'});
     $('#add_transcripts').css({'display': 'inline-block', 'float': 'left'});
     $('#submit_edit').css({'visibility': 'visible', 'display': 'block'});
+    $('.transcript_input').focus();
   }
 }
 
