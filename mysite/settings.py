@@ -7,14 +7,8 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
-import os, sys
+import os
 
-
-
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 def find_or_create_secret_key():
@@ -39,14 +33,20 @@ def find_or_create_secret_key():
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = find_or_create_secret_key()
 
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = (sys.argv[1] == 'runserver')
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-# TEMPLATE_DEBUG = True
-TEMPLATE_DEBUG = (sys.argv[1] == 'runserver')
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
+
+
 
 
 # auth
@@ -118,6 +118,7 @@ SITE_ID = 1
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE_CLASSES = (
+    # 'sslify.middleware.SSLifyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -125,6 +126,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+# SSLIFY_PORT = 999
 
 ROOT_URLCONF = 'mysite.urls'
 
@@ -134,7 +137,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/
 
-
+"""
 # comment out sql for Heroku
 DATABASES = {
     'default': {
@@ -142,7 +145,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+"""
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -161,7 +164,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/' # comment out for Heroku
 
 # auth login prefs
 ACCOUNT_AUTHENTICATION_METHOD  = 'username_email'
@@ -191,7 +194,7 @@ DATABASES = {
 }
 """
 
-"""
+# """
 #### start Heroku setup ####
 ## https://devcenter.heroku.com/articles/getting-started-with-django
 # Parse database configuration from $DATABASE_URL
@@ -216,5 +219,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
 )
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 #### end Heroku setup
-"""
+# """
