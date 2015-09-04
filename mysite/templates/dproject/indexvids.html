@@ -410,8 +410,8 @@
           <td class="timestamp_display" title="Add timestamp to this row."><a href="#notlink">&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&rArr;</a></td>
           <td class="time_cell"><input class="timestamp_input mousetrap" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td>
           <td class="transcript_cell"><input class="transcript_input mousetrap" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td>
-          <td class="insert_row" tabindex="0"><a href="#notlink">+</a></td>
-          <td class="delete_row"><a href="#notlink">-</a></td>
+          <td class="insert_row" tabindex="0">+</td>
+          <td class="delete_row">-</td>
         </tr>
 
 
@@ -483,7 +483,7 @@
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_af.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_af.transcript }}</div></td>
       <td class="transcript_json_cell">{{ page_af.transcript }}</td>
-      <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_af.language }}/">wikitate.com/{{vidId}}/{{page_af.language}}/</a></td>
+      <td class="transcript_choose_share" id="{{ page_af.language }}"><a href="/{{vidId}}/{{ page_af.language }}/">wikitate.com/{{vidId}}/{{page_af.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
     {% endif %}
@@ -493,7 +493,7 @@
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_id.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_id.transcript }}</div></td>
       <td class="transcript_json_cell">{{ page_id.transcript }}</td>
-      <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_id.language }}/">wikitate.com/{{vidId}}/{{page_id.language}}/</a></td>
+      <td class="transcript_choose_share" id="{{ page_id.language }}"><a href="/{{vidId}}/{{ page_id.language }}/">wikitate.com/{{vidId}}/{{page_id.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
     {% endif %}

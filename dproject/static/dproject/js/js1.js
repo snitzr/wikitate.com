@@ -8,6 +8,11 @@ $(document).ready(function() {
     var vidIdMatch = location.href.match(/youtu.be\/(...........)/, '$1')
     window.location = ('/' + vidIdMatch[1] +'/');
   }
+  // TODO: match to share link language
+  // if (/wikitate.com\/(...........)\//.test(location.href)) {
+  //   var vidIdMatch = location.href.match(/youtu.be\/(...........)/, '$1')
+  //   window.location = ('/' + vidIdMatch[1] +'/');
+  // }
 });
 
 var transcript = {};
@@ -51,14 +56,28 @@ function updateCurrentTime() {
 
 
 
-// append or delete new time and text row to add transcript table on click. TODO: make better with Firefox and keyboard.
-$('#transcripting').on('click', 'a', function(event) {
+// append or delete new time and text row to add transcript table on click. TODO: reduce duplication.
+$('#transcripting').on('click', 'td', function(event) {
   event.preventDefault(); // prevent placeholder link from appering in browser URL
-  if ($(this).html() === '+') {
-    var this_closest_tr = $(this).closest('tr');
-    var transcripting_row = $(this_closest_tr).html();
-    $(this_closest_tr).after('<tr>' + transcripting_row + '</tr>');
-    $(this_closest_tr).next().children('.transcript_cell').children('input').focus();
+    if ($(this).html() === '+') {
+      var this_closest_tr = $(this).closest('tr');
+      var transcripting_row = $(this_closest_tr).html();
+      $(this_closest_tr).after('<tr>' + transcripting_row + '</tr>');
+      $(this_closest_tr).next().children('.transcript_cell').children('input').focus();
+  }
+  else if ((($('#transcripting tr').length) > 2) && ($(this).html() === '-')) {
+    $(this).closest('tr').remove();
+  }
+});
+$('#transcripting').on('keyup', 'td', function(event) {
+  event.preventDefault(); // prevent placeholder link from appering in browser URL
+  if (event.keyCode === 13) {
+    if ($(this).html() === '+') {
+      var this_closest_tr = $(this).closest('tr');
+      var transcripting_row = $(this_closest_tr).html();
+      $(this_closest_tr).after('<tr>' + transcripting_row + '</tr>');
+      $(this_closest_tr).next().children('.transcript_cell').children('input').focus();
+    }
   }
   else if ((($('#transcripting tr').length) > 2) && ($(this).html() === '-')) {
     $(this).closest('tr').remove();
@@ -77,6 +96,7 @@ captionTime = function(currentTime) {
       };
       clearTimeout(window.hider);
       $('#captions').html(transcript[currentTime]).show();
+      // $('#captions').css({'background-color': 'black', 'display':'inline'});
       window.hider = window.setTimeout(function() {
         displayFade();
       }, 6000);
