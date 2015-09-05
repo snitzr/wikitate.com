@@ -59,9 +59,9 @@
       {% endif %}
 
       {% if page_en_GB %}
-      <option value="en-GB">English (UK) (edit existing)</option>
+      <option value="en_GB">English (UK) (edit existing)</option>
       {% else %}
-      <option value="en-GB">English (UK) (create new)</option>
+      <option value="en_GB">English (UK) (create new)</option>
       {% endif %}
 
       {% if page_en %}
@@ -77,9 +77,9 @@
       {% endif %}
 
       {% if page_es_419 %}
-      <option value="es-419">Español (Latinoamérica) (edit existing)</option>
+      <option value="es_419">Español (Latinoamérica) (edit existing)</option>
       {% else %}
-      <option value="es-419">Español (Latinoamérica) (create new)</option>
+      <option value="es_419">Español (Latinoamérica) (create new)</option>
       {% endif %}
 
       {% if page_eu %}
@@ -101,9 +101,9 @@
       {% endif %}
 
       {% if page_fr_CA %}
-      <option value="fr-CA">Français (Canada) (edit existing)</option>
+      <option value="fr_CA">Français (Canada) (edit existing)</option>
       {% else %}
-      <option value="fr-CA">Français (Canada) (create new)</option>
+      <option value="fr_CA">Français (Canada) (create new)</option>
       {% endif %}
 
       {% if page_gl %}
@@ -179,9 +179,9 @@
       {% endif %}
 
       {% if page_pt_PT %}
-      <option value="pt-PT">Português (edit existing)</option>
+      <option value="pt_PT">Português (edit existing)</option>
       {% else %}
-      <option value="pt-PT">Português (create new)</option>
+      <option value="pt_PT">Português (create new)</option>
       {% endif %}
 
       {% if page_pt %}
@@ -347,21 +347,21 @@
       {% endif %}
 
       {% if page_zh_CN %}
-      <option value="zh-CN">中文 (简体) (edit existing)</option>
+      <option value="zh_CN">中文 (简体) (edit existing)</option>
       {% else %}
-      <option value="zh-CN">中文 (简体) (create new)</option>
+      <option value="zh_CN">中文 (简体) (create new)</option>
       {% endif %}
 
       {% if page_zh_TW %}
-      <option value="zh-TW">中文 (繁體) (edit existing)</option>
+      <option value="zh_TW">中文 (繁體) (edit existing)</option>
       {% else %}
-      <option value="zh-TW">中文 (繁體) (create new)</option>
+      <option value="zh_TW">中文 (繁體) (create new)</option>
       {% endif %}
 
       {% if page_zh_HK %}
-      <option value="zh-HK">中文 (香港) (edit existing)</option>
+      <option value="zh_HK">中文 (香港) (edit existing)</option>
       {% else %}
-      <option value="zh-HK">中文 (香港) (create new)</option>
+      <option value="zh_HK">中文 (香港) (create new)</option>
       {% endif %}
 
       {% if page_ja %}
@@ -492,7 +492,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_id.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_id.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_id.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_id.language }}">{{ page_id.transcript }}</td>
       <td class="transcript_choose_share" id="{{ page_id.language }}"><a href="/{{vidId}}/{{ page_id.language }}/">wikitate.com/{{vidId}}/{{page_id.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -502,7 +502,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_ms.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_ms.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_ms.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_ms.language }}">{{ page_ms.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_ms.language }}/">wikitate.com/{{vidId}}/{{page_ms.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -512,7 +512,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_ca.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_ca.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_ca.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_ca.language }}">{{ page_ca.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_ca.language }}/">wikitate.com/{{vidId}}/{{page_ca.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -522,7 +522,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_cs.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_cs.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_cs.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_cs.language }}">{{ page_cs.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_cs.language }}/">wikitate.com/{{vidId}}/{{page_cs.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -532,7 +532,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_da.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_da.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_da.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_da.language }}">{{ page_da.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_da.language }}/">wikitate.com/{{vidId}}/{{page_da.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -542,7 +542,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_de.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_de.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_de.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_de.language }}">{{ page_de.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_de.language }}/">wikitate.com/{{vidId}}/{{page_de.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -552,7 +552,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_et.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_et.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_et.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_et.language }}">{{ page_et.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_et.language }}/">wikitate.com/{{vidId}}/{{page_et.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -562,7 +562,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_en_GB.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_en_GB.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_en_GB.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_en_GB.language }}">{{ page_en_GB.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_en_GB.language }}/">wikitate.com/{{vidId}}/{{page_en_GB.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -582,7 +582,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_es.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_es.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_es.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_es.language }}">{{ page_es.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_es.language }}/">wikitate.com/{{vidId}}/{{page_es.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -592,7 +592,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_es_419.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_es_419.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_es_419.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_es_419.language }}">{{ page_es_419.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_es_419.language }}/">wikitate.com/{{vidId}}/{{page_es_419.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -602,7 +602,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_eu.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_eu.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_eu.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_eu.language }}">{{ page_eu.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_eu.language }}/">wikitate.com/{{vidId}}/{{page_eu.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -612,7 +612,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_fil.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_fil.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_fil.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_fil.language }}">{{ page_fil.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_fil.language }}/">wikitate.com/{{vidId}}/{{page_fil.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -622,7 +622,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_fr.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_fr.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_fr.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_fr.language }}">{{ page_fr.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_fr.language }}/">wikitate.com/{{vidId}}/{{page_fr.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -632,7 +632,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_fr_CA.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_fr_CA.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_fr_CA.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_fr_CA.language }}">{{ page_fr_CA.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_fr_CA.language }}/">wikitate.com/{{vidId}}/{{page_fr_CA.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -642,7 +642,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_gl.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_gl.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_gl.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_gl.language }}">{{ page_gl.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_gl.language }}/">wikitate.com/{{vidId}}/{{page_gl.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -652,7 +652,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_hr.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_hr.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_hr.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_hr.language }}">{{ page_hr.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_hr.language }}/">wikitate.com/{{vidId}}/{{page_hr.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -662,7 +662,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_zu.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_zu.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_zu.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_zu.language }}">{{ page_zu.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_zu.language }}/">wikitate.com/{{vidId}}/{{page_zu.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -672,7 +672,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_is.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_is.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_is.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_is.language }}">{{ page_is.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_is.language }}/">wikitate.com/{{vidId}}/{{page_is.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -682,7 +682,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_it.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_it.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_it.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_it.language }}">{{ page_it.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_it.language }}/">wikitate.com/{{vidId}}/{{page_it.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -692,7 +692,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_sw.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_sw.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_sw.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_sw.language }}">{{ page_sw.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_sw.language }}/">wikitate.com/{{vidId}}/{{page_sw.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -702,7 +702,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_lv.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_lv.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_lv.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_lv.language }}">{{ page_lv.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_lv.language }}/">wikitate.com/{{vidId}}/{{page_lv.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -712,7 +712,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_lt.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_lt.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_lt.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_lt.language }}">{{ page_lt.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_lt.language }}/">wikitate.com/{{vidId}}/{{page_lt.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -722,7 +722,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_hu.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_hu.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_hu.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_hu.language }}">{{ page_hu.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_hu.language }}/">wikitate.com/{{vidId}}/{{page_hu.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -732,7 +732,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_nl.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_nl.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_nl.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_nl.language }}">{{ page_nl.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_nl.language }}/">wikitate.com/{{vidId}}/{{page_nl.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -742,7 +742,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_no.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_no.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_no.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_no.language }}">{{ page_no.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_no.language }}/">wikitate.com/{{vidId}}/{{page_no.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -752,7 +752,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_pl.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_pl.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_pl.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_pl.language }}">{{ page_pl.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_pl.language }}/">wikitate.com/{{vidId}}/{{page_pl.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -762,7 +762,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_pt_PT.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_pt_PT.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_pt_PT.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_pt_PT.language }}">{{ page_pt_PT.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_pt_PT.language }}/">wikitate.com/{{vidId}}/{{page_pt_PT.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -772,7 +772,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_pt.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_pt.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_pt.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_pt.language }}">{{ page_pt.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_pt.language }}/">wikitate.com/{{vidId}}/{{page_pt.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -782,7 +782,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_ro.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_ro.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_ro.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_ro.language }}">{{ page_ro.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_ro.language }}/">wikitate.com/{{vidId}}/{{page_ro.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -792,7 +792,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_sk.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_sk.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_sk.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_sk.language }}">{{ page_sk.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_sk.language }}/">wikitate.com/{{vidId}}/{{page_sk.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -802,7 +802,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_sl.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_sl.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_sl.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_sl.language }}">{{ page_sl.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_sl.language }}/">wikitate.com/{{vidId}}/{{page_sl.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -812,7 +812,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_fi.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_fi.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_fi.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_fi.language }}">{{ page_fi.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_fi.language }}/">wikitate.com/{{vidId}}/{{page_fi.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -822,7 +822,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_sv.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_sv.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_sv.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_sv.language }}">{{ page_sv.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_sv.language }}/">wikitate.com/{{vidId}}/{{page_sv.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -832,7 +832,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_vi.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_vi.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_vi.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_vi.language }}">{{ page_vi.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_vi.language }}/">wikitate.com/{{vidId}}/{{page_vi.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -842,7 +842,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_tr.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_tr.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_tr.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_tr.language }}">{{ page_tr.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_tr.language }}/">wikitate.com/{{vidId}}/{{page_tr.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -852,7 +852,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_bg.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_bg.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_bg.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_bg.language }}">{{ page_bg.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_bg.language }}/">wikitate.com/{{vidId}}/{{page_bg.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -862,7 +862,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_ru.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_ru.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_ru.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_ru.language }}">{{ page_ru.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_ru.language }}/">wikitate.com/{{vidId}}/{{page_ru.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -872,7 +872,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_sr.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_sr.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_sr.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_sr.language }}">{{ page_sr.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_sr.language }}/">wikitate.com/{{vidId}}/{{page_sr.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -882,7 +882,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_uk.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_uk.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_uk.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_uk.language }}">{{ page_uk.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_uk.language }}/">wikitate.com/{{vidId}}/{{page_uk.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -892,7 +892,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_el.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_el.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_el.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_el.language }}">{{ page_el.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_el.language }}/">wikitate.com/{{vidId}}/{{page_el.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -902,7 +902,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_iw.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_iw.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_iw.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_iw.language }}">{{ page_iw.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_iw.language }}/">wikitate.com/{{vidId}}/{{page_iw.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -912,7 +912,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_ur.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_ur.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_ur.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_ur.language }}">{{ page_ur.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_ur.language }}/">wikitate.com/{{vidId}}/{{page_ur.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -922,7 +922,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_ar.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_ar.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_ar.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_ar.language }}">{{ page_ar.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_ar.language }}/">wikitate.com/{{vidId}}/{{page_ar.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -932,7 +932,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_fa.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_fa.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_fa.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_fa.language }}">{{ page_fa.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_fa.language }}/">wikitate.com/{{vidId}}/{{page_fa.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -942,7 +942,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_mr.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_mr.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_mr.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_me.language }}">{{ page_mr.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_mr.language }}/">wikitate.com/{{vidId}}/{{page_mr.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -952,7 +952,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_hi.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_hi.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_hi.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_hi.language }}">{{ page_hi.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_hi.language }}/">wikitate.com/{{vidId}}/{{page_hi.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -962,7 +962,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_bn.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_bn.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_bn.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_bn.language }}">{{ page_bn.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_bn.language }}/">wikitate.com/{{vidId}}/{{page_bn.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -972,7 +972,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_gu.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_gu.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_gu.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_gu.language }}">{{ page_gu.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_gu.language }}/">wikitate.com/{{vidId}}/{{page_gu.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -982,7 +982,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_ta.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_ta.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_ta.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_ta.language }}">{{ page_ta.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_ta.language }}/">wikitate.com/{{vidId}}/{{page_ta.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -992,7 +992,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_te.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_te.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_te.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_te.language }}">{{ page_te.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_te.language }}/">wikitate.com/{{vidId}}/{{page_te.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -1002,7 +1002,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_kn.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_kn.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_kn.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_kn.language }}">{{ page_kn.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_kn.language }}/">wikitate.com/{{vidId}}/{{page_kn.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -1012,7 +1012,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_ml.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_ml.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_ml.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_ml.language }}">{{ page_ml.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_ml.language }}/">wikitate.com/{{vidId}}/{{page_ml.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -1022,7 +1022,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_th.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_th.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_th.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_th.language }}">{{ page_th.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_th.language }}/">wikitate.com/{{vidId}}/{{page_th.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -1032,7 +1032,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_am.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_am.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_am.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_am.language }}">{{ page_am.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_am.language }}/">wikitate.com/{{vidId}}/{{page_am.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -1042,7 +1042,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_zh_CH.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_zh_CH.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_zh_CH.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_zh_CH.language }}">{{ page_zh_CH.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_zh_CH.language }}/">wikitate.com/{{vidId}}/{{page_zh_CH.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -1052,7 +1052,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_zh_TW.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_zh_TW.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_zh_TW.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_zh_TW.language }}">{{ page_zh_TW.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_zh_TW.language }}/">wikitate.com/{{vidId}}/{{page_zh_TW.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -1062,7 +1062,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_zh_HK.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_zh_HK.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_zh_HK.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_zh_HK.language }}">{{ page_zh_HK.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_zh_HK.language }}/">wikitate.com/{{vidId}}/{{page_zh_HK.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -1072,7 +1072,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_ja.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_ja.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_ja.transcript }}</td>
+      <td class="transcript_json_cell"  id="json_lang_{{ page_ja.language }}">{{ page_ja.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_ja.language }}/">wikitate.com/{{vidId}}/{{page_ja.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -1082,7 +1082,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_ko.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_ko.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_ko.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_ko.language }}">{{ page_ko.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_ko.language }}/">wikitate.com/{{vidId}}/{{page_ko.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -1092,7 +1092,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_ot.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_ot.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_ot.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_ot.language }}">{{ page_ot.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_ot.language }}/">wikitate.com/{{vidId}}/{{page_ot.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
