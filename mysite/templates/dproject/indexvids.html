@@ -8,7 +8,7 @@
 <div id="show_hide_add_transcripts_picker id_language" name="language">
   <form method="post" action="/transcript_submit/{{ vidId }}/">
     <select class="show_hide_add_transcripts" id="id_language" name="language">
-      <option selected="selected" disabled="disabled">&#9998; Create or modify transcripts by language:&nbsp;</option>
+      <option selected="selected" disabled="disabled">&#9998; Create or modify transcript by language:&nbsp;</option>
       <option disabled="disabled">Choose language:</option>
       {% if page_af %}
       <option value="af">Afrikaans (edit existing)</option>
@@ -17,7 +17,7 @@
       {% endif %}
 
       {% if page_id %}
-      <option value="id">Bahasa Indonesia(edit existing)</option>
+      <option value="id">Bahasa Indonesia (edit existing)</option>
       {% else %}
       <option value="id">Bahasa Indonesia (create new)</option>
       {% endif %}
@@ -482,7 +482,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_af.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_af.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_af.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_af.language }}">{{ page_af.transcript }}</td>
       <td class="transcript_choose_share" id="{{ page_af.language }}"><a href="/{{vidId}}/{{ page_af.language }}/">wikitate.com/{{vidId}}/{{page_af.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>
@@ -572,7 +572,7 @@
       <td class="transcript_choose_column_status transcript_loaded_cell">&#9658; Play</td>
       <td class="transcript_choose_column_language language_abbr"><div class="scrollit">{{ page_en.language }}</div></td>
       <td class="transcript_preview_cell transcript_preview_column"><div class="scrollit">{{ page_en.transcript }}</div></td>
-      <td class="transcript_json_cell">{{ page_en.transcript }}</td>
+      <td class="transcript_json_cell" id="json_lang_{{ page_en.language }}">{{ page_en.transcript }}</td>
       <td class="transcript_choose_share"><a href="/{{vidId}}/{{ page_en.language }}/">wikitate.com/{{vidId}}/{{page_en.language}}/</a></td>
       <td class="transcript_choose_edit">✎</td>
     </tr>

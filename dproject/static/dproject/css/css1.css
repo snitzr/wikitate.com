@@ -46,6 +46,10 @@
   border-bottom-width: 2px;
 }
 
+.insert_row:hover, .delete_row:hover {
+  cursor: pointer;
+}
+
 /*#ad {*/
   /*height: 60px;*/
   /*width: 468px;*/
@@ -319,10 +323,10 @@ th, #transcript_choose tr, #transcript_choose td {
   display: none;
 }
 
-select {
+/*select {
   font-family: Monospace !important;
 }
-
+*/
 .vidNameNav {
   font-weight: 400;
 }

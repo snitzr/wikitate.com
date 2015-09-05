@@ -96,7 +96,7 @@ captionTime = function(currentTime) {
       };
       clearTimeout(window.hider);
       $('#captions').html(transcript[currentTime]).show();
-      // $('#captions').css({'background-color': 'black', 'display':'inline'});
+      // $('#captions').css({'backgroundColor': 'black'});
       window.hider = window.setTimeout(function() {
         displayFade();
       }, 6000);
@@ -318,13 +318,6 @@ function open_editor(event) {
   }
 }
 
-
-// TODO: load transcript from JSON
-$('.existing_transcript').on('change', function(event) {
-  event.preventDefault();
-  // TODO: load JSON into form for editing
-});
-
 // hide edit transcript mode
 $('#cancel_edit').on('click', function(event) {
   event.preventDefault();
@@ -341,6 +334,21 @@ $('#cancel_edit').on('click', function(event) {
   }
 });
 
+// TESTING: Load existing transcript. Combine with existing open transcript function
+// if language not available return, else replace with json
+// .val() for input fields
+$('#id_language').on('change', function() {
+  var json_lang = '#json_lang_' + $('#id_language option:selected').attr('value');
+  var foo = ''
+  var foo_value = JSON.parse($(json_lang).text());
+  for (var i = 0; i <= 20000; i += 0.5 ) {
+    if (foo_value[i] !== undefined) {
+      foo += (foo_value[i]);
+    }
+  }
+  console.log('foo: \n' + foo);
+});
+
 // transcript table JSON to display human readable format
 $('.transcript_preview_cell').each(function(index) {
   var a_drop_concat = '';
@@ -354,11 +362,7 @@ $('.transcript_preview_cell').each(function(index) {
   }
 });
 
-
-
-
 // load table selection after transcript selection
-// $('.transcript_preview_row').on('click', function() {
 $('.transcript_choose_column_status').on('click', function() {
   $('#captions').html(''); // clear out current transcript display
   transcript = (JSON.parse($(this).siblings('.transcript_json_cell').text()));
@@ -382,11 +386,7 @@ $('#submit_vid_search').on('submit click', function(event) {
   window.location = ('//' + window.location.host + '/' + $('#id_transcript_search').val());
 });
 
-
-
-
 // START Mousetrap
-
 // play pause video
 Mousetrap.bind(['ctrl+space'], function() {
     if (player.getPlayerState() !== 1) {
@@ -410,7 +410,6 @@ Mousetrap.bind(['ctrl+t'], function() {
     $('.timestamp_input:focus').parent().parent().next().find('.timestamp_input').focus();
     return false;
   });
-
 // END Mouserap
 
 
