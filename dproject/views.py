@@ -59,7 +59,7 @@ def indexvids(request, vidId):
             page['page_af'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='af').latest('modified')
 
         if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='id'):
-            page_id = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='id').latest('modified')
+            page['page_id'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='id').latest('modified')
 
         if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='ms'):
             page['page_ms'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='ms').latest('modified')
@@ -240,7 +240,6 @@ def indexvids(request, vidId):
 
         if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='ot'):
             page['page_ot'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='ot').latest('modified')
-
 
 
         context.update(page)
