@@ -79,8 +79,8 @@ def indexvids(request, vidId):
         if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='et'):
             page['page_et'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='et').latest('modified')
 
-        if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='en-GB'):
-            page['page_en_GB'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='en-GB').latest('modified')
+        if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='en_GB'):
+            page['page_en_GB'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='en_GB').latest('modified')
 
         if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='en'):
             page['page_en'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='en').latest('modified')
@@ -88,8 +88,8 @@ def indexvids(request, vidId):
         if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='es'):
             page['page_es'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='es').latest('modified')
 
-        if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='es-419'):
-            page['page_es_419'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='es-419').latest('modified')
+        if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='es_419'):
+            page['page_es_419'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='es_419').latest('modified')
 
         if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='eu'):
             page['page_eu'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='eu').latest('modified')
@@ -100,8 +100,8 @@ def indexvids(request, vidId):
         if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='fr'):
             page['page_fr'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='fr').latest('modified')
 
-        if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='fr-CA'):
-            page['page_fr_CA'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='fr-CA').latest('modified')
+        if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='fr_CA'):
+            page['page_fr_CA'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='fr_CA').latest('modified')
 
         if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='gl'):
             page['page_gl'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='gl').latest('modified')
@@ -139,8 +139,8 @@ def indexvids(request, vidId):
         if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='pl'):
             page['page_pl'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='pl').latest('modified')
 
-        if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='pt-PT'):
-            page['page_pt_PT'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='pt-PT').latest('modified')
+        if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='pt_PT'):
+            page['page_pt_PT'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='pt_PT').latest('modified')
 
         if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='pt'):
             page['page_pt'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='pt').latest('modified')
@@ -223,14 +223,14 @@ def indexvids(request, vidId):
         if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='am'):
             page['page_am'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='am').latest('modified')
 
-        if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='zh-CN'):
-            page['page_zh_CN'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='zh-CN').latest('modified')
+        if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='zh_CN'):
+            page['page_zh_CN'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='zh_CN').latest('modified')
 
-        if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='zh-TW'):
-            page['page_zh_TW'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='zh-TW').latest('modified')
+        if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='zh_TW'):
+            page['page_zh_TW'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='zh_TW').latest('modified')
 
-        if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='zh-HK'):
-            page['page_zh_HK'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='zh-HK').latest('modified')
+        if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='zh_HK'):
+            page['page_zh_HK'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='zh_HK').latest('modified')
 
         if Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='ja'):
             page['page_ja'] = Transcript.objects.filter(vid__vidId__exact=vidId, language__exact='ja').latest('modified')

@@ -117,6 +117,7 @@ $('#transcripting').on('click mouseup', 'a', function(event) {
   }
   transcript2JSON();
 })
+
 // create JSON from transcript table
 // TODO: clear any double blank text field rows after submit
 // TODO: maybe add JSON parse to only work on already submitted text and not while submitting. do submit in Python
@@ -156,7 +157,7 @@ $('.transcript_choose_edit').on('keyup click', function() {
 
 
 
-// form validation: revent submit on enter from form field
+// form validation: prevent submit on enter from form field
 $('#transcripting').on('keyup keypress', 'input', function(event) {
   var keycode = event.keyCode || event.which;
   if (keycode === 13) {
@@ -236,14 +237,14 @@ $('.language_abbr').each(function(index) {
     'da': 'Dansk',
     'de': 'Deutsch',
     'et': 'Eesti',
-    'en-GB': 'English (UK)',
+    'en_GB': 'English (UK)',
     'en': 'English (US)',
     'es': 'Español (España)',
-    'es-419': 'Español (Latinoamérica)',
+    'es_419': 'Español (Latinoamérica)',
     'eu': 'Euskara',
     'fil': 'Filipino',
     'fr': 'Français',
-    'fr-CA': 'Français (Canada)',
+    'fr_CA': 'Français (Canada)',
     'gl': 'Galego',
     'hr': 'Hrvatski',
     'zu': 'IsiZulu',
@@ -256,7 +257,7 @@ $('.language_abbr').each(function(index) {
     'nl': 'Nederlands',
     'no': 'Norsk',
     'pl': 'Polski',
-    'pt-PT': 'Português',
+    'pt_PT': 'Português',
     'pt': 'Português (Brasil)',
     'ro': 'Română',
     'sk': 'Slovenčina',
@@ -284,14 +285,14 @@ $('.language_abbr').each(function(index) {
     'ml': 'മലയാളം ',
     'th': 'ภาษาไทย',
     'am': 'አማርኛ',
-    'zh-CN': '中文 (简体)',
-    'zh-TW': '中文 (繁體)',
-    'zh-HK': '中文 (香港)',
+    'zh_CN': '中文 (简体)',
+    'zh_TW': '中文 (繁體)',
+    'zh_HK': '中文 (香港)',
     'ja': '日本語',
     'ko': '한국어',
     'ot': 'other'
   }
-  var newString = shortLanguage.replace(/\baf\b|\bid\b|\bms\b|\bca\b|\bcs\b|\bda\b|\bde\b|\bet\b|\ben\-GB\b|\ben\b|\bes\-419\b|\bes\b|\beu\b|\bfil\b|\bfr\-CA\b|\bfr\b|\bgl\b|\bhr\b|\bzu\b|\bis\b|\bit\b|\bsw\b|\blv\b|\blt\b|\bhu\b|\bnl\b|\bno\b|\bpl\b|\bpt\-PT\b|\bpt\b|\bro\b|\bsk\b|\bsl\b|\bfi\b|\bsv\b|\bvi\b|\btr\b|\bbg\b|\bru\b|\bsr\b|\buk\b|\bel\b|\biw\b|\bur\b|\bar\b|\bfa\b|\bmr\b|\bhi\b|\bbn\b|\bgu\b|\bta\b|\bte\b|\bkn\b|\bml\b|\bth\b|\bam\b|\bzh\-CN\b|\bzh\-TW\b|\bzh\-HK\b|\bja\b|\bko\b|\bot\b/, function(matched){
+  var newString = shortLanguage.replace(/\baf\b|\bid\b|\bms\b|\bca\b|\bcs\b|\bda\b|\bde\b|\bet\b|\ben_GB\b|\ben\b|\bes_419\b|\bes\b|\beu\b|\bfil\b|\bfr_CA\b|\bfr\b|\bgl\b|\bhr\b|\bzu\b|\bis\b|\bit\b|\bsw\b|\blv\b|\blt\b|\bhu\b|\bnl\b|\bno\b|\bpl\b|\bpt_PT\b|\bpt\b|\bro\b|\bsk\b|\bsl\b|\bfi\b|\bsv\b|\bvi\b|\btr\b|\bbg\b|\bru\b|\bsr\b|\buk\b|\bel\b|\biw\b|\bur\b|\bar\b|\bfa\b|\bmr\b|\bhi\b|\bbn\b|\bgu\b|\bta\b|\bte\b|\bkn\b|\bml\b|\bth\b|\bam\b|\bzh_CN\b|\bzh_TW\b|\bzh_HK\b|\bja\b|\bko\b|\bot\b/, function(matched){
     return mapObj[matched];
   });
   $(this).text(newString);
@@ -334,19 +335,24 @@ $('#cancel_edit').on('click', function(event) {
   }
 });
 
-// TESTING: Load existing transcript. Combine with existing open transcript function
+// load existing transcript.
+// TODO: Combine with existing open transcript function
 // if language not available return, else replace with json
-// .val() for input fields
+// TODO: .val() for input fields
 $('#id_language').on('change', function() {
   var json_lang = '#json_lang_' + $('#id_language option:selected').attr('value');
   var foo = ''
-  var foo_value = JSON.parse($(json_lang).text());
-  for (var i = 0; i <= 20000; i += 0.5 ) {
-    if (foo_value[i] !== undefined) {
-      foo += (foo_value[i]);
+  if ($(json_lang).text()) {
+    var foo_value = JSON.parse($(json_lang).text());
+    console.log(foo_value);
+    for (var i = 0; i <= 20000; i += 0.5 ) {
+      if (foo_value[i] !== undefined) {
+        foo += (foo_value[i]);
+      }
     }
+  } else {
+    return;
   }
-  console.log('foo: \n' + foo);
 });
 
 // transcript table JSON to display human readable format
