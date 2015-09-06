@@ -148,13 +148,6 @@ function transcript2JSON() {
   console.log(parsed_with_slice);
 }
 
-// create form from JSON
-// this to console.log for test
-$('.transcript_choose_edit').on('keyup click', function() {
-  // console.log($(this).html());
-  // var fooJSON = $();
-})
-
 
 
 // form validation: prevent submit on enter from form field
@@ -338,18 +331,40 @@ $('#cancel_edit').on('click', function(event) {
 // load existing transcript.
 // TODO: Combine with existing open transcript function
 // if language not available return, else replace with json
-// TODO: .val() for input fields
+// TODO: .val() for input fields;
+// count keys, add that number of rows, for loop for time, for loop for text.
 $('#id_language').on('change', function() {
-  var json_lang = '#json_lang_' + $('#id_language option:selected').attr('value');
-  var foo = ''
-  if ($(json_lang).text()) {
-    var foo_value = JSON.parse($(json_lang).text());
-    console.log(foo_value);
-    for (var i = 0; i <= 20000; i += 0.5 ) {
-      if (foo_value[i] !== undefined) {
-        foo += (foo_value[i]);
+  var edit_content = ''
+  var transcript_html_front_back = '<td class="timestamp_display" title="Add timestamp to this row."><a href="#notlink">&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&rArr;</a></td> <td class="time_cell"><input class="timestamp_input mousetrap" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td> <td class="transcript_cell"><input class="transcript_input mousetrap" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td> <td class="insert_row" tabindex="0">+</td> <td class="delete_row">-</td>';
+  $('.transcripting_info').html(transcript_html_front_back);
+  // var transcript_html_front = '<td class="timestamp_display" title="Add timestamp to this row."><a href="#notlink">&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&rArr;</a></td> <td class="time_cell"><input class="timestamp_input mousetrap" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td> <td class="transcript_cell"><input class="transcript_input mousetrap" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td> <td class="insert_row" tabindex="0">+</td> <td class="delete_row">-</td>';
+  // var transcript_html_back = '<td class="timestamp_display" title="Add timestamp to this row."><a href="#notlink">&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&rArr;</a></td> <td class="time_cell"><input class="timestamp_input mousetrap" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td> <td class="transcript_cell"><input class="transcript_input mousetrap" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td> <td class="insert_row" tabindex="0">+</td> <td class="delete_row">-</td> </tr>';
+
+  var json_lang = $('#json_lang_' + $('#id_language option:selected').attr('value')).html();
+  console.log('json_lang: ' + json_lang);
+  var json_lang_parse = JSON.parse(json_lang);
+  console.log('json_lang_parse: ' + json_lang_parse);
+  console.log('json_lang_parse Object.keys().length: ' + Object.keys(json_lang_parse).length);
+  // 
+  Object.keys(JSON.parse(foo)).length
+  // 
+
+  console.log('Object.keys(json_lang).length: ' + Object.keys(json_lang).length);
+  if ($(json_lang).text()) { // TODO: why .text? if is string? if there is content?
+    var json_parse = JSON.parse($(json_lang).text());
+    console.log(json_parse);
+    // console.log(json_parse);
+    for (var i = 0; i <= Object.keys(json_lang).length; i += 0.5 ) {
+      if (json_parse[i] !== undefined) {
+        // .val();
+        // also need timestamp
+        edit_content += (json_parse[i]);
+        // console.log(json_parse[i].id);
+        // console.log(json_parse[i].id);
+        // console.log(Object.keys(json_parse));
       }
     }
+    // console.log(edit_content);
   } else {
     return;
   }
@@ -360,7 +375,7 @@ $('.transcript_preview_cell').each(function(index) {
   var a_drop_concat = '';
   a_drop_down_value = JSON.parse($(this).text());
   // TODO: how to get all text if i <= x limits a large transcript?
-  for (var i = 0; i <= 20000; i += 0.5 ) {
+  for (var i = 0; i <= Object.keys(a_drop_down_value).length; i += 0.5 ) {
     if (a_drop_down_value[i] !== undefined) {
       a_drop_concat += (a_drop_down_value[i] + '<br>');
       $(this).html(a_drop_concat);
