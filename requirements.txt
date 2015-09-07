@@ -25,6 +25,7 @@ stevedore==0.14.1
 virtualenv==1.11.4
 virtualenv-clone==0.2.4
 virtualenvwrapper==4.2
+waitress==0.8.10
 whitenoise==2.0.3
 wsgiref==0.1.2
 yolk==0.4.3
