@@ -333,6 +333,5 @@ th, #transcript_choose tr, #transcript_choose td {
 }
 
 select {
-  font-size: 900%;
-}
+  /*font-size: 900%;*/
 }
