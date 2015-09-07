@@ -17,4 +17,3 @@ settings_loc.py
 wsgi.py
 wsgi_prod.py
 wsgi_loc.py
-secret_key.py
