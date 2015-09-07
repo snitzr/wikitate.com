@@ -323,10 +323,16 @@ th, #transcript_choose tr, #transcript_choose td {
   display: none;
 }
 
-/*select {
-  font-family: Monospace !important;
+/*TODO: remove hide after functionality added*/
+.transcript_choose_share, .transcript_choose_edit {
+  display: none;
 }
-*/
+
 .vidNameNav {
   font-weight: 400;
+}
+
+select {
+  font-size: 900%;
+}
 }
