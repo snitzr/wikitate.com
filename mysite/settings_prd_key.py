@@ -1,5 +1,5 @@
 """
-Django PRODUCTION settings for mysite project.
+Django settings for mysite project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -11,27 +11,7 @@ import os
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-def find_or_create_secret_key():
-    """
-    Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
-    Otherwise, generate a new secret key, save it in secret_key.py, and return the key.
-    """
-    secret_key_filepath = os.path.join(os.path.dirname(__file__), 'secret_key.py')
-
-    if os.path.isfile(secret_key_filepath):
-        from secret_key import SECRET_KEY
-        return SECRET_KEY
-    else:
-        from django.utils.crypto import get_random_string
-        chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
-        new_key = get_random_string(50, chars)
-        with file(secret_key_filepath, 'w') as f:
-            f.write("# Django secret key\n# Do NOT check this into version control.\n\nSECRET_KEY = '%s'\n" % new_key)
-        from secret_key import SECRET_KEY
-        return SECRET_KEY
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = find_or_create_secret_key()
+SECRET_KEY = '-%xk%*rd(8ug7-#fcpd)e1cf$cyb-zh&b%(yq(5ixpb6hi@w9^'
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -40,13 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = [
-    '.wikitate.com'
-]
+ALLOWED_HOSTS = []
 
 
 
