@@ -58,6 +58,7 @@
           {% endblock header %}
 
           
+          {% comment "Disable user auth" %}
           {% block baselogin %}
           <div id="login">
             {% if user.is_authenticated %}
@@ -72,6 +73,7 @@
 
           </div>
           {% endblock baselogin %}
+          {% endcomment %}
 
 
           {% block video_search %}
