@@ -5,10 +5,6 @@
   /*font-variant: small-caps;*/
 }
 
-#index_wrap {
-  font-size: 150%;
-}
-
 #id_transcript {
   float: right;
   visibility: hidden;
