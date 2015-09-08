@@ -389,7 +389,10 @@
 
   <div id="add_transcripts">
 
+    {% comment "Disable user auth" %}
     {% if user.is_authenticated %}
+    {% endcomment %}
+
     {% load account %}
 
     {# transcript submit #}
@@ -440,9 +443,11 @@
   </div>
   <div id="transcript_table_scrollbox">
 
+    {% comment "Disable user auth" %}
     {% else %}
     <a href="/accounts/signup/?next={{request.path}}">Sign up / log in to add or edit transcripts.</a>
     {% endif %}
+    {% endcomment %}
   </div>
 
   <div id="ytplayer"></div>
