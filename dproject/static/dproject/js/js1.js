@@ -25,17 +25,6 @@ function onStateChange(event) {
   }
 }
 
-// TODO: prevent reload page when pausing some videos. Commenting out for now.
-// switch URL with related link embed click
-// function onStateChange(event) {
-//  if (window.yovid !== player.getVideoUrl()) {
-//   if (window.yovid !== undefined) {
-//     window.location = '/' + player.getVideoData()['video_id'];
-//   }
-// }
-// window.yovid = player.getVideoUrl();
-// }
-
 // video name to title on onPlayerReady
 function onPlayerReady(event) {
   if (player.getVideoData().title) {
@@ -69,6 +58,7 @@ $('#transcripting').on('click', 'td', function(event) {
     $(this).closest('tr').remove();
   }
 });
+
 $('#transcripting').on('keyup', 'td', function(event) {
   event.preventDefault(); // prevent placeholder link from appering in browser URL
   if (event.keyCode === 13) {
@@ -120,7 +110,6 @@ $('#transcripting').on('click mouseup', 'a', function(event) {
 
 // create JSON from transcript table
 // TODO: clear any double blank text field rows after submit
-// TODO: maybe add JSON parse to only work on already submitted text and not while submitting. do submit in Python
 $('#transcripting').on('keyup click', 'input', function() {
   transcript2JSON();
 });
@@ -329,10 +318,6 @@ $('#cancel_edit').on('click', function(event) {
 });
 
 // load existing transcript.
-// TODO: Combine with existing open transcript function
-// if language not available return, else replace with json
-// TODO: .val() for input fields;
-// count keys, add that number of rows, for loop for time, for loop for text.
 $('#id_language').on('change', function() {
   // var edit_content = ''
   var transcript_html_front_back = '<tr><td class="timestamp_display" title="Add timestamp to this row."><a href="#notlink">&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&rArr;</a></td> <td class="time_cell"><input class="timestamp_input mousetrap" name="timestamp_cell" cols="100" min="0" type="number" step="0.5" value="" /></td><td class="transcript_cell"><input class="transcript_input mousetrap" name="transcript_cell" maxlength="100" type="text" autocomplete="off" /></td> <td class="insert_row" tabindex="0">+</td> <td class="delete_row">-</td></tr>';
@@ -340,19 +325,13 @@ $('#id_language').on('change', function() {
 
   var json_lang = $('#json_lang_' + $('#id_language option:selected').attr('value')).html();
   var json_lang_parse = JSON.parse(json_lang);
-  // console.log('json_lang: ' + json_lang);
-  // console.log('json_lang_parse Object.keys(): ' + Object.keys(json_lang_parse));
-  // console.log('json_lang_parse []: ' + json_lang_parse['0']);
 
-  if (json_lang) { // TODO: why .text? if is string? if there is content?
+  if (json_lang) {
     var json_parse = JSON.parse(json_lang);
-    // console.log('json_parse: ' + json_parse);
     var foo_count = 0;
     for (var i = 0; i <= 20000; i += 0.5) {
       if (json_parse[i] !== undefined) {
-        console.log('foo+count: ' + foo_count++);
         transcript_html_front_back_list += (transcript_html_front_back);
-        console.log(transcript_html_front_back);
       }
     }
     $('.transcripting_info').replaceWith(transcript_html_front_back_list);
@@ -370,6 +349,8 @@ $('#id_language').on('change', function() {
       value_counter += 1;
     });
 
+    transcript2JSON();
+    
   } else {
     $('.transcripting_info').html(transcript_html_front_back);
   }
