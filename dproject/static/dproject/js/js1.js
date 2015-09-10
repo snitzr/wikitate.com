@@ -417,6 +417,15 @@ Mousetrap.bind(['ctrl+t'], function() {
     $('.timestamp_input:focus').parent().parent().next().find('.timestamp_input').focus();
     return false;
   });
+
+// Skip back one second
+// skip back control
+Mouserap.bind([''],function () {
+  // player.pauseVideo();
+  player.seekTo((player.getCurrentTime() - 1), true);
+  // player.playVideo();
+});
+
 // END Mouserap
 
 
