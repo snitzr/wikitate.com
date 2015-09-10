@@ -420,13 +420,13 @@ Mousetrap.bind(['ctrl+t'], function() {
 
 // Skip back one second
 // skip back control
-Mouserap.bind([''],function () {
+Mousetrap.bind(['ctrl+left'], function () {
   // player.pauseVideo();
   player.seekTo((player.getCurrentTime() - 1), true);
   // player.playVideo();
 });
 
-// END Mouserap
+// END Mousetrap
 
 
 // TODO: test for videos that cannot be embeded
