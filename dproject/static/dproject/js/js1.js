@@ -396,13 +396,13 @@ $('#submit_vid_search').on('submit click', function(event) {
 // START Mousetrap
 // play pause video
 Mousetrap.bind(['ctrl+space'], function() {
-    if (player.getPlayerState() !== 1) {
-      player.playVideo();
-    } else {
-      player.pauseVideo();
-    }
-    return false;
-  });
+  if (player.getPlayerState() !== 1) {
+    player.playVideo();
+  } else {
+    player.pauseVideo();
+  }
+  return false;
+});
 
 // write timestamp if focused and move to next timestamp field
 Mousetrap.bind(['ctrl+t'], function() {
@@ -418,9 +418,8 @@ Mousetrap.bind(['ctrl+t'], function() {
     return false;
   });
 
-// Skip back one second
-// skip back control
-Mousetrap.bind(['ctrl+left'], function () {
+// skip back one second
+Mousetrap.bind(['ctrl+left'], function() {
   // player.pauseVideo();
   player.seekTo((player.getCurrentTime() - 1), true);
   // player.playVideo();
