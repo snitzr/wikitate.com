@@ -79,7 +79,7 @@ var captionTime;
 var endAndStartTimer;
 var displayFade;
 captionTime = function(currentTime) {
-  // if (transcript[currentTime] !== undefined) {
+  if (transcript[currentTime] !== undefined) {
     endAndStartTimer = function() {
       displayFade = function() {
         $("#captions").fadeOut('fast');
@@ -93,7 +93,7 @@ captionTime = function(currentTime) {
     };
     window.hider;
     endAndStartTimer();
-  // }
+  }
 };
 
 // current time display --> timestamp field and trigger create JSON from transcript table

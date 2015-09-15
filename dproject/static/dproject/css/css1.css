@@ -71,11 +71,14 @@
 }
 */
 
-
 #transcripting td.transcript_cell input {
-  width: 250px;
+  width: 290px;
 }
 
+/*#transcripting td.transcript_cell input {
+  width: 250px;
+}
+*/
 td {
  text-align: center;
 }
