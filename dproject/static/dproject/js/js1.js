@@ -419,9 +419,10 @@ Mousetrap.bind(['ctrl+t'], function() {
   });
 
 // skip back one second
-Mousetrap.bind(['ctrl+left'], function() {
+Mousetrap.bind(['ctrl+b'], function() {
   // player.pauseVideo();
   player.seekTo((player.getCurrentTime() - 1), true);
+  console.log('back one second');
   // player.playVideo();
 });
 
