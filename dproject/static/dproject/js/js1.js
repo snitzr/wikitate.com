@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // TODO: start function on playerReady
-  window.setInterval(updateCurrentTime, 100);
+  window.setInterval("updateCurrentTime()", 100);
   captionTime(0.0);
   console.log('loaded'); // IE 9 testing
 
@@ -9,12 +9,24 @@ $(document).ready(function() {
     var vidIdMatch = location.href.match(/youtu.be\/(...........)/, '$1');
     window.location = ('/' + vidIdMatch[1] +'/');
   }
-  // TODO: match to share link language
-  // if (/wikitate.com\/(...........)\//.test(location.href)) {
-  //   var vidIdMatch = location.href.match(/youtu.be\/(...........)/, '$1')
-  //   window.location = ('/' + vidIdMatch[1] +'/');
-  // }
 });
+
+
+// IE 9 testing
+$(document).ready(function() {
+  refreshVar();
+});
+
+function refreshVar() {
+  var refresh = setInterval(function(){
+    updateCurrentTime;
+  }, 100);
+  console.log('loaded 2')
+}
+
+
+
+
 
 window.transcript = {};
 
@@ -727,3 +739,9 @@ console.log('9b #transcripting type nth 3:\t' + $('#transcripting input:nth-last
 //     $('#ytplayer').css({'display': 'block', 'width': '100%'});
 //   }
 // });
+
+// TODO: match to share link language
+// if (/wikitate.com\/(...........)\//.test(location.href)) {
+//   var vidIdMatch = location.href.match(/youtu.be\/(...........)/, '$1')
+//   window.location = ('/' + vidIdMatch[1] +'/');
+// }
