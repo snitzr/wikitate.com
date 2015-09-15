@@ -1,7 +1,8 @@
 $(document).ready(function() {
   // TODO: start function on playerReady
-  setInterval(updateCurrentTime, 100);
+  window.setInterval(updateCurrentTime, 100);
   captionTime(0.0);
+  console.log('loaded'); // IE 9 testing
 
   // check for short youtube URL and redirect to short Wikitate URL
   if (/youtu.be\/(...........)/.test(location.href)) {
