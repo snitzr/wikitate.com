@@ -79,7 +79,7 @@ var captionTime;
 var endAndStartTimer;
 var displayFade;
 captionTime = function(currentTime) {
-  if (transcript[currentTime] !== undefined) {
+  if (window.transcript[currentTime] !== undefined) {
     endAndStartTimer = function() {
       displayFade = function() {
         $("#captions").fadeOut('fast');
@@ -134,7 +134,7 @@ function transcript2JSON() {
     parsed_with_slice = (parsed_add.slice(0, -2) + '}');
   }
   $('#id_transcript').val(parsed_with_slice);
-  transcript = JSON.parse(parsed_with_slice); // live preview in YT vid
+  window.transcript = JSON.parse(parsed_with_slice); // live preview in YT vid
   console.log(parsed_with_slice);
 }
 
@@ -372,7 +372,7 @@ $('.transcript_preview_cell').each(function(index) {
 // load table selection after transcript selection
 $('.transcript_choose_column_status').on('click', function() {
   $('#captions').html(''); // clear out current transcript display
-  transcript = (JSON.parse($(this).siblings('.transcript_json_cell').text()));
+  window.transcript = (JSON.parse($(this).siblings('.transcript_json_cell').text()));
   ($('.transcript_loaded_cell').text('► Play'));
   ($(this).html('.transcript_loaded_cell').text('Selected'));
   ($('.transcript_preview_row').css('backgroundColor', 'white'));
