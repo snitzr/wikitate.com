@@ -19,7 +19,7 @@ $(document).ready(function() {
 
 function refreshVar() {
   var refresh = setInterval(function(){
-    updateCurrentTime;
+    updateCurrentTime();
   }, 100);
   console.log('loaded 2')
 }
