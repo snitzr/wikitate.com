@@ -75,27 +75,53 @@ $('#transcripting').on('keyup', 'td', function(event) {
 });
 
 // display captions to page and clear after six seconds
+// var captionTime;
+// captionTime = function(currentTime) {
+//   var endAndStartTimer;
+//   if (transcript[currentTime] !== undefined) {
+//     endAndStartTimer = function() {
+//       var displayFade;
+//       displayFade = function() {
+//         $("#captions").fadeOut('fast');
+//       };
+//       clearTimeout(window.hider);
+//       $('#captions').html(transcript[currentTime]).show();
+//       console.log(transcript[currentTime]);
+//       window.hider = window.setTimeout(function() {
+//         displayFade();
+//       }, 6000);
+//     };
+//     window.hider;
+//     endAndStartTimer();
+//   }
+// };
+
 var captionTime;
+
+captionTime = void 0;
+
 captionTime = function(currentTime) {
   var endAndStartTimer;
-  if (transcript[currentTime] !== undefined) {
+  endAndStartTimer = void 0;
+  if (transcript[currentTime] !== void 0) {
     endAndStartTimer = function() {
       var displayFade;
+      displayFade = void 0;
       displayFade = function() {
-        $("#captions").fadeOut('fast');
+        $('#captions').fadeOut('fast');
       };
       clearTimeout(window.hider);
       $('#captions').html(transcript[currentTime]).show();
-      $('#captions').css({'z-index': '9999999'});
       console.log(transcript[currentTime]);
-      window.hider = window.setTimeout(function() {
+      window.hider = window.setTimeout((function() {
         displayFade();
-      }, 6000);
+      }), 6000);
     };
     window.hider;
     endAndStartTimer();
   }
 };
+// js2 coffee
 
 // current time display --> timestamp field and trigger create JSON from transcript table
 $('#transcripting').on('click mouseup', 'a', function(event) {
