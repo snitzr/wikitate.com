@@ -1,28 +1,28 @@
-// $(document).ready(function() {
-//   // TODO: start function on playerReady
-//   window.setInterval("updateCurrentTime()", 100);
-//   captionTime(0.0);
-//   console.log('loaded'); // IE 9 testing
+$(document).ready(function() {
+  // TODO: start function on playerReady
+  window.setInterval(updateCurrentTime(), 100);
+  captionTime(0.0);
+  console.log('loaded'); // IE 9 testing
 
-//   // check for short youtube URL and redirect to short Wikitate URL
-//   if (/youtu.be\/(...........)/.test(location.href)) {
-//     var vidIdMatch = location.href.match(/youtu.be\/(...........)/, '$1');
-//     window.location = ('/' + vidIdMatch[1] +'/');
-//   }
-// });
+  // check for short youtube URL and redirect to short Wikitate URL
+  if (/youtu.be\/(...........)/.test(location.href)) {
+    var vidIdMatch = location.href.match(/youtu.be\/(...........)/, '$1');
+    window.location = ('/' + vidIdMatch[1] +'/');
+  }
+});
 
 
 // IE 9 testing
-$(document).ready(function() {
-  refreshVar();
-});
+// $(document).ready(function() {
+//   refreshVar();
+// });
 
-function refreshVar() {
-  var refresh = setInterval(function(){
-    updateCurrentTime();
-  }, 100);
-  console.log('loaded 2')
-}
+// function refreshVar() {
+//   var refresh = setInterval(function(){
+//     updateCurrentTime();
+//   }, 100);
+//   console.log('loaded 2')
+// }
 
 
 
