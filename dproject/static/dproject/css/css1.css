@@ -337,6 +337,10 @@ select {
 }
 
 /*iPhone message*/
+#iphone_warning {
+  display: none;
+  visibility: hidden;
+}
 /* ----------- iPhone 4 and 4S ----------- */
 
 /* Portrait and Landscape */
@@ -381,7 +385,7 @@ select {
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
-    
+
 }
 
 /* Landscape */
@@ -390,7 +394,10 @@ select {
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) {
-
+    #iphone_warning {
+      display: inline !important;
+      visibility: visible !important;
+    }
 }
 
 /* ----------- iPhone 6 ----------- */
@@ -429,7 +436,11 @@ select {
   and (max-device-width: 736px) 
   and (-webkit-min-device-pixel-ratio: 3) { 
 
-}
+    #iphone_warning {
+      display: inline !important;
+      visibility: visible !important;
+    }
+  }
 
 /* Portrait */
 @media only screen 
