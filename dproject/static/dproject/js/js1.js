@@ -40,6 +40,7 @@ function updateCurrentTime() {
     var rounded = ((Math.round((player.getCurrentTime()) * 2)) / 2);
     $('.timestamp_display').html('<a href="#notlink">' + '&nbsp;&nbsp;&nbsp;&nbsp;' + Math.round(rounded) + '&nbsp;&nbsp;&nbsp;&rArr;</a>');
     captionTime(rounded);
+    console.log(rounded); // IE 9 testing.
   }
 }
 
