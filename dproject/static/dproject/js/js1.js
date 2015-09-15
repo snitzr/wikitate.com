@@ -1,34 +1,21 @@
 $(document).ready(function() {
   // TODO: start function on playerReady
-  window.setInterval(updateCurrentTime(), 100);
+  setInterval(updateCurrentTime, 100);
   captionTime(0.0);
-  console.log('loaded'); // IE 9 testing
 
   // check for short youtube URL and redirect to short Wikitate URL
   if (/youtu.be\/(...........)/.test(location.href)) {
     var vidIdMatch = location.href.match(/youtu.be\/(...........)/, '$1');
     window.location = ('/' + vidIdMatch[1] +'/');
   }
+  // TODO: match to share link language
+  // if (/wikitate.com\/(...........)\//.test(location.href)) {
+  //   var vidIdMatch = location.href.match(/youtu.be\/(...........)/, '$1')
+  //   window.location = ('/' + vidIdMatch[1] +'/');
+  // }
 });
 
-
-// IE 9 testing
-// $(document).ready(function() {
-//   refreshVar();
-// });
-
-// function refreshVar() {
-//   var refresh = setInterval(function(){
-//     updateCurrentTime();
-//   }, 100);
-//   console.log('loaded 2')
-// }
-
-
-
-
-
-window.transcript = {};
+var transcript = {};
 
 // video name headline change with onStateChange
 function onStateChange(event) {
@@ -49,13 +36,10 @@ function onPlayerReady(event) {
 
 // link timer to timestamp and display caption function
 function updateCurrentTime() {
-  console.log('updateCurrentTime 0');
   if (player.getPlayerState() === 1) {
     var rounded = ((Math.round((player.getCurrentTime()) * 2)) / 2);
     $('.timestamp_display').html('<a href="#notlink">' + '&nbsp;&nbsp;&nbsp;&nbsp;' + Math.round(rounded) + '&nbsp;&nbsp;&nbsp;&rArr;</a>');
     captionTime(rounded);
-    console.log(rounded); // IE 9 testing.
-    console.log('updateCurrentTime'); // IE 9 testing.
   }
 }
 
@@ -95,7 +79,7 @@ var captionTime;
 var endAndStartTimer;
 var displayFade;
 captionTime = function(currentTime) {
-  if (window.transcript[currentTime] !== undefined) {
+  if (transcript[currentTime] !== undefined) {
     endAndStartTimer = function() {
       displayFade = function() {
         $("#captions").fadeOut('fast');
@@ -150,7 +134,7 @@ function transcript2JSON() {
     parsed_with_slice = (parsed_add.slice(0, -2) + '}');
   }
   $('#id_transcript').val(parsed_with_slice);
-  window.transcript = JSON.parse(parsed_with_slice); // live preview in YT vid
+  transcript = JSON.parse(parsed_with_slice); // live preview in YT vid
   console.log(parsed_with_slice);
 }
 
@@ -388,7 +372,7 @@ $('.transcript_preview_cell').each(function(index) {
 // load table selection after transcript selection
 $('.transcript_choose_column_status').on('click', function() {
   $('#captions').html(''); // clear out current transcript display
-  window.transcript = (JSON.parse($(this).siblings('.transcript_json_cell').text()));
+  transcript = (JSON.parse($(this).siblings('.transcript_json_cell').text()));
   ($('.transcript_loaded_cell').text('► Play'));
   ($(this).html('.transcript_loaded_cell').text('Selected'));
   ($('.transcript_preview_row').css('backgroundColor', 'white'));
@@ -741,9 +725,3 @@ console.log('9b #transcripting type nth 3:\t' + $('#transcripting input:nth-last
 //     $('#ytplayer').css({'display': 'block', 'width': '100%'});
 //   }
 // });
-
-// TODO: match to share link language
-// if (/wikitate.com\/(...........)\//.test(location.href)) {
-//   var vidIdMatch = location.href.match(/youtu.be\/(...........)/, '$1')
-//   window.location = ('/' + vidIdMatch[1] +'/');
-// }
