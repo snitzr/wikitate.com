@@ -86,7 +86,8 @@ captionTime = function(currentTime) {
       };
       clearTimeout(window.hider);
       $('#captions').html(transcript[currentTime]).show();
-      // $('#captions').css({'backgroundColor': 'black'});
+      $('#captions').css({'z-index': '9999999'});
+      console.log(transcript[currentTime]);
       window.hider = window.setTimeout(function() {
         displayFade();
       }, 6000);
@@ -419,7 +420,7 @@ Mousetrap.bind(['ctrl+t'], function() {
   });
 
 // skip back one second
-Mousetrap.bind(['ctrl+b'], function() {
+Mousetrap.bind(['ctrl+r'], function() {
   // player.pauseVideo();
   player.seekTo((player.getCurrentTime() - 1), true);
   console.log('back one second');
