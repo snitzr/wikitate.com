@@ -5,7 +5,7 @@ $(document).ready(function() {
 
   // check for short youtube URL and redirect to short Wikitate URL
   if (/youtu.be\/(...........)/.test(location.href)) {
-    var vidIdMatch = location.href.match(/youtu.be\/(...........)/, '$1')
+    var vidIdMatch = location.href.match(/youtu.be\/(...........)/, '$1');
     window.location = ('/' + vidIdMatch[1] +'/');
   }
   // TODO: match to share link language
@@ -106,7 +106,7 @@ $('#transcripting').on('click mouseup', 'a', function(event) {
     $(this).parent().next('td').children('input').val(Math.round(((player.getCurrentTime()) * 2)) / 2);
   }
   transcript2JSON();
-})
+});
 
 // create JSON from transcript table
 // TODO: clear any double blank text field rows after submit
@@ -117,6 +117,7 @@ function transcript2JSON() {
   var transcripting_form_values = JSON.stringify($('#transcripting :input, textarea').serializeArray());
   var parsed_add = '{';
   var parsed = JSON.parse(transcripting_form_values);
+  var parsed_with_slice;
   for (var i = 0; i < transcripting_form_values.length; i++) {
     if (typeof parsed[i] !== 'undefined') {
       if ((parsed[i].name) === ('timestamp_cell')) {
@@ -130,7 +131,7 @@ function transcript2JSON() {
         parsed_add += ('\"' + parsed_escaped + '\"' + ', ');
       }
     }
-    var parsed_with_slice = (parsed_add.slice(0, -2) + '}');
+    parsed_with_slice = (parsed_add.slice(0, -2) + '}');
   }
   $('#id_transcript').val(parsed_with_slice);
   transcript = JSON.parse(parsed_with_slice); // live preview in YT vid
@@ -273,7 +274,7 @@ $('.language_abbr').each(function(index) {
     'ja': '日本語',
     'ko': '한국어',
     'ot': 'other'
-  }
+  };
   var newString = shortLanguage.replace(/\baf\b|\bid\b|\bms\b|\bca\b|\bcs\b|\bda\b|\bde\b|\bet\b|\ben_GB\b|\ben\b|\bes_419\b|\bes\b|\beu\b|\bfil\b|\bfr_CA\b|\bfr\b|\bgl\b|\bhr\b|\bzu\b|\bis\b|\bit\b|\bsw\b|\blv\b|\blt\b|\bhu\b|\bnl\b|\bno\b|\bpl\b|\bpt_PT\b|\bpt\b|\bro\b|\bsk\b|\bsl\b|\bfi\b|\bsv\b|\bvi\b|\btr\b|\bbg\b|\bru\b|\bsr\b|\buk\b|\bel\b|\biw\b|\bur\b|\bar\b|\bfa\b|\bmr\b|\bhi\b|\bbn\b|\bgu\b|\bta\b|\bte\b|\bkn\b|\bml\b|\bth\b|\bam\b|\bzh_CN\b|\bzh_TW\b|\bzh_HK\b|\bja\b|\bko\b|\bot\b/, function(matched){
     return mapObj[matched];
   });
@@ -293,7 +294,7 @@ function open_editor(event) {
     $('#add_transcripts').slideToggle(100);
     $('#transcription_tips').slideToggle(100);
     $('#transcript_table_scrollbox').slideToggle(100);
-    $('#ytplayer').css({'height': '600px', 'width': '100%', 'display': 'inline-block', 'width': '40%'});
+    $('#ytplayer').css({'height': '600px', 'display': 'inline-block', 'width': '40%'});
     $('#submitted_transcripts').css({'visibility': 'hidden', 'display': 'none'});
     $('#add_transcripts').css({'display': 'inline-block', 'float': 'left'});
     $('#submit_edit').css({'visibility': 'visible', 'display': 'block'});
@@ -313,7 +314,7 @@ $('#cancel_edit').on('click', function(event) {
     // $('#submit_edit').css({'visibility': 'hidden', 'display': 'none'});
     // $('#submitted_transcripts').css({'visibility': 'visible', 'display': 'block'});
   } else {
-    return
+    return;
   }
 });
 
@@ -328,7 +329,6 @@ $('#id_language').on('change', function() {
 
   if (json_lang) {
     var json_parse = JSON.parse(json_lang);
-    var foo_count = 0;
     for (var i = 0; i <= 20000; i += 0.5) {
       if (json_parse[i] !== undefined) {
         transcript_html_front_back_list += (transcript_html_front_back);
@@ -377,10 +377,7 @@ $('.transcript_choose_column_status').on('click', function() {
   ($(this).html('.transcript_loaded_cell').text('Selected'));
   ($('.transcript_preview_row').css('backgroundColor', 'white'));
   ($(this).parent().css('backgroundColor', '#D8D8D8'));
-  $('#ytplayer').animate({
-    height: '600px',
-    width: '100%'}
-    , 150);
+  $('#ytplayer').animate({height: '600px', width: '100%'}, 150);
   // TODO: add logic to pause video if clicked when video is playing
   player.playVideo();
   $('html, body').scrollTop(50);
