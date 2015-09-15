@@ -15,7 +15,7 @@ $(document).ready(function() {
   // }
 });
 
-var transcript = {};
+window.transcript = {};
 
 // video name headline change with onStateChange
 function onStateChange(event) {
