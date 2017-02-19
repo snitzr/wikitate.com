@@ -1,0 +1,1 @@
+javascript:var%20search_url%20=%20/youtube.com/g;var%20search_vid%20=%20/v=.........../g;var%20search_url_results%20=%20search_url.exec(location.host);var%20search_vid_results%20=%20search_vid.exec(location.search);if%20(search_url_results%20!==%20null)%20%7Bwindow.location%20=%20('http://www.wikitate.com/'%20+%20search_vid_results%5B0%5D.slice(2));%7D
